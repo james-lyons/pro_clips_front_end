@@ -1,0 +1,11 @@
+{
+  "name": "pro_clips_front_end",
+  "version": "1.0.0",
+  "description": "Social Media site for storing gaming clips amongst competetive players",
+  "author": "James Lyons",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
