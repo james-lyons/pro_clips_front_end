@@ -4,9 +4,21 @@
   "description": "Social Media site for storing gaming clips amongst competetive players",
   "author": "James Lyons",
   "license": "ISC",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "build": "NODE_ENV = 'production' webpack",
+  },
+  "babel" : {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ],
+    "plugins": [
+      "@babel/plugin-propsal-class-properties"
+    ]
   },
   "dependencies": {
     "prop-types": "^15.7.2",
