@@ -1,12 +1,30 @@
 import React from 'react';
-import { render } from 'react-dom';
 
-const App = () => {
-    return (
-        <>
-            <h1>Hi</h1>
-        </>
-    );
+interface State {
+
+};
+
+interface Props {
+
+};
+
+class App extends React.PureComponent<Props, State> {
+
+    static defaultProps = {
+
+    };
+
+    state: State = {
+
+    };
+
+    render() {
+        return (
+            <>
+                <h1>Hi</h1>
+            </>
+        );
+    }
 };
 
 export default App;

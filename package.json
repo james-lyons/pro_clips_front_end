@@ -8,16 +8,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build": "NODE_ENV = 'production' webpack",
+    "build": "NODE_ENV = 'production' webpack"
   },
-  "babel" : {
+  "babel": {
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react",
       "@babel/preset-typescript"
     ],
     "plugins": [
-      "@babel/plugin-propsal-class-properties"
+      "@babel/plugin-proposal-class-properties"
     ]
   },
   "dependencies": {
