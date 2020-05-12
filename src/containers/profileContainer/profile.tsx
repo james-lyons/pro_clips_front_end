@@ -21,7 +21,7 @@ class Profile extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <h1>Hi</h1>
+                <h1>Hi from the Profile Page</h1>
             </>
         );
     }

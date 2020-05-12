@@ -8,7 +8,7 @@ interface Props {
 
 };
 
-class Post extends React.PureComponent<Props, State> {
+class ClipUpload extends React.PureComponent<Props, State> {
 
     static defaultProps = {
 
@@ -21,10 +21,10 @@ class Post extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <h1>Hi</h1>
+                <h1>Hi from Clip Upload page</h1>
             </>
         );
     }
 };
 
-export default Post;
+export default ClipUpload;

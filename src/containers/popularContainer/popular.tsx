@@ -8,7 +8,7 @@ interface Props {
 
 };
 
-class Home extends React.PureComponent<Props, State> {
+class Popular extends React.PureComponent<Props, State> {
 
     static defaultProps = {
 
@@ -21,10 +21,10 @@ class Home extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <h1>Hi from the Popular page</h1>
+                <h1>Hi from the Popular Page</h1>
             </>
         );
     };
 };
 
-export default Home;
+export default Popular;
