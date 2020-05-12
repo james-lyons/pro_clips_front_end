@@ -21,7 +21,7 @@ class Home extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <h1>Hi from the Home Page</h1>
+                <h1>Hi from the Popular page</h1>
             </>
         );
     };
