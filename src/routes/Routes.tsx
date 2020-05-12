@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import Home from '../containers/homeContainer/home';
-import Popular from '../containers/popularContainer/popular';
+import PopularClips from '../containers/popularContainer/popularClips';
+import BrowseClips from '../containers/browseContainer/browseClips';
 import Profile from '../containers/profileContainer/profile';
 import ClipUpload from '../containers/clipUpload/clipUpload';
 
@@ -26,7 +27,8 @@ export default withRouter(({ }: any) => {
             <Route exact path='/' component={() =>
                 <Home />
             }/>
-            <Route path='/popular' component={ Popular } />
+            <Route path='/popularclips' component={ PopularClips } />
+            <Route path='/browseclips' component={ BrowseClips } />
             <Route path='/profile' component={ Profile } />
             <Route path='/clipupload' component={ ClipUpload } />
         </Switch>

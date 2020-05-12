@@ -8,7 +8,7 @@ interface Props {
 
 };
 
-class Popular extends React.PureComponent<Props, State> {
+class PopularClips extends React.PureComponent<Props, State> {
 
     static defaultProps = {
 
@@ -27,4 +27,4 @@ class Popular extends React.PureComponent<Props, State> {
     };
 };
 
-export default Popular;
+export default PopularClips;

@@ -2,6 +2,8 @@ import React from 'react';
 import Routes from './routes/Routes';
 import API_URL from './constants';
 import NavBar from './components/navBarCompnent/navBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 interface State {
     currentUser: string,
