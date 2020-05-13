@@ -173,6 +173,17 @@ class Home extends React.PureComponent<Props, State> {
                         </Carousel.Item>
                     </Carousel>
                 </div>
+                <footer style={{
+                    backgroundColor: 'black',
+                    position: 'absolute',
+                    bottom:'0',
+                    opacity:'90%',
+                    width: '100%',
+                    height: '4rem',
+                    padding: '1rem 0'
+                }}>
+                    <p style={{ color: 'red', textAlign: 'center' }}>©James Lyons, 2020</p>
+                </footer>
             </>
         );
     };
