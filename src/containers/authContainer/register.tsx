@@ -3,7 +3,7 @@ import { Form, Col, Button} from 'react-bootstrap';
 import API_URL from '../../constants';
 
 interface State {
-    username: string,
+    userName: string,
     email: string,
     password: string,
     password2: string,
@@ -17,7 +17,7 @@ interface Props {
 class Register extends React.PureComponent<Props, State> {
 
     state: State = {
-        username: "",
+        userName: "",
         email: "",
         password: "",
         password2: "",
@@ -34,8 +34,11 @@ class Register extends React.PureComponent<Props, State> {
     private handleSubmit = async (event:any) => {
         event.preventDefault();
 
-        const { username, email, password, password2 } = this.state;
-        const newUser = { username, email, password, password2 };
+        const { userName, email, password, password2 } = this.state;
+        const newUser = { userName, email, password, password2 };
+
+        console.log('hello 1')
+        console.log('NewUser:', newUser)
 
         try {
             let res = await fetch(`${ API_URL }/auth/register`,
@@ -49,13 +52,20 @@ class Register extends React.PureComponent<Props, State> {
                 })
             
             const data = await res.json();
+
+            console.log('hello 2')
+            console.log('hello 3', data)
             
             if (data.errors) {
+                let errorArray: Array<string> = [];
+                data.errors.map((e:Object) => errorArray.push(e.message))
+                console.log('hello 4', errorArray)
                 this.setState({
-                    errors: [...data.errors]
+                    errors: [...errorArray]
                 });
             };
         } catch (error) {
+            console.log('Hello 5', error)
             this.setState({
                 errors: [...error]
             });
@@ -64,30 +74,30 @@ class Register extends React.PureComponent<Props, State> {
 
     render() {
 
-        const { username, email, password, password2, errors } = this.state;
+        const { userName, email, password, password2, errors } = this.state;
 
         return (
             <>
                 <h1 className="col-lg-4 col-md-6 col-sm-10 mb-4" style={{ margin: '5rem auto .75rem', fontSize: '2rem', paddingLeft: '0' }}>Sign up</h1>
-                <Form className="col-lg-4 col-md-6 col-sm-10 mb-4" style={{ margin: '0 auto', border: '1px solid black', borderRadius: '5px', padding: '1.2rem' }}>
-                    <Form.Row>
-                    {
-                        errors && (
-                            <div>
-                                { errors }
-                                <button type="button" data-dismiss="alert">
-                                    <span>&times;</span>
-                                </button>
+
+                <Form className="col-lg-4 col-md-6 col-sm-10 mb-4" style={{ margin: '0 auto', border: '1px solid black', borderRadius: '5px', padding: '1.2rem' }} onSubmit={ this.handleSubmit }>
+                    
+                        <div style={{ marginBottom: '1rem' }}>
+                        { errors && errors.map((e, i) => (
+                            <div
+                                style={{ width: '100%', backgroundColor: 'rgba(0,0,0,.5)', margin: '.5rem auto'}} role="alert" key={ i }>
+                                <p style={{ color: 'black', padding: '.3rem', marginBottom: '2px', marginBlockStart: '0' }}>{ e }  </p>
                             </div>
-                        )
-                    }
-                        <Form.Group as={ Col } controlId="formGridUserName" onSubmit={ this.handleSubmit }>
+                        ))}
+                        </div>
+                    <Form.Row>
+                        <Form.Group as={ Col } controlId="formGridUserName">
                             <Form.Label>Username</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="username"
+                                name="userName"
                                 placeholder="Enter Username"
-                                value={ username }
+                                value={ userName }
                                 onChange={ this.handleChange }
                             />
                         </Form.Group>
@@ -117,7 +127,7 @@ class Register extends React.PureComponent<Props, State> {
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group as={ Col } controlId="formGridPassword">
+                        <Form.Group as={ Col } controlId="formGridPassword2">
                             <Form.Label>Please confirm your password</Form.Label>
                             <Form.Control
                                 type="password"

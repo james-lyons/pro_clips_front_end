@@ -32,18 +32,18 @@ class App extends React.PureComponent<Props, State> {
         this.setState({ currentUser: userId })
     };
 
-    // private logout = async () => {
-    //     localStorage.removeItem('uid');
-    //     try {
-    //         fetch(`${ API_URL }auth/logout`, { method: 'POST', credentials: 'include' });
-    //         await this.props.history.push('/');
-    //         await this.setState({ currentUser: '' });
-    //     } catch (error) {
-    //         this.setState({
-    //             error: error.message
-    //         });
-    //     };
-    // };
+    private logout = async () => {
+        localStorage.removeItem('uid');
+        try {
+            fetch(`${ API_URL }auth/logout`, { method: 'POST', credentials: 'include' });
+            await this.props.history.push('/');
+            await this.setState({ currentUser: '' });
+        } catch (error) {
+            this.setState({
+                error: error.message
+            });
+        };
+    };
 
     render() {
 

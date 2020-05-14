@@ -32,7 +32,8 @@ class Login extends React.PureComponent<Props, State> {
         const { email, password } = this.state;
         const user = { email, password };
         const { setCurrentUser } = this.props;
-        console.log('hi1')
+
+        console.log('hello 1')
     
         try {
             let res = await fetch(`${ API_URL }/auth/login`,
@@ -44,11 +45,16 @@ class Login extends React.PureComponent<Props, State> {
                     },
                     body: JSON.stringify(user)
                 });
+                console.log('hello 2')
 
             let data = await res.json();
+            console.log('hello 3', data)
+
             await setCurrentUser(data.id);
             console.log(data.id);
+            
         } catch (error) {
+            console.log('hello 4', error)
             this.setState({
                 errors: [...error.message]
             });
@@ -64,7 +70,6 @@ class Login extends React.PureComponent<Props, State> {
                 <h1 className="col-lg-4 col-md-6 col-sm-10 mb-4" style={{ margin: '5rem auto .75rem', fontSize: '2rem', paddingLeft: '0' }}>Login</h1>
                 
                 <Form className="col-lg-4 col-md-6 col-sm-10 mb-4" style={{ margin: '0 auto', border: '1px solid black', borderRadius: '5px', padding: '1.2rem' }} onSubmit={ this.handleSubmit }>
-
                     {
                         errors && (
                             <div>
@@ -75,7 +80,6 @@ class Login extends React.PureComponent<Props, State> {
                             </div>
                         )
                     }
-
                     <Form.Row>
                         <Form.Group as={ Col } controlId="formGridEmail">
                             <Form.Label>Email</Form.Label>
@@ -105,6 +109,7 @@ class Login extends React.PureComponent<Props, State> {
                         Submit
                     </Button>
                 </Form>
+                <button onClick={() => console.log(this.props)}>hello</button>
             </>
         );
     }

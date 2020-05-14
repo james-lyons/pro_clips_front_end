@@ -12,7 +12,7 @@ interface Props {
 
 };
 
-export default withRouter(({ }: any) => {
+export default withRouter(({ setCurrentUser }: any) => {
 
     const currentUser = localStorage.getItem('uid');
 
@@ -27,7 +27,7 @@ export default withRouter(({ }: any) => {
     return (
         <Switch>
             <Route exact path='/' component={ Home }/>
-            <Route path='/login' component={ Login } />
+            <Route path='/login' component={ Login } setCurrentUser={ setCurrentUser } />
             <Route path='/register' component={ Register } />
             <Route path='/popularclips' component={ PopularClips } />
             <Route path='/browseclips' component={ BrowseClips } />
