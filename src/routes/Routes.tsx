@@ -5,8 +5,8 @@ import PopularClips from '../containers/popularContainer/popularClips';
 import BrowseClips from '../containers/browseContainer/browseClips';
 import Profile from '../containers/profileContainer/profile';
 import ClipUpload from '../containers/clipUpload/clipUpload';
-import Login from '../containers/authContainer/login';
-import Register from '../containers/authContainer/register';
+import Login from '../containers/authContainer/Login';
+import Register from '../containers/authContainer/Register';
 
 interface Props {
 

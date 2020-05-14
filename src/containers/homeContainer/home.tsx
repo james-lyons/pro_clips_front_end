@@ -24,7 +24,7 @@ class Home extends React.PureComponent<Props, State> {
             <>
                 <div style={{ margin: '50px 0', textAlign: 'center' }}>
                     <h1 style={{ lineHeight: '1', fontSize: '72px', fontWeight: 700 }}>Rep yourself</h1>
-                    <h2 style={{ fontSize: '24px' }}>Real gamers, real clips</h2>
+                    <h2 style={{ fontSize: '24px' }}>Real Gamers, Real Moments</h2>
                 </div>
                 <div style={{ width: '100vw', textAlign: 'center' }}>
                     <Carousel
