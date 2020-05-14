@@ -1,17 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Col, Button} from 'react-bootstrap';
+import { RegisterComponentProps, styles } from './auth.config';
 
-interface Props {
-    handleChange: () => {},
-    handleSubmit: () => {},
-    userName: String,
-    email: String,
-    password: String,
-    password2: String
-};
-
-const RegisterComponent: React.SFC<Props> = ({
+const RegisterComponent: React.SFC<RegisterComponentProps> = ({
     handleChange,
     handleSubmit,
     userName,
@@ -25,31 +17,29 @@ const RegisterComponent: React.SFC<Props> = ({
     return (
         <>
             <h1
-                className="col-lg-4 col-md-6 col-sm-10 mb-4"
-                style={{ margin: '5rem auto .75rem', fontSize: '2rem', paddingLeft: '0' }}>
+                className="col-lg-4 col-md-6 col-sm-10 mb-4" style={ styles.h1 }>
                     Sign up
             </h1>
 
             <Form
                 className="col-lg-4 col-md-6 col-sm-10 mb-4"
-                style={{ margin: '0 auto', border: '1px solid black', borderRadius: '5px', padding: '1.2rem' }}
+                style={ styles.form }
                 onSubmit={ handleSubmit }
             >
                 
-                    <div style={{ marginBottom: '1rem' }}>
-                        {  errors && errors.map((error, i) => (
-                            <div
-                                style={{ width: '100%', backgroundColor: 'rgba(0,0,0,.5)', margin: '.5rem auto'}} role="alert" key={ i }>
-                                <p style={{ color: 'black', padding: '.3rem', marginBottom: '2px', marginBlockStart: '0' }}>{ error.message }  </p>
-                            </div>
-                        ))}
-                        { message &&
-                            <div
-                                style={{ width: '100%', backgroundColor: 'rgba(0,0,0,.5)', margin: '.5rem auto'}} role="alert">
-                                <p style={{ color: 'black', padding: '.3rem', marginBottom: '2px', marginBlockStart: '0' }}>{ message }  </p>
-                            </div>
-                            }
-                    </div>
+                <div style={{ marginBottom: '1rem' }}>
+                    {  errors && errors.map((error, i) => (
+                        <div
+                            style={ styles.errorDiv } role="alert" key={ i }>
+                            <p style={ styles.errorP }>{ error.message }  </p>
+                        </div>
+                    ))}
+                    { message &&
+                        <div style={ styles.errorDiv } role="alert">
+                            <p style={ styles.errorP }>{ message }</p>
+                        </div>
+                    }
+                </div>
 
                 <Form.Row>
                     <Form.Group as={ Col } controlId="formGridUserName">

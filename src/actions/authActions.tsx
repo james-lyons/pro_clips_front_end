@@ -1,11 +1,5 @@
 import API_URL from '../constants';
-
-interface NewUser {
-    userName: string,
-    email: string,
-    password: string,
-    password2: string,
-};
+import { NewUser } from './action.config';
 
 const userRegister = (newUser: NewUser) => {
     return async dispatch => {
@@ -23,8 +17,6 @@ const userRegister = (newUser: NewUser) => {
             const data = await res.json();
 
             if (data.errors || data.message) {
-                // let errorArray: Array<String> = [];
-                // data.errors.map((error: Object) => errorArray.push(error.message));
                 return dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: data });
             };
 
@@ -50,6 +42,11 @@ const userLogin = (user) => {
             });
 
             const data = await res.json();
+
+            if (data.errors || data.message) {
+                return dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: data });
+            };
+
             dispatch({ type: 'USER_LOGIN_FULFILLED', payload: data});
 
         } catch (error) {

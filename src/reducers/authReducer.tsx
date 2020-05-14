@@ -1,19 +1,4 @@
-interface User {
-    userName: string,
-    email: string,
-    profile_image: string
-};
-
-interface State {
-    user: User,
-    errors: null | Array<string>,
-    message: string
-};
-
-interface Action {
-    type: string,
-    payload: object
-};
+import { User, State, Action } from './reducer.config';
 
 function authReducer(state:State = {
     user: {
@@ -37,13 +22,13 @@ function authReducer(state:State = {
             return { ...state };
 
         case "USER_LOGIN_REJECTED":
-            return { ...state, errors: action.payload };
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "USER_LOGOUT_FULFILLED":
             return { ...state };
 
         case "USER_LOGOUT_REJECTED":
-            return { ...state, errors: action.payload };
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         default:
             return { ...state };
