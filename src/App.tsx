@@ -57,7 +57,7 @@ class App extends React.PureComponent<Props, State> {
                     setCurrentUser={ setCurrentUser }
                     logout={ logout }
                 />
-                <Routes currentUser={ currentUser }/>
+                <Routes currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
             </>
         );
     };

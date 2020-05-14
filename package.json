@@ -17,10 +17,13 @@
       "@babel/preset-typescript"
     ],
     "plugins": [
+      "@babel/plugin-transform-runtime",
       "@babel/plugin-proposal-class-properties"
     ]
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/runtime": "^7.9.6",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",

@@ -5,6 +5,8 @@ import PopularClips from '../containers/popularContainer/popularClips';
 import BrowseClips from '../containers/browseContainer/browseClips';
 import Profile from '../containers/profileContainer/profile';
 import ClipUpload from '../containers/clipUpload/clipUpload';
+import Login from '../containers/authContainer/login';
+import Register from '../containers/authContainer/register';
 
 interface Props {
 
@@ -24,9 +26,9 @@ export default withRouter(({ }: any) => {
 
     return (
         <Switch>
-            <Route exact path='/' component={() =>
-                <Home />
-            }/>
+            <Route exact path='/' component={ Home }/>
+            <Route path='/login' component={ Login } />
+            <Route path='/register' component={ Register } />
             <Route path='/popularclips' component={ PopularClips } />
             <Route path='/browseclips' component={ BrowseClips } />
             <Route path='/profile' component={ Profile } />

@@ -13,8 +13,8 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.(js|jsx| ts|tsx)$/, use: 'babel-loader' },
-            { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
+            { test: /\.(js|jsx|ts|tsx)$/, use: 'babel-loader' },
+            { test: /\.css$/, use: ['style-loader', 'css-loader'] }
         ]
     },
     plugins: [
@@ -22,7 +22,7 @@ module.exports = {
             template: './public/index.html'
         }),
         new CopyPlugin([
-            { from: './public/_redirects '}
+            { from: './public/_redirects' }
         ])
     ],
     mode: process.env_NODE_ENV === 'production' ? 'production' : 'development',
