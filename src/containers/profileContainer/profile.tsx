@@ -1,18 +1,7 @@
 import React from 'react';
-
-interface State {
-
-};
-
-interface Props {
-
-};
+import { State, Props } from './profile.config';
 
 class Profile extends React.PureComponent<Props, State> {
-
-    static defaultProps = {
-
-    };
 
     state: State = {
 

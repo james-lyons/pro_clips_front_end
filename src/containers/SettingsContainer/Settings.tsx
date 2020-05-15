@@ -8,7 +8,7 @@ interface Props {
 
 };
 
-class Stories extends React.PureComponent<Props, State> {
+class Settings extends React.PureComponent<Props, State> {
 
     state: State = {
 
@@ -17,10 +17,10 @@ class Stories extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <h1>Hi</h1>
+                <h1>Hi From Settings</h1>
             </>
         );
     }
 };
 
-export default Stories;
+export default Settings;

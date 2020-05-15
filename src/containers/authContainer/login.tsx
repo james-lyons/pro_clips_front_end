@@ -24,7 +24,12 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         const user = { email, password };
         const { setCurrentUser } = this.props;
 
-        await this.props.userLogin(user);
+        const res = await this.props.userLogin(user);
+
+        if (res.type === 'USER_LOGIN_REJECTED') {
+            return;
+        };
+        
         this.props.history.push('/featuredClips');
         window.location.reload();
     };

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import Home from '../containers/homeContainer/home';
+import Home from '../containers/HomeContainer/Home';
 import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
-import BrowseClips from '../containers/browseContainer/browseClips';
-import Profile from '../containers/profileContainer/profile';
-import ClipUpload from '../containers/clipUpload/clipUpload';
-import Login from '../containers/authContainer/Login';
-import Register from '../containers/authContainer/Register';
+import BrowseClips from '../containers/BrowseContainer/BrowseClips';
+import Profile from '../containers/ProfileContainer/Profile';
+import ClipUpload from '../containers/ClipUpload/ClipUpload';
+import Settings from '../containers/SettingsContainer/Settings';
+import Login from '../containers/AuthContainer/Login';
+import Register from '../containers/AuthContainer/Register';
 
 interface Props {
 
@@ -41,6 +42,7 @@ export default withRouter(({ setCurrentUser }: any) => {
             <Route path='/browseClips' component={ BrowseClips } />
             <PrivateRoute path='/profile' component={ Profile } />
             <PrivateRoute path='/clipUpload' component={ ClipUpload } />
+            <PrivateRoute path='/settings' component={ Settings } />
         </Switch>
     );
 });
