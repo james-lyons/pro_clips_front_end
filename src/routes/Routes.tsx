@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import Home from '../containers/homeContainer/home';
-import PopularClips from '../containers/popularContainer/popularClips';
+import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
 import BrowseClips from '../containers/browseContainer/browseClips';
 import Profile from '../containers/profileContainer/profile';
 import ClipUpload from '../containers/clipUpload/clipUpload';
@@ -24,15 +24,23 @@ export default withRouter(({ setCurrentUser }: any) => {
         )} />
     );
 
+    const HideRoute = ({ component: Component, ...rest }: any) => (
+        <Route { ...rest } render={(props) => (
+            currentUser
+            ? <Redirect to='/' />
+            : <Component { ...props }/>
+        )} />
+    );
+
     return (
         <Switch>
             <Route exact path='/' component={ Home }/>
-            <Route path='/login' component={ Login } setCurrentUser={ setCurrentUser } />
-            <Route path='/register' component={ Register } />
-            <Route path='/popularclips' component={ PopularClips } />
-            <Route path='/browseclips' component={ BrowseClips } />
-            <Route path='/profile' component={ Profile } />
-            <Route path='/clipupload' component={ ClipUpload } />
+            <HideRoute path='/login' component={ Login } setCurrentUser={ setCurrentUser } />
+            <HideRoute path='/register' component={ Register } />
+            <Route path='/FeaturedClips' component={ FeaturedClips } />
+            <Route path='/browseClips' component={ BrowseClips } />
+            <PrivateRoute path='/profile' component={ Profile } />
+            <PrivateRoute path='/clipUpload' component={ ClipUpload } />
         </Switch>
     );
 });

@@ -8,7 +8,7 @@ interface Props {
 
 };
 
-class PopularClips extends React.PureComponent<Props, State> {
+class FeaturedClips extends React.PureComponent<Props, State> {
 
     static defaultProps = {
 
@@ -21,10 +21,10 @@ class PopularClips extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <h1>Hi from the Popular Page</h1>
+                <h1>Hi from the Featured Clips Page</h1>
             </>
         );
     };
 };
 
-export default PopularClips;
+export default FeaturedClips;

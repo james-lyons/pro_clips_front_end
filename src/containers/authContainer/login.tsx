@@ -25,7 +25,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         const { setCurrentUser } = this.props;
 
         await this.props.userLogin(user);
-        this.props.history.push('/popularclips');
+        this.props.history.push('/featuredClips');
         window.location.reload();
     };
 

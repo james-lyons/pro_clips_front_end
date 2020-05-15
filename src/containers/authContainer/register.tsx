@@ -29,7 +29,7 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
 
         await this.props.userRegister(newUser);
         this.props.userLogin(loginCredentials);
-        this.props.history.push('/popularclips');
+        this.props.history.push('/featuredClips');
         window.location.reload();
     };
 
