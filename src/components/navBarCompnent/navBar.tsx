@@ -16,8 +16,6 @@ const NavBar: React.SFC<Props> = ({ userLogout }) => {
     const element = <FontAwesomeIcon icon={ faBars } />
     const currentUser = localStorage.getItem('uid');
 
-    console.log(currentUser)
-
     const links = (
         <Navbar bg="light" expand="lg">
             <NavDropdown title={ element } id="basic-nav-dropdown">

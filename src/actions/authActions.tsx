@@ -2,6 +2,8 @@ import API_URL from '../constants';
 import { NewUser } from './action.config';
 
 const userRegister = (newUser: NewUser) => {
+    const user = { email: newUser.email, password: newUser.password };
+
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/register`,
@@ -18,10 +20,9 @@ const userRegister = (newUser: NewUser) => {
 
             if (data.errors && data.message) {
                 return dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: data });
-            };
-
-            dispatch({ type: 'USER_REGISTRATION_FULFILLED', payload: data });
-
+            } else if (data.message) {
+                return dispatch({ type: 'USER_REGISTRATION_FULFILLED', payload: data});
+            }
         } catch (error) {
             dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: error });
         };
@@ -49,7 +50,6 @@ const userLogin = (user) => {
             };
 
             localStorage.setItem('uid', data.data._id);
-            window.location.reload();
             dispatch({ type: 'USER_LOGIN_FULFILLED', payload: data});
 
         } catch (error) {

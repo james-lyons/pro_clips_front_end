@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userRegister } from '../../actions/authActions';
+import { userRegister, userLogin } from '../../actions/authActions';
 import RegisterComponent from '../../components/authComponents/RegisterComponent';
 import { RegisterState, RegisterProps } from './auth.config';
 
@@ -25,8 +25,12 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
 
         const { userName, email, password, password2 } = this.state;
         const newUser = { userName, email, password, password2 };
+        const loginCredentials = { email, password };
 
-        this.props.userRegister(newUser);
+        await this.props.userRegister(newUser);
+        this.props.userLogin(loginCredentials);
+        this.props.history.push('/popularclips');
+        window.location.reload();
     };
 
     render() {
@@ -49,4 +53,4 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
     }
 };
 
-export default connect(null, { userRegister })(Register);
+export default connect(null, { userRegister, userLogin })(Register);
