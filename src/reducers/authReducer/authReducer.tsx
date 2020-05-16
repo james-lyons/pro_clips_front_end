@@ -5,7 +5,7 @@ function authReducer(state:State = {
         userName: '',
         email: '',
         profile_image: '',
-        _id: ''
+        id: ''
     },
     errors: null,
     message: null
@@ -22,9 +22,13 @@ function authReducer(state:State = {
         case "USER_LOGIN_FULFILLED":
             return {
                 ...state,
-                userName: action.payload.data.userName,
-                profile_image: action.payload.data.profile_image,
-                _id: action.payload.data._id
+                user: {
+                    userName: action.payload.userName,
+                    profile_image: action.payload.profile_image,
+                    id: action.payload.id,
+                },
+                errors: null,
+                message: null
             };
 
         case "USER_LOGIN_REJECTED":
@@ -41,4 +45,4 @@ function authReducer(state:State = {
     };
 };
 
-export default authReducer
+export default authReducer;

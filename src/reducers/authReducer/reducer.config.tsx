@@ -1,7 +1,8 @@
 interface User {
     userName: string,
     email: string,
-    profile_image: string
+    profile_image: string,
+    id: string
 };
 
 interface State {

@@ -8,7 +8,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
     state: LoginState = {
         email: "",
-        password: "",
+        password: ""
     };
 
     private handleChange = (event: any) => {
@@ -22,16 +22,18 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
         const { email, password } = this.state;
         const user = { email, password };
-        const { setCurrentUser } = this.props;
 
-        const res = await this.props.userLogin(user);
+        await this.props.userLogin(user);
 
-        if (res.type === 'USER_LOGIN_REJECTED') {
+        console.log(this.props)
+
+        if (this.props.errors) {
+            console.log(this.props.errors)
             return;
         };
-        
+
         this.props.history.push('/featuredClips');
-        window.location.reload();
+        // window.location.reload();
     };
 
     render() {
@@ -50,4 +52,10 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
     };
 };
 
-export default connect(null, { userLogin })(Login);
+const mapStateToProps = (state) => {
+    return {
+        errors: state.authReducer.errors,
+    };
+};
+
+export default connect(mapStateToProps, { userLogin })(Login);

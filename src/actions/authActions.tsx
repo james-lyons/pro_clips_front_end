@@ -30,7 +30,6 @@ const userRegister = (newUser: NewUser) => {
 };
 
 const userLogin = (user) => {
-    console.log(JSON.stringify(user));
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/login`,
@@ -45,12 +44,17 @@ const userLogin = (user) => {
 
             const data = await res.json();
 
+            console.log(data)
+
+            console.log('hello 1', data)
+
             if (data.errors && data.message) {
-                return dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: data });
+                dispatch({ type: 'USER_LOGIN_REJECTED', payload: data });
+                return { type: 'USER_LOGIN_REJECTED' };
             };
 
             localStorage.setItem('uid', data.data._id);
-            dispatch({ type: 'USER_LOGIN_FULFILLED', payload: data});
+            dispatch({ type: 'USER_LOGIN_FULFILLED', payload: data.data });
 
         } catch (error) {
             dispatch({ type: 'USER_LOGIN_REJECTED', payload: error });
@@ -87,13 +91,8 @@ const userLogout = () => {
     };
 };
 
-const fetchUser = (currentUser) => {
-    console.log('hi')
-};
-
 export {
     userRegister,
     userLogin,
     userLogout,
-    fetchUser
 };

@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { State, Props } from './profile.config';
+import ProfileComponent from '../../components/profileComponent/profileComponent';
 
 class Profile extends React.PureComponent<Props, State> {
 
@@ -7,10 +9,18 @@ class Profile extends React.PureComponent<Props, State> {
 
     };
 
+    private handleChange = () => {
+
+    };
+
+    private handleSubmit = () => {
+
+    };
+
     render() {
         return (
             <>
-                <h1>Hi from the Profile Page</h1>
+                <ProfileComponent />
             </>
         );
     }
