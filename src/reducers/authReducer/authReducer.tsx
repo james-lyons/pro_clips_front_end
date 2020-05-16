@@ -25,7 +25,7 @@ function authReducer(state:State = {
                 user: {
                     userName: action.payload.userName,
                     profile_image: action.payload.profile_image,
-                    id: action.payload.id,
+                    id: action.payload._id,
                 },
                 errors: null,
                 message: null

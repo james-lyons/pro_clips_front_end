@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userLogin } from '../../actions/authActions';
+import { userLogin } from '../../actions/authActions/authActions';
 import { LoginState, LoginProps } from './auth.config';
 import LoginComponent from '../../components/authComponents/loginComponent';
 
@@ -33,7 +33,6 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         };
 
         this.props.history.push('/featuredClips');
-        // window.location.reload();
     };
 
     render() {

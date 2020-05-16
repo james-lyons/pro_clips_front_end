@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userRegister, userLogin } from '../../actions/authActions';
+import { userRegister, userLogin } from '../../actions/authActions/authActions';
 import RegisterComponent from '../../components/authComponents/RegisterComponent';
 import { RegisterState, RegisterProps } from './auth.config';
 
@@ -38,7 +38,6 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
         };
 
         this.props.history.push('/featuredClips');
-        window.location.reload();
     };
 
     render() {

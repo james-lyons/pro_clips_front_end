@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { userLogout } from '../../actions/authActions';
+import { userLogout } from '../../actions/authActions/authActions';
 
 interface Props {
     currentUser: string,
@@ -31,7 +31,6 @@ const NavBar: React.SFC<Props> = ({ user, userLogout }) => {
                     <Nav.Link as={ Link } to="login">Login</Nav.Link>
                     <Nav.Link as={ Link } to="register">Sign Up</Nav.Link>
                 </Nav>
-                <button onClick={() => console.log(user)}>buton</button>
             </Navbar.Collapse>
         </Navbar>
     );
@@ -52,7 +51,6 @@ const NavBar: React.SFC<Props> = ({ user, userLogout }) => {
                         <NavDropdown.Item as={ Link } to="settings">Settings</NavDropdown.Item>
                         <NavDropdown.Item onClick={ () => userLogout(currentUser) }>Logout</NavDropdown.Item>
                     </NavDropdown>
-                    <button onClick={() => console.log(user)}>buyyton</button>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
