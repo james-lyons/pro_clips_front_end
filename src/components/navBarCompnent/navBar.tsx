@@ -63,7 +63,7 @@ const NavBar: React.SFC<Props> = ({ user, userLogout }) => {
     );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:object) => {
     return {
         user: state.authReducer.user
     };

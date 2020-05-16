@@ -29,7 +29,7 @@ const userRegister = (newUser: NewUser) => {
     };
 };
 
-const userLogin = (user) => {
+const userLogin = (user:object) => {
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/login`,
