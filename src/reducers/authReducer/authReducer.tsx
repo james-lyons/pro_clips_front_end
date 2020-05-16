@@ -4,7 +4,11 @@ function authReducer(state:State = {
     user: {
         userName: '',
         email: '',
+        bio: '',
         profile_image: '',
+        posts: [],
+        followers: [],
+        following: [],
         id: ''
     },
     errors: null,
@@ -25,6 +29,10 @@ function authReducer(state:State = {
                 user: {
                     userName: action.payload.userName,
                     profile_image: action.payload.profile_image,
+                    bio: action.payload.bio,
+                    posts: action.payload.posts,
+                    followers: action.payload.followers,
+                    following: action.payload.following,
                     id: action.payload._id,
                 },
                 errors: null,

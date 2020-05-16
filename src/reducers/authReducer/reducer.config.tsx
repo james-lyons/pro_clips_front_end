@@ -1,7 +1,11 @@
 interface User {
     userName: string,
     email: string,
+    bio: string,
     profile_image: string,
+    posts: [],
+    followers: [],
+    following: [],
     id: string
 };
 
