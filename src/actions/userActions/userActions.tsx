@@ -25,50 +25,67 @@ const fetchUser = (currentUser) => {
     };
 };
 
-const editUserUsername = (currentUser) => {
+const editUserProfile = (user, profileChanges) => {
+    console.log(user)
     return async dispatch => {
         try {
-            console.log('hi');
+            let res = await fetch(`${ API_URL }/accounts/${ user }/profile`,
+                {
+                    method: 'PUT',
+                    credentials: 'include',
+                    headers: { 'Content-type': 'application/json' },
+                    body: JSON.stringify(profileChanges)
+                }
+            );
+
+            let data = await res.json();
+            console.log(data);
+
+        } catch (error) {
+            console.log('error', error)
+            dispatch({ type: 'EDIT_USER_REJECTED', payload: error });
+        };
+    };
+};
+
+const editUserPassword = (user, passwordChange) => {
+    console.log(passwordChange)
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/accounts/${ user }/password`,
+                {
+                    method: 'PUT',
+                    credentials: 'include',
+                    headers: { 'Content-type': 'application/json' },
+                    body: JSON.stringify(passwordChange)
+                }
+            );
+
+            let data = await res.json();
+            console.log(data);
+
         } catch (error) {
             dispatch({ type: 'EDIT_USER_REJECTED', payload: error });
         };
     };
 };
 
-const editUserBio = (currentUser) => {
-    return async dispatch => {
-        try {
-            console.log('hi');
-        } catch (error) {
-            dispatch({ type: 'EDIT_USER_REJECTED', payload: error });
-        };
-    };
-};
 
-const editUserEmail = (currentUser) => {
+const deleteUser = (user) => {
     return async dispatch => {
         try {
-            console.log('hi');
-        } catch (error) {
-            dispatch({ type: 'EDIT_USER_REJECTED', payload: error });
-        };
-    };
-};
+            let res = await fetch(`${ API_URL }/accounts/${ user }`,
+                {
+                    method: 'DELETE',
+                    credentials: 'include'
+                }
+            );
 
-const editUserPassword = (currentUser) => {
-    return async dispatch => {
-        try {
-            console.log('hi');
-        } catch (error) {
-            dispatch({ type: 'EDIT_USER_REJECTED', payload: error });
-        };
-    };
-};
-
-const deleteUser = () => {
-    return async dispatch => {
-        try {
-            console.log('hi');
+            let data = await res.json();
+            localStorage.removeItem('uid');
+            window.location.reload();
+            dispatch({ type: 'DELETE_USER_FULFILLED ', payload: data.data });
+            
         } catch (error) {
             dispatch({ type: 'DELETE_USER_REJECTED', payload: error })
         };
@@ -77,9 +94,7 @@ const deleteUser = () => {
 
 export {
     fetchUser,
-    editUserUsername,
-    editUserEmail,
-    editUserBio,
+    editUserProfile,
     editUserPassword,
     deleteUser
 };

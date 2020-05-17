@@ -2,8 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form , Col, Button } from 'react-bootstrap';
 import { Props, styles } from './editProfile.config';
+import { deleteUser } from '../../actions/userActions/userActions';
 
-const PostComponent: React.SFC<Props> = ({ user }) => {
+const PostComponent: React.SFC<Props> = ({
+    user,
+    userName,
+    email,
+    bio,
+    oldPassword,
+    password,
+    password2,
+    handleChange,
+    editUserSubmit,
+    editPasswordSubmit,
+    deleteUser
+}) => {
 
     return (
         <>
@@ -20,42 +33,51 @@ const PostComponent: React.SFC<Props> = ({ user }) => {
                     </div>
                 </div>
                 <div style={ styles.editProfileDiv }>
-                    <Form>
+                    <Form onSubmit={ editUserSubmit }>
                         <Form.Group>
                             <br/>
                             <Form.Row>
-                                <Form.Label column lg={ 2 }>
+                                <Form.Label column sm={ 2 }>
                                     Username
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
                                         type="text"
-                                        placeholder={ user.userName }
+                                        size="sm"
+                                        name="userName"
+                                        value={ userName }
+                                        onChange={ handleChange }
                                     />
                                 </Col>
                             </Form.Row>
                             <br/>
                             <Form.Row>
-                                <Form.Label column lg={ 2 }>
+                                <Form.Label column sm={ 2 }>
                                     Email
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
                                         type="text"
-                                        placeholder={ user.email }
+                                        size="sm"
+                                        name="email"
+                                        value={ email }
+                                        onChange={ handleChange }
                                     />
                                 </Col>
                             </Form.Row>
                             <br/>
                             <Form.Row>
-                                <Form.Label column lg={ 2 }>
+                                <Form.Label column sm={ 2 }>
                                     Bio
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
                                         as="textarea"
+                                        size="sm"
                                         rows="3"
-                                        placeholder={ user.bio }
+                                        name="bio"
+                                        value={ bio }
+                                        onChange={ handleChange }
                                     />
                                 </Col>
                             </Form.Row>
@@ -66,38 +88,47 @@ const PostComponent: React.SFC<Props> = ({ user }) => {
                     </Form>
                 </div>
                 <div style={ styles.editProfileDiv }>
-                    <Form>
+                    <Form onSubmit={ editPasswordSubmit }>
                         <Form.Group>
                             <br/>
                             <Form.Row>
-                                <Form.Label column lg={ 2 }>
+                                <Form.Label column sm={ 3 } style={{ fontSize: '.8rem'}}>
                                     Old Password
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
                                         type="password"
+                                        name='oldPassword'
+                                        value={ oldPassword }
+                                        onChange={ handleChange }
                                     />
                                 </Col>
                             </Form.Row>
                             <br/>
                             <Form.Row>
-                                <Form.Label column lg={ 2 }>
+                                <Form.Label column sm={ 3 } style={{ fontSize: '.8rem'}}>
                                     New Password
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
                                         type="password"
+                                        name="password"
+                                        value={ password }
+                                        onChange={ handleChange }
                                     />
                                 </Col>
                             </Form.Row>
                             <br/>
                             <Form.Row>
-                                <Form.Label column lg={ 2 }>
+                                <Form.Label column sm={ 3 } style={{ fontSize: '.8rem'}}>
                                     Confirm New Password
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
                                         type="password"
+                                        name="password2"
+                                        value={ password2 }
+                                        onChange={ handleChange }
                                     />
                                 </Col>
                             </Form.Row>
@@ -106,6 +137,12 @@ const PostComponent: React.SFC<Props> = ({ user }) => {
                             Save Changes
                         </Button>
                     </Form>
+                </div>
+                <div style={ styles.editProfileDiv }>
+                    <h1 style={{ textAlign: 'center' }}>Delete Account</h1>
+                    <Button variant="primary" onClick={() => deleteUser(user.id) } size="sm" style={{ marginLeft: '42%', marginTop: '1rem' }}>
+                            Delete Account
+                    </Button>
                 </div>
             </div>
         </>
@@ -118,4 +155,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(PostComponent);
+export default connect(mapStateToProps, { deleteUser })(PostComponent);

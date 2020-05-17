@@ -8,8 +8,16 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
     state: LoginState = {
         email: "",
-        password: ""
+        password: "",
+        errors: null,
+        message: null
     };
+
+    // private componentDidMount = (event) => {
+    //     this.setState({
+    //         errors: 
+    //     });
+    // };
 
     private handleChange = (event: any) => {
         this.setState({
@@ -27,6 +35,10 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
         if (this.props.errors) {
             console.log(this.props.errors)
+            this.setState({
+                errors: this.props.errors,
+                message: this.props.message
+            })
             return;
         };
 
@@ -34,13 +46,15 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
     };
 
     render() {
-        const { email, password } = this.state;
+        const { email, password, errors, message } = this.state;
 
         return (
             <>
                 <LoginComponent
                     email={ email }
                     password={ password }
+                    errors={ errors }
+                    message={ message }
                     handleChange={ this.handleChange }
                     handleSubmit={ this.handleSubmit }
                 />
@@ -52,6 +66,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 const mapStateToProps = (state) => {
     return {
         errors: state.authReducer.errors,
+        message: state.authReducer.message
     };
 };
 

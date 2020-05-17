@@ -2,13 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { State, Props } from './editProfile.config';
 import ProfileEditComponent from '../../components/ProfileEditComponent/profileEditComponent';
-import {
-    fetchUser,
-    editUserUsername,
-    editUserBio,
-    editUserEmail,
-    editUserPassword
-} from '../../actions/userActions/userActions';
+import { fetchUser, editUserProfile, editUserPassword } from '../../actions/userActions/userActions';
 
 class ProfileEdit extends React.PureComponent<Props, State> {
 
@@ -16,14 +10,22 @@ class ProfileEdit extends React.PureComponent<Props, State> {
         userName: '',
         email: '',
         bio: '',
+        oldPassword: '',
         password: '',
         password2: ''
     };
+    
 
     private componentDidMount = async () => {
-        let currentUser = localStorage.getItem('uid');
-        let data = await this.props.fetchUser(currentUser);
-        console.log(data)
+        let user = localStorage.getItem('uid');
+        let data = await this.props.fetchUser(user);
+        console.log(data.payload.data);
+        let { userName, email, bio } = data.payload.data;
+        this.setState({
+            userName,
+            email,
+            bio
+        });
     };
 
     private handleChange = (event:any) => {
@@ -32,35 +34,36 @@ class ProfileEdit extends React.PureComponent<Props, State> {
         });
     };
 
-    private editUsernameSubmit = (currentUser) => {
+    private editUserSubmit = () => {
         event.preventDefault();
-        console.log(currentUser)
+        let user = localStorage.getItem('uid');
+        let { userName, email, bio } = this.state;
+        let profileChanges = { userName, email, bio }
+        this.props.editUserProfile(user, profileChanges)
     };
 
-    private editBioSubmit = (currentUser) => {
+    private editPasswordSubmit = () => {
         event.preventDefault();
-        console.log(currentUser)
-    };
-
-    private editEmailSubmit = (currentUser) => {
-        event.preventDefault();
-        console.log(currentUser)
-    };
-
-    private editPasswordSubmit = (currentUser) => {
-        event.preventDefault();
-        console.log(currentUser)
+        let user = localStorage.getItem('uid');
+        let { oldPassword, password, password2 } = this.state;
+        let passwordChange = { oldPassword, password, password2 };
+        this.props.editUserPassword(user, passwordChange);
     };
 
     render() {
-        const { handleChange, editUsernameSubmit, editBioSubmit, editEmailSubmit, editPasswordSubmit } = this;
+        const { userName, email, bio, oldPassword, password, password2 } = this.state;
+        const { handleChange, editUserSubmit, editPasswordSubmit } = this;
         return (
             <>
                 <ProfileEditComponent
+                    userName={ userName }
+                    email={ email }
+                    bio={ bio }
+                    oldPassword={ oldPassword }
+                    password={ password }
+                    password2={ password2 }
                     handleChange={ handleChange }
-                    editUsernameSubmit={ editUsernameSubmit }
-                    editBioSubmit={ editBioSubmit }
-                    editEmailSubmit={ editEmailSubmit }
+                    editUserSubmit={ editUserSubmit }
                     editPasswordSubmit={ editPasswordSubmit }
                 />
             </>
@@ -68,4 +71,4 @@ class ProfileEdit extends React.PureComponent<Props, State> {
     }
 };
 
-export default connect(null, { fetchUser })(ProfileEdit);
+export default connect(null, { fetchUser, editUserProfile, editUserPassword })(ProfileEdit);

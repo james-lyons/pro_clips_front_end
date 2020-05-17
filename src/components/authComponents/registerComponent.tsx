@@ -102,11 +102,4 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = ({
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        errors: state.authReducer.errors,
-        message: state.authReducer.message
-    };
-};
-
-export default connect(mapStateToProps, null)(RegisterComponent);
+export default RegisterComponent;

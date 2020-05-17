@@ -3,7 +3,8 @@ interface RegisterState {
     email: string,
     password: string,
     password2: string,
-    errors: Array<string> | null
+    errors: null | Array<String>,
+    message: null | String
 };
 
 interface RegisterProps {
@@ -16,7 +17,8 @@ interface RegisterProps {
 interface LoginState {
     email: string,
     password: string,
-    errors: Array<string> | null
+    errors: null | Array<string>,
+    message: null | string
 };
 
 interface LoginProps {

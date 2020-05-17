@@ -51,7 +51,7 @@ const userLogin = (user:object) => {
 
             localStorage.setItem('uid', data.data._id);
             dispatch({ type: 'USER_LOGIN_FULFILLED' });
-            dispatch({ type: 'FETCH_USER_FULFILLED', payload: data.data })
+            dispatch({ type: 'FETCH_USER_FULFILLED', payload: data })
 
         } catch (error) {
             dispatch({ type: 'USER_LOGIN_REJECTED', payload: error });

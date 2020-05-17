@@ -19,8 +19,10 @@ class Profile extends React.PureComponent<Props, State> {
         console.log(data)
     };
 
-    private handleChange = () => {
-
+    private handleChange = (event:any) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     };
 
     render() {

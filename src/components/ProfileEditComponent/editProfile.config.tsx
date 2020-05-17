@@ -1,5 +1,15 @@
 interface Props {
-    user: User
+    user: User,
+    userName: string,
+    email: string,
+    bio: string,
+    oldPassword: string,
+    password: string,
+    password2: string,
+    handleChange: () => {},
+    editUserSubmit: () => {},
+    editPasswordSubmit: () => {},
+    deleteUser: () => {}
 };
 
 interface User {
@@ -17,17 +27,17 @@ const styles = {
     divWrapper: {
         minHeight: '80vh',
         border: '1px solid grey',
-        margin: '0 auto',
+        margin: '1rem auto',
         padding: '1rem'
     },
     editProfileImgDiv: {
-        border:'1px solid grey',
+        // borderBottom:'1px solid grey',
         minHeight: '20vh',
         display: 'grid',
         gridTemplateColumns: '30% 70%'
     },
     editProfileDiv: {
-        border:'1px solid grey',
+        borderTop:'1px solid grey',
         minHeight: '20vh',
         padding: '1rem',
         marginTop: '5px'

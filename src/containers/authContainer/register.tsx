@@ -11,7 +11,8 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
         email: "",
         password: "",
         password2: "",
-        errors: null
+        errors: null,
+        message: null
     };
 
     private handleChange = (event:any) => {
@@ -29,11 +30,19 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
 
         const res = await this.props.userRegister(newUser);
         if (res.type === 'USER_REGISTRATION_REJECTED') {
+            this.setState({
+                errors: this.props.errors,
+                message: this.props.message
+            })
             return;
         };
 
         await this.props.userLogin(loginCredentials);
         if (res.type === 'USER_LOGIN_REJECTED') {
+            this.setState({
+                errors: this.props.errors,
+                message: this.props.message
+            })
             return;
         };
 
@@ -42,7 +51,7 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
 
     render() {
 
-        const { userName, email, password, password2, errors } = this.state;
+        const { userName, email, password, password2, errors, message } = this.state;
 
         return (
             <>
@@ -52,6 +61,7 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
                     password={ password }
                     password2={ password2 }
                     errors={ errors }
+                    message={ message }
                     handleChange={ this.handleChange }
                     handleSubmit={ this.handleSubmit }
                 />
@@ -60,4 +70,11 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
     }
 };
 
-export default connect(null, { userRegister, userLogin })(Register);
+const mapStateToProps = (state) => {
+    return {
+        errors: state.authReducer.errors,
+        message: state.authReducer.message
+    };
+};
+
+export default connect(mapStateToProps, { userRegister, userLogin })(Register);

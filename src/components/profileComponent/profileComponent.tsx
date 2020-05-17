@@ -36,9 +36,6 @@ const ProfileComponent: React.SFC<Props> = ({
                     </section>
                 </header>
             </div>
-            <div>
-                <button onClick={ () => console.log(user)}>button</button>
-            </div>
         </>
     );
 };

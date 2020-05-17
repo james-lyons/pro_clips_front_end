@@ -46,7 +46,7 @@ function userReducer(state: State = {
             return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
 
         case "DELETE_USER_FULFILLED": 
-            return { ...state }
+            return { ...state, user: {} }
 
         case "DELETE_USER_REJECTED": 
             return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
