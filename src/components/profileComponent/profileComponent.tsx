@@ -45,7 +45,7 @@ const ProfileComponent: React.SFC<Props> = ({
 
 const mapStateToProps = (state:any) => {
     return {
-        user: state.authReducer.user
+        user: state.userReducer.user
     };
 };
 

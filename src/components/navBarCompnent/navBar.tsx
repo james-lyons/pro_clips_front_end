@@ -7,13 +7,13 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { userLogout } from '../../actions/authActions/authActions';
 
 interface Props {
-    currentUser: string,
     user: object,
+    currentUser: string,
     setCurrentUser: (userId: string) => void,
     userLogout: (userId: string) => void
 };
 
-const NavBar: React.SFC<Props> = ({ user, userLogout }) => {
+const NavBar: React.SFC<Props> = ({ userLogout }) => {
 
     const element = <FontAwesomeIcon icon={ faBars } />
     const currentUser = localStorage.getItem('uid');
@@ -65,7 +65,7 @@ const NavBar: React.SFC<Props> = ({ user, userLogout }) => {
 
 const mapStateToProps = (state:object) => {
     return {
-        user: state.authReducer.user
+        user: state.userReducer.user
     };
 };
 

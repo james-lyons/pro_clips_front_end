@@ -25,8 +25,6 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
         await this.props.userLogin(user);
 
-        console.log(this.props)
-
         if (this.props.errors) {
             console.log(this.props.errors)
             return;

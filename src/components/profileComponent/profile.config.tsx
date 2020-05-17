@@ -1,9 +1,16 @@
 interface Props {
-    user: object
+    user: User
 };
 
-interface EditProfileProps {
-
+interface User {
+    userName: string,
+    email: string,
+    bio: string,
+    profile_image: string,
+    posts: [],
+    followers: [],
+    following: [],
+    id: string
 };
 
 const styles = {
@@ -33,6 +40,5 @@ const styles = {
 
 export {
     Props,
-    EditProfileProps,
     styles
 };

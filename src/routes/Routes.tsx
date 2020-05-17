@@ -4,7 +4,7 @@ import Home from '../containers/HomeContainer/Home';
 import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
 import BrowseClips from '../containers/BrowseContainer/BrowseClips';
 import Profile from '../containers/ProfileContainer/Profile';
-import EditProfile from '../containers/EditProfileContainer/EditProfile';
+import EditProfile from '../containers/ProfileEditContainer/EditProfile';
 import ClipUpload from '../containers/ClipUpload/ClipUpload';
 import Settings from '../containers/SettingsContainer/Settings';
 import Login from '../containers/AuthContainer/Login';

@@ -1,16 +1,6 @@
-import { User, State, Action } from './reducer.config';
+import { State, Action } from './reducer.config';
 
 function authReducer(state:State = {
-    user: {
-        userName: '',
-        email: '',
-        bio: '',
-        profile_image: '',
-        posts: [],
-        followers: [],
-        following: [],
-        id: ''
-    },
     errors: null,
     message: null
 
@@ -24,20 +14,7 @@ function authReducer(state:State = {
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "USER_LOGIN_FULFILLED":
-            return {
-                ...state,
-                user: {
-                    userName: action.payload.userName,
-                    profile_image: action.payload.profile_image,
-                    bio: action.payload.bio,
-                    posts: action.payload.posts,
-                    followers: action.payload.followers,
-                    following: action.payload.following,
-                    id: action.payload._id,
-                },
-                errors: null,
-                message: null
-            };
+            return { ...state };
 
         case "USER_LOGIN_REJECTED":
             return { ...state, errors: action.payload.errors, message: action.payload.message };

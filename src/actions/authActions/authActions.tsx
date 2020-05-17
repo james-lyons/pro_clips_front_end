@@ -10,9 +10,7 @@ const userRegister = (newUser: NewUser) => {
             {
                 method: 'POST',
                 credentials: 'include',
-                headers: {
-                    'Content-type': 'application/json'
-                },
+                headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(newUser)
             });
 
@@ -36,9 +34,7 @@ const userLogin = (user:object) => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
+                    headers: { 'Content-type': 'application/json' },
                     body: JSON.stringify(user)
                 });
 
@@ -48,13 +44,14 @@ const userLogin = (user:object) => {
 
             console.log('hello 1', data)
 
-            if (data.errors && data.message) {
+            if (data.status >= 400) {
                 dispatch({ type: 'USER_LOGIN_REJECTED', payload: data });
                 return { type: 'USER_LOGIN_REJECTED' };
             };
 
             localStorage.setItem('uid', data.data._id);
-            dispatch({ type: 'USER_LOGIN_FULFILLED', payload: data.data });
+            dispatch({ type: 'USER_LOGIN_FULFILLED' });
+            dispatch({ type: 'FETCH_USER_FULFILLED', payload: data.data })
 
         } catch (error) {
             dispatch({ type: 'USER_LOGIN_REJECTED', payload: error });
@@ -63,16 +60,13 @@ const userLogin = (user:object) => {
 };
 
 const userLogout = () => {
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/logout`,
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: {
-                        'Content-type': 'application/json'
-                    }
+                    headers: { 'Content-type': 'application/json' }
                 });
 
             const data = await res.json();
