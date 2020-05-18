@@ -4,18 +4,13 @@ import Home from '../containers/HomeContainer/Home';
 import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
 import BrowseClips from '../containers/BrowseContainer/BrowseClips';
 import Profile from '../containers/ProfileContainer/Profile';
-import EditProfile from '../containers/ProfileEditContainer/EditProfile';
+import Accounts from '../containers/AccountsContainer/Accounts';
 import ClipUpload from '../containers/ClipUpload/ClipUpload';
 import Settings from '../containers/SettingsContainer/Settings';
 import Login from '../containers/AuthContainer/Login';
 import Register from '../containers/AuthContainer/Register';
 
-
-interface Props {
-
-};
-
-export default withRouter(({ setCurrentUser }: any) => {
+export default withRouter(() => {
 
     const currentUser = localStorage.getItem('uid');
 
@@ -38,12 +33,13 @@ export default withRouter(({ setCurrentUser }: any) => {
     return (
         <Switch>
             <Route exact path='/' component={ Home }/>
-            <HideRoute path='/login' component={ Login } setCurrentUser={ setCurrentUser } />
+            <HideRoute path='/login' component={ Login } />
             <HideRoute path='/register' component={ Register } />
             <Route path='/FeaturedClips' component={ FeaturedClips } />
             <Route path='/browseClips' component={ BrowseClips } />
             <PrivateRoute path='/profile' component={ Profile } />
-            <PrivateRoute path='/editProfile' component={ EditProfile } />
+            <PrivateRoute path='/accounts' component={ Accounts } />
+            <PrivateRoute path='/accounts/profile' component={ Accounts } />
             <PrivateRoute path='/clipUpload' component={ ClipUpload } />
             <PrivateRoute path='/settings' component={ Settings } />
         </Switch>

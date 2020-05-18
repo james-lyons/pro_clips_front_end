@@ -4,7 +4,7 @@ import { Form , Col, Button } from 'react-bootstrap';
 import { Props, styles } from './editProfile.config';
 import { deleteUser } from '../../actions/userActions/userActions';
 
-const PostComponent: React.SFC<Props> = ({
+const ProfileEdit: React.SFC<Props> = ({
     user,
     userName,
     email,
@@ -20,13 +20,13 @@ const PostComponent: React.SFC<Props> = ({
 
     return (
         <>
-            <div className='col-lg-6 col-md-10 col-sm-12 mb-4' style={ styles.divWrapper }>
+            <div style={ styles.divWrapper }>
                 <div style={ styles.editProfileImgDiv }>
                     <div style={{ padding: '1rem' }}>
                         <img src={ user.profile_image } style={{ height: '7rem', borderRadius: '100%' }}/>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <div>
+                        <div style={{ margin: '0 auto' }}>
                             <button>Update Profile Image</button>
                             <p>Must be a JPEG or PNG file</p>
                         </div>
@@ -37,7 +37,7 @@ const PostComponent: React.SFC<Props> = ({
                         <Form.Group>
                             <br/>
                             <Form.Row>
-                                <Form.Label column sm={ 2 }>
+                                <Form.Label column sm={ 3 }>
                                     Username
                                 </Form.Label>
                                 <Col>
@@ -52,7 +52,7 @@ const PostComponent: React.SFC<Props> = ({
                             </Form.Row>
                             <br/>
                             <Form.Row>
-                                <Form.Label column sm={ 2 }>
+                                <Form.Label column sm={ 3 }>
                                     Email
                                 </Form.Label>
                                 <Col>
@@ -67,7 +67,7 @@ const PostComponent: React.SFC<Props> = ({
                             </Form.Row>
                             <br/>
                             <Form.Row>
-                                <Form.Label column sm={ 2 }>
+                                <Form.Label column sm={ 3 }>
                                     Bio
                                 </Form.Label>
                                 <Col>
@@ -82,7 +82,7 @@ const PostComponent: React.SFC<Props> = ({
                                 </Col>
                             </Form.Row>
                         </Form.Group>
-                        <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '82%'}}>
+                        <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '74%'}}>
                             Save Changes
                         </Button>
                     </Form>
@@ -133,14 +133,15 @@ const PostComponent: React.SFC<Props> = ({
                                 </Col>
                             </Form.Row>
                         </Form.Group>
-                        <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '82%'}}>
+                        <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '74%'}}>
                             Save Changes
                         </Button>
                     </Form>
                 </div>
                 <div style={ styles.editProfileDiv }>
                     <h1 style={{ textAlign: 'center' }}>Delete Account</h1>
-                    <Button variant="primary" onClick={() => deleteUser(user.id) } size="sm" style={{ marginLeft: '42%', marginTop: '1rem' }}>
+                    <Button variant="primary" onClick={() => deleteUser(user.id) }
+                        size="sm" style={{ marginLeft: '37%', marginTop: '1rem' }}>
                             Delete Account
                     </Button>
                 </div>
@@ -155,4 +156,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { deleteUser })(PostComponent);
+export default connect(mapStateToProps, { deleteUser })(ProfileEdit);

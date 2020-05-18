@@ -6,8 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 interface State {
-    currentUser: string,
-    error: null | string
+    theme: string
 };
 
 interface Props {
@@ -16,48 +15,27 @@ interface Props {
     };
 };
 
+const styles = {
+    light: { minHeight: '100%' },
+    dark: {
+        minHeight: '100%',
+        color: '#DADADA',
+        background: '#1c2022'
+    }
+}
+
 class App extends React.PureComponent<Props, State> {
-
-    static defaultProps = {
-        history
-    };
-
-    state: State = {
-        currentUser: '',
-        error: null
-    };
-
-    private setCurrentUser = (userId: string) => {
-        localStorage.setItem('uid', userId);
-        this.setState({ currentUser: userId })
-    };
-
-    private logout = async () => {
-        localStorage.removeItem('uid');
-        try {
-            fetch(`${ API_URL }auth/logout`, { method: 'POST', credentials: 'include' });
-            await this.props.history.push('/');
-            await this.setState({ currentUser: '' });
-        } catch (error) {
-            this.setState({
-                error: error.message
-            });
-        };
-    };
 
     render() {
 
-        const { currentUser } = this.state;
-        const { setCurrentUser, logout } = this;
-
         return (
             <>
-                <NavBar
-                    currentUser={ currentUser }
-                    setCurrentUser={ setCurrentUser }
-                    logout={ logout }
-                />
-                <Routes currentUser={ currentUser } setCurrentUser={ setCurrentUser } />
+                <div>
+                    <div style={{ minHeight: '100vh' }}>
+                        <NavBar />
+                        <Routes />
+                    </div>
+                </div>
             </>
         );
     };

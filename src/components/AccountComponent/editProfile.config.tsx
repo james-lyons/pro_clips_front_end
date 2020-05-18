@@ -27,7 +27,7 @@ const styles = {
     divWrapper: {
         minHeight: '80vh',
         border: '1px solid grey',
-        margin: '1rem auto',
+        marginTop: '1rem',
         padding: '1rem'
     },
     editProfileImgDiv: {
@@ -41,6 +41,11 @@ const styles = {
         minHeight: '20vh',
         padding: '1rem',
         marginTop: '5px'
+    },
+    ul: {
+        marginTop: '1rem',
+        padding: '1rem',
+        listStyle: 'none'
     }
 };
 

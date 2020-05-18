@@ -16,7 +16,7 @@ interface User {
 const styles = {
     headerWrapper: {
         borderBottom: '1px solid grey',
-        height: '15vh',
+        height: '25vh',
         margin: '10vh auto',
         display: 'grid',
         gridTemplateColumns: '30% 70%'

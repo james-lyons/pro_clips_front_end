@@ -11,17 +11,17 @@ const ProfileComponent: React.SFC<Props> = ({
         <>
             <div>
                 <header className="col-lg-6 col-md-10 col-sm-12 mb-4" style={ styles.headerWrapper }>
-                    <div style={{ height: '100%', border: '1px solid red' }}>
+                    <div style={{ height: '100%' }}>
                         <button style={{ height: '7rem', width: '7rem', borderRadius: '100%', padding: '0' }}>
                             <img src={ user.profile_image } style={{ height: '7rem', borderRadius: '100%' }}/>
                         </button>
                     </div>
-                    <section style={{ border: '1px solid blue', height: '100%' }}>
+                    <section style={{ height: '100%' }}>
                         <div style={{ justifyContent: 'center' }}>
                             <h1 style={ styles.h1 }>{ user.userName }</h1>
-                            <a style={{ marginLeft: '2rem' }} href="/editprofile">
-                                <button>
-                                    Edit
+                            <a style={{ marginLeft: '2rem' }} href="/accounts">
+                                <button style={{ borderRadius: '4px' }}>
+                                    Edit Profile
                                 </button>
                             </a>
                         </div>

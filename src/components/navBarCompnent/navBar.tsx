@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { userLogout } from '../../actions/authActions/authActions';
@@ -48,7 +48,7 @@ const NavBar: React.SFC<Props> = ({ userLogout }) => {
                     <Nav.Link as={ Link } to="clipupload">Upload</Nav.Link>
                     <Nav.Link as={ Link } to="profile">Profile</Nav.Link>
                     <NavDropdown alignRight title={ element } id="basic-nav-dropdown">
-                        <NavDropdown.Item as={ Link } to="settings">Settings</NavDropdown.Item>
+                        <NavDropdown.Item as={ Link } to="accounts">Settings</NavDropdown.Item>
                         <NavDropdown.Item onClick={ () => userLogout(currentUser) }>Logout</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

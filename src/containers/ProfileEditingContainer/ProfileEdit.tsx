@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { State, Props } from './editProfile.config';
-import ProfileEditComponent from '../../components/ProfileEditComponent/profileEditComponent';
+import ProfileEditComponent from '../../components/AccountComponent/profileEditComponent';
 import { fetchUser, editUserProfile, editUserPassword } from '../../actions/userActions/userActions';
+import { Props, State } from './config';
 
 class ProfileEdit extends React.PureComponent<Props, State> {
 
@@ -14,13 +14,12 @@ class ProfileEdit extends React.PureComponent<Props, State> {
         password: '',
         password2: ''
     };
-    
 
     private componentDidMount = async () => {
         let user = localStorage.getItem('uid');
         let data = await this.props.fetchUser(user);
-        console.log(data.payload.data);
         let { userName, email, bio } = data.payload.data;
+
         this.setState({
             userName,
             email,
@@ -49,10 +48,11 @@ class ProfileEdit extends React.PureComponent<Props, State> {
         let passwordChange = { oldPassword, password, password2 };
         this.props.editUserPassword(user, passwordChange);
     };
-
+    
     render() {
         const { userName, email, bio, oldPassword, password, password2 } = this.state;
         const { handleChange, editUserSubmit, editPasswordSubmit } = this;
+
         return (
             <>
                 <ProfileEditComponent
@@ -68,7 +68,7 @@ class ProfileEdit extends React.PureComponent<Props, State> {
                 />
             </>
         );
-    }
+    };
 };
 
 export default connect(null, { fetchUser, editUserProfile, editUserPassword })(ProfileEdit);
