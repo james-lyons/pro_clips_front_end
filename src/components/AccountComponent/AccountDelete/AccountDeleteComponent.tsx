@@ -5,20 +5,19 @@ import { deleteUser } from '../../../actions/userActions/userActions';
 import { styles } from './config';
 
 interface Props {
-    user: Object,
     deleteUser: () => {}
 };
 
 const AccountDeleteComponent: React.SFC<Props> = ({
-    user,
     deleteUser
 }) => {
+    const currentUser = localStorage.getItem('uid')
     return (
         <>
             <div style={ styles.divWrapper }>
                 <div style={ styles.editProfileDiv }>
                     <h1 style={{ textAlign: 'center' }}>Delete Account</h1>
-                    <Button variant="primary" onClick={ () => console.log(user) }
+                    <Button variant="primary" onClick={ () => deleteUser(currentUser) }
                         size="sm" style={{ marginLeft: '37%', marginTop: '1rem' }}>
                             Delete Account
                     </Button>
@@ -28,10 +27,4 @@ const AccountDeleteComponent: React.SFC<Props> = ({
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.userReducer.user
-    };
-};
-
-export default connect(mapStateToProps, { deleteUser })(AccountDeleteComponent);
+export default connect(null, { deleteUser })(AccountDeleteComponent);

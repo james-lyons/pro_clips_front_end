@@ -39,11 +39,16 @@ const editUserProfile = (user, profileChanges) => {
             );
 
             let data = await res.json();
-            console.log(data);
+
+            if (data.status >= 400) {
+                return dispatch({ type: 'EDIT_PROFILE_REJECTED', payload: data });
+            } else if (data.message) {
+                return dispatch({ type: 'EDIT_PROFILE_FULFILLED', payload: data });
+            };
 
         } catch (error) {
             console.log('error', error)
-            dispatch({ type: 'EDIT_USER_REJECTED', payload: error });
+            dispatch({ type: 'EDIT_PROFILE_REJECTED', payload: error });
         };
     };
 };
@@ -62,10 +67,16 @@ const editUserPassword = (user, passwordChange) => {
             );
 
             let data = await res.json();
-            console.log(data);
+            console.log('data', data);
+
+            if (data.status >= 400) {
+                return dispatch({ type: 'EDIT_PASSWORD_REJECTED', payload: data });
+            } else if (data.message) {
+                return dispatch({ type: 'EDIT_PASSWORD_FULFILLED', payload: data });
+            };
 
         } catch (error) {
-            dispatch({ type: 'EDIT_USER_REJECTED', payload: error });
+            dispatch({ type: 'EDIT_PASSWORD_REJECTED', payload: error });
         };
     };
 };

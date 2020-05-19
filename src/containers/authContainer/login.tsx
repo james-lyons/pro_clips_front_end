@@ -13,12 +13,6 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         message: null
     };
 
-    // private componentDidMount = (event) => {
-    //     this.setState({
-    //         errors: 
-    //     });
-    // };
-
     private handleChange = (event: any) => {
         this.setState({
             [event.target.name]: event.target.value

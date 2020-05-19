@@ -1,4 +1,4 @@
-import { State, Action } from './reducer.config';
+import { State, Action } from './config';
 
 function userReducer(state: State = {
     user: {
@@ -39,11 +39,17 @@ function userReducer(state: State = {
         case "FETCH_USER_REJECTED": 
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
-        case "EDIT_USER_FULFILLED": 
-            return { ...state }
+        case "EDIT_PROFILE_FULFILLED": 
+            return { ...state, errors: null, message: null }
 
-        case "EDIT_USER_REJECTED": 
+        case "EDIT_PROFILE_REJECTED": 
             return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
+
+        case "EDIT_PASSWORD_FULFILLED": 
+            return { ...state, errors: null, message: null }
+
+        case "EDIT_PASSWORD_REJECTED": 
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "DELETE_USER_FULFILLED": 
             return { ...state, user: {} }

@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Col } from 'react-bootstrap';
 import { deleteUser } from '../../../actions/userActions/userActions';
-import { styles } from '../ProfileEdit/config';
+import { styles } from './config';
 
 interface Props {
     oldPassword: string,
     password: string,
     password2: string,
+    errors: Array<string>,
+    message: string,
     handleChange: () => {},
     editPasswordSubmit: () => {},
 };
@@ -16,6 +18,8 @@ const editPasswordComponent: React.SFC<Props> = ({
     oldPassword,
     password,
     password2,
+    errors,
+    message,
     handleChange,
     editPasswordSubmit
 }) => {
@@ -24,6 +28,19 @@ const editPasswordComponent: React.SFC<Props> = ({
             <div style={ styles.divWrapper }>
                 <div style={ styles.editProfileDiv }>
                     <Form onSubmit={ editPasswordSubmit }>
+                        <div style={{ marginBottom: '1rem' }}>
+                            {  errors && errors.map((error, i) => (
+                                <div
+                                    style={ styles.errorDiv } role="alert" key={ i }>
+                                    <p style={ styles.errorP }>{ error.message }  </p>
+                                </div>
+                            ))}
+                            { message &&
+                                <div style={ styles.errorDiv } role="alert">
+                                    <p style={ styles.errorP }>{ message }</p>
+                                </div>
+                            }
+                        </div>
                         <Form.Group>
                             <br/>
                             <Form.Row>
@@ -32,6 +49,7 @@ const editPasswordComponent: React.SFC<Props> = ({
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
+                                        required
                                         type="password"
                                         name='oldPassword'
                                         value={ oldPassword }
@@ -46,6 +64,7 @@ const editPasswordComponent: React.SFC<Props> = ({
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
+                                        required
                                         type="password"
                                         name="password"
                                         value={ password }
@@ -60,6 +79,7 @@ const editPasswordComponent: React.SFC<Props> = ({
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
+                                        required
                                         type="password"
                                         name="password2"
                                         value={ password2 }

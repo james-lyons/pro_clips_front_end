@@ -20,21 +20,38 @@ class PasswordEdit extends React.PureComponent<{}, State> {
         });
     };
 
-    private editPasswordSubmit = () => {
+    private editPasswordSubmit = async () => {
         event.preventDefault();
         let user = localStorage.getItem('uid');
         let { oldPassword, password, password2 } = this.state;
         let passwordChange = { oldPassword, password, password2 };
-        this.props.editUserPassword(user, passwordChange);
+
+        await this.props.editUserPassword(user, passwordChange);
+
+        if (this.props.errors) {
+            console.log(this.props)
+            this.setState({
+                errors: this.props.errors,
+                message: this.props.message
+            })
+            return;
+        } else {
+            this.setState({
+                errors: null,
+                message: null
+            });
+        };
     };
 
     render() {
-        const { oldPassword, password, password2 } = this.state;
+        const { oldPassword, password, password2, errors, message } = this.state;
         const { handleChange, editPasswordSubmit } = this;
 
         return (
             <>
                 <EditPasswordComponent
+                    errors={ errors }
+                    message={ message }
                     oldPassword={ oldPassword }
                     password={ password }
                     password2={ password2 }
@@ -48,7 +65,9 @@ class PasswordEdit extends React.PureComponent<{}, State> {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.userReducer.user
+        user: state.userReducer.user,
+        errors: state.userReducer.errors,
+        message: state.userReducer.message
     };
 };
 

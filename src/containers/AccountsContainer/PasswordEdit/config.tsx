@@ -7,6 +7,8 @@ interface State {
 };
 
 interface Props {
+    errors: null | Array<string>,
+    message: null | string,
     editUserPassword: () => {}
 };
 
