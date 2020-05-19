@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form , Col, Button } from 'react-bootstrap';
-import { Props, styles } from './editProfile.config';
+import { Props, styles } from './config';
 
 const ProfileEdit: React.SFC<Props> = ({
     user,

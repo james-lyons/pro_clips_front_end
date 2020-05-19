@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, Col } from 'react-bootstrap';
-import { deleteUser } from '../../actions/userActions/userActions';
-import { styles } from './editProfile.config';
+import { Button } from 'react-bootstrap';
+import { deleteUser } from '../../../actions/userActions/userActions';
+import { styles } from './config';
 
 interface Props {
     user: Object,
     deleteUser: () => {}
 };
 
-const deleteAccountComponent: React.SFC<Props> = ({
+const AccountDeleteComponent: React.SFC<Props> = ({
     user,
     deleteUser
 }) => {
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { deleteUser })(deleteAccountComponent);
+export default connect(mapStateToProps, { deleteUser })(AccountDeleteComponent);

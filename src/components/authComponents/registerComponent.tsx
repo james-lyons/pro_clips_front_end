@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Col, Button} from 'react-bootstrap';
-import { RegisterComponentProps, styles } from './auth.config';
+import { RegisterComponentProps, styles } from './config';
 
 const RegisterComponent: React.SFC<RegisterComponentProps> = ({
     handleChange,

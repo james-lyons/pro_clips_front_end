@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userRegister, userLogin } from '../../actions/authActions/authActions';
-import RegisterComponent from '../../components/authComponents/RegisterComponent';
-import { RegisterState, RegisterProps } from './auth.config';
+import RegisterComponent from '../../components/AuthComponents/RegisterComponent';
+import { RegisterState, RegisterProps } from './config';
 
 class Register extends React.PureComponent<RegisterProps, RegisterState> {
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EditPasswordComponent from '../../../components/AccountComponent/editPasswordComponent';
+import EditPasswordComponent from '../../../components/AccountComponent/PasswordEdit/PasswordEditComponent';
 import { editUserPassword } from '../../../actions/userActions/userActions';
 import { State } from './config';
 
-class PasswordEdit extends React.PureComponent<Props, State> {
+class PasswordEdit extends React.PureComponent<{}, State> {
 
     state: State = {
         oldPassword: '',

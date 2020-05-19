@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userLogin } from '../../actions/authActions/authActions';
-import { LoginState, LoginProps } from './auth.config';
-import LoginComponent from '../../components/authComponents/loginComponent';
+import { LoginState, LoginProps } from './config';
+import LoginComponent from '../../components/AuthComponents/loginComponent';
 
 class Login extends React.PureComponent<LoginProps, LoginState> {
 

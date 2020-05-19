@@ -1,5 +1,5 @@
 import API_URL from '../../constants';
-import { NewUser } from './action.config';
+import { NewUser } from './config';
 
 const userRegister = (newUser: NewUser) => {
     const user = { email: newUser.email, password: newUser.password };

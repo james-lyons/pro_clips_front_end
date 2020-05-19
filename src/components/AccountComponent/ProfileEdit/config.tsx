@@ -41,11 +41,6 @@ const styles = {
         minHeight: '20vh',
         padding: '1rem',
         marginTop: '5px'
-    },
-    ul: {
-        marginTop: '1rem',
-        padding: '1rem',
-        listStyle: 'none'
     }
 };
 

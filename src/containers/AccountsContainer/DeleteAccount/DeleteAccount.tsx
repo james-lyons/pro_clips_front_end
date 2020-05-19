@@ -1,14 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { deleteUser } from '../../../actions/userActions/userActions';
-import deleteAccountComponent from '../../../AccountsComponent/deleteAccountComponent';
+import AccountDelete from '../../../components/AccountComponent/AccountDelete/AccountDeleteComponent';
 
 class DeleteAccount extends React.PureComponent<{}> {
 
     render() {
         return (
             <>
-                <EditPasswordComponent />
+                <AccountDelete />
             </>
         );
     };

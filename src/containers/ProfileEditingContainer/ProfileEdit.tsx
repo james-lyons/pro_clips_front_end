@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProfileEditComponent from '../../components/AccountComponent/profileEditComponent';
+import ProfileEditComponent from '../../components/AccountComponent/ProfileEdit/ProfileEditComponent';
 import { fetchUser, editUserProfile, editUserPassword } from '../../actions/userActions/userActions';
 import { Props, State } from './config';
 

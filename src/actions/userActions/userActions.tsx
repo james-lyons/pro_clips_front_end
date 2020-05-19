@@ -1,6 +1,6 @@
 import API_URL from '../../constants';
 
-const fetchUser = (currentUser) => {
+const fetchUser = (currentUser:string) => {
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/${ currentUser }`,

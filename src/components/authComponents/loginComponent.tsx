@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Col, Button } from 'react-bootstrap';
-import { LoginComponentProps, styles } from './auth.config';
+import { LoginComponentProps, styles } from './config';
 
 const LoginComponent: React.SFC<LoginComponentProps> = ({
     email,

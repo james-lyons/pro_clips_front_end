@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Props, styles } from './profile.config';
-import { Redirect } from 'react-router-dom';
+import { Props, styles } from './config';
 
 const ProfileComponent: React.SFC<Props> = ({
     user

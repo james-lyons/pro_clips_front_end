@@ -1,5 +1,5 @@
 import React from 'react';
-import { styles } from './editProfile.config';
+import { styles } from './config';
 
 const AccountsSidebar: React.SFC<Props> = ({}) => {
     return (
