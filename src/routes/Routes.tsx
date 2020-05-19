@@ -33,13 +33,14 @@ export default withRouter(() => {
     return (
         <Switch>
             <Route exact path='/' component={ Home }/>
-            <HideRoute path='/login' component={ Login } />
-            <HideRoute path='/register' component={ Register } />
             <Route path='/FeaturedClips' component={ FeaturedClips } />
             <Route path='/browseClips' component={ BrowseClips } />
+            <HideRoute path='/login' component={ Login } />
+            <HideRoute path='/register' component={ Register } />
             <PrivateRoute path='/profile' component={ Profile } />
-            <PrivateRoute path='/accounts' component={ Accounts } />
-            <PrivateRoute path='/accounts/profile' component={ Accounts } />
+            <PrivateRoute exact path='/accounts' component={ Accounts } />
+            <PrivateRoute path='/accounts/password' component={ Accounts } />
+            <PrivateRoute path='/accounts/account_settings' component={ Accounts } />
             <PrivateRoute path='/clipUpload' component={ ClipUpload } />
             <PrivateRoute path='/settings' component={ Settings } />
         </Switch>

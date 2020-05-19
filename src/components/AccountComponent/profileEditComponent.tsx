@@ -2,20 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form , Col, Button } from 'react-bootstrap';
 import { Props, styles } from './editProfile.config';
-import { deleteUser } from '../../actions/userActions/userActions';
 
 const ProfileEdit: React.SFC<Props> = ({
     user,
     userName,
     email,
     bio,
-    oldPassword,
-    password,
-    password2,
     handleChange,
-    editUserSubmit,
-    editPasswordSubmit,
-    deleteUser
+    editUserSubmit
 }) => {
 
     return (
@@ -87,64 +81,6 @@ const ProfileEdit: React.SFC<Props> = ({
                         </Button>
                     </Form>
                 </div>
-                <div style={ styles.editProfileDiv }>
-                    <Form onSubmit={ editPasswordSubmit }>
-                        <Form.Group>
-                            <br/>
-                            <Form.Row>
-                                <Form.Label column sm={ 3 } style={{ fontSize: '.8rem'}}>
-                                    Old Password
-                                </Form.Label>
-                                <Col>
-                                    <Form.Control
-                                        type="password"
-                                        name='oldPassword'
-                                        value={ oldPassword }
-                                        onChange={ handleChange }
-                                    />
-                                </Col>
-                            </Form.Row>
-                            <br/>
-                            <Form.Row>
-                                <Form.Label column sm={ 3 } style={{ fontSize: '.8rem'}}>
-                                    New Password
-                                </Form.Label>
-                                <Col>
-                                    <Form.Control
-                                        type="password"
-                                        name="password"
-                                        value={ password }
-                                        onChange={ handleChange }
-                                    />
-                                </Col>
-                            </Form.Row>
-                            <br/>
-                            <Form.Row>
-                                <Form.Label column sm={ 3 } style={{ fontSize: '.8rem'}}>
-                                    Confirm New Password
-                                </Form.Label>
-                                <Col>
-                                    <Form.Control
-                                        type="password"
-                                        name="password2"
-                                        value={ password2 }
-                                        onChange={ handleChange }
-                                    />
-                                </Col>
-                            </Form.Row>
-                        </Form.Group>
-                        <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '74%'}}>
-                            Save Changes
-                        </Button>
-                    </Form>
-                </div>
-                <div style={ styles.editProfileDiv }>
-                    <h1 style={{ textAlign: 'center' }}>Delete Account</h1>
-                    <Button variant="primary" onClick={() => deleteUser(user.id) }
-                        size="sm" style={{ marginLeft: '37%', marginTop: '1rem' }}>
-                            Delete Account
-                    </Button>
-                </div>
             </div>
         </>
     );
@@ -156,4 +92,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { deleteUser })(ProfileEdit);
+export default connect(mapStateToProps, null)(ProfileEdit);

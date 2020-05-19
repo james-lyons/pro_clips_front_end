@@ -1,8 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import AccountSidebar from '../../components/AccountComponent/accountsSidebarComponent';
+import deleteAccountComponent from '../../components/AccountComponent/deleteAccountComponent';
 import ProfileEdit from '../ProfileEditingContainer/ProfileEdit';
+import PasswordEdit from './PasswordEdit/PasswordEdit';
 import { styles } from './config';
 
 class Accounts extends React.PureComponent<{}, {}> {
@@ -16,8 +17,9 @@ class Accounts extends React.PureComponent<{}, {}> {
                         <AccountSidebar />
                     </div>
                     <div>
-                        <Route exact path="/accounts" component= { ProfileEdit } />
-                        {/* <Route path="/accounts/password" component= { ProfileEdit } /> */}
+                        <Route exact path="/accounts" component={ ProfileEdit } />
+                        <Route path="/accounts/password" component={ PasswordEdit } />
+                        <Route path="/accounts/account_settings" component={ deleteAccountComponent } />
                     </div>
                 </div>
             </>

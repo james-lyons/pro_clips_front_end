@@ -9,10 +9,7 @@ class ProfileEdit extends React.PureComponent<Props, State> {
     state: State = {
         userName: '',
         email: '',
-        bio: '',
-        oldPassword: '',
-        password: '',
-        password2: ''
+        bio: ''
     };
 
     private componentDidMount = async () => {
@@ -40,17 +37,9 @@ class ProfileEdit extends React.PureComponent<Props, State> {
         let profileChanges = { userName, email, bio }
         this.props.editUserProfile(user, profileChanges)
     };
-
-    private editPasswordSubmit = () => {
-        event.preventDefault();
-        let user = localStorage.getItem('uid');
-        let { oldPassword, password, password2 } = this.state;
-        let passwordChange = { oldPassword, password, password2 };
-        this.props.editUserPassword(user, passwordChange);
-    };
     
     render() {
-        const { userName, email, bio, oldPassword, password, password2 } = this.state;
+        const { userName, email, bio } = this.state;
         const { handleChange, editUserSubmit, editPasswordSubmit } = this;
 
         return (
@@ -59,12 +48,8 @@ class ProfileEdit extends React.PureComponent<Props, State> {
                     userName={ userName }
                     email={ email }
                     bio={ bio }
-                    oldPassword={ oldPassword }
-                    password={ password }
-                    password2={ password2 }
                     handleChange={ handleChange }
                     editUserSubmit={ editUserSubmit }
-                    editPasswordSubmit={ editPasswordSubmit }
                 />
             </>
         );

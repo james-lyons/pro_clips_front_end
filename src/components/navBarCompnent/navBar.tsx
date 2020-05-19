@@ -24,12 +24,12 @@ const NavBar: React.SFC<Props> = ({ userLogout }) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav style={{ margin: '0 auto' }}>
-                    <Nav.Link as={ Link } to="featuredClips">Featured</Nav.Link>
-                    <Nav.Link as={ Link } to="browseclips">Browse</Nav.Link>
+                    <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link>
+                    <Nav.Link as={ Link } to="/browseclips">Browse</Nav.Link>
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>
-                    <Nav.Link as={ Link } to="login">Login</Nav.Link>
-                    <Nav.Link as={ Link } to="register">Sign Up</Nav.Link>
+                    <Nav.Link as={ Link } to="/login">Login</Nav.Link>
+                    <Nav.Link as={ Link } to="/register">Sign Up</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
@@ -41,14 +41,14 @@ const NavBar: React.SFC<Props> = ({ userLogout }) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav style={{ margin: '0 auto' }}>
-                    <Nav.Link as={ Link } to="featuredClips">Featured</Nav.Link>
-                    <Nav.Link as={ Link } to="browseclips">Browse</Nav.Link>
+                    <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link>
+                    <Nav.Link as={ Link } to="/browseclips">Browse</Nav.Link>
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>
-                    <Nav.Link as={ Link } to="clipupload">Upload</Nav.Link>
-                    <Nav.Link as={ Link } to="profile">Profile</Nav.Link>
+                    <Nav.Link as={ Link } to="/clipupload">Upload</Nav.Link>
+                    <Nav.Link as={ Link } to="/profile">Profile</Nav.Link>
                     <NavDropdown alignRight title={ element } id="basic-nav-dropdown">
-                        <NavDropdown.Item as={ Link } to="accounts">Settings</NavDropdown.Item>
+                        <NavDropdown.Item as={ Link } to="/accounts">Settings</NavDropdown.Item>
                         <NavDropdown.Item onClick={ () => userLogout(currentUser) }>Logout</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
