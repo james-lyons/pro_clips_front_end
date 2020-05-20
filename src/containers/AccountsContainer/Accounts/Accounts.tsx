@@ -13,10 +13,10 @@ class Accounts extends React.PureComponent<{}, {}> {
         return (
             <>
                 <div className="col-lg-6 col-md-10 col-sm-12 mb-4" style={ styles.wrapperDiv }>
-                    <div>
+                    <div style={{ borderTop: '1px solid grey', borderLeft: '1px solid grey', borderBottom: '1px solid grey' }}>
                         <AccountSidebar />
                     </div>
-                    <div>
+                    <div style={{ border: '1px solid grey' }}>
                         <Route exact path="/accounts" component={ ProfileEdit } />
                         <Route path="/accounts/account_settings" component={ AccountSettingsEdit } />
                         <Route path="/accounts/delete" component={ AccountDelete } />
