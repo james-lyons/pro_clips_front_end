@@ -54,7 +54,6 @@ const editUserProfile = (user:string, profileChanges:object) => {
 };
 
 const editUserEmail = (user: string, newEmail: object) => {
-    // console.log(newEmail)
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/${ user }/email`,

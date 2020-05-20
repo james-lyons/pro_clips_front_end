@@ -48,16 +48,16 @@ function userReducer(state: State = {
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "EDIT_PROFILE_FULFILLED": 
-            return { ...state, errors: null, message: null }
+            return { ...state, errors: action.payload.errors, message: null }
 
         case "EDIT_PROFILE_REJECTED": 
-            return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
+            return { ...state, editProfileErrors: action.payload.errors, editProfileMessage: action.payload.message };
 
         case "EDIT_PROFILE_PICTURE_FULFILLED": 
             return { ...state, errors: null, message: null }
 
         case "EDIT_PROFILE_PICTURE_REJECTED": 
-            return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "EDIT_EMAIL_FULFILLED": 
             return { ...state, editEmailErrors: null, editEmailMessage: null }

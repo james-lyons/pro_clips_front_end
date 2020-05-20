@@ -7,10 +7,11 @@ import { Props, State } from './config';
 class ProfileEdit extends React.PureComponent<Props, State> {
 
     state: State = {
-        userName: '',
-        email: '',
         bio: '',
+        userName: '',
         profile_image: '',
+        editProfileErrors: null,
+        editProfileMessage: null,
         edit_profile_success: null,
         edit_profile_picture_success: null
     };
@@ -18,12 +19,11 @@ class ProfileEdit extends React.PureComponent<Props, State> {
     private componentDidMount = async () => {
         let user = localStorage.getItem('uid');
         let data = await this.props.fetchUser(user);
-        let { userName, email, bio, profile_image } = data.payload.data;
+        let { userName, bio, profile_image } = data.payload.data;
 
         this.setState({
-            userName,
-            email,
             bio,
+            userName,
             profile_image
         });
     };
@@ -34,15 +34,28 @@ class ProfileEdit extends React.PureComponent<Props, State> {
         });
     };
 
-    private editUserSubmit = () => {
+    private editUserSubmit = async () => {
         event.preventDefault();
         let user = localStorage.getItem('uid');
         let { userName, email, bio } = this.state;
         let profileChanges = { userName, email, bio, id: user };
-        this.props.editUserProfile(user, profileChanges);
-        this.setState({
-            edit_profile_success: 'Success!'
-        });
+        
+        await this.props.editUserProfile(user, profileChanges);
+
+        if (this.props.editProfileErrors) {
+            this.setState({
+                editProfileErrors: this.props.editProfileErrors,
+                editProfileMessage: this.props.editProfileMessage
+            });
+            console.log(this.state);
+            return;
+        } else {
+            this.setState({
+                editProfileErrors: null,
+                editProfileMessage: null,
+                edit_profile_success: 'Success!'
+            });
+        };
     };
 
     private editProfilePictureSubmit = () => {
@@ -57,16 +70,17 @@ class ProfileEdit extends React.PureComponent<Props, State> {
     };
     
     render() {
-        const { userName, email, bio, profile_image } = this.state;
+        const { userName, bio, profile_image, editProfileErrors, editProfileMessage } = this.state;
         const { handleChange, editUserSubmit, editProfilePictureSubmit } = this;
 
         return (
             <>
                 <ProfileEditComponent
-                    userName={ userName }
-                    email={ email }
                     bio={ bio }
+                    userName={ userName }
                     profile_image={ profile_image }
+                    editProfileErrors={ editProfileErrors }
+                    editProfileMessage={ editProfileMessage }
                     handleChange={ handleChange }
                     editUserSubmit={ editUserSubmit }
                     editProfilePictureSubmit={ editProfilePictureSubmit }
@@ -76,4 +90,12 @@ class ProfileEdit extends React.PureComponent<Props, State> {
     };
 };
 
-export default connect(null, { fetchUser, editUserProfile, editUserPassword })(ProfileEdit);
+const mapStateToProps = (state) => {
+    return {
+        user: state.userReducer.user,
+        editProfileErrors: state.userReducer.editProfileErrors,
+        editProfileMessage: state.userReducer.editProfileMessage
+    };
+};
+
+export default connect(mapStateToProps, { fetchUser, editUserProfile, editUserPassword })(ProfileEdit);

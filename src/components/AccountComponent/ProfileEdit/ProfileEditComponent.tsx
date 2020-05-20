@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Form , Col, Button } from 'react-bootstrap';
 import { Props, styles } from './config';
 
 const ProfileEdit: React.SFC<Props> = ({
-    userName,
-    email,
     bio,
+    userName,
     profile_image,
+    editProfileErrors,
+    editProfileMessage,
     handleChange,
     editUserSubmit,
     editProfilePictureSubmit
@@ -49,8 +49,21 @@ const ProfileEdit: React.SFC<Props> = ({
                     <Form onSubmit={ editUserSubmit }>
                     <h1 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '1rem' }}>Update your profile here!</h1>
 
+                        <div style={{ margin: '1.5rem 0' }}>
+                            {  editProfileErrors && editProfileErrors.map((error, i) => (
+                                <div
+                                    style={ styles.errorDiv } role="alert" key={ i }>
+                                    <p style={ styles.errorP }>{ error.message }  </p>
+                                </div>
+                            ))}
+                            { editProfileMessage &&
+                                <div style={ styles.errorDiv } role="alert">
+                                    <p style={ styles.errorP }>{ editProfileMessage }</p>
+                                </div>
+                            }
+                        </div>
+
                         <Form.Group>
-                            <br/>
                             <Form.Row>
                                 <Form.Label column sm={ 3 }>
                                     Username
@@ -92,10 +105,4 @@ const ProfileEdit: React.SFC<Props> = ({
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.userReducer.user
-    };
-};
-
-export default connect(mapStateToProps, null)(ProfileEdit);
+export default ProfileEdit;
