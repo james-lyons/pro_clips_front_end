@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import AccountSidebar from '../../../components/AccountComponent/SideBar/SidebarComponent';
 import AccountDelete from '../../../components/AccountComponent/AccountDelete/AccountDeleteComponent';
-import ProfileEdit from '../../ProfileEditingContainer/ProfileEdit';
+import ProfileEdit from '../ProfileEditingContainer/ProfileEdit';
 import AccountSettingsEdit from '../AccountSettings/AccountSettingsEdit';
 import { styles } from './config';
 
