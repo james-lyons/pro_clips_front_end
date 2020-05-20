@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import { deleteUser } from '../../../actions/userActions/userActions';
+import { deleteUser } from '../../../redux/actions/userActions/userActions';
 import { styles } from './config';
 
 interface Props {

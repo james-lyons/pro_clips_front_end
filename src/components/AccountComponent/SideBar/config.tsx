@@ -4,7 +4,7 @@ const styles = {
         listStyle: 'none'
     },
     li: {
-        marginTop: '1rem'
+        marginTop: '1rem',
     },
     a: {
         color: 'black'

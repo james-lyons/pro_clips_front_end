@@ -1,4 +1,4 @@
-import API_URL from '../../constants';
+import API_URL from '../../../constants';
 
 const fetchUser = (user:string) => {
     return async dispatch => {

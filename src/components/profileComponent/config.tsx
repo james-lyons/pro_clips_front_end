@@ -35,6 +35,19 @@ const styles = {
     },
     li: {
         marginRight: '1.25rem'
+    },
+    button: {
+        textIndent: '0px',
+        textShadow: 'none',
+        display: 'inline-block',
+        textAlign: 'center',
+        alignItems: 'flex-start',
+        font: '400 11px system-ui',
+        padding: '1px 7px 2px',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186)',
+        borderImage: 'initial',
     }
 };
 

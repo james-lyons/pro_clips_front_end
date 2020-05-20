@@ -4,14 +4,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { userLogout } from '../../actions/authActions/authActions';
-
-interface Props {
-    user: object,
-    currentUser: string,
-    setCurrentUser: (userId: string) => void,
-    userLogout: (userId: string) => void
-};
+import { userLogout } from '../../redux/actions/authActions/authActions';
 
 const NavBar: React.SFC<Props> = ({ userLogout }) => {
 

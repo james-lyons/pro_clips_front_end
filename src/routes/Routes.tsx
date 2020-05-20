@@ -3,7 +3,7 @@ import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import Home from '../containers/HomeContainer/Home';
 import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
 import BrowseClips from '../containers/BrowseContainer/BrowseClips';
-import Profile from '../containers/AccountsContainer/ProfileContainer/Profile';
+import Profile from '../containers/ProfileContainer/Profile';
 import Accounts from '../containers/AccountsContainer/Accounts/Accounts';
 import ClipUpload from '../containers/ClipUpload/ClipUpload';
 import Settings from '../containers/SettingsContainer/Settings';

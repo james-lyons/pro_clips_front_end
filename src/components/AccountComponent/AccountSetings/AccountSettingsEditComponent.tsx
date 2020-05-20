@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Col } from 'react-bootstrap';
-import { deleteUser } from '../../../actions/userActions/userActions';
+import { deleteUser } from '../../../redux/actions/userActions/userActions';
 import { Props, styles } from './config';
 
 const editPasswordComponent: React.SFC<Props> = ({

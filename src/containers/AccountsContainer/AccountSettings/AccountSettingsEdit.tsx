@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EditPasswordComponent from '../../../components/AccountComponent/AccountSetings/AccountSettingsEditComponent';
-import { editUserEmail, editUserPassword } from '../../../actions/userActions/userActions';
+import { editUserEmail, editUserPassword } from '../../../redux/actions/userActions/userActions';
 import { State } from './config';
 
 class AccountSettingsEdit extends React.PureComponent<{}, State> {
@@ -29,7 +29,12 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
         let { email } = this.state;
         let newEmail = { email };
 
-        await this.props.editUserEmail(user, newEmail);
+        console.log('email', email)
+        console.log('props', this.props.user)
+
+        if (email !== this.props.user.email) {
+            await this.props.editUserEmail(user, newEmail);
+        };
 
         if (this.props.editEmailErrors) {
             console.log(this.props)

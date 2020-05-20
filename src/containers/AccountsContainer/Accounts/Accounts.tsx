@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import AccountSidebar from '../../../components/AccountComponent/SideBar/SidebarComponent';
 import AccountDelete from '../../../components/AccountComponent/AccountDelete/AccountDeleteComponent';
 import ProfileEdit from '../ProfileEditingContainer/ProfileEdit';

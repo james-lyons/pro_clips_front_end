@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileEditComponent from '../../../components/AccountComponent/ProfileEdit/ProfileEditComponent';
-import { fetchUser, editUserProfile, editUserPassword } from '../../../actions/userActions/userActions';
+import { fetchUser, editUserProfile, editUserPassword } from '../../../redux/actions/userActions/userActions';
 import { Props, State } from './config';
 
 class ProfileEdit extends React.PureComponent<Props, State> {
@@ -37,10 +37,19 @@ class ProfileEdit extends React.PureComponent<Props, State> {
     private editUserSubmit = async () => {
         event.preventDefault();
         let user = localStorage.getItem('uid');
-        let { userName, email, bio } = this.state;
-        let profileChanges = { userName, email, bio, id: user };
-        
-        await this.props.editUserProfile(user, profileChanges);
+        let { userName, bio } = this.state;
+        let profileChanges = { userName, bio, id: user };
+
+        if (userName !== this.props.user.userName && bio !== this.props.user.bio) {
+            let profileChanges = { userName, bio, id: user };
+            await this.props.editUserProfile(user, profileChanges);
+        } else if (userName !== this.props.user.userName) {
+            let profileChanges = { userName, id: user };
+            await this.props.editUserProfile(user, profileChanges);
+        } else if (bio !== this.props.user.bio) {
+            let profileChanges = { bio, id: user };
+            await this.props.editUserProfile(user, profileChanges);
+        };
 
         if (this.props.editProfileErrors) {
             this.setState({

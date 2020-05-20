@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Props, styles } from './config';
 
 const ProfileComponent: React.SFC<Props> = ({
@@ -18,11 +19,11 @@ const ProfileComponent: React.SFC<Props> = ({
                     <section style={{ height: '100%' }}>
                         <div style={{ justifyContent: 'center' }}>
                             <h1 style={ styles.h1 }>{ user.userName }</h1>
-                            <a style={{ marginLeft: '2rem' }} href="/accounts">
+                            <Link to="/accounts" style={{ marginLeft: '4rem' }}>
                                 <button style={{ borderRadius: '4px' }}>
                                     Edit Profile
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                         <ul style={ styles.ulWrapper }>
                             <li style={ styles.li }><span>{ user.posts.length } posts</span></li>
