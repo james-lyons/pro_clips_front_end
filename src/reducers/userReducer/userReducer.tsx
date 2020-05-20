@@ -12,7 +12,15 @@ function userReducer(state: State = {
         id: ''
     },
     errors: null,
-    message: null
+    message: null,
+    editProfileErrors: null,
+    editProfileMessage: null,
+    editProfilePictureErrors: null,
+    editProfilePictureMessage: null,
+    editEmailErrors: null,
+    editEmailMessage: null,
+    editPasswordErrors: null,
+    editPasswordMessage: null
 
 }, action: Action) {
 
@@ -45,11 +53,23 @@ function userReducer(state: State = {
         case "EDIT_PROFILE_REJECTED": 
             return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
 
-        case "EDIT_PASSWORD_FULFILLED": 
+        case "EDIT_PROFILE_PICTURE_FULFILLED": 
             return { ...state, errors: null, message: null }
 
+        case "EDIT_PROFILE_PICTURE_REJECTED": 
+            return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
+
+        case "EDIT_EMAIL_FULFILLED": 
+            return { ...state, editEmailErrors: null, editEmailMessage: null }
+
+        case "EDIT_EMAIL_REJECTED": 
+            return { ...state, editEmailErrors: action.payload.errors, editEmailMessage: action.payload.message };
+
+        case "EDIT_PASSWORD_FULFILLED": 
+            return { ...state, editPasswordErrors: null, editPasswordMessage: null }
+
         case "EDIT_PASSWORD_REJECTED": 
-            return { ...state, errors: action.payload.errors, message: action.payload.message };
+            return { ...state, editPasswordErrors: action.payload.errors, editPasswordMessage: action.payload.message };
 
         case "DELETE_USER_FULFILLED": 
             return { ...state, user: {} }

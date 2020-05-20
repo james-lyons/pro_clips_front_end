@@ -3,7 +3,7 @@ import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import Home from '../containers/HomeContainer/Home';
 import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
 import BrowseClips from '../containers/BrowseContainer/BrowseClips';
-import Profile from '../containers/ProfileContainer/Profile';
+import Profile from '../containers/AccountsContainer/ProfileContainer/Profile';
 import Accounts from '../containers/AccountsContainer/Accounts/Accounts';
 import ClipUpload from '../containers/ClipUpload/ClipUpload';
 import Settings from '../containers/SettingsContainer/Settings';
@@ -39,8 +39,8 @@ export default withRouter(() => {
             <HideRoute path='/register' component={ Register } />
             <PrivateRoute path='/profile' component={ Profile } />
             <PrivateRoute exact path='/accounts' component={ Accounts } />
-            <PrivateRoute path='/accounts/password' component={ Accounts } />
             <PrivateRoute path='/accounts/account_settings' component={ Accounts } />
+            <PrivateRoute path='/accounts/delete' component={ Accounts } />
             <PrivateRoute path='/clipUpload' component={ ClipUpload } />
             <PrivateRoute path='/settings' component={ Settings } />
         </Switch>

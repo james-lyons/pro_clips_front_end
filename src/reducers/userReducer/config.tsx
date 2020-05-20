@@ -12,7 +12,15 @@ interface User {
 interface State {
     user: User,
     errors: null | Array<object>,
-    message: null | string
+    message: null | string,
+    editProfileErrors: null | Array<object>,
+    editProfileMessage: null | string,
+    editProfilePictureErrors: null | Array<object>,
+    editProfilePictureMessage: null | string,
+    editEmailErrors: null | Array<object>,
+    editEmailMessage: null | string,
+    editPasswordErrors: null | Array<object>,
+    editPasswordMessage: null | string
 };
 
 interface Action {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProfileComponent from '../../components/profileComponent/profileComponent';
-import { fetchUser } from '../../actions/userActions/userActions';
+import ProfileComponent from '../../../components/profileComponent/profileComponent';
+import { fetchUser } from '../../../actions/userActions/userActions';
 import { State, Props } from './config';
 
 class Profile extends React.PureComponent<Props, State> {

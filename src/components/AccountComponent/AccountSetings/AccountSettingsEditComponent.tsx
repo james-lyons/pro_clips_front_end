@@ -2,47 +2,84 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Col } from 'react-bootstrap';
 import { deleteUser } from '../../../actions/userActions/userActions';
-import { styles } from './config';
-
-interface Props {
-    oldPassword: string,
-    password: string,
-    password2: string,
-    errors: Array<string>,
-    message: string,
-    handleChange: () => {},
-    editPasswordSubmit: () => {},
-};
+import { Props, styles } from './config';
 
 const editPasswordComponent: React.SFC<Props> = ({
+    email,
     oldPassword,
     password,
     password2,
-    errors,
-    message,
+    editEmailErrors,
+    editEmailMessage,
+    editPasswordErrors,
+    editPasswordMessage,
     handleChange,
+    editEmailSubmit,
     editPasswordSubmit
 }) => {
     return (
         <>
             <div style={ styles.divWrapper }>
-                <div style={ styles.editProfileDiv }>
-                    <Form onSubmit={ editPasswordSubmit }>
-                        <div style={{ marginBottom: '1rem' }}>
-                            {  errors && errors.map((error, i) => (
+                <div style={ styles.editEmailDiv }>
+                    <Form onSubmit={ editEmailSubmit }>
+
+                        <h1 style={{ fontSize: '1.6rem', fontWeight: 600 }}>Update your email info here!</h1>
+
+                        <div style={{ margin: '1.5rem 0' }}>
+                            {  editEmailErrors && editEmailErrors.map((error, i) => (
                                 <div
                                     style={ styles.errorDiv } role="alert" key={ i }>
                                     <p style={ styles.errorP }>{ error.message }  </p>
                                 </div>
                             ))}
-                            { message &&
+                            { editEmailMessage &&
                                 <div style={ styles.errorDiv } role="alert">
-                                    <p style={ styles.errorP }>{ message }</p>
+                                    <p style={ styles.errorP }>{ editEmailMessage }</p>
                                 </div>
                             }
                         </div>
-                        <Form.Group>
+
+                        <Form.Group style={{ marginBottom: '0' }}>
+                            <Form.Row>
+                                <Form.Label column sm={ 3 }>
+                                    Email
+                                </Form.Label>
+                                <Col>
+                                    <Form.Control
+                                        type="text"
+                                        size="sm"
+                                        name="email"
+                                        value={ email }
+                                        onChange={ handleChange }
+                                    />
+                                </Col>
+                            </Form.Row>
                             <br/>
+                        </Form.Group>
+                        <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '74%'}}>
+                            Save Changes
+                        </Button>
+                    </Form>
+                </div>
+                <div style={ styles.editPasswordDiv }>
+                    <Form onSubmit={ editPasswordSubmit }>
+                        <h1 style={{ fontSize: '1.6rem', fontWeight: 600 }}>Update your password here!</h1>
+
+                        <div style={{ margin: '1.5rem 0' }}>
+                            {  editPasswordErrors && editPasswordErrors.map((error, i) => (
+                                <div
+                                    style={ styles.errorDiv } role="alert" key={ i }>
+                                    <p style={ styles.errorP }>{ error.message }  </p>
+                                </div>
+                            ))}
+                            { editPasswordMessage &&
+                                <div style={ styles.errorDiv } role="alert">
+                                    <p style={ styles.errorP }>{ editPasswordMessage }</p>
+                                </div>
+                            }
+                        </div>
+
+                        <Form.Group>
                             <Form.Row>
                                 <Form.Label column sm={ 3 } style={{ fontSize: '.8rem'}}>
                                     Old Password
@@ -98,10 +135,4 @@ const editPasswordComponent: React.SFC<Props> = ({
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.userReducer.user
-    };
-};
-
-export default connect(mapStateToProps, { deleteUser })(editPasswordComponent);
+export default connect(null, { deleteUser })(editPasswordComponent);

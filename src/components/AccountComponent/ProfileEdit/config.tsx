@@ -1,27 +1,16 @@
 interface Props {
-    user: User,
     userName: string,
     email: string,
     bio: string,
     oldPassword: string,
     password: string,
     password2: string,
+    edit_profile_success: null | string,
+    edit_profile_picture_success: null | string,
     handleChange: () => {},
     editUserSubmit: () => {},
-    editPasswordSubmit: () => {},
-    deleteUser: () => {}
+    editProfilePictureSubmit: () => {}
 };
-
-interface User {
-    userName: string,
-    email: string,
-    bio: string,
-    profile_image: string,
-    posts: [],
-    followers: [],
-    following: [],
-    id: string
-}
 
 const styles = {
     divWrapper: {

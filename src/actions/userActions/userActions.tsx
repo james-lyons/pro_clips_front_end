@@ -1,9 +1,9 @@
 import API_URL from '../../constants';
 
-const fetchUser = (currentUser:string) => {
+const fetchUser = (user:string) => {
     return async dispatch => {
         try {
-            let res = await fetch(`${ API_URL }/accounts/${ currentUser }`,
+            let res = await fetch(`${ API_URL }/accounts/${ user }`,
                 {
                     method: 'GET',
                     credentials: 'include',
@@ -25,8 +25,8 @@ const fetchUser = (currentUser:string) => {
     };
 };
 
-const editUserProfile = (user, profileChanges) => {
-    console.log(user)
+const editUserProfile = (user:string, profileChanges:object) => {
+    console.log('profile', JSON.stringify(profileChanges))
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/${ user }/profile`,
@@ -53,8 +53,36 @@ const editUserProfile = (user, profileChanges) => {
     };
 };
 
-const editUserPassword = (user, passwordChange) => {
-    console.log(passwordChange)
+const editUserEmail = (user: string, newEmail: object) => {
+    // console.log(newEmail)
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/accounts/${ user }/email`,
+                {
+                    method: 'PUT',
+                    credentials: 'include',
+                    headers: { 'Content-type': 'application/json' },
+                    body: JSON.stringify(newEmail)
+                }
+            );
+
+            let data = await res.json();
+            console.log('data', data);
+
+            if (data.status >= 400) {
+                return dispatch({ type: 'EDIT_EMAIL_REJECTED', payload: data });
+            } else if (data.message) {
+                return dispatch({ type: 'EDIT_EMAIL_FULFILLED', payload: data });
+            };
+
+        } catch (error) {
+            dispatch({ type: 'EDIT_EMAIL_REJECTED', payload: error });
+        };
+    };
+};
+
+const editUserPassword = (user, newPassword) => {
+    console.log(newPassword)
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/${ user }/password`,
@@ -62,7 +90,7 @@ const editUserPassword = (user, passwordChange) => {
                     method: 'PUT',
                     credentials: 'include',
                     headers: { 'Content-type': 'application/json' },
-                    body: JSON.stringify(passwordChange)
+                    body: JSON.stringify(newPassword)
                 }
             );
 
@@ -80,7 +108,6 @@ const editUserPassword = (user, passwordChange) => {
         };
     };
 };
-
 
 const deleteUser = (user) => {
     return async dispatch => {
@@ -106,6 +133,7 @@ const deleteUser = (user) => {
 export {
     fetchUser,
     editUserProfile,
+    editUserEmail,
     editUserPassword,
     deleteUser
 };

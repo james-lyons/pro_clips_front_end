@@ -9,18 +9,22 @@ class ProfileEdit extends React.PureComponent<Props, State> {
     state: State = {
         userName: '',
         email: '',
-        bio: ''
+        bio: '',
+        profile_image: '',
+        edit_profile_success: null,
+        edit_profile_picture_success: null
     };
 
     private componentDidMount = async () => {
         let user = localStorage.getItem('uid');
         let data = await this.props.fetchUser(user);
-        let { userName, email, bio } = data.payload.data;
+        let { userName, email, bio, profile_image } = data.payload.data;
 
         this.setState({
             userName,
             email,
-            bio
+            bio,
+            profile_image
         });
     };
 
@@ -34,13 +38,27 @@ class ProfileEdit extends React.PureComponent<Props, State> {
         event.preventDefault();
         let user = localStorage.getItem('uid');
         let { userName, email, bio } = this.state;
-        let profileChanges = { userName, email, bio }
-        this.props.editUserProfile(user, profileChanges)
+        let profileChanges = { userName, email, bio, id: user };
+        this.props.editUserProfile(user, profileChanges);
+        this.setState({
+            edit_profile_success: 'Success!'
+        });
+    };
+
+    private editProfilePictureSubmit = () => {
+        event.preventDefault();
+        let user = localStorage.getItem('uid');
+        let { profile_image } = this.state;
+        let updatedProfilePicture = { profile_image };
+        this.props.editUserProfile(user, updatedProfilePicture);
+        this.setState({
+            edit_profile_picture_success: 'Success!'
+        });
     };
     
     render() {
-        const { userName, email, bio } = this.state;
-        const { handleChange, editUserSubmit, editPasswordSubmit } = this;
+        const { userName, email, bio, profile_image } = this.state;
+        const { handleChange, editUserSubmit, editProfilePictureSubmit } = this;
 
         return (
             <>
@@ -48,8 +66,10 @@ class ProfileEdit extends React.PureComponent<Props, State> {
                     userName={ userName }
                     email={ email }
                     bio={ bio }
+                    profile_image={ profile_image }
                     handleChange={ handleChange }
                     editUserSubmit={ editUserSubmit }
+                    editProfilePictureSubmit={ editProfilePictureSubmit }
                 />
             </>
         );

@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import AccountSidebar from '../../../components/AccountComponent/SideBar/SidebarComponent';
 import AccountDelete from '../../../components/AccountComponent/AccountDelete/AccountDeleteComponent';
 import ProfileEdit from '../../ProfileEditingContainer/ProfileEdit';
-import PasswordEdit from '../PasswordEdit/PasswordEdit';
+import AccountSettingsEdit from '../AccountSettings/AccountSettingsEdit';
 import { styles } from './config';
 
 class Accounts extends React.PureComponent<{}, {}> {
@@ -18,8 +18,8 @@ class Accounts extends React.PureComponent<{}, {}> {
                     </div>
                     <div>
                         <Route exact path="/accounts" component={ ProfileEdit } />
-                        <Route path="/accounts/password" component={ PasswordEdit } />
-                        <Route path="/accounts/account_settings" component={ AccountDelete } />
+                        <Route path="/accounts/account_settings" component={ AccountSettingsEdit } />
+                        <Route path="/accounts/delete" component={ AccountDelete } />
                     </div>
                 </div>
             </>

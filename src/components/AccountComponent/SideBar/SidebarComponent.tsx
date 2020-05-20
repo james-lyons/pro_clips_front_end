@@ -6,8 +6,8 @@ const AccountsSidebar: React.SFC<Props> = ({}) => {
         <>
             <ul style={ styles.ul }>
                 <li><a href="/accounts">Profile Settings</a></li>
-                <li><a href="/accounts/password">Change Password</a></li>
                 <li><a href="/accounts/account_settings">Account Settings</a></li>
+                <li><a href="/accounts/delete">Delete Account</a></li>
             </ul>
         </>
     );
