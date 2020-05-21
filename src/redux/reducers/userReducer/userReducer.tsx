@@ -1,9 +1,19 @@
 import { State, Action } from './config';
 
 function userReducer(state: State = {
+    currentUser: {
+        userName: '',
+        bio: '',
+        profile_image: '',
+        email: '',
+        posts: [],
+        comments: [],
+        followers: [],
+        following: [],
+        id: ''
+    },
     user: {
         userName: '',
-        email: '',
         bio: '',
         profile_image: '',
         posts: [],
@@ -26,16 +36,35 @@ function userReducer(state: State = {
 
     switch(action.type) {
 
+        case "FETCH_CURRENT_USER_FULFILLED": 
+            return {
+                ...state,
+                currentUser: {
+                    userName: action.payload.data.userName,
+                    bio: action.payload.data.bio,
+                    profile_image: action.payload.data.profile_image,
+                    email: action.payload.data.email,
+                    posts: action.payload.data.posts,
+                    comments: action.payload.data.comments,
+                    followers: action.payload.data.followers,
+                    following: action.payload.data.following,
+                    id: action.payload.data._id,
+                },
+                errors: null,
+                message: null
+            };
+
+        case "FETCH_CURRENT_USER_REJECTED": 
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
+
         case "FETCH_USER_FULFILLED": 
             return {
                 ...state,
                 user: {
                     userName: action.payload.data.userName,
-                    profile_image: action.payload.data.profile_image,
                     bio: action.payload.data.bio,
-                    email: action.payload.data.email,
+                    profile_image: action.payload.data.profile_image,
                     posts: action.payload.data.posts,
-                    comments: action.payload.data.comments,
                     followers: action.payload.data.followers,
                     following: action.payload.data.following,
                     id: action.payload.data._id,

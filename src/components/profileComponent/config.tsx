@@ -1,8 +1,19 @@
 interface Props {
-    user: User
+    user: User,
+    currentUser: CurrentUser
 };
 
 interface User {
+    userName: string,
+    bio: string,
+    profile_image: string,
+    posts: [],
+    followers: [],
+    following: [],
+    id: string
+};;
+
+interface CurrentUser {
     userName: string,
     email: string,
     bio: string,

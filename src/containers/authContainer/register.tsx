@@ -29,22 +29,27 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
         const loginCredentials = { email, password };
 
         const res = await this.props.userRegister(newUser);
+        
+        console.log('res', res);
+        console.log('new user', newUser);
+        console.log('login credentials', loginCredentials)
+
         if (res.type === 'USER_REGISTRATION_REJECTED') {
             this.setState({
                 errors: this.props.errors,
                 message: this.props.message
             })
             return;
-        };
-
-        await this.props.userLogin(loginCredentials);
-        if (res.type === 'USER_LOGIN_REJECTED') {
-            this.setState({
-                errors: this.props.errors,
-                message: this.props.message
-            })
-            return;
-        };
+        } else if (res.type === 'USER_REGISTRATION_FULFILLED') {
+            await this.props.userLogin(loginCredentials);
+            if (res.type === 'USER_LOGIN_REJECTED') {
+                this.setState({
+                    errors: this.props.errors,
+                    message: this.props.message
+                })
+                return;
+            };
+        }
 
         this.props.history.push('/featuredClips');
     };

@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { userLogout } from '../../redux/actions/authActions/authActions';
 
-const NavBar: React.SFC<Props> = ({ userLogout }) => {
+const NavBar: React.SFC<{}> = ({ userLogout }) => {
 
     const element = <FontAwesomeIcon icon={ faBars } />
-    const currentUser = localStorage.getItem('uid');
+    const currentUserId = localStorage.getItem('uid');
 
     const links = (
         <Navbar bg="light" expand="lg">
@@ -42,7 +42,7 @@ const NavBar: React.SFC<Props> = ({ userLogout }) => {
                     <Nav.Link as={ Link } to="/profile">Profile</Nav.Link>
                     <NavDropdown alignRight title={ element } id="basic-nav-dropdown">
                         <NavDropdown.Item as={ Link } to="/accounts">Settings</NavDropdown.Item>
-                        <NavDropdown.Item onClick={ () => userLogout(currentUser) }>Logout</NavDropdown.Item>
+                        <NavDropdown.Item onClick={ () => userLogout(currentUserId) }>Logout</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
@@ -51,14 +51,14 @@ const NavBar: React.SFC<Props> = ({ userLogout }) => {
 
     return (
         <>
-            { currentUser ? authLinks : links }
+            { currentUserId ? authLinks : links }
         </>
     );
 };
 
 const mapStateToProps = (state:object) => {
     return {
-        user: state.userReducer.user
+        currentUser: state.userReducer.currentUser
     };
 };
 

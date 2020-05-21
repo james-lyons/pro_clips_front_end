@@ -1,10 +1,8 @@
 interface State {
     userName: string,
-    email: string,
     bio: string,
     profile_image: string,
-    password: string,
-    password2: string
+    posts: null | []
 };
 
 interface Props {

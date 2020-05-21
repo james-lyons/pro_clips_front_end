@@ -65,11 +65,4 @@ const LoginComponent: React.SFC<LoginComponentProps> = ({
     );
 };
 
-// const mapStateToProps = (state) => {
-//     return {
-//         errors: state.authReducer.errors,
-//         message: state.authReducer.message
-//     };
-// };
-
 export default LoginComponent;

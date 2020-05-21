@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileEditComponent from '../../../components/AccountComponent/ProfileEdit/ProfileEditComponent';
-import { fetchUser, editUserProfile, editUserPassword } from '../../../redux/actions/userActions/userActions';
+import { fetchCurrentUser, editUserProfile, editUserPassword } from '../../../redux/actions/userActions/userActions';
 import { Props, State } from './config';
 
 class ProfileEdit extends React.PureComponent<Props, State> {
@@ -18,7 +18,7 @@ class ProfileEdit extends React.PureComponent<Props, State> {
 
     private componentDidMount = async () => {
         let user = localStorage.getItem('uid');
-        let data = await this.props.fetchUser(user);
+        let data = await this.props.fetchCurrentUser(user);
         let { userName, bio, profile_image } = data.payload.data;
 
         this.setState({
@@ -36,19 +36,19 @@ class ProfileEdit extends React.PureComponent<Props, State> {
 
     private editUserSubmit = async () => {
         event.preventDefault();
-        let user = localStorage.getItem('uid');
+        let currentUserId = localStorage.getItem('uid');
         let { userName, bio } = this.state;
-        let profileChanges = { userName, bio, id: user };
+        let profileChanges = { userName, bio, id: currentUserId };
 
-        if (userName !== this.props.user.userName && bio !== this.props.user.bio) {
-            let profileChanges = { userName, bio, id: user };
-            await this.props.editUserProfile(user, profileChanges);
-        } else if (userName !== this.props.user.userName) {
-            let profileChanges = { userName, id: user };
-            await this.props.editUserProfile(user, profileChanges);
-        } else if (bio !== this.props.user.bio) {
-            let profileChanges = { bio, id: user };
-            await this.props.editUserProfile(user, profileChanges);
+        if (userName !== this.props.currentUser.userName && bio !== this.props.currentUser.bio) {
+            let profileChanges = { userName, bio, id: currentUserId };
+            await this.props.editUserProfile(currentUserId, profileChanges);
+        } else if (userName !== this.props.currentUser.userName) {
+            let profileChanges = { userName, id: currentUserId };
+            await this.props.editUserProfile(currentUserId, profileChanges);
+        } else if (bio !== this.props.currentUser.bio) {
+            let profileChanges = { bio, id: currentUserId };
+            await this.props.editUserProfile(currentUserId, profileChanges);
         };
 
         if (this.props.editProfileErrors) {
@@ -101,10 +101,10 @@ class ProfileEdit extends React.PureComponent<Props, State> {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.userReducer.user,
+        currentUser: state.userReducer.currentUser,
         editProfileErrors: state.userReducer.editProfileErrors,
         editProfileMessage: state.userReducer.editProfileMessage
     };
 };
 
-export default connect(mapStateToProps, { fetchUser, editUserProfile, editUserPassword })(ProfileEdit);
+export default connect(mapStateToProps, { fetchCurrentUser, editUserProfile, editUserPassword })(ProfileEdit);

@@ -1,16 +1,28 @@
-interface User {
+interface CurrentUser {
     userName: string,
     email: string,
     bio: string,
     profile_image: string,
-    posts: [],
-    followers: [],
-    following: [],
+    posts: Array<object>,
+    comments: Array<object>,
+    followers: Array<object>,
+    following: Array<object>,
+    id: string
+};
+
+interface User {
+    userName: string,
+    bio: string,
+    profile_image: string,
+    posts: Array<object>,
+    followers: Array<object>,
+    following: Array<object>,
     id: string
 };
 
 interface State {
     user: User,
+    currentUser: CurrentUser,
     errors: null | Array<object>,
     message: null | string,
     editProfileErrors: null | Array<object>,
@@ -29,7 +41,6 @@ interface Action {
 };
 
 export {
-    User,
     State,
     Action
 };

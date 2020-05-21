@@ -1,9 +1,34 @@
 import API_URL from '../../../constants';
 
+const fetchCurrentUser = (currentUser:string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/accounts/currentuser/${ currentUser }`,
+                {
+                    method: 'GET',
+                    credentials: 'include',
+                }
+            );
+
+            let data = await res.json();
+            console.log(data)
+
+            if (data.status >= 400) {
+                return dispatch({ type: 'FETCH_CURRENT_USER_REJECTED', payload: data });
+            } else if (data.message) {
+                return dispatch({ type: 'FETCH_CURRENT_USER_FULFILLED', payload: data });
+            };
+
+        } catch (error) {
+            dispatch({ type: 'FETCH_CURRENT_USER_REJECTED', payload: error })
+        };
+    };
+};
+
 const fetchUser = (user:string) => {
     return async dispatch => {
         try {
-            let res = await fetch(`${ API_URL }/accounts/${ user }`,
+            let res = await fetch(`${ API_URL }/accounts/user/${ user }`,
                 {
                     method: 'GET',
                     credentials: 'include',
@@ -130,6 +155,7 @@ const deleteUser = (user) => {
 };
 
 export {
+    fetchCurrentUser,
     fetchUser,
     editUserProfile,
     editUserEmail,
