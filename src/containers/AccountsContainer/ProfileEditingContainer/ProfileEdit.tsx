@@ -18,8 +18,8 @@ class ProfileEdit extends React.PureComponent<Props, State> {
 
     private componentDidMount = async () => {
         let user = localStorage.getItem('uid');
-        let data = await this.props.fetchCurrentUser(user);
-        let { userName, bio, profile_image } = data.payload.data;
+        // let data = await this.props.fetchCurrentUser(user);
+        let { userName, bio, profile_image } = this.props.currentUser;
 
         this.setState({
             bio,

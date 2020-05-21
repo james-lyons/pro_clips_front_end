@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { userLogout } from '../../redux/actions/authActions/authActions';
 
-const NavBar: React.SFC<{}> = ({ userLogout }) => {
+const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
 
     const element = <FontAwesomeIcon icon={ faBars } />
     const currentUserId = localStorage.getItem('uid');
@@ -39,7 +39,7 @@ const NavBar: React.SFC<{}> = ({ userLogout }) => {
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>
                     <Nav.Link as={ Link } to="/clipupload">Upload</Nav.Link>
-                    <Nav.Link as={ Link } to="/profile">Profile</Nav.Link>
+                    <Nav.Link as={ Link } to={`/${ currentUser.userName }`}>Profile</Nav.Link>
                     <NavDropdown alignRight title={ element } id="basic-nav-dropdown">
                         <NavDropdown.Item as={ Link } to="/accounts">Settings</NavDropdown.Item>
                         <NavDropdown.Item onClick={ () => userLogout(currentUserId) }>Logout</NavDropdown.Item>
@@ -62,4 +62,4 @@ const mapStateToProps = (state:object) => {
     };
 };
 
-export default connect(mapStateToProps, { userLogout })(NavBar);
+export default connect(mapStateToProps, { userLogout })(NavBarComponent);

@@ -17,11 +17,11 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
         editPasswordMessage: null,
     };
 
-    private componentDidMount = async () => {
-        let currentUserId = localStorage.getItem('uid');
-        let data = await this.props.fetchCurrentUser(currentUserId);
-        console.log(data);
-    };
+    // private componentDidMount = async () => {
+    //     let currentUserId = localStorage.getItem('uid');
+    //     let data = await this.props.fetchCurrentUser(currentUserId);
+    //     console.log(data);
+    // };
 
     private handleChange = (event:any) => {
         this.setState({

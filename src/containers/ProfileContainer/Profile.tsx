@@ -1,21 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileComponent from '../../components/profileComponent/profileComponent';
-import { fetchCurrentUser } from '../../redux/actions/userActions/userActions';
+import { fetchCurrentUser, fetchUser } from '../../redux/actions/userActions/userActions';
 import { State, Props } from './config';
 
 class Profile extends React.PureComponent<Props, State> {
     state: State = {
-        userName: '',
-        bio: '',
-        profile_image: '',
-        posts: null
+        user: null
     };
 
     private componentDidMount = async () => {
-        let currentUser = localStorage.getItem('uid');
-        let data = await this.props.fetchCurrentUser(currentUser);
-        console.log('data', data)
+        let currentUserId = localStorage.getItem('uid');
+        if (currentUserId) {
+            let currentUserData = await this.props.fetchCurrentUser(currentUserId);
+        };
+
+        let userData = await this.props.fetchUser(this.props.match.params.username);
+        console.log('userdata', userData);
+        console.log('user state', this.props.user);
+
+        console.log('params', this.props.match.params);
+        console.log('currentUser', this.props.currentUser );
+
+        let { currentUser, match } = this.props;
+
+        if (match.params.username === currentUser.userName) {
+            console.log("it's a match!");
+            this.setState({
+                user: currentUser
+            });
+            console.log('user', this.state.user);
+        };
     };
 
     private handleChange = (event:any) => {
@@ -27,10 +42,17 @@ class Profile extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <ProfileComponent />
+                <ProfileComponent user={ this.state.user }/>
             </>
         );
-    }
+    };
 };
 
-export default connect(null, { fetchCurrentUser })(Profile);
+const mapStateToProps = (state) => {
+    return {
+        user: state.userReducer.user,
+        currentUser: state.userReducer.currentUser
+    };
+};
+
+export default connect(mapStateToProps, { fetchCurrentUser, fetchUser })(Profile);
