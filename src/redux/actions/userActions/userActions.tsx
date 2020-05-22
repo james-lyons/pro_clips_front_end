@@ -26,6 +26,7 @@ const fetchCurrentUser = (currentUser:string) => {
 };
 
 const fetchUser = (user:string) => {
+    console.log(user)
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/user/${ user }`,

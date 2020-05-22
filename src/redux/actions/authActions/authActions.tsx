@@ -2,17 +2,16 @@ import API_URL from '../../../constants';
 import { NewUser } from './config';
 
 const userRegister = (newUser: NewUser) => {
-    const user = { email: newUser.email, password: newUser.password };
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/register`,
-            {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify(newUser)
-            });
+                {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-type': 'application/json' },
+                    body: JSON.stringify(newUser)
+                }
+            );
 
             const data = await res.json();
 
@@ -20,7 +19,7 @@ const userRegister = (newUser: NewUser) => {
                 return dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: data });
             } else if (data.message) {
                 return dispatch({ type: 'USER_REGISTRATION_FULFILLED', payload: data});
-            }
+            };
         } catch (error) {
             dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: error });
         };
@@ -36,7 +35,8 @@ const userLogin = (user:object) => {
                     credentials: 'include',
                     headers: { 'Content-type': 'application/json' },
                     body: JSON.stringify(user)
-                });
+                }
+            );
 
             const data = await res.json();
 
@@ -88,5 +88,5 @@ const userLogout = () => {
 export {
     userRegister,
     userLogin,
-    userLogout,
+    userLogout
 };

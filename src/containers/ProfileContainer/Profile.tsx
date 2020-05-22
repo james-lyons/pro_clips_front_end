@@ -6,7 +6,8 @@ import { State, Props } from './config';
 
 class Profile extends React.PureComponent<Props, State> {
     state: State = {
-        user: null
+        user: null,
+        match: false,
     };
 
     private componentDidMount = async () => {
@@ -16,20 +17,25 @@ class Profile extends React.PureComponent<Props, State> {
         };
 
         let userData = await this.props.fetchUser(this.props.match.params.username);
-        console.log('userdata', userData);
-        console.log('user state', this.props.user);
+        console.log('USER DATA', userData);
+        console.log('USER STATE', this.props.user);
 
-        console.log('params', this.props.match.params);
-        console.log('currentUser', this.props.currentUser );
-
+        console.log('PARAMS', this.props.match.params);
+        
         let { currentUser, match } = this.props;
+        console.log('CURRENT USER', currentUser );
 
         if (match.params.username === currentUser.userName) {
-            console.log("it's a match!");
+            console.log("IT'S A MATCH!");
             this.setState({
-                user: currentUser
+                user: currentUser,
+                match: true
             });
-            console.log('user', this.state.user);
+            console.log('USER', this.state);
+        } else {
+            this.setState({
+                match: false
+            });
         };
     };
 
@@ -42,7 +48,7 @@ class Profile extends React.PureComponent<Props, State> {
     render() {
         return (
             <>
-                <ProfileComponent user={ this.state.user }/>
+                <ProfileComponent user={ this.state.user } match={ this.state.match }/>
             </>
         );
     };

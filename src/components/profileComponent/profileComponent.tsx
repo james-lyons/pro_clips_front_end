@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Props, styles } from './config';
+import { followUser, unfollowUser } from '../../redux/actions/followActions/followActions';
 
 const EditProfileButton: React.SFC = ({}) => {
     return (
@@ -13,39 +14,42 @@ const EditProfileButton: React.SFC = ({}) => {
     );
 };
 
-const FollowButton: React.SFC = ({}) => {
+const FollowButton: React.SFC = ({ userName }) => {
+    if (userName)
     return (
-        <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={() => console.log('hello') }>Follow</button>
+        <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ followUser(userName) }>Follow</button>
     );
 };
 
-
 const ProfileComponent: React.SFC<Props> = ({
     user,
-    currentUser
+    match
 }) => {
 
+    const { userName, profile_image, posts, followers, following, bio } = user;
+ 
     return (
         <>
             <div>
                 <header className="col-lg-6 col-md-10 col-sm-12 mb-4" style={ styles.headerWrapper }>
                     <div style={{ height: '100%' }}>
-                        <button style={{ height: '7rem', width: '7rem', borderRadius: '100%', padding: '0' }} onClick={() => console.log(user)}>
-                            <img src={ user.profile_image } style={{ height: '7rem', borderRadius: '100%' }}/>
-                        </button>
+                        <img src={ profile_image } style={{ height: '7rem', borderRadius: '100%' }}/>
+                        
                     </div>
                     <section style={{ height: '100%' }}>
                         <div style={{ justifyContent: 'center' }}>
-                            <h1 style={ styles.h1 }>{ user.userName }</h1>
-                            { currentUser.id ? <EditProfileButton /> : <FollowButton /> }
+                            <h1 style={ styles.h1 }>{ userName }</h1>
+                            { match ? <EditProfileButton /> : <FollowButton userName={ userName } currentUserName={ }/> }
+                            <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ unfollowUser(userName) }>Follow</button>
+
                         </div>
                         <ul style={ styles.ulWrapper }>
-                            <li style={ styles.li }><span>{ user.posts.length } posts</span></li>
-                            <li style={ styles.li }><a>{ user.followers.length } followers</a></li>
-                            <li style={ styles.li }><a>{ user.following.length } following</a></li>
+                            <li style={ styles.li }><span>{ posts.length } posts</span></li>
+                            <li style={ styles.li }><a>{ followers.length } followers</a></li>
+                            <li style={ styles.li }><a>{ following.length } following</a></li>
                         </ul>
                         <div>
-                            <h1 style={ styles.h1 }>{ user.bio }</h1>
+                            <h1 style={ styles.h1 }>{ bio }</h1>
                         </div>
                     </section>
                 </header>
@@ -61,4 +65,4 @@ const mapStateToProps = (state:any) => {
     };
 };
 
-export default connect(mapStateToProps, null)(ProfileComponent);
+export default connect(mapStateToProps, { followUser, unfollowUser })(ProfileComponent);

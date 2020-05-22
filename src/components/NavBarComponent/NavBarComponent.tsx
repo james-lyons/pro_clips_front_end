@@ -39,7 +39,7 @@ const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>
                     <Nav.Link as={ Link } to="/clipupload">Upload</Nav.Link>
-                    <Nav.Link as={ Link } to={`/${ currentUser.userName }`}>Profile</Nav.Link>
+                    <Nav.Link href={`/${ currentUser.userName }`}>Profile</Nav.Link>
                     <NavDropdown alignRight title={ element } id="basic-nav-dropdown">
                         <NavDropdown.Item as={ Link } to="/accounts">Settings</NavDropdown.Item>
                         <NavDropdown.Item onClick={ () => userLogout(currentUserId) }>Logout</NavDropdown.Item>
