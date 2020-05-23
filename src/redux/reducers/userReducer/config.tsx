@@ -17,7 +17,7 @@ interface User {
     posts: Array<object>,
     followers: Array<object>,
     following: Array<object>,
-    id: string
+    isFollowed: boolean
 };
 
 interface State {

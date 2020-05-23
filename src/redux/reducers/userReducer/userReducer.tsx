@@ -19,7 +19,7 @@ function userReducer(state: State = {
         posts: [],
         followers: [],
         following: [],
-        id: ''
+        isFollowed: false
     },
     errors: null,
     message: null,
@@ -67,7 +67,7 @@ function userReducer(state: State = {
                     posts: action.payload.data.posts,
                     followers: action.payload.data.followers,
                     following: action.payload.data.following,
-                    id: action.payload.data._id,
+                    isFollowed: action.payload.data.isFollowed
                 },
                 errors: null,
                 message: null
@@ -105,6 +105,34 @@ function userReducer(state: State = {
 
         case "DELETE_USER_REJECTED": 
             return { ...state, errors: action.payload.data.errors, message: action.payload.data.message };
+
+        case "FOLLOW_USER_UPDATE_FULFILLED":
+            return {
+                ...state,
+                user: {
+                    userName: action.payload.data.userName,
+                    bio: action.payload.data.bio,
+                    profile_image: action.payload.data.profile_image,
+                    posts: action.payload.data.posts,
+                    followers: action.payload.data.followers,
+                    following: action.payload.data.following,
+                    isFollowed: action.payload.data.isFollowed
+                }
+            };
+
+        case "UNFOLLOW_USER_UPDATE_FULFILLED":
+            return {
+                ...state,
+                user: {
+                    userName: action.payload.data.userName,
+                    bio: action.payload.data.bio,
+                    profile_image: action.payload.data.profile_image,
+                    posts: action.payload.data.posts,
+                    followers: action.payload.data.followers,
+                    following: action.payload.data.following,
+                    isFollowed: action.payload.data.isFollowed
+                }
+            };
 
         default:
             return { ...state }

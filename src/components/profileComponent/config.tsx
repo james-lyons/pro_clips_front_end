@@ -10,8 +10,8 @@ interface User {
     posts: [],
     followers: [],
     following: [],
-    id: string
-};;
+    isFollowed: boolean
+};
 
 interface CurrentUser {
     userName: string,

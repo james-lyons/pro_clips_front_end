@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Props, styles } from './config';
-import { followUser, unfollowUser } from '../../redux/actions/followActions/followActions';
+// import { followUser, unfollowUser } from '../../redux/actions/followActions/followActions';
 
 const EditProfileButton: React.SFC = ({}) => {
     return (
@@ -14,16 +14,22 @@ const EditProfileButton: React.SFC = ({}) => {
     );
 };
 
-const FollowButton: React.SFC = ({ userName }) => {
-    if (userName)
-    return (
-        <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ followUser(userName) }>Follow</button>
-    );
+const FollowButton: React.SFC = ({ userName, isFollowed, followUser, unfollowUser }) => {
+    if (isFollowed) {
+        return (<button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ () => unfollowUser(userName) }>Unfollow</button> )
+    } else {
+        return (
+            <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ () => followUser(userName) }>Follow</button>
+        );
+    };
 };
 
 const ProfileComponent: React.SFC<Props> = ({
     user,
-    match
+    match,
+    isFollowed,
+    followUser,
+    unfollowUser
 }) => {
 
     const { userName, profile_image, posts, followers, following, bio } = user;
@@ -39,9 +45,16 @@ const ProfileComponent: React.SFC<Props> = ({
                     <section style={{ height: '100%' }}>
                         <div style={{ justifyContent: 'center' }}>
                             <h1 style={ styles.h1 }>{ userName }</h1>
-                            { match ? <EditProfileButton /> : <FollowButton userName={ userName } currentUserName={ }/> }
-                            <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ unfollowUser(userName) }>Follow</button>
-
+                            {
+                                match
+                                ? <EditProfileButton />
+                                : <FollowButton
+                                    userName={ userName }
+                                    isFollowed={ isFollowed }
+                                    followUser={ followUser }
+                                    unfollowUser={ unfollowUser }
+                                />
+                            }
                         </div>
                         <ul style={ styles.ulWrapper }>
                             <li style={ styles.li }><span>{ posts.length } posts</span></li>
@@ -65,4 +78,4 @@ const mapStateToProps = (state:any) => {
     };
 };
 
-export default connect(mapStateToProps, { followUser, unfollowUser })(ProfileComponent);
+export default ProfileComponent;
