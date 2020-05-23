@@ -77,7 +77,22 @@ function userReducer(state: State = {
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "EDIT_PROFILE_FULFILLED": 
-            return { ...state, errors: action.payload.errors, message: null }
+            return {
+                    ...state,
+                    currentUser: {
+                        userName: action.payload.data.userName,
+                        bio: action.payload.data.bio,
+                        profile_image: action.payload.data.profile_image,
+                        email: action.payload.data.email,
+                        posts: action.payload.data.posts,
+                        comments: action.payload.data.comments,
+                        followers: action.payload.data.followers,
+                        following: action.payload.data.following,
+                        id: action.payload.data._id,
+                    },
+                    errors: action.payload.errors,
+                    message: null
+                }
 
         case "EDIT_PROFILE_REJECTED": 
             return { ...state, editProfileErrors: action.payload.errors, editProfileMessage: action.payload.message };
