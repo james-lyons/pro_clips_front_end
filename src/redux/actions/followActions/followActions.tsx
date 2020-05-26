@@ -16,6 +16,7 @@ const followUser = (userName: string) => {
             
             const data = await res.json();
             console.log('FOLLOW USER HELLO 2', data);
+            // console.log('FOLLOW USER HELLO 3', data);
 
             if (data.status >= 400) {
                 console.log('error 1')

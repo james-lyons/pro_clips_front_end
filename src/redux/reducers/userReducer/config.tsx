@@ -3,7 +3,7 @@ interface CurrentUser {
     email: string,
     bio: string,
     profile_image: string,
-    posts: Array<object>,
+    clips: Array<object>,
     comments: Array<object>,
     followers: Array<object>,
     following: Array<object>,
@@ -14,7 +14,7 @@ interface User {
     userName: string,
     bio: string,
     profile_image: string,
-    posts: Array<object>,
+    clips: Array<object>,
     followers: Array<object>,
     following: Array<object>,
     isFollowed: boolean

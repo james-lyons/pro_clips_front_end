@@ -3,7 +3,7 @@ interface User {
     email: string,
     bio: string,
     profile_image: string,
-    posts: [],
+    clips: [],
     followers: [],
     following: [],
     id: string

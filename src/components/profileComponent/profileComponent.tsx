@@ -32,7 +32,7 @@ const ProfileComponent: React.SFC<Props> = ({
     unfollowUser
 }) => {
 
-    const { userName, profile_image, posts, followers, following, bio } = user;
+    const { userName, profile_image, clips, followers, following, bio } = user;
  
     return (
         <>
@@ -57,7 +57,7 @@ const ProfileComponent: React.SFC<Props> = ({
                             }
                         </div>
                         <ul style={ styles.ulWrapper }>
-                            <li style={ styles.li }><span>{ posts.length } posts</span></li>
+                            <li style={ styles.li }><span>{ clips.length } clips</span></li>
                             <li style={ styles.li }><a>{ followers.length } followers</a></li>
                             <li style={ styles.li }><a>{ following.length } following</a></li>
                         </ul>
