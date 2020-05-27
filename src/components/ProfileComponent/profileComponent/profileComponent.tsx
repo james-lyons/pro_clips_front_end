@@ -71,11 +71,4 @@ const ProfileComponent: React.SFC<Props> = ({
     );
 };
 
-const mapStateToProps = (state:any) => {
-    return {
-        currentUser: state.userReducer.currentUser,
-        user: state.userReducer.user
-    };
-};
-
 export default ProfileComponent;
