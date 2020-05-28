@@ -131,7 +131,7 @@ function userReducer(state: State = {
                     clips: action.payload.data.clips,
                     followers: action.payload.data.followers,
                     following: action.payload.data.following,
-                    isFollowed: action.payload.data.isFollowed
+                    isFollowed: true
                 }
             };
 
@@ -145,7 +145,7 @@ function userReducer(state: State = {
                     clips: action.payload.data.clips,
                     followers: action.payload.data.followers,
                     following: action.payload.data.following,
-                    isFollowed: action.payload.data.isFollowed
+                    isFollowed: false
                 }
             };
 

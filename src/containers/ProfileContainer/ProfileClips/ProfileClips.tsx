@@ -7,15 +7,18 @@ import { userLogin } from '../../../redux/actions/authActions/authActions';
 
 class ProfileClips extends React.PureComponent<Props, State> {
     state: State = {
-        clipName: '',
         userClips: null
     };
 
-    private componentDidMount = async () => {
-        await this.props.fetchUserClips();
-        this.setState({
-            userClips: this.props.userClips
-        });
+    componentDidMount = async () => {
+        let { user } = this.props;
+        
+        if (user.clips.length > 0) {
+            await this.props.fetchUserClips(user.userName);
+            this.setState({
+                userClips: this.props.userClips
+            });
+        };
     };
 
     render() {

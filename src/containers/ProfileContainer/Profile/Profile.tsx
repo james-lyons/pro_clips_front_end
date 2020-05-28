@@ -13,7 +13,7 @@ class Profile extends React.PureComponent<Props, State> {
         isFollowed: false
     };
 
-    private componentDidMount = async () => {
+    componentDidMount = async () => {
         let currentUserId = localStorage.getItem('uid');
 
         let userData = await this.props.fetchUser(this.props.match.params.username);
@@ -37,17 +37,21 @@ class Profile extends React.PureComponent<Props, State> {
         };
     };
 
-    private followUser = (userName: string) => {
-        this.props.followUser(userName);
+    private followUser = async (userName: string) => {
+        const { followUser } = this.props;
+        await followUser(userName);
         this.setState({
-            isFollowed: true
+            isFollowed: true,
+            user: this.props.user
         });
     };
 
-    private unfollowUser = (userName: string) => {
-        this.props.unfollowUser(userName);
+    private unfollowUser = async (userName: string) => {
+        const { unfollowUser } = this.props;
+        await unfollowUser(userName);
         this.setState({
-            isFollowed: false
+            isFollowed: false,
+            user: this.props.user
         });
     };
 

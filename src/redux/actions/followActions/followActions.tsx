@@ -3,9 +3,7 @@ import API_URL from '../../../constants';
 const followUser = (userName: string) => {
     console.log('USERNAME', userName);
 
-    return async dispatch => {
-        console.log('FOLLOW USER HELLO 1')
-        
+    return async dispatch => {        
         try {
             let res = await fetch(`${ API_URL }/follow/follow/${ userName }`, 
                 {
@@ -15,28 +13,22 @@ const followUser = (userName: string) => {
             );
             
             const data = await res.json();
-            console.log('FOLLOW USER HELLO 2', data);
-            // console.log('FOLLOW USER HELLO 3', data);
 
             if (data.status >= 400) {
                 console.log('error 1')
                 return dispatch({ type: 'FOLLOW_USER_REJECTED', payload: data });
             };
 
-            console.log(data)
-
             dispatch({ type: 'FOLLOW_USER_FULFILLED', payload: data });
             dispatch({ type: 'FOLLOW_USER_UPDATE_FULFILLED', payload: data });
 
         } catch (error) {
             dispatch({ type: "FOLLOW_USER_REJECTED", payload: error });
-            console.log('hello', error);
         };
     };
 };
 
 const unfollowUser = (userName: string) => {
-    console.log('USERNAME', userName);
 
     return async dispatch => {
         console.log('UNFOLLOW USER HELLO 1')
@@ -49,7 +41,6 @@ const unfollowUser = (userName: string) => {
             );
             
             const data = await res.json();
-            console.log('UNFOLLOW USER HELLO 2', data);
 
             if (data.status >= 400) {
                 dispatch({ type: 'FOLLOW_USER_REJECTED', payload: data });
@@ -60,7 +51,6 @@ const unfollowUser = (userName: string) => {
 
         } catch (error) {
             dispatch({ type: "UNFOLLOW_USER_REJECTED", payload: error });
-            console.log(error);
         };
     };
 };

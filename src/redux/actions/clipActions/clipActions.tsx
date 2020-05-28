@@ -54,12 +54,10 @@ const fetchClip = (clipName: string) => {
     };
 };
 
-const fetchUserClips = () => {
-    const userId = localStorage.getItem('uid');
-
+const fetchUserClips = (username: string) => {
     return async dispatch => {
         try {
-            let res = await fetch(`${ API_URL }/clips/clips/${ userId }`,
+            let res = await fetch(`${ API_URL }/clips/clips/${ username }`,
                 {
                     method: 'GET',
                     credentials: 'include'

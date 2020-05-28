@@ -1,18 +1,24 @@
 interface State {
-    user: null | object,
+    user: null | User,
+    match: boolean,
+    isFollowed: boolean
 };
 
 interface Props {
-    fetchUser: () => {},
     user: User,
-    currentUser: CurrentUser
+    currentUser: CurrentUser,
+    match: object,
+    fetchUser: (username: string) => {},
+    followUser: (username: string) => {},
+    unfollowUser: (username: string) => {}
 };
 
 interface User {
     userName: string,
     email: string,
     bio: string,
-    profile_image: string
+    profile_image: string,
+    isFollowed?: boolean
 };
 
 interface CurrentUser {

@@ -22,11 +22,9 @@ const ProfileComponent: React.SFC<{}> = ({ user, userClips }) => {
  
     return (
         <>
-            {/* <div> */}
-                <div style={{ margin: '0 auto', textAlign: 'center' }}>
-                    { userClips && clipMapper(userClips) }
-                </div>
-            {/* </div> */}
+            <div style={{ margin: '0 auto', textAlign: 'center' }}>
+                { userClips && clipMapper(userClips) }
+            </div>
         </>
     );
 };
