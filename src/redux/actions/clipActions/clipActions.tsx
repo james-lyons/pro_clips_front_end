@@ -1,10 +1,11 @@
 import API_URL from '../../../constants';
 
-const uploadClip = (clip: File) => {
+const uploadClip = (clip: File, clip_title: string) => {
     console.log('HELLO 1 CLIP', clip);
 
     const formData = new FormData();
     formData.append('clip', clip);
+    formData.append('title', clip_title);
     console.log(formData);
 
     return async dispatch => {
@@ -33,7 +34,7 @@ const fetchClip = (clipName: string) => {
 
     return async dispatch => {
         try {
-            let res = await fetch(`${ API_URL }/clips/${ clipName }`,
+            let res = await fetch(`${ API_URL }/clips/clip/${ clipName }`,
                 {
                     method: 'GET',
                     credentials: 'include',
@@ -45,20 +46,33 @@ const fetchClip = (clipName: string) => {
             console.log('BIG DATA', data);
             dispatch({ type: 'FETCH_CLIP_FULFILLED', payload: data });
 
-            // let res2 = await fetch(`${ API_URL }/clips/clip/${ data.data.title }`,
-            //     {
-            //         method: 'GET',
-            //         credentials: 'include',
-            //         headers: { 'Content-type': 'application/json' },
-            //     }
-            // );
-            // const data2 = await res2.json();
-            // dispatch({ type: 'FETCH_CLIP_STREAM_FULFILLED', payload: data2 });
-
         } catch (error) {
             console.log(error);
             dispatch({ type: 'FETCH_CLIP_REJECTED', payload: data });
             // dispatch({ type: 'FETCH_CLIP_STREAM_REJECTED', payload: data });
+        };
+    };
+};
+
+const fetchUserClips = () => {
+    const userId = localStorage.getItem('uid');
+
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/clips/clips/${ userId }`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            let data = await res.json();
+            console.log('HELLO FROM FETCHUSERCLIPS: data', data);
+            dispatch({ type: 'FETCH_USER_CLIPS_FULFILLED', payload: data});
+
+        } catch (error) {
+            console.log(error);
+            dispatch({ type: 'FETCH_USER_CLIPS_REJECTED', payload: error})
         };
     };
 };
@@ -70,5 +84,6 @@ const deleteClip = (clip: string) => {
 export {
     uploadClip,
     deleteClip,
-    fetchClip
+    fetchClip,
+    fetchUserClips
 };

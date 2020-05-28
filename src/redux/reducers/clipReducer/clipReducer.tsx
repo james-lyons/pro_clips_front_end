@@ -2,7 +2,8 @@ import { State, Action } from './config';
 
 function clipReducer(state: State = {
     clip: null,
-    clipStream: null,
+    clips: null,
+    userClips: null,
     errors: null,
     message: null
 }, action: Action) {
@@ -20,10 +21,16 @@ function clipReducer(state: State = {
         case "FETCH_CLIP_REJECTED": 
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
-        case "FETCH_CLIP_STREAM_FULFILLED": 
-            return { ...state, clipStream: action.payload.data.clip };
+        case "FETCH_CLIPS_FULFILLED": 
+            return { ...state, clip: action.payload.data.clip };
         
-        case "FETCH_CLIP_STREAM_REJECTED": 
+        case "FETCH_CLIPS_REJECTED": 
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
+
+        case "FETCH_USER_CLIPS_FULFILLED": 
+            return { ...state, userClips: action.payload.data };
+        
+        case "FETCH_USER_CLIPS_REJECTED": 
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         default: 

@@ -3,7 +3,7 @@ interface State {
 };
 
 interface Props {
-
+    fetchUserClips: () => {}
 };
 
 export {

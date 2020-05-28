@@ -1,6 +1,7 @@
 interface State {
-    clip: null | File,
-    clipStream: any,
+    clip: null | object,
+    clips: null | Array<object>,
+    userClips: null | Array<object>,
     errors: null | Array<object>,
     message: null | string
 };

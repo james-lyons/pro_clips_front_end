@@ -2,11 +2,13 @@ import React from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
 
 interface Props {
+    clip_title: string,
     uploadClip: () => {},
-    handleChange: () => {}
+    handleChange: () => {},
+    handleSelect: () => {}
 };
 
-const ClipUploadComponent: React.SFC<Props> = ({ uploadClip, handleChange }) => {
+const ClipUploadComponent: React.SFC<Props> = ({ clip_title, uploadClip, handleChange, handleSelect }) => {
 
     return (
         <>
@@ -20,6 +22,19 @@ const ClipUploadComponent: React.SFC<Props> = ({ uploadClip, handleChange }) => 
                                 type="file"
                                 id="file"
                                 name="clip"
+                                onChange={ handleSelect }
+                            />
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group>
+                            <Form.Control
+                                required
+                                type="text"
+                                id="clip_title"
+                                name="clip_title"
+                                placeholder="Rad 1v5 man"
+                                value={ clip_title }
                                 onChange={ handleChange }
                             />
                         </Form.Group>

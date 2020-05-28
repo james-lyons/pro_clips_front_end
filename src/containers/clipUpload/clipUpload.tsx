@@ -4,7 +4,8 @@ import ClipUploadComponent from '../../components/ClipUploadComponent/ClipUpload
 import { uploadClip } from '../../redux/actions/clipActions/clipActions';
 
 interface State {
-
+    clip: null | object,
+    clip_title: string
 };
 
 interface Props {
@@ -18,42 +19,47 @@ class ClipUpload extends React.PureComponent<Props, State> {
     };
 
     state: State = {
-        clip: null
+        clip: null,
+        clip_title: ''
     };
 
-    private handleChange = (event: any) => {
+    private handleSelect = (event: any) => {
         let files = event.target.files;
         let file = files[0]
 
         console.log('FILES', files);
         console.log('FILE', file);
-        // console.log('FILE.name', file.name);
 
         this.setState({
             clip: file
         });
+    };
 
-        // console.log('STATE', this.state);
-        // console.log(files);
-
-        // let reader = new FileReader();
-        // reader.readAsDataURL(files[0]);
-        // reader.onload = (event => {
-        //     console.log('FILE DATA', event.target.result);
-        // });
+    private handleChange = (event: any) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     };
 
 
     private uploadClip = async () => {
         event.preventDefault();
-        // console.log(this.state.clip);
-        await this.props.uploadClip(this.state.clip)
+        const { clip, clip_title} = this.state;
+        await this.props.uploadClip(clip, clip_title)
     };
 
     render() {
+        const { clip_title } = this.state;
+        const { uploadClip, handleSelect, handleChange } = this;
+
         return (
             <>
-                <ClipUploadComponent uploadClip={ this.uploadClip } handleChange={ this.handleChange }/>
+                <ClipUploadComponent
+                    clip_title={ clip_title }
+                    uploadClip={ uploadClip }
+                    handleSelect={ handleSelect }
+                    handleChange={ handleChange }
+                />
             </>
         );
     }
