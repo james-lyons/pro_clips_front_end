@@ -1,7 +1,7 @@
 interface State {
-    clip: null | object,
-    clips: null | Array<object>,
-    userClips: null | Array<object>,
+    clip: null | Clip,
+    clips: null | Array<Clip>,
+    userClips: null | Array<Clip>,
     errors: null | Array<object>,
     message: null | string
 };
@@ -9,6 +9,13 @@ interface State {
 interface Action {
     type: string,
     payload: object
+};
+
+interface Clip {
+    _id: string,
+    poster: string,
+    title: string,
+    url: string
 };
 
 export {

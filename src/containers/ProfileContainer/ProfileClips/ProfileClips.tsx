@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import ProfileClipsComponent from '../../../components/ProfileComponent/ProfileClipsComponents/ProfileClipsComponent';
 import { State, Props } from './config';
 import { fetchUserClips } from '../../../redux/actions/clipActions/clipActions';
-import { userLogin } from '../../../redux/actions/authActions/authActions';
 
 class ProfileClips extends React.PureComponent<Props, State> {
     state: State = {
-        userClips: null
+        userClips: null,
+        newTitle: ''
     };
 
     componentDidMount = async () => {
@@ -27,13 +27,19 @@ class ProfileClips extends React.PureComponent<Props, State> {
 
         return (
             <>
-                { user && userClips && <ProfileClipsComponent user={ user } userClips={ userClips } /> }
+                {
+                    user && userClips &&
+                    <ProfileClipsComponent
+                        user={ user }
+                        userClips={ userClips }
+                    />
+                }
             </>
         );
     };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
     return {
         user: state.userReducer.user,
         userClips: state.clipReducer.userClips

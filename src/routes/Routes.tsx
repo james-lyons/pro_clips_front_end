@@ -1,14 +1,15 @@
 import React from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import Login from '../containers/AuthContainer/Login';
+import Register from '../containers/AuthContainer/Register';
 import Home from '../containers/HomeContainer/Home';
-import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
 import BrowseClips from '../containers/BrowseContainer/BrowseClips';
+import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
 import Profile from '../containers/ProfileContainer/Profile/Profile';
 import Accounts from '../containers/AccountsContainer/Accounts/Accounts';
 import ClipUpload from '../containers/ClipUpload/ClipUpload';
+import ClipPage from '../containers/ClipPageContainer/ClipPage';
 import Settings from '../containers/SettingsContainer/Settings';
-import Login from '../containers/AuthContainer/Login';
-import Register from '../containers/AuthContainer/Register';
 
 export default withRouter(() => {
 
@@ -42,6 +43,7 @@ export default withRouter(() => {
             <PrivateRoute exact path='/accounts/delete' component={ Accounts } />
             <PrivateRoute exact path='/clipUpload' component={ ClipUpload } />
             <Route exact path='/:username' component={ Profile } />
+            <Route exact path='/clip/:clipId' component={ ClipPage } />
         </Switch>
     );
 });

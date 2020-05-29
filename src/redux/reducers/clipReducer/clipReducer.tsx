@@ -16,7 +16,7 @@ function clipReducer(state: State = {
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "FETCH_CLIP_FULFILLED": 
-            return { ...state, clip: action.payload.data.clip };
+            return { ...state, clip: action.payload.data };
         
         case "FETCH_CLIP_REJECTED": 
             return { ...state, errors: action.payload.errors, message: action.payload.message };
