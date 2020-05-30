@@ -6,7 +6,9 @@ import { fetchClip, editClip, deleteClip } from '../../redux/actions/clipActions
 
 class ClipPage extends React.PureComponent<Props, State> {
     state: State = {
-        clip: null
+        clip: null,
+        clipVis: 'display',
+        newTitle: ''
     };
 
     componentDidMount = async () => {
@@ -21,6 +23,7 @@ class ClipPage extends React.PureComponent<Props, State> {
         this.setState({
             [event.target.name]: event.target.value
         });
+        console.log(this.state);
     };
 
     private handleClipEdit = (clipId: string) => {
@@ -32,11 +35,24 @@ class ClipPage extends React.PureComponent<Props, State> {
         this.props.history.push(`/${ this.props.user.userName }`)
     };
 
+    private showClip = () => {
+        const { clipVis } = this.state;
+
+        if (clipVis === 'display') {
+            this.setState({
+                clipVis: 'none'
+            });
+        } else {
+            this.setState({
+                clipVis: 'display'
+            });
+        };
+        console.log(this.state)
+    };
 
     render() {
-        const { } = this.props;
-        const { clip } = this.state;
-        const { handleChange, handleClipEdit, handleClipDelete } = this;
+        const { clip, clipVis, newTitle } = this.state;
+        const { showClip, handleChange, handleClipEdit, handleClipDelete } = this;
 
         return (
             <>
@@ -44,6 +60,9 @@ class ClipPage extends React.PureComponent<Props, State> {
                     clip && 
                     <ClipPageComponent
                         clip={ clip }
+                        clipVis={ clipVis }
+                        newTitle={ newTitle }
+                        showClip={ showClip }
                         handleChange={ handleChange }
                         handleClipEdit={ handleClipEdit }
                         handleClipDelete={ handleClipDelete }

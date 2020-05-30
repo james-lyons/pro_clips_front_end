@@ -76,7 +76,10 @@ const uploadClip = (clip: File, clip_title: string) => {
 };
 
 const editClip = (clipId: string, newTitle: string) => {
-    console.log('HELLO FROM EDITCLIP 1', clipId);
+    const titleBody = {
+        title: newTitle
+    };
+
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/clips/${ clipId }`, 
@@ -84,17 +87,17 @@ const editClip = (clipId: string, newTitle: string) => {
                     method: 'PUT',
                     credentials: 'include',
                     headers: { 'Content-type': 'application/json' },
-                    body: JSON.stringify(newTitle)
+                    body: JSON.stringify(titleBody)
                 }
             );
             let data = await res.json();
             console.log('HELLO FROM EDITCLIP 2', data);
 
-            dispatch({ type: "CLIP_UPLOAD_FULFILLED", payload: data });
+            dispatch({ type: "CLIP_EDIT_FULFILLED", payload: data });
 
         } catch (error) {
             console.log('HELLO FROM EDITCLIP 3', error);
-            dispatch({ type: "CLIP_UPLOAD_REJECTED", payload: error })
+            dispatch({ type: "CLIP_EDIT_REJECTED", payload: error })
         };
     };
 };

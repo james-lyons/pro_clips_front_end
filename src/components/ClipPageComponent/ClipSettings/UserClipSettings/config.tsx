@@ -1,15 +1,12 @@
-interface State {
-    clip: null | object,
-    clipVis: string,
-    newTitle: string
-};
-
 interface Props {
     clip: Clip,
     match: object,
-    fetchClip: (clipId: string) => {},
     editClip: (clipId: string) => {},
-    deleteClip: (clipId: string) => {},
+    deleteClip: (clipId: string) => {},};
+
+interface State {
+    clipVis: string,
+    newTitle: string,
 };
 
 interface Clip {
@@ -18,9 +15,9 @@ interface Clip {
     title: string,
     key: string,
     url: string
-}
+};
 
 export {
-    State,
-    Props
+    Props,
+    State
 };
