@@ -29,6 +29,7 @@ class ClipPage extends React.PureComponent<Props, State> {
 
     private handleClipDelete = (clipId: string) => {
         this.props.deleteClip(clipId);
+        this.props.history.push(`/${ this.props.user.userName }`)
     };
 
 
@@ -55,7 +56,8 @@ class ClipPage extends React.PureComponent<Props, State> {
 
 const mapStateToProps = (state: any) => {
     return {
-        clip: state.clipReducer.clip
+        clip: state.clipReducer.clip,
+        user: state.userReducer.user
     };
 };
 

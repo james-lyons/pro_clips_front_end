@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, Dropdown, Accordion } from 'react-bootstrap';
 // import { Props, styles } from './config';
@@ -10,14 +11,14 @@ const ProfileComponent: React.SFC<{}> = ({ user, userClips, handleClipEdit, hand
     const clipMapper = (userClips: Array<object>) => {
         const clipArr = userClips.map((clip) =>
             <div key={ clip._id } style={{ display: 'inline-block', margin: '.5 rem' }}>
-                <a href={ `/clip/${ clip._id }` } style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to={ `/clip/${ clip._id }` } style={{ textDecoration: 'none', color: 'black' }}>
                     <Card
                         style={{ display: 'inline-block', margin: '.5rem' }}
                     >
                         <video width={ 300 } height={ 190 } src={ clip.url } controls/>
                         <h1 style={{ fontSize: '1.3rem' }}>{ clip.title }</h1>
                     </Card>
-                </a>
+                </Link>
             </div>
         )
         return clipArr;

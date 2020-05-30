@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Props, styles } from './config';
-// import { followUser, unfollowUser } from '../../redux/actions/followActions/followActions';
 
 const EditProfileButton: React.SFC = ({}) => {
     return (

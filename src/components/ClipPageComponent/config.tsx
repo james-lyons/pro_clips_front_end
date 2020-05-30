@@ -1,5 +1,17 @@
 interface Props {
-    clip: Clip
+    clip: Clip,
+    handleClipEdit: (clipId: string) => {},
+    handleClipDelete: (clipId: string) => {}
+};
+
+interface ClipSettingsProps {
+    clip: Clip,
+};
+
+interface UserClipSettingsProps {
+    clip: Clip,
+    handleClipEdit: (clipId: string) => {},
+    handleClipDelete: (clipId: string) => {}
 };
 
 interface Clip {
@@ -11,5 +23,7 @@ interface Clip {
 }
 
 export {
-    Props
+    Props,
+    ClipSettingsProps,
+    UserClipSettingsProps
 };
