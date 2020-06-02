@@ -46,12 +46,13 @@ const fetchUserClips = (username: string) => {
 };
 
 
-const uploadClip = (clip: File, clip_title: string) => {
+const uploadClip = (clip: File, title: string, game: string) => {
     console.log('HELLO 1 CLIP', clip);
 
     const formData = new FormData();
     formData.append('clip', clip);
-    formData.append('title', clip_title);
+    formData.append('title', title);
+    formData.append('game', game);
     console.log(formData);
 
     return async dispatch => {
