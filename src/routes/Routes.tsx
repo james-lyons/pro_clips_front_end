@@ -34,7 +34,7 @@ export default withRouter(() => {
     return (
         <Switch>
             <Route exact path='/' component={ Home }/>
-            <Route exact path='/FeaturedClips' component={ FeaturedClips } />
+            {/* <Route exact path='/FeaturedClips' component={ FeaturedClips } /> */}
             <Route exact path='/browseClips' component={ BrowseClips } />
             <HideRoute exact path='/login' component={ Login } />
             <HideRoute exact path='/register' component={ Register } />

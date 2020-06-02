@@ -2,6 +2,7 @@ interface State {
     clip: null | Clip,
     clips: null | Array<Clip>,
     userClips: null | Array<Clip>,
+    browseClips: null | Array<Clip>,
     errors: null | Array<object>,
     message: null | string
 };

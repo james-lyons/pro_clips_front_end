@@ -16,7 +16,7 @@ const ProfileComponent: React.SFC<{}> = ({ user, userClips, handleClipEdit, hand
                         style={{ display: 'inline-block', margin: '.5rem' }}
                     >
                         <video width={ 300 } height={ 190 } src={ clip.url } controls/>
-                        <h1 style={{ fontSize: '1.3rem' }}>{ clip.title }</h1>
+                        <h1 style={{ fontSize: '1.3rem' }}>{ clip.title } { clip.game }</h1>
                     </Card>
                 </Link>
             </div>

@@ -1,30 +1,32 @@
 import React from 'react';
-
-interface State {
-
-};
-
-interface Props {
-
-};
+import { connect } from 'react-redux';
+import { fetchBrowseClips } from '../../redux/actions/clipActions/clipActions';
+import { Props, State } from './config';
+import BrowseClipsComponent from '../../components/BrowseComponent/BrowseClipsComponent';
 
 class BrowseClips extends React.PureComponent<Props, State> {
-
-    static defaultProps = {
-
-    };
 
     state: State = {
 
     };
 
+    componentDidMount = async () => {
+        await this.props.fetchBrowseClips();
+    };
+
     render() {
         return (
-            <>
-                <h1>Hi from the Browse Page</h1>
-            </>
+            <div className="col-lg-10 col-md-12 col-sm-12 mb-4" style={{ margin: '0 auto' }}>
+                { this.props.browseClips && <BrowseClipsComponent /> }
+            </div>
         );
     };
 };
 
-export default BrowseClips;
+const mapStateToProps = (state: any) => {
+    return {
+        browseClips: state.clipReducer.browseClips
+    };
+};
+
+export default connect(mapStateToProps, { fetchBrowseClips })(BrowseClips);

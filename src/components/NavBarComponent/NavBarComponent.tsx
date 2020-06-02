@@ -17,7 +17,7 @@ const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav style={{ margin: '0 auto' }}>
-                    <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link>
+                    {/* <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link> */}
                     <Nav.Link as={ Link } to="/browseclips">Browse</Nav.Link>
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>
@@ -34,7 +34,7 @@ const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav style={{ margin: '0 auto' }}>
-                    <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link>
+                    {/* <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link> */}
                     <Nav.Link as={ Link } to="/browseclips">Browse</Nav.Link>
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>

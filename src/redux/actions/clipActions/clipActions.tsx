@@ -36,15 +36,35 @@ const fetchUserClips = (username: string) => {
 
             let data = await res.json();
             console.log('HELLO FROM FETCHUSERCLIPS: data', data);
-            dispatch({ type: 'FETCH_USER_CLIPS_FULFILLED', payload: data});
+            dispatch({ type: 'FETCH_USER_CLIPS_FULFILLED', payload: data });
 
         } catch (error) {
             console.log(error);
-            dispatch({ type: 'FETCH_USER_CLIPS_REJECTED', payload: error})
+            dispatch({ type: 'FETCH_USER_CLIPS_REJECTED', payload: error })
         };
     };
 };
 
+const fetchBrowseClips = (username: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/clips/browseclips`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            let data = await res.json();
+            console.log('HELLO FROM FETCH BROWSE CLIPS: data', data);
+            dispatch({ type: 'FETCH_BROWSE_CLIPS_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            dispatch({ type: 'FETCH_BROWSE_CLIPS_REJECTED', payload: error })
+        };
+    };
+};
 
 const uploadClip = (clip: File, title: string, game: string) => {
     console.log('HELLO 1 CLIP', clip);
@@ -130,6 +150,7 @@ const deleteClip = (clipId: string) => {
 export {
     fetchClip,
     fetchUserClips,
+    fetchBrowseClips,
     uploadClip,
     editClip,
     deleteClip
