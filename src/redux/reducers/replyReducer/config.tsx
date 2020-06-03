@@ -1,10 +1,10 @@
 interface State {
-    comments: {
+    replies: {
         poster: string,
         text: string,
         id: string
     },
-    comment: {
+    reply: {
         poster: string,
         text: string,
         id: string

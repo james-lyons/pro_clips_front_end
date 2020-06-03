@@ -1,10 +1,7 @@
 import React from 'react';
+import { Props } from './config';
 
-interface Props {
-
-};
-
-const CommentComponent: React.SFC<Props> = ({}) => {
+const CommentComponent: React.SFC<Props> = ({ handleChange }) => {
 
     return (
         <>

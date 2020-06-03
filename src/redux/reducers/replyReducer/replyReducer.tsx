@@ -1,12 +1,12 @@
 import { State, Action } from './config';
 
 const commentReducer = (state: State ={
-    comments: {
+    replies: {
         poster: '',
         text: '',
         id: ''
     },
-    comment: {
+    reply: {
         poster: '',
         text: '',
         id: ''
@@ -18,28 +18,28 @@ const commentReducer = (state: State ={
     
     switch(action.type) {
 
-        case "FETCH_COMMENTS_FULFILLED":
+        case "FETCH_REPLIES_FULFILLED":
             return { ...state };
 
-        case "FETCH_COMMENTS_REJECTED":
+        case "FETCH_REPLIES_REJECTED":
             return { ...state };
 
-        case "CREATE_COMMENT_FULFILLED":
+        case "CREATE_REPLY_FULFILLED":
             return { ...state };
 
-        case "CREATE_COMMENT_REJECTED":
+        case "CREATE_REPLY_REJECTED":
             return { ...state };
 
-        case "EDIT_COMMENTS_FULFILLED":
+        case "EDIT_REPLY_FULFILLED":
             return { ...state };
 
-        case "EDIT_COMMENTS_REJECTED":
+        case "EDIT_REPLY_REJECTED":
             return { ...state };
 
-        case "DELETE_COMMENTS_FULFILLED":
+        case "DELETE_REPLY_FULFILLED":
             return { ...state };
 
-        case "DELETE_COMMENTS_REJECTED":
+        case "DELETE_REPLY_REJECTED":
             return { ...state };
 
         default:
