@@ -51,7 +51,7 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
             };
         }
 
-        this.props.history.push('/featuredClips');
+        this.props.history.push('/browseclips');
     };
 
     render() {
