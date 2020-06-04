@@ -1,8 +1,9 @@
 import React from 'react';
-import { Props } from './config';
-import { Card, Dropdown } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import ClipSettings from './ClipSettings/ClipSettings/ClipSettingsComp';
 import UserClipSettings from './ClipSettings/UserClipSettings/UserClipSettingsComp';
+import Comment from '../../containers/CommentContainer/Comments/Comment';
+import { Props } from './config';
 
 // const { userName, profile_image, clips, followers, following, bio } = user;
 
@@ -36,6 +37,7 @@ const ClipPageComponent: React.SFC<Props> = ({
                 />
                 || <ClipSettings clip={ clip } />
             }
+            <Comment clipId={ clip._id }/>
         </Card>
     );
 };

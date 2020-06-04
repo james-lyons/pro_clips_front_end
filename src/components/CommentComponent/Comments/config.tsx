@@ -1,5 +1,7 @@
 interface Props {
-    handleChange: (event: any) => void
+    commentText: null | string,
+    handleChange: (event: any) => void,
+    handleSubmit: () => void
 };
 
 export {
