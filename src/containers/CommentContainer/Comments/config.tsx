@@ -1,14 +1,40 @@
-
 interface State {
-    commentText: null | string
+    comments: null | Array<Comment>,
+    replies: null | Array<Reply>
 };
 
 interface Props {
-    clipId: string,
-    createComment: (commentText: string, clipId: string) => void
+    clip: Clip,
+    fetchComments: (clipId: string) => void,
+    deleteComment: (commentId: string) => void
 };
 
-export { 
+interface Clip {
+    _id: string,
+    poster: string,
+    title: string,
+    key: string,
+    url: string,
+    comments: Array<Comment>
+}
+
+interface Comment {
+    _id: string,
+    comment_text: string,
+    author_name: string,
+    author_id: string,
+    clip_id: string
+};
+
+interface Reply {
+    _id: string,
+    comment_text: string,
+    author_name: string,
+    author_id: string,
+    comment_id: string
+};
+
+export {
     State,
     Props
 };

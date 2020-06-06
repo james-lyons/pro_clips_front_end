@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentComponent from '../../../components/CommentComponent/Comments/commentComponent';
+import CommentFormComp from '../../../components/CommentComponent/CommentForm/commentFormComp';
 import { Props, State } from './config';
-import { createComment } from '../../../redux/actions/commentActions/commentActions';
+import { createComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
 
-class Comment extends React.PureComponent<Props, State> {
+class CommentForm extends React.PureComponent<Props, State> {
 
     state: State = {
         commentText: ''
@@ -19,6 +19,7 @@ class Comment extends React.PureComponent<Props, State> {
     private handleSubmit = async (event: any) => {
         event.preventDefault();
         await this.props.createComment(this.state.commentText, this.props.clipId);
+        await this.props.fetchComments(this.props.clipId);
     };
 
     render() {
@@ -27,7 +28,7 @@ class Comment extends React.PureComponent<Props, State> {
 
         return (
             <div style={{ borderTop: '1px solid grey', marginTop: '1rem' }}>
-                <CommentComponent
+                <CommentFormComp
                     commentText={ commentText }
                     handleChange={ handleChange }
                     handleSubmit={ handleSubmit }
@@ -37,4 +38,4 @@ class Comment extends React.PureComponent<Props, State> {
     };
 };
 
-export default connect(null, { createComment })(Comment);
+export default connect(null, { createComment, fetchComments })(CommentForm);

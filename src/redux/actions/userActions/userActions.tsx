@@ -68,7 +68,8 @@ const editUserProfile = (user:string, profileChanges:object) => {
 
             if (data.status >= 400) {
                 return dispatch({ type: 'EDIT_PROFILE_REJECTED', payload: data });
-            } else if (data.message) {
+            } else {
+                console.log(data)
                 return dispatch({ type: 'EDIT_PROFILE_FULFILLED', payload: data });
             };
 

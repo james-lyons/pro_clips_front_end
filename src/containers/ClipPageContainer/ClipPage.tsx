@@ -16,14 +16,12 @@ class ClipPage extends React.PureComponent<Props, State> {
         this.setState({
             clip: this.props.clip
         });
-        console.log(this.state)
     };
 
     private handleChange = (event: any) => {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state);
     };
 
     private handleClipEdit = (clipId: string) => {
@@ -47,7 +45,6 @@ class ClipPage extends React.PureComponent<Props, State> {
                 clipVis: 'display'
             });
         };
-        console.log(this.state)
     };
 
     render() {

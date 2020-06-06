@@ -1,8 +1,6 @@
 import API_URL from '../../../constants';
 
 const fetchClip = (clipId: string) => {
-    console.log(clipId);
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/clips/clip/${ clipId }`,
@@ -14,12 +12,11 @@ const fetchClip = (clipId: string) => {
             );
 
             let data = await res.json();
-            console.log('BIG DATA', data);
             dispatch({ type: 'FETCH_CLIP_FULFILLED', payload: data });
 
         } catch (error) {
             console.log(error);
-            dispatch({ type: 'FETCH_CLIP_REJECTED', payload: data });
+            dispatch({ type: 'FETCH_CLIP_REJECTED', payload: error });
         };
     };
 };
