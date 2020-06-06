@@ -28,12 +28,6 @@ const commentReducer = (state: State ={
         case "CREATE_COMMENT_REJECTED":
             return { ...state };
 
-        case "EDIT_COMMENTS_FULFILLED":
-            return { ...state };
-
-        case "EDIT_COMMENTS_REJECTED":
-            return { ...state };
-
         case "DELETE_COMMENTS_FULFILLED":
             return { ...state };
 

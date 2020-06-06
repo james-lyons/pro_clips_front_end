@@ -28,30 +28,6 @@ const createReply = (replyText: string, replyId: string) => {
     };
 };
 
-const editReply = (replyText: string, replyId: string) => {
-    let replyBody = { replyText, replyId }
-    
-    return async dispatch => {
-        try {
-            let res = await fetch(`${ API_URL }/replies/`,
-                {
-                    method: 'PUT',
-                    credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
-                    body: JSON.stringify(replyBody)
-                }
-            );
-
-            const data = await res.json();
-            return dispatch({ type: 'EDIT_REPLY_FULFILLED', payload: data });
-
-        } catch (error) {
-            console.log(error);
-            return dispatch({ type: 'EDIT_REPLY_REJECTED', payload: data });
-        };
-    };
-};
-
 const deleteReply = (replyId: string) => {
     return async dispatch => {
         try {
@@ -75,6 +51,5 @@ const deleteReply = (replyId: string) => {
 export {
     fetchReplies,
     createReply,
-    editReply,
     deleteReply
 };

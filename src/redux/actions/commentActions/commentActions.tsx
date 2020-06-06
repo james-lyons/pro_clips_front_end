@@ -46,30 +46,6 @@ const createComment = (commentText: string, clipId: string) => {
     };
 };
 
-const editComment = (commentText: string, clipId: string) => {
-    let commentBody = { commentText, clipId }
-    
-    return async dispatch => {
-        try {
-            let res = await fetch(`${ API_URL }/comments/`,
-                {
-                    method: 'PUT',
-                    credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
-                    body: JSON.stringify(commentBody)
-                }
-            );
-
-            let data = await res.json();
-            return dispatch({ type: 'EDIT_COMMENT_FULFILLED', payload: data });
-
-        } catch (error) {
-            console.log(error);
-            return dispatch({ type: 'EDIT_COMMENT_REJECTED', payload: error });
-        };
-    };
-};
-
 const deleteComment = (commentId: string) => {
     return async dispatch => {
         try {
@@ -95,6 +71,5 @@ const deleteComment = (commentId: string) => {
 export {
     fetchComments,
     createComment,
-    editComment,
     deleteComment
 };
