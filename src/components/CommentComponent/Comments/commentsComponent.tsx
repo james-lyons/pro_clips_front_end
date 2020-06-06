@@ -6,12 +6,6 @@ import { deleteComment, fetchComments } from '../../../redux/actions/commentActi
 import DeleteComment from './deleteComment';
 
 const CommentsComponent: React.SFC<Props> = ({ comments, clip }) => {
-
-    const deleteCommentSubmit = (commentId: string, clipId: string) => {
-        console.log('what da fuck');
-        deleteComment(commentId);
-        fetchComments(clipId);
-    };
     
     const commentMapper = (comments: Array<Comment>, clipId: object) => {
         const commentArray = comments.map((comment) =>

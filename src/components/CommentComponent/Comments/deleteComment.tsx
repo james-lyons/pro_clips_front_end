@@ -17,13 +17,13 @@ class DeleteComment extends React.PureComponent <Props> {
     };
 
     render() {
-
+        const currentUser = localStorage.getItem('uid');
         const { handleSubmit } = this;
         const { commentId, clipId } = this.props;
 
         return (
             <>
-                <button onClick={ () => handleSubmit(commentId, clipId) }>Delete</button>
+                { currentUser && <button onClick={ () => handleSubmit(commentId, clipId) }>Delete</button> }
             </>
         );
     };
