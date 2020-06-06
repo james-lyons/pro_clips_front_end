@@ -1,13 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
-
-interface Props {
-    commentId: string,
-    clipId: string,
-    deleteComment: (commentId: string) => void,
-    fetchComments: (clipId: string) => void,
-};
+import { deleteComment, fetchComments } from '../../../../redux/actions/commentActions/commentActions';
+import { Props } from './config';
 
 class DeleteComment extends React.PureComponent <Props> {
 
@@ -19,11 +13,14 @@ class DeleteComment extends React.PureComponent <Props> {
     render() {
         const currentUser = localStorage.getItem('uid');
         const { handleSubmit } = this;
-        const { commentId, clipId } = this.props;
+        const { comment, clip } = this.props;
 
         return (
             <>
-                { currentUser && <button onClick={ () => handleSubmit(commentId, clipId) }>Delete</button> }
+                {
+                    currentUser === comment.author_id &&
+                    <button onClick={ () => handleSubmit(comment._id, clip._id) }>Delete</button>
+                }
             </>
         );
     };

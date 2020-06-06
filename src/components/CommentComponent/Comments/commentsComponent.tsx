@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import { Props, Comment } from './config';
 import { deleteComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
-import DeleteComment from './deleteComment';
+import DeleteComment from './DeleteComment/deleteComment';
 
 const CommentsComponent: React.SFC<Props> = ({ comments, clip }) => {
     
@@ -15,7 +15,7 @@ const CommentsComponent: React.SFC<Props> = ({ comments, clip }) => {
                 >
                     <div style={{ display: 'grid', gridTemplateColumns: '90% 10%', width: '100%'}}>
                         <h1 style={{ fontSize: '1.3rem' }}>{ comment.author_name }: { comment.comment_text } </h1>
-                        <DeleteComment commentId={ comment._id } clipId={ clipId } />
+                        <DeleteComment comment={ comment } clip={ clip } />
                     </div>
                 </Card>
             </div>
