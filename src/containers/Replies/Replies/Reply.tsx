@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ReplyComponent from '../../../components/CommentComponent/Replies/replyComponent';
+import ReplyComponent from '../../../components/Replies/Replies/replyComponent';
 import { Props, State } from './config';
 
 class Reply extends React.PureComponent<Props, State> {

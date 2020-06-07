@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentsComponent from '../../../components/CommentComponent/Comments/commentsComponent';
+import CommentsComponent from '../../../components/CommentComponent/Comments/Comments/commentsComponent';
 import { fetchComments, deleteComment } from '../../../redux/actions/commentActions/commentActions';
 import { State, Props } from './config';
 
 class Comments extends React.PureComponent<Props, State> {
     state: State = {
         comments: null,
-        replies: null
+        replies: null,
+        replyRef: null
     };
 
     componentDidMount = async () => {
@@ -27,11 +28,32 @@ class Comments extends React.PureComponent<Props, State> {
         await this.props.fetchComments(this.props.clip._id);
     };
 
+    private handleReplyForm = (commentId: string) => {
+        if (commentId === this.state.replyRef) {
+            this.setState({
+                replyRef: null
+            });
+        } else {
+            this.setState({
+                replyRef: commentId
+            });
+        };
+        console.log(this.state.replyRef);
+    };
+
     render() {
+
+        const { handleReplyForm } = this;
+        const { replyRef } = this.state;
 
         return (
             <>
-                <CommentsComponent comments={ this.props.comments } deleteComment= { this.deleteComment }/>
+                <CommentsComponent
+                    replyRef={ replyRef }
+                    comments={ this.props.comments }
+                    handleReplyForm={ handleReplyForm }
+                    deleteComment= { this.deleteComment }
+                />
             </>
         );
     };

@@ -1,4 +1,5 @@
 interface State {
+    replyRef: null | string,
     comments: null | Array<Comment>,
     replies: null | Array<Reply>
 };

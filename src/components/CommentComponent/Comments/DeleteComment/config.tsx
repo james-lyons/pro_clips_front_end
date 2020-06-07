@@ -1,13 +1,13 @@
 interface Props {
     comment: Comment,
-    clip: Clip,
+    clipId: string,
     deleteComment: (commentId: string) => void,
     fetchComments: (clipId: string) => void,
 };
 
 interface Clip {
-    _id: string
-}
+    _id?: string
+};
 
 interface Comment {
     author_id: string,

@@ -1,8 +1,9 @@
 interface Props {
-    comments: null | Array<Comment>,
     clip: null | object,
-    deleteComment: () => void
-}
+    replyRef: null | string,
+    comments: null | Array<Comment>,
+    handleReplyForm: (commentId: string) => void
+};
 
 interface Comment {
     _id: string,
