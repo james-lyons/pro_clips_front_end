@@ -10,10 +10,31 @@ interface Comment {
     comment_text: string,
     author_name: string,
     author_id: string,
-    clip_id: string
+    clip_id: string,
+    replies: Array<Reply>,
+    likes: Array<string>
 };
 
+interface Reply {
+    author_name: string,
+    _id: string,
+    author_id: string,
+    comment_id: string,
+    likes: Array<string>
+};
+
+interface Clip {
+    
+};
+
+interface ReplyRef {
+    replyRef: null | string
+
+}
+
 export {
+    Clip,
     Props,
-    Comment
+    Comment,
+    ReplyRef
 };

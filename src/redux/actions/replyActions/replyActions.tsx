@@ -4,12 +4,14 @@ const fetchReplies = () => {
     console.log('hi');
 };
 
-const createReply = (replyText: string, replyId: string) => {
-    let replyBody = { replyText, replyId }
+const createReply = (replyText: string, commentId: string) => {
+    let replyBody = { replyText }
     
+    console.log('HELLO 1 FROM CREATEREPLY', replyBody)
+
     return async dispatch => {
         try {
-            let res = await fetch(`${ API_URL }/replies/`,
+            let res = await fetch(`${ API_URL }/replies/${ commentId }`,
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -19,6 +21,9 @@ const createReply = (replyText: string, replyId: string) => {
             );
 
             const data = await res.json();
+
+            console.log('HELLO 1 FROM CREATEREPLY', data)
+
             return dispatch({ type: 'CREATE_REPLY_FULFILLED', payload: data });
 
         } catch (error) {

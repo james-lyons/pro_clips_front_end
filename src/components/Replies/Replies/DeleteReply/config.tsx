@@ -1,10 +1,15 @@
 interface Props {
+    reply: Reply,
     clipId: string,
-    replies: Array<Reply>
+    deleteReply: (replyId: string) => void,
+    fetchComments: (clipId: string) => void,
+};
+
+interface Clip {
+    _id?: string
 };
 
 interface Reply {
-    reply_text: string,
     author_name: string,
     _id: string,
     author_id: string,
@@ -13,6 +18,5 @@ interface Reply {
 };
 
 export {
-    Props,
-    Reply
+    Props
 };

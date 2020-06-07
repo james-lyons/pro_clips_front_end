@@ -12,9 +12,9 @@ const ReplyFormC: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }
                 <Form.Group>
                     <Form.Control
                         type="text"
-                        name="commentText"
+                        name="replyText"
                         value={ replyText }
-                        placeholder='Add a comment'
+                        placeholder='Reply'
                         onChange={ handleChange }
                     />
                 </Form.Group>

@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
-import { Props, Comment } from './config';
+import { Props, Comment, Clip, ReplyRef } from './config';
 import { deleteComment, fetchComments } from '../../../../redux/actions/commentActions/commentActions';
 import DeleteComment from '../DeleteComment/deleteComment';
+// import Replies from '../../../../containers/Replies/Replies/Replies';
+import RepliesComp from '../../../Replies/Replies/RepliesC';
 import ReplyForm from '../../../../containers/Replies/ReplyForm/ReplyForm';
 
 const CommentsComponent: React.SFC<Props> = ({
     clip, replyRef, comments, handleReplyForm
 })=> {
     
-    const commentMapper = (comments: Array<Comment>, clipId: object, replyRef: null | string) => {
+    const commentMapper = (comments: Array<Comment>, clipId: string, replyRef: ReplyRef) => {
         const commentArray = comments.map((comment) =>
             <div key={ comment._id } style={{ margin: '.5 rem' }}>
                 <Card
@@ -18,10 +20,11 @@ const CommentsComponent: React.SFC<Props> = ({
                 >
                     <div style={{ display: 'grid', gridTemplateColumns: '80% 10% 10%', width: '100%'}}>
                         <h1 style={{ fontSize: '1.3rem' }}>{ comment.author_name }: { comment.comment_text } </h1>
-                        <DeleteComment comment={ comment } clipId={ clipId } />
                         <button onClick={ () => handleReplyForm(comment._id) }>Reply</button>
+                        <DeleteComment comment={ comment } clipId={ clipId } />
                     </div>
-                    { replyRef === comment._id && <ReplyForm />}
+                    { comment.replies && <RepliesComp replies={ comment.replies } clipId={ clipId }/> }
+                    { replyRef === comment._id && <ReplyForm commentId={ comment._id }/>}
                 </Card>
             </div>
         );
