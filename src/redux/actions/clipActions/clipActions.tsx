@@ -144,11 +144,54 @@ const deleteClip = (clipId: string) => {
     };
 };
 
+const likeClip = (clipId: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/clips/like/${ clipId }`,
+                {
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            console.log('big data', data)
+            return dispatch({ type: 'DELETE_CLIP_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'DELETE_CLIP_REJECTED', payload: error });
+        };
+    };
+};
+
+const unlikeClip = (clipId: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/clips/unlike/${ clipId }`,
+                {
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            return dispatch({ type: 'LIKE_CLIP_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'UNLIKE_CLIP_REJECTED', payload: error });
+        };
+    };
+};
+
 export {
     fetchClip,
     fetchUserClips,
     fetchBrowseClips,
     uploadClip,
     editClip,
-    deleteClip
+    deleteClip,
+    likeClip,
+    unlikeClip
 };

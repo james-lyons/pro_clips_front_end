@@ -46,6 +46,12 @@ function clipReducer(state: State = {
         case "FETCH_BROWSE_CLIPS_REJECTED": 
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
+        case "LIKE_CLIP_FULFILLED": 
+            return { ...state };
+        
+        case "UNLIKE_CLIP_REJECTED": 
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
+
         default: 
             return { ...state };
     };

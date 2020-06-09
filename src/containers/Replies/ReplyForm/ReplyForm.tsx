@@ -22,6 +22,7 @@ class ReplyForm extends React.PureComponent<Props, State> {
         event.preventDefault();
         await this.props.createReply(this.state.replyText, this.props.commentId);
         await this.props.fetchComments(this.props.clip._id);
+        this.setState({ replyText: '' });
     };
 
     render() {

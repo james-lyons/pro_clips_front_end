@@ -68,8 +68,50 @@ const deleteComment = (commentId: string) => {
     };
 };
 
+const likeComment = (commentId: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/comments/like/${ commentId }`,
+                {
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            return dispatch({ type: 'DELETE_COMMENT_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'DELETE_COMMENT_REJECTED', payload: error });
+        };
+    };
+};
+
+const unlikeComment = (commentId: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/comments/unlike/${ commentId }`,
+                {
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            return dispatch({ type: 'LIKE_COMMENT_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'UNLIKE_COMMENT_REJECTED', payload: error });
+        };
+    };
+};
+
 export {
     fetchComments,
     createComment,
-    deleteComment
+    deleteComment,
+    likeComment,
+    unlikeComment
 };

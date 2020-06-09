@@ -28,7 +28,7 @@ const createReply = (replyText: string, commentId: string) => {
 
         } catch (error) {
             console.log(error);
-            return dispatch({ type: 'CREATE_REPLY_REJECTED', payload: data });
+            return dispatch({ type: 'CREATE_REPLY_REJECTED', payload: error });
         };
     };
 };
@@ -48,7 +48,47 @@ const deleteReply = (replyId: string) => {
 
         } catch (error) {
             console.log(error);
-            return dispatch({ type: 'DELETE_REPLY_REJECTED', payload: data });
+            return dispatch({ type: 'DELETE_REPLY_REJECTED', payload: error });
+        };
+    };
+};
+
+const likeReply = (replyId: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/replies/like/${ replyId }`,
+                {
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            return dispatch({ type: 'DELETE_REPLY_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'DELETE_REPLY_REJECTED', payload: error });
+        };
+    };
+};
+
+const unlikeReply = (replyId: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/replies/unlike/${ replyId }`,
+                {
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            return dispatch({ type: 'LIKE_REPLY_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'UNLIKE_REPLY_REJECTED', payload: error });
         };
     };
 };
@@ -56,5 +96,7 @@ const deleteReply = (replyId: string) => {
 export {
     fetchReplies,
     createReply,
-    deleteReply
+    deleteReply,
+    likeReply,
+    unlikeReply
 };

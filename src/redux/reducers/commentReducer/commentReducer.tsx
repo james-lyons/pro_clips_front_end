@@ -34,6 +34,12 @@ const commentReducer = (state: State ={
         case "DELETE_COMMENTS_REJECTED":
             return { ...state };
 
+        case "LIKE_COMMENT_FULFILLED": 
+            return { ...state };
+    
+        case "UNLIKE_COMMENT_REJECTED": 
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
+
         default:
             return { ...state };
     };
