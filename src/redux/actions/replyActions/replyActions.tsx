@@ -54,6 +54,7 @@ const deleteReply = (replyId: string) => {
 };
 
 const likeReply = (replyId: string) => {
+    console.log('hello');
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/replies/like/${ replyId }`,

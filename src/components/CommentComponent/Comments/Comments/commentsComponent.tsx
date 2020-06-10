@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
-import { Props, Comment, Clip, ReplyRef } from './config';
-import { deleteComment, fetchComments } from '../../../../redux/actions/commentActions/commentActions';
+import { Props, Comment, ReplyRef } from './config';
+import { deleteComment, fetchComments, likeComment, unlikeComment  } from '../../../../redux/actions/commentActions/commentActions';
 import DeleteComment from '../DeleteComment/deleteComment';
 // import Replies from '../../../../containers/Replies/Replies/Replies';
 import RepliesComp from '../../../Replies/Replies/RepliesC';
@@ -25,6 +25,8 @@ const CommentsComponent: React.SFC<Props> = ({
                     </div>
                     { comment.replies && <RepliesComp replies={ comment.replies } clipId={ clipId }/> }
                     { replyRef === comment._id && <ReplyForm commentId={ comment._id }/>}
+                    <button onClick={ likeComment(comment._id) }>like comment</button>
+                    <button onClick={ unlikeComment(comment._id) }>unlike comment</button>
                 </Card>
             </div>
         );
@@ -45,4 +47,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-export default connect(mapStateToProps, { deleteComment, fetchComments })(CommentsComponent);
+export default connect(mapStateToProps, { deleteComment, fetchComments, likeComment, unlikeComment })(CommentsComponent);

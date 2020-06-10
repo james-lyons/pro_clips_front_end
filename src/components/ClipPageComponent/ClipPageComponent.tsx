@@ -42,8 +42,8 @@ const ClipPageComponent: React.SFC<Props> = ({
             }
             <Comments />
             <CommentForm clipId={ clip._id }/>
-            <button onClick={ likeClip(clip._id) }>like</button>
-            <button onClick={ unlikeClip(clip._id) }>unlike</button>
+            <button onClick={ likeClip(clip._id) }>like clip</button>
+            <button onClick={ unlikeClip(clip._id) }>unlike clip</button>
         </Card>
     );
 };

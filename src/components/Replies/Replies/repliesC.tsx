@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import DeleteReply from './DeleteReply/deleteReply';
+import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
 import { Card } from 'react-bootstrap';
 import { Props, Reply } from './config';
 
@@ -15,6 +17,8 @@ const RepliesComp: React.SFC<Props> = ({ replies, clipId }) => {
                         <h1 style={{ fontSize: '1.3rem' }}>{ reply.author_name }: { reply.reply_text } </h1>
                         <DeleteReply reply={ reply } clipId={ clipId } />
                     </div>
+                    <button onClick={ likeReply(reply._id) }>like reply</button>
+                    <button onClick={ unlikeReply(reply._id) }>unlike reply</button>
                 </Card>
             </div>
         );
@@ -28,4 +32,4 @@ const RepliesComp: React.SFC<Props> = ({ replies, clipId }) => {
     );
 };
 
-export default RepliesComp;
+export default connect(null, { likeReply, unlikeReply })(RepliesComp);
