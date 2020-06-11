@@ -1,5 +1,6 @@
 interface Props {
     clipId: string,
+    commentId: string,
     replies: Array<Reply>
 };
 

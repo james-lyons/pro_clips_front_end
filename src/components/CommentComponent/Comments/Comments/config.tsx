@@ -23,14 +23,9 @@ interface Reply {
     likes: Array<string>
 };
 
-interface Clip {
-    
-};
-
 interface ReplyRef {
     replyRef: null | string
-
-}
+};
 
 export {
     Clip,

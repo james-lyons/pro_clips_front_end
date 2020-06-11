@@ -21,6 +21,23 @@ const ClipPageComponent: React.SFC<Props> = ({
 }) => {
     const currentUser = localStorage.getItem('uid');
 
+    const renderLikeButton = () => {
+        let i = clip.likes.indexOf(currentUser)
+        if (!currentUser) {
+            return (
+                <button onClick={ () => alert('login to like, comment, and follow!') }>like clip</button>
+            );
+        } else if (i >= 0) {
+            return (
+                <button onClick={ unlikeClip(clip._id) }>unlike clip</button>
+            )
+        } else {
+            return (
+                <button onClick={ likeClip(clip._id) }>like clip</button>
+            );
+        };
+    };
+
     return (
         <Card
             key={ clip._id }
@@ -42,8 +59,7 @@ const ClipPageComponent: React.SFC<Props> = ({
             }
             <Comments />
             <CommentForm clipId={ clip._id }/>
-            <button onClick={ likeClip(clip._id) }>like clip</button>
-            <button onClick={ unlikeClip(clip._id) }>unlike clip</button>
+            { renderLikeButton() }
         </Card>
     );
 };

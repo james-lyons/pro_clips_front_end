@@ -11,6 +11,25 @@ import ReplyForm from '../../../../containers/Replies/ReplyForm/ReplyForm';
 const CommentsComponent: React.SFC<Props> = ({
     clip, replyRef, comments, handleReplyForm
 })=> {
+
+    const currentUser = localStorage.getItem('uid');
+
+    const renderLikeButton = (comment) => {
+        let i = comment.likes.indexOf(currentUser)
+        if (!currentUser) {
+            return (
+                <button onClick={ () => alert('login to like, comment, and follow!') }>like comment</button>
+            );
+        } else if (i >= 0) {
+            return (
+                <button onClick={ unlikeComment(comment._id) }>unlike comment</button>
+            )
+        } else {
+            return (
+                <button onClick={ likeComment(comment._id) }>like comment</button>
+            );
+        };
+    };
     
     const commentMapper = (comments: Array<Comment>, clipId: string, replyRef: ReplyRef) => {
         const commentArray = comments.map((comment) =>
@@ -23,10 +42,15 @@ const CommentsComponent: React.SFC<Props> = ({
                         <button onClick={ () => handleReplyForm(comment._id) }>Reply</button>
                         <DeleteComment comment={ comment } clipId={ clipId } />
                     </div>
-                    { comment.replies && <RepliesComp replies={ comment.replies } clipId={ clipId }/> }
+                    {
+                        comment.replies &&
+                        <RepliesComp
+                            replies={ comment.replies }
+                            clipId={ clipId }
+                        />
+                    }
                     { replyRef === comment._id && <ReplyForm commentId={ comment._id }/>}
-                    <button onClick={ likeComment(comment._id) }>like comment</button>
-                    <button onClick={ unlikeComment(comment._id) }>unlike comment</button>
+                    { renderLikeButton(comment) }
                 </Card>
             </div>
         );
