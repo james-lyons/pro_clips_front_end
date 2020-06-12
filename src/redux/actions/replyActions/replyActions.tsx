@@ -44,7 +44,8 @@ const deleteReply = (replyId: string) => {
             );
 
             const data = await res.json();
-            return dispatch({ type: 'DELETE_REPLY_FULFILLED', payload: data });
+            dispatch({ type: 'LIKE_REPLY_FULFILLED', payload: data });
+            return dispatch({ type: 'FETCH_REPLYS_FULFILLED', payload: data.data });
 
         } catch (error) {
             console.log(error);
@@ -65,11 +66,11 @@ const likeReply = (replyId: string) => {
             );
 
             const data = await res.json();
-            return dispatch({ type: 'DELETE_REPLY_FULFILLED', payload: data });
+            return dispatch({ type: 'UNLIKE_REPLY_FULFILLED', payload: data });
 
         } catch (error) {
             console.log(error);
-            return dispatch({ type: 'DELETE_REPLY_REJECTED', payload: error });
+            return dispatch({ type: 'LIKE_REPLY_REJECTED', payload: error });
         };
     };
 };
@@ -85,7 +86,7 @@ const unlikeReply = (replyId: string) => {
             );
 
             const data = await res.json();
-            return dispatch({ type: 'LIKE_REPLY_FULFILLED', payload: data });
+            return dispatch({ type: 'UNLIKE_REPLY_FULFILLED', payload: data });
 
         } catch (error) {
             console.log(error);

@@ -2,35 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import { Props, Comment, ReplyRef } from './config';
-import { deleteComment, fetchComments, likeComment, unlikeComment  } from '../../../../redux/actions/commentActions/commentActions';
+import { likeComment, unlikeComment  } from '../../../../redux/actions/commentActions/commentActions';
 import DeleteComment from '../DeleteComment/deleteComment';
 // import Replies from '../../../../containers/Replies/Replies/Replies';
 import RepliesComp from '../../../Replies/Replies/RepliesC';
 import ReplyForm from '../../../../containers/Replies/ReplyForm/ReplyForm';
+import LikeCommentComp from '../LikeComment/LikeComment';
 
 const CommentsComponent: React.SFC<Props> = ({
     clip, replyRef, comments, handleReplyForm
 })=> {
 
-    const currentUser = localStorage.getItem('uid');
-
-    const renderLikeButton = (comment) => {
-        let i = comment.likes.indexOf(currentUser)
-        if (!currentUser) {
-            return (
-                <button onClick={ () => alert('login to like, comment, and follow!') }>like comment</button>
-            );
-        } else if (i >= 0) {
-            return (
-                <button onClick={ unlikeComment(comment._id) }>unlike comment</button>
-            )
-        } else {
-            return (
-                <button onClick={ likeComment(comment._id) }>like comment</button>
-            );
-        };
-    };
-    
     const commentMapper = (comments: Array<Comment>, clipId: string, replyRef: ReplyRef) => {
         const commentArray = comments.map((comment) =>
             <div key={ comment._id } style={{ margin: '.5 rem' }}>
@@ -50,7 +32,7 @@ const CommentsComponent: React.SFC<Props> = ({
                         />
                     }
                     { replyRef === comment._id && <ReplyForm commentId={ comment._id }/>}
-                    { renderLikeButton(comment) }
+                    <LikeCommentComp comment={ comment } />
                 </Card>
             </div>
         );
@@ -71,4 +53,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-export default connect(mapStateToProps, { deleteComment, fetchComments, likeComment, unlikeComment })(CommentsComponent);
+export default connect(mapStateToProps, { likeComment, unlikeComment })(CommentsComponent);

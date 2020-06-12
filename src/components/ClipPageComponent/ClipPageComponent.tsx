@@ -7,8 +7,7 @@ import CommentForm from '../../containers/CommentContainer/CommentForm/CommentFo
 import Comments from '../../containers/CommentContainer/Comments/Comments';
 import { Props } from './config';
 import { likeClip, unlikeClip } from '../../redux/actions/clipActions/clipActions';
-
-// const { userName, profile_image, clips, followers, following, bio } = user;
+import LikeClip from './LikeClip/LikeClipComp';
 
 const ClipPageComponent: React.SFC<Props> = ({
     clip,
@@ -20,23 +19,6 @@ const ClipPageComponent: React.SFC<Props> = ({
     handleClipDelete
 }) => {
     const currentUser = localStorage.getItem('uid');
-
-    const renderLikeButton = () => {
-        let i = clip.likes.indexOf(currentUser)
-        if (!currentUser) {
-            return (
-                <button onClick={ () => alert('login to like, comment, and follow!') }>like clip</button>
-            );
-        } else if (i >= 0) {
-            return (
-                <button onClick={ unlikeClip(clip._id) }>unlike clip</button>
-            )
-        } else {
-            return (
-                <button onClick={ likeClip(clip._id) }>like clip</button>
-            );
-        };
-    };
 
     return (
         <Card
@@ -59,7 +41,7 @@ const ClipPageComponent: React.SFC<Props> = ({
             }
             <Comments />
             <CommentForm clipId={ clip._id }/>
-            { renderLikeButton() }
+            <LikeClip />
         </Card>
     );
 };

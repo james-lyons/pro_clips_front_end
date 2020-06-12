@@ -1,6 +1,7 @@
 import API_URL from '../../../constants';
 
 const fetchComments = (clipId: string) => {
+    console.log('hello from fetchComments 1: clipId', clipId)
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/comments/${ clipId }`,
@@ -11,7 +12,7 @@ const fetchComments = (clipId: string) => {
             );
 
             let data = await res.json();
-            console.log('FETCH COMMENTS DATA', data);
+            console.log('hello from fetchComments 2: data', data)
 
             return dispatch({ type: "FETCH_COMMENTS_FULFILLED", payload: data.data });
 
@@ -23,9 +24,12 @@ const fetchComments = (clipId: string) => {
 };
 
 const createComment = (commentText: string, clipId: string) => {
+    console.log('create comment 1')
     let commentBody = { commentText, clipId }
     
     return async dispatch => {
+        console.log('create comment 2')
+
         try {
             let res = await fetch(`${ API_URL }/comments/`,
                 {
@@ -47,6 +51,7 @@ const createComment = (commentText: string, clipId: string) => {
 };
 
 const deleteComment = (commentId: string) => {
+    console.log('Hello from deleteComment 1: commentId', commentId);
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/comments/${ commentId }`,
@@ -57,28 +62,8 @@ const deleteComment = (commentId: string) => {
             );
 
             const data = await res.json();
-            console.log('big data', data);
+            console.log('Hello from deleteComment 2: commentId', data);
             
-            return dispatch({ type: 'DELETE_COMMENT_FULFILLED', payload: data });
-
-        } catch (error) {
-            console.log(error);
-            return dispatch({ type: 'DELETE_COMMENT_REJECTED', payload: data });
-        };
-    };
-};
-
-const likeComment = (commentId: string) => {
-    return async dispatch => {
-        try {
-            let res = await fetch(`${ API_URL }/comments/like/${ commentId }`,
-                {
-                    method: 'POST',
-                    credentials: 'include'
-                }
-            );
-
-            const data = await res.json();
             return dispatch({ type: 'DELETE_COMMENT_FULFILLED', payload: data });
 
         } catch (error) {
@@ -88,8 +73,36 @@ const likeComment = (commentId: string) => {
     };
 };
 
-const unlikeComment = (commentId: string) => {
+const likeComment = (commentId: string) => {
+
     return async dispatch => {
+        console.log('hello from likeComment 1')
+
+        try {
+            let res = await fetch(`${ API_URL }/comments/like/${ commentId }`,
+                {
+                    method: 'POST',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            console.log('Hello from like comment 2: data', data)
+            
+            return dispatch({ type: 'LIKE_COMMENT_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'LIKE_COMMENT_REJECTED', payload: error });
+        };
+    };
+};
+
+const unlikeComment = (commentId: string) => {
+    console.log('hello from unlike comment 1: commentId', commentId)
+
+    return async dispatch => {
+
         try {
             let res = await fetch(`${ API_URL }/comments/unlike/${ commentId }`,
                 {
@@ -99,7 +112,7 @@ const unlikeComment = (commentId: string) => {
             );
 
             const data = await res.json();
-            return dispatch({ type: 'LIKE_COMMENT_FULFILLED', payload: data });
+            return dispatch({ type: 'UNLIKE_COMMENT_FULFILLED', payload: data });
 
         } catch (error) {
             console.log(error);

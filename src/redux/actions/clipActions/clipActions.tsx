@@ -1,6 +1,7 @@
 import API_URL from '../../../constants';
 
 const fetchClip = (clipId: string) => {
+    console.log('fetchClip 1: clipId', clipId)
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/clips/clip/${ clipId }`,
@@ -13,6 +14,8 @@ const fetchClip = (clipId: string) => {
 
             let data = await res.json();
             dispatch({ type: 'FETCH_CLIP_FULFILLED', payload: data });
+
+            console.log('fetchClip 2: data', data)
 
         } catch (error) {
             console.log(error);
@@ -156,11 +159,12 @@ const likeClip = (clipId: string) => {
 
             const data = await res.json();
             console.log('big data', data)
-            return dispatch({ type: 'DELETE_CLIP_FULFILLED', payload: data });
+            dispatch({ type: 'LIKE_CLIP_FULFILLED', payload: data });
+            return dispatch({ type: 'FETCH_CLIP_FULFILLED', payload: data });
 
         } catch (error) {
             console.log(error);
-            return dispatch({ type: 'DELETE_CLIP_REJECTED', payload: error });
+            return dispatch({ type: 'LIKE_CLIP_REJECTED', payload: error });
         };
     };
 };
@@ -176,7 +180,9 @@ const unlikeClip = (clipId: string) => {
             );
 
             const data = await res.json();
-            return dispatch({ type: 'LIKE_CLIP_FULFILLED', payload: data });
+            console.log('big data', data)
+            dispatch({ type: 'UNLIKE_CLIP_FULFILLED', payload: data });
+            return dispatch({ type: 'FETCH_CLIP_FULFILLED', payload: data });
 
         } catch (error) {
             console.log(error);
