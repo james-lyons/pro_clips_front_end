@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ClipUploadComponent from '../../components/ClipUploadComponent/ClipUploadComponent';
+import ClipUploadComponent from '../../components/ClipUpload/ClipUploadComponent';
 import { uploadClip } from '../../redux/actions/clipActions/clipActions';
 
 interface State {

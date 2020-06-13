@@ -1,15 +1,15 @@
 import React from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import Login from '../containers/AuthContainer/Login';
-import Register from '../containers/AuthContainer/Register';
-import Home from '../containers/HomeContainer/Home';
-import BrowseClips from '../containers/BrowseContainer/BrowseClips';
-import FeaturedClips from '../containers/FeaturedClipsContainer/FeaturedClips';
-import Profile from '../containers/ProfileContainer/Profile/Profile';
-import Accounts from '../containers/AccountsContainer/Accounts/Accounts';
+import Accounts from '../containers/Accounts/Accounts/Accounts';
+import Login from '../containers/Auth/Login';
+import Register from '../containers/Auth/Register';
+import Home from '../containers/Home/Home';
+import BrowseClips from '../containers/BrowseClips/BrowseClips';
+import PopularClips from '../containers/PopularClips/PopularClips';
+import Profile from '../containers/Profile/Profile/Profile';
 import ClipUpload from '../containers/ClipUpload/ClipUpload';
-import ClipPage from '../containers/ClipPageContainer/ClipPage';
-import Settings from '../containers/SettingsContainer/Settings';
+import ClipPage from '../containers/ClipPage/ClipPage';
+import Settings from '../containers/Settings/Settings';
 
 export default withRouter(() => {
 
@@ -36,6 +36,7 @@ export default withRouter(() => {
             <Route exact path='/' component={ Home }/>
             {/* <Route exact path='/FeaturedClips' component={ FeaturedClips } /> */}
             <Route exact path='/browseClips' component={ BrowseClips } />
+            <Route exact path='/popularClips' component={ PopularClips } />
             <HideRoute exact path='/login' component={ Login } />
             <HideRoute exact path='/register' component={ Register } />
             <PrivateRoute exact path='/accounts' component={ Accounts } />
