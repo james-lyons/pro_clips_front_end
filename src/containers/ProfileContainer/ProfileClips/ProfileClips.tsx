@@ -7,7 +7,8 @@ import { fetchUserClips } from '../../../redux/actions/clipActions/clipActions';
 class ProfileClips extends React.PureComponent<Props, State> {
     state: State = {
         userClips: null,
-        newTitle: ''
+        newTitle: '',
+        game: ''
     };
 
     componentDidMount = async () => {
@@ -19,11 +20,19 @@ class ProfileClips extends React.PureComponent<Props, State> {
                 userClips: this.props.userClips
             });
         };
+        console.log(this.state);
+    };
+
+    private handleChange = (event: any) => {        
+        this.setState({
+            game: event.target.value
+        });
     };
 
     render() {
         const { user } = this.props;
-        const { userClips } = this.state;
+        const { userClips, game } = this.state;
+        const { handleChange } = this;
 
         return (
             <>
@@ -31,7 +40,9 @@ class ProfileClips extends React.PureComponent<Props, State> {
                     user && userClips &&
                     <ProfileClipsComponent
                         user={ user }
+                        game={ game }
                         userClips={ userClips }
+                        handleChange={ handleChange }
                     />
                 }
             </>

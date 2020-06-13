@@ -19,20 +19,22 @@ const CommentsComponent: React.SFC<Props> = ({
                 <Card
                     style={{ margin: '.5rem' }}
                 >
-                    <div style={{ display: 'grid', gridTemplateColumns: '80% 10% 10%', width: '100%'}}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '90% 10%', width: '100%'}}>
                         <h1 style={{ fontSize: '1.3rem' }}>{ comment.author_name }: { comment.comment_text } </h1>
-                        <button onClick={ () => handleReplyForm(comment._id) }>Reply</button>
                         <DeleteComment comment={ comment } clipId={ clipId } />
+                    </div>
+                    <div>
+                        <button style={{ width: '5rem' }} onClick={ () => handleReplyForm(comment._id) }>Reply</button>
+                        <LikeCommentComp comment={ comment } />
                     </div>
                     {
                         comment.replies &&
                         <RepliesComp
-                            replies={ comment.replies }
-                            clipId={ clipId }
+                        replies={ comment.replies }
+                        clipId={ clipId }
                         />
                     }
                     { replyRef === comment._id && <ReplyForm commentId={ comment._id }/>}
-                    <LikeCommentComp comment={ comment } />
                 </Card>
             </div>
         );

@@ -1,6 +1,7 @@
 interface State {
     userClips: null | Array<object>,
-    newTitle: string
+    newTitle: string,
+    game: string
 };
 
 interface Props {
@@ -13,8 +14,12 @@ interface Props {
 
 interface User {
     userName: string,
-    clips: Array<object>
+    clips: Array<Clip>
 };
+
+interface Clip {
+
+}
 
 export {
     State,
