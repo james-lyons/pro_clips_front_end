@@ -45,7 +45,28 @@ const fetchUserClips = (username: string) => {
     };
 };
 
-const fetchBrowseClips = (username: string) => {
+const fetchPopularClips = () => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/clips/browseclips`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            let data = await res.json();
+            console.log('HELLO FROM FETCH BROWSE CLIPS: data', data);
+            dispatch({ type: 'FETCH_BROWSE_CLIPS_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            dispatch({ type: 'FETCH_BROWSE_CLIPS_REJECTED', payload: error })
+        };
+    };
+};
+
+const fetchBrowseClips = () => {
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/clips/browseclips`,

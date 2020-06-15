@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ClipUploadComponent from '../../components/ClipUpload/ClipUploadComponent';
-import { uploadClip } from '../../redux/actions/clipActions/clipActions';
+import ClipUploadComponent from '../../../components/Clips/ClipUpload/ClipUploadComponent';
+import { uploadClip } from '../../../redux/actions/clipActions/clipActions';
 
 interface State {
     clip: null | object,

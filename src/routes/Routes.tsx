@@ -4,11 +4,11 @@ import Accounts from '../containers/Accounts/Accounts/Accounts';
 import Login from '../containers/Auth/Login';
 import Register from '../containers/Auth/Register';
 import Home from '../containers/Home/Home';
-import BrowseClips from '../containers/BrowseClips/BrowseClips';
-import PopularClips from '../containers/PopularClips/PopularClips';
+import BrowseClips from '../containers/Clips/BrowseClips/BrowseClips';
+import PopularClips from '../containers/Clips/PopularClips/PopularClips';
 import Profile from '../containers/Profile/Profile/Profile';
-import ClipUpload from '../containers/ClipUpload/ClipUpload';
-import ClipPage from '../containers/ClipPage/ClipPage';
+import ClipUpload from '../containers/Clips/ClipUpload/ClipUpload';
+import ClipPage from '../containers/Clips/ClipPage/ClipPage';
 import Settings from '../containers/Settings/Settings';
 
 export default withRouter(() => {

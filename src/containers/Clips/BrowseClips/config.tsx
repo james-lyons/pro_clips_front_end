@@ -3,7 +3,8 @@ interface State {
 };
 
 interface Props {
-    browseClips: null | Array<Clip>
+    browseClips: null | Array<Clip>,
+    fetchBrowseClips: () => void
 };
 
 interface Clip {

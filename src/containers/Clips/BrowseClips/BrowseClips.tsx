@@ -1,14 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchBrowseClips } from '../../redux/actions/clipActions/clipActions';
+import BrowseClipsComponent from '../../../components/Clips/BrowseClips/BrowseClipsComponent';
+import { fetchBrowseClips } from '../../../redux/actions/clipActions/clipActions';
 import { Props, State } from './config';
-import BrowseClipsComponent from '../../components/Browse/BrowseClipsComponent';
 
 class BrowseClips extends React.PureComponent<Props, State> {
-
-    state: State = {
-
-    };
 
     componentDidMount = async () => {
         await this.props.fetchBrowseClips();

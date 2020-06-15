@@ -7,7 +7,7 @@ import { Props, State } from './config';
 
 class ReplyForm extends React.PureComponent<Props, State> {
 
-    state = {
+    state: State = {
         replyText: ''
     }
 

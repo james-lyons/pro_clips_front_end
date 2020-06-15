@@ -5,6 +5,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { userLogout } from '../../redux/actions/authActions/authActions';
+import Search from '../../containers/Search/Search';
 
 const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
 
@@ -17,8 +18,9 @@ const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav style={{ margin: '0 auto' }}>
-                    {/* <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link> */}
-                    <Nav.Link as={ Link } to="/browseclips">Browse</Nav.Link>
+                    <Nav.Link as={ Link } to="/popularClips">Popular Clips</Nav.Link>
+                    <Nav.Link as={ Link } to="/browseclips">Browse By Game</Nav.Link>
+                    <Search />
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>
                     <Nav.Link as={ Link } to="/login">Login</Nav.Link>
@@ -34,8 +36,9 @@ const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav style={{ margin: '0 auto' }}>
-                    {/* <Nav.Link as={ Link } to="/featuredClips">Featured</Nav.Link> */}
-                    <Nav.Link as={ Link } to="/browseclips">Browse</Nav.Link>
+                    <Nav.Link as={ Link } to="/popularClips">Popular Clips</Nav.Link>
+                    <Nav.Link as={ Link } to="/browseclips">Browse By Game</Nav.Link>
+                    <Search />
                 </Nav>
                 <Nav style={{ marginRight: '10px' }}>
                     <Nav.Link as={ Link } to="/clipupload">Upload</Nav.Link>

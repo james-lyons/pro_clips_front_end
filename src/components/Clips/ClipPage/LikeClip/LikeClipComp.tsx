@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { likeClip, unlikeClip } from '../../../redux/actions/clipActions/clipActions';
+import { likeClip, unlikeClip } from '../../../../redux/actions/clipActions/clipActions';
 import { Props, Clip } from './config';
 
 const LikeClip: React.SFC<Props>= ({ clip, likeClip, unlikeClip }) => {
