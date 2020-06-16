@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BrowseClipsComponent from '../../../components/Clips/BrowseClips/BrowseClipsComponent';
-import { fetchBrowseClips } from '../../../redux/actions/clipActions/clipActions';
+import BrowseClipsComponent from '../../../../components/Clips/BrowseClips/BrowseClipsComponent';
+import { fetchBrowseClips } from '../../../../redux/actions/clipActions/clipActions';
 import { Props, State } from './config';
 
 class BrowseClips extends React.PureComponent<Props, State> {

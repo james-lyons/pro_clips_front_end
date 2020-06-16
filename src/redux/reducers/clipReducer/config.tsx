@@ -3,6 +3,7 @@ interface State {
     clips: null | Array<Clip>,
     userClips: null | Array<Clip>,
     browseClips: null | Array<Clip>,
+    gameClips: null | Array<Clip>,
     errors: null | Array<object>,
     message: null | string
 };

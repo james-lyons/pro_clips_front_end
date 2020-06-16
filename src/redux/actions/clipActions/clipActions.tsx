@@ -66,6 +66,27 @@ const fetchPopularClips = () => {
     };
 };
 
+const fetchGameClips = (game: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/clips/clips/game/${ game }`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            let data = await res.json();
+            console.log('HELLO FROM FETCH BROWSE GAME CLIPS: data', data.data);
+            dispatch({ type: 'FETCH_GAME_CLIPS_FULFILLED', payload: data });
+
+        } catch (error) {
+            console.log(error);
+            dispatch({ type: 'FETCH_GAME_CLIPS_REJECTED', payload: error })
+        };
+    };
+};
+
 const fetchBrowseClips = () => {
     return async dispatch => {
         try {
@@ -215,6 +236,7 @@ const unlikeClip = (clipId: string) => {
 export {
     fetchClip,
     fetchUserClips,
+    fetchGameClips,
     fetchBrowseClips,
     uploadClip,
     editClip,

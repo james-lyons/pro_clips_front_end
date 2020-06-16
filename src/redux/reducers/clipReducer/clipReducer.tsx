@@ -5,6 +5,7 @@ function clipReducer(state: State = {
     clips: null,
     userClips: null,
     browseClips: null,
+    gameClips: null,
     errors: null,
     message: null
 }, action: Action) {
@@ -44,6 +45,12 @@ function clipReducer(state: State = {
             return { ...state, browseClips: action.payload.data };
         
         case "FETCH_BROWSE_CLIPS_REJECTED": 
+            return { ...state, errors: action.payload.errors, message: action.payload.message };
+
+        case "FETCH_GAME_CLIPS_FULFILLED": 
+            return { ...state, gameClips: action.payload.data };
+        
+        case "FETCH_GAME_CLIPS_REJECTED": 
             return { ...state, errors: action.payload.errors, message: action.payload.message };
 
         case "LIKE_CLIP_FULFILLED": 
