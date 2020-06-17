@@ -20,7 +20,6 @@ class ProfileClips extends React.PureComponent<Props, State> {
                 userClips: this.props.userClips
             });
         };
-        console.log(this.state);
     };
 
     private handleChange = (event: any) => {        

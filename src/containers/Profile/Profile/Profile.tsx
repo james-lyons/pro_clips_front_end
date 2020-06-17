@@ -3,24 +3,24 @@ import { connect } from 'react-redux';
 import ProfileComponent from '../../../components/ProfileComponent/profileComponent/profileComponent';
 import ProfileClips from '../ProfileClips/ProfileClips';
 import { fetchCurrentUser, fetchUser } from '../../../redux/actions/userActions/userActions';
-import { followUser, unfollowUser } from '../../../redux/actions/followActions/followActions';
+import { followUser, unfollowUser, fetchFollowers, fetchFollowingList } from '../../../redux/actions/followActions/followActions';
 import { State, Props } from './config';
 
 class Profile extends React.PureComponent<Props, State> {
     state: State = {
         user: null,
         match: false,
-        isFollowed: false
+        isFollowed: false,
+        showFollowers: false,
+        showFollowing: false
     };
 
     componentDidMount = async () => {
         let currentUserId = localStorage.getItem('uid');
 
         let userData = await this.props.fetchUser(this.props.match.params.username);
-        // console.log('USER DATA', userData.payload.data);
         
         let { user, currentUser, match } = this.props;
-        console.log('USER', user);
 
         if (match.params.username === currentUser.userName) {
             this.setState({
@@ -60,9 +60,44 @@ class Profile extends React.PureComponent<Props, State> {
             [event.target.name]: event.target.value
         });
     };
+    
+    private handleShowFollowers = async () => {
+        await this.props.fetchFollowers(this.state.user.userName);
+        this.setState({
+            showFollowers: true
+        });
+    };
+    
+    private handleShowFollowing = async () => {
+        await this.props.fetchFollowingList(this.state.user.userName);
+        this.setState({
+            showFollowing: true
+        });
+    };
 
+    private handleCloseFollowers= () => {
+        this.setState({
+            showFollowers: false
+        });
+    };
+
+    private handleCloseFollowing= () => {
+        this.setState({
+            showFollowing: false
+        });
+    };
+    
     render() {
-        const { user, match, isFollowed } = this.state;
+        const { user, match, isFollowed, showFollowers, showFollowing  } = this.state;
+        const {
+            followUser,
+            unfollowUser,
+            handleShowFollowers,
+            handleShowFollowing,
+            handleCloseFollowers,
+            handleCloseFollowing
+        } = this;
+
         return (
             <>
                 {
@@ -71,8 +106,14 @@ class Profile extends React.PureComponent<Props, State> {
                             user={ user }
                             match={ match }
                             isFollowed={ isFollowed }
-                            followUser={ this.followUser }
-                            unfollowUser={ this.unfollowUser }
+                            showFollowers={ showFollowers }
+                            showFollowing={ showFollowing }
+                            followUser={ followUser }
+                            unfollowUser={ unfollowUser }
+                            handleShowFollowers={ handleShowFollowers }
+                            handleShowFollowing={ handleShowFollowing }
+                            handleCloseFollowers={ handleCloseFollowers }
+                            handleCloseFollowing={ handleCloseFollowing }
                         />
                 }
                 {
@@ -90,4 +131,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchCurrentUser, fetchUser, followUser, unfollowUser })(Profile);
+export default connect(mapStateToProps, { fetchCurrentUser, fetchUser, followUser, unfollowUser, fetchFollowers, fetchFollowingList })(Profile);

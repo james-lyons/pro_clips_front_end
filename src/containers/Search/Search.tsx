@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router'
+import { useLocation } from 'react-router-dom';
 import { State, Props } from './config';
 import { fetchCurrentUser, fetchUser } from '../../redux/actions/userActions/userActions';
 import SearchComp from '../../components/Search/SearchComp';
@@ -18,10 +19,8 @@ class Search extends React.PureComponent <Props, State> {
 
     private handleSubmit = async () => {
         event.preventDefault();
+        this.props.history.location.pathname = "/"
         await this.props.history.push(`${ this.state.search }`);
-        await this.setState({
-            search: ''
-        });
         location.reload();
     };
 

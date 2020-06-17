@@ -11,7 +11,6 @@ const fetchCurrentUser = (currentUser:string) => {
             );
 
             let data = await res.json();
-            // console.log(data)
 
             if (data.status >= 400) {
                 return dispatch({ type: 'FETCH_CURRENT_USER_REJECTED', payload: data });
@@ -26,7 +25,6 @@ const fetchCurrentUser = (currentUser:string) => {
 };
 
 const fetchUser = (user:string) => {
-    // console.log(user)
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/user/${ user }`,
@@ -37,7 +35,6 @@ const fetchUser = (user:string) => {
             );
 
             let data = await res.json();
-            // console.log(data)
 
             if (data.status >= 400) {
                 return dispatch({ type: 'FETCH_USER_REJECTED', payload: data });
@@ -52,7 +49,6 @@ const fetchUser = (user:string) => {
 };
 
 const editUserProfile = (user:string, profileChanges:object) => {
-    console.log('profile', JSON.stringify(profileChanges))
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/${ user }/profile`,
@@ -69,12 +65,10 @@ const editUserProfile = (user:string, profileChanges:object) => {
             if (data.status >= 400) {
                 return dispatch({ type: 'EDIT_PROFILE_REJECTED', payload: data });
             } else {
-                console.log(data)
                 return dispatch({ type: 'EDIT_PROFILE_FULFILLED', payload: data });
             };
 
         } catch (error) {
-            console.log('error', error)
             dispatch({ type: 'EDIT_PROFILE_REJECTED', payload: error });
         };
     };
@@ -93,7 +87,6 @@ const editUserEmail = (user: string, newEmail: object) => {
             );
 
             let data = await res.json();
-            console.log('data', data);
 
             if (data.status >= 400) {
                 return dispatch({ type: 'EDIT_EMAIL_REJECTED', payload: data });
@@ -108,7 +101,6 @@ const editUserEmail = (user: string, newEmail: object) => {
 };
 
 const editUserPassword = (user, newPassword) => {
-    console.log(newPassword)
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/${ user }/password`,
@@ -121,7 +113,6 @@ const editUserPassword = (user, newPassword) => {
             );
 
             let data = await res.json();
-            console.log('data', data);
 
             if (data.status >= 400) {
                 return dispatch({ type: 'EDIT_PASSWORD_REJECTED', payload: data });

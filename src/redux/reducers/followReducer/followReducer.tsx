@@ -1,6 +1,8 @@
 import { State, Action } from './config';
 
 function followReducer (state: State = {
+    followersList: null,
+    followingList: null,
     followUserError: null,
     followUserMessage: null,
     unfollowUserError: null,
@@ -19,6 +21,18 @@ function followReducer (state: State = {
             return { ...state };
             
         case "UNFOLLOW_USER_REJECTED":
+            return { ...state, unfollowUserError: action.payload.error, ufollowUserMessage: action.payload.message };
+
+        case "FETCH_FOLLOWERS_FULFILLED":
+            return { ...state, followersList: action.payload.data };
+            
+        case "FETCH_FOLLOWERS_REJECTED":
+            return { ...state, unfollowUserError: action.payload.error, ufollowUserMessage: action.payload.message };
+
+        case "FETCH_FOLLOWINGLIST_FULFILLED":
+            return { ...state, followingList: action.payload.data };
+            
+        case "FETCH_FOLLOWINGLIST_REJECTED":
             return { ...state, unfollowUserError: action.payload.error, ufollowUserMessage: action.payload.message };
 
         default:

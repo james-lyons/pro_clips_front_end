@@ -1,11 +1,9 @@
 import API_URL from '../../../constants';
 
 const followUser = (userName: string) => {
-    console.log('USERNAME', userName);
-
     return async dispatch => {        
         try {
-            let res = await fetch(`${ API_URL }/follow/follow/${ userName }`, 
+            const res = await fetch(`${ API_URL }/follow/follow/${ userName }`, 
                 {
                     method: 'POST',
                     credentials: 'include'
@@ -15,7 +13,6 @@ const followUser = (userName: string) => {
             const data = await res.json();
 
             if (data.status >= 400) {
-                console.log('error 1')
                 return dispatch({ type: 'FOLLOW_USER_REJECTED', payload: data });
             };
 
@@ -29,11 +26,9 @@ const followUser = (userName: string) => {
 };
 
 const unfollowUser = (userName: string) => {
-
     return async dispatch => {
-        console.log('UNFOLLOW USER HELLO 1')
         try {
-            let res = await fetch(`${ API_URL }/follow/unfollow/${ userName }`, 
+            const res = await fetch(`${ API_URL }/follow/unfollow/${ userName }`, 
                 {
                     method: 'POST',
                     credentials: 'include'
@@ -50,12 +45,56 @@ const unfollowUser = (userName: string) => {
             dispatch({ type: 'UNFOLLOW_USER_UPDATE_FULFILLED', payload: data });
 
         } catch (error) {
-            dispatch({ type: "UNFOLLOW_USER_REJECTED", payload: error });
+            dispatch({ type: 'UNFOLLOW_USER_REJECTED', payload: error });
+        };
+    };
+};
+
+const fetchFollowers = (username: string) => {
+    return async dispatch => {
+        try {
+            const res = await fetch(`${ API_URL }/follow/followers/${ username }`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            console.log(data);
+
+            dispatch({ type: 'FETCH_FOLLOWERS_FULFILLED', payload: data });
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'FETCH_FOLLOWERS_REJECTED', payload: error })
+        };
+    };
+};
+
+const fetchFollowingList = (username: string) => {
+    return async dispatch => {
+        try {
+            const res = await fetch(`${ API_URL }/follow/following/${ username }`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            const data = await res.json();
+            console.log(data);
+
+            dispatch({ type: 'FETCH_FOLLOWINGLIST_FULFILLED', payload: data });
+        } catch (error) {
+            console.log(error);
+            return dispatch({ type: 'FETCH_FOLLOWINGLIST_REJECTED', payload: error })
         };
     };
 };
 
 export {
     followUser,
-    unfollowUser
+    unfollowUser,
+    fetchFollowers,
+    fetchFollowingList
 };

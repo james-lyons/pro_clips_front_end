@@ -1,7 +1,9 @@
 interface State {
     user: null | User,
     match: boolean,
-    isFollowed: boolean
+    isFollowed: boolean,
+    showFollowers: boolean,
+    showFollowing: boolean,
 };
 
 interface Props {

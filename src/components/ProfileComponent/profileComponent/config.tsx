@@ -1,6 +1,18 @@
 interface Props {
     user: User,
-    currentUser: CurrentUser
+    followersList: Array<Follower>,
+    followingList: Array<Follower>,
+    currentUser: CurrentUser,
+    match: boolean,
+    isFollowed: boolean,
+    showFollowers: boolean,
+    showFollowing: boolean
+    followUser: () => void,
+    unfollowUser:  () => void,
+    handleShowFollowers: () => void,
+    handleShowFollowing: () => void,
+    handleCloseFollowers: () => void,
+    handleCloseFollowing: () => void
 };
 
 interface User {
@@ -22,6 +34,11 @@ interface CurrentUser {
     followers: [],
     following: [],
     id: string
+};
+
+interface Follower {
+    userName: string,
+    profile_image: string
 };
 
 const styles = {
@@ -64,5 +81,6 @@ const styles = {
 
 export {
     Props,
+    Follower,
     styles
 };
