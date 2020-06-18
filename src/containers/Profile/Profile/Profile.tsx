@@ -11,6 +11,7 @@ class Profile extends React.PureComponent<Props, State> {
         user: null,
         match: false,
         isFollowed: false,
+        showLogin: false,
         showFollowers: false,
         showFollowing: false
     };
@@ -75,25 +76,39 @@ class Profile extends React.PureComponent<Props, State> {
         });
     };
 
-    private handleCloseFollowers= () => {
+    private handleShowLogin = async () => {
+        this.setState({
+            showLogin: true
+        });
+    };
+
+    private handleCloseFollowers = () => {
         this.setState({
             showFollowers: false
         });
     };
 
-    private handleCloseFollowing= () => {
+    private handleCloseFollowing = () => {
         this.setState({
             showFollowing: false
         });
     };
+
+    private handleCloseLogin = () => {
+        this.setState({
+            showLogin: false
+        });
+    };
     
     render() {
-        const { user, match, isFollowed, showFollowers, showFollowing  } = this.state;
+        const { user, match, isFollowed, showLogin, showFollowers, showFollowing  } = this.state;
         const {
             followUser,
             unfollowUser,
+            handleShowLogin,
             handleShowFollowers,
             handleShowFollowing,
+            handleCloseLogin,
             handleCloseFollowers,
             handleCloseFollowing
         } = this;
@@ -106,14 +121,17 @@ class Profile extends React.PureComponent<Props, State> {
                             user={ user }
                             match={ match }
                             isFollowed={ isFollowed }
+                            showLogin={ showLogin }
                             showFollowers={ showFollowers }
                             showFollowing={ showFollowing }
                             followUser={ followUser }
                             unfollowUser={ unfollowUser }
                             handleShowFollowers={ handleShowFollowers }
                             handleShowFollowing={ handleShowFollowing }
+                            handleShowLogin={ handleShowLogin }
                             handleCloseFollowers={ handleCloseFollowers }
                             handleCloseFollowing={ handleCloseFollowing }
+                            handleCloseLogin={ handleCloseLogin }
                         />
                 }
                 {

@@ -2,10 +2,13 @@ interface Props {
     clip: Clip,
     clipVis: string,
     newTitle: string,
-    showClip: () => {},
-    handleChange: () => {},
-    handleClipEdit: (clipId: string) => {},
-    handleClipDelete: (clipId: string) => {}
+    showLoginModal: boolean,
+    showClip: () => void,
+    handleChange: () => void,
+    handleClipEdit: (clipId: string) => void,
+    handleClipDelete: (clipId: string) => void,
+    handleShowLoginModal: () => void,
+    handleCloseLoginModal: () => void
 };
 
 interface Clip {

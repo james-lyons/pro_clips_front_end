@@ -1,7 +1,8 @@
 interface State {
     clip: null | object,
     clipVis: string,
-    newTitle: string
+    newTitle: string,
+    showLoginModal: boolean
 };
 
 interface Props {

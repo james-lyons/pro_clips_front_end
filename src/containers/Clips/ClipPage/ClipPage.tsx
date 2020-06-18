@@ -8,7 +8,8 @@ class ClipPage extends React.PureComponent<Props, State> {
     state: State = {
         clip: null,
         clipVis: 'display',
-        newTitle: ''
+        newTitle: '',
+        showLoginModal: false
     };
 
     componentDidMount = async () => {
@@ -47,9 +48,28 @@ class ClipPage extends React.PureComponent<Props, State> {
         };
     };
 
+    private handleShowLoginModal = async () => {
+        this.setState({
+            showLoginModal: true
+        });
+    };
+
+    private handleCloseLoginModal = () => {
+        this.setState({
+            showLoginModal: false
+        });
+    };
+
     render() {
-        const { clip, clipVis, newTitle } = this.state;
-        const { showClip, handleChange, handleClipEdit, handleClipDelete } = this;
+        const { clip, clipVis, newTitle, showLoginModal } = this.state;
+        const {
+            showClip,
+            handleChange,
+            handleClipEdit,
+            handleClipDelete,
+            handleShowLoginModal,
+            handleCloseLoginModal
+        } = this;
 
         return (
             <>
@@ -59,10 +79,13 @@ class ClipPage extends React.PureComponent<Props, State> {
                         clip={ clip }
                         clipVis={ clipVis }
                         newTitle={ newTitle }
+                        showLoginModal={ showLoginModal }
                         showClip={ showClip }
                         handleChange={ handleChange }
                         handleClipEdit={ handleClipEdit }
                         handleClipDelete={ handleClipDelete }
+                        handleShowLoginModal={ handleShowLoginModal }
+                        handleCloseLoginModal={ handleCloseLoginModal }
                     />
                 }
             </>

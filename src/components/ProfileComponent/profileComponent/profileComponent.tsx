@@ -14,21 +14,28 @@ const EditProfileButton: React.SFC = ({}) => {
     );
 };
 
-const FollowButton: React.SFC = ({ userName, isFollowed, followUser, unfollowUser }) => {
-    if (isFollowed) {
-        return (<button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ () => unfollowUser(userName) }>Unfollow</button> )
+const FollowButton: React.SFC = ({ userName, isFollowed, followUser, unfollowUser, handleShowLogin }) => {
+    const currentUser = localStorage.getItem('uid');
+    if (currentUser) {
+        if (isFollowed) {
+            return (<button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ () => unfollowUser(userName) }>Unfollow</button> )
+        } else {
+            return (
+                <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ () => followUser(userName) }>Follow</button>
+            );
+        };
     } else {
         return (
-            <button style={{ marginLeft: '4rem', borderRadius: '4px' }} onClick={ () => followUser(userName) }>Follow</button>
-        );
-    };
+            <button onClick={ () => handleShowLogin() }>follow</button>
+        )
+    }
 };
 
-const followersMapper = (followersList: Array<Follower>, handleCloseFollowers) => {
+const followersMapper = (followersList: Array<Follower>) => {
     const followerArray = followersList.map((follower) => 
         <div key={ follower.userName }>
             <img style={{ width: '30px', borderRadius: '50%' }} src={ follower.profile_image }/>
-            <Link to={`/${ follower.userName }`}>{ follower.userName }</Link>
+            <a href={`/${ follower.userName }`}>{ follower.userName }</a>
         </div>
     );
     return followerArray;
@@ -40,14 +47,17 @@ const ProfileComponent: React.SFC<Props> = ({
     isFollowed,
     followersList,
     followingList,
+    showLogin,
     showFollowers,
     showFollowing,
     followUser,
     unfollowUser,
+    handleShowLogin,
     handleShowFollowers,
     handleShowFollowing,
     handleCloseFollowers,
-    handleCloseFollowing
+    handleCloseFollowing,
+    handleCloseLogin
 }) => {
 
     const { userName, profile_image, clips, followers, following, bio } = user;
@@ -71,6 +81,7 @@ const ProfileComponent: React.SFC<Props> = ({
                                     isFollowed={ isFollowed }
                                     followUser={ followUser }
                                     unfollowUser={ unfollowUser }
+                                    handleShowLogin={ handleShowLogin }
                                 />
                             }
                         </div>
@@ -96,6 +107,12 @@ const ProfileComponent: React.SFC<Props> = ({
                 <Modal.Title>Following</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>{ followingList && followersMapper(followingList)}</Modal.Body>
+            </Modal>
+            <Modal show={ showLogin } onHide={ handleCloseLogin }>
+                <Modal.Header closeButton>
+                    <Modal.Title>ProClips</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><Link to="/login">Login to follow!</Link></Modal.Body>
             </Modal>
         </>
     );

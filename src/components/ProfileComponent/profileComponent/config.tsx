@@ -7,10 +7,12 @@ interface Props {
     isFollowed: boolean,
     showFollowers: boolean,
     showFollowing: boolean
-    followUser: () => void,
-    unfollowUser:  () => void,
+    followUser: (userName: string) => void,
+    unfollowUser:  (userName: string) => void,
+    handleShowLogin: () => void,
     handleShowFollowers: () => void,
     handleShowFollowing: () => void,
+    handleCloseLogin: () => void,
     handleCloseFollowers: () => void,
     handleCloseFollowing: () => void
 };

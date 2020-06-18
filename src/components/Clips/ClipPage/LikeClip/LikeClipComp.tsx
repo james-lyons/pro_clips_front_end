@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 import { likeClip, unlikeClip } from '../../../../redux/actions/clipActions/clipActions';
 import { Props, Clip } from './config';
 
-const LikeClip: React.SFC<Props>= ({ clip, likeClip, unlikeClip }) => {
+const LikeClip: React.SFC<Props>= ({
+    clip,
+    showLoginModal,
+    likeClip,
+    unlikeClip,
+    handleShowLoginModal,
+    handleCloseLoginModal
+}) => {
 
     const likeClipSubmit = (clipId: string) => {
         likeClip(clipId);
@@ -19,7 +26,7 @@ const LikeClip: React.SFC<Props>= ({ clip, likeClip, unlikeClip }) => {
 
         if (!currentUser) {
             return (
-                <button style={{ width: '5rem '}} onClick={ () => alert('login to like, comment, and follow!') }>like clip</button>
+                <button style={{ width: '5rem '}} onClick={ () => handleShowLoginModal() }>like clip</button>
             );
         } else if (i >= 0) {
             return (

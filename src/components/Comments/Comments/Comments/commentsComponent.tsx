@@ -4,8 +4,7 @@ import { Card } from 'react-bootstrap';
 import { Props, Comment, ReplyRef } from './config';
 import { likeComment, unlikeComment  } from '../../../../redux/actions/commentActions/commentActions';
 import DeleteComment from '../DeleteComment/deleteComment';
-// import Replies from '../../../../containers/Replies/Replies/Replies';
-import RepliesComp from '../../../Replies/Replies/RepliesC';
+import RepliesComp from '../../../Replies/Replies/repliesC';
 import ReplyForm from '../../../../containers/Replies/ReplyForm/ReplyForm';
 import LikeCommentComp from '../LikeComment/LikeComment';
 

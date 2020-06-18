@@ -1,5 +1,6 @@
 import React from 'react';
-import { Col, Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Props } from './config';
 
 const CommentComponent: React.SFC<Props> = ({ commentText, handleChange, handleSubmit }) => {
@@ -25,7 +26,9 @@ const CommentComponent: React.SFC<Props> = ({ commentText, handleChange, handleS
 
     const loggedOut = () => {
         return (
-            <span>Please login to like or comment</span>
+            <div style={{ padding: '1rem' }}>
+                <span><Link to="/login">Login</Link> to like or comment</span>
+            </div>
         );
     };
 
