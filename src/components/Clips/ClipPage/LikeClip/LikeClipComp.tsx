@@ -8,8 +8,7 @@ const LikeClip: React.SFC<Props>= ({
     showLoginModal,
     likeClip,
     unlikeClip,
-    handleShowLoginModal,
-    handleCloseLoginModal
+    handleShowLoginModal
 }) => {
 
     const likeClipSubmit = (clipId: string) => {
@@ -26,15 +25,15 @@ const LikeClip: React.SFC<Props>= ({
 
         if (!currentUser) {
             return (
-                <button style={{ width: '5rem '}} onClick={ () => handleShowLoginModal() }>like clip</button>
+                <span style={{ width: '5rem', cursor: 'pointer', margin: '0 5px'  }} onClick={ () => handleShowLoginModal() }>🤍</span>
             );
         } else if (i >= 0) {
             return (
-                <button style={{ width: '5rem '}} onClick={ () => unlikeClipSubmit(clip._id) }>unlike</button>
+                <span style={{ width: '5rem', cursor: 'pointer', margin: '0 5px'  }} onClick={ () => unlikeClipSubmit(clip._id) }>♥️</span>
             )
         } else {
             return (
-                <button style={{ width: '5rem '}} onClick={ () => likeClipSubmit(clip._id) }>like</button>
+                <span style={{ width: '5rem', cursor: 'pointer', margin: '0 5px'  }} onClick={ () => likeClipSubmit(clip._id) }>🤍</span>
             );
         };
     };

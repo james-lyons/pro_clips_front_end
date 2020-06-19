@@ -27,7 +27,7 @@ const CommentComponent: React.SFC<Props> = ({ commentText, handleChange, handleS
     const loggedOut = () => {
         return (
             <div style={{ padding: '1rem' }}>
-                <span><Link to="/login">Login</Link> to like or comment</span>
+                <span><Link to="/login">Login</Link> to like, comment, or reply!</span>
             </div>
         );
     };

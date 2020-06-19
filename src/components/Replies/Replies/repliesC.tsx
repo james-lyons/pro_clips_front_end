@@ -6,26 +6,10 @@ import { Card } from 'react-bootstrap';
 import { Props, Reply } from './config';
 import LikeReply from './LikeReply/LikeReply';
 
-const RepliesComp: React.SFC<Props> = ({ replies, clipId }) => {
-
-    const currentUser = localStorage.getItem('uid');
-
-    const renderLikeButton = (reply: Reply) => {
-        let i = reply.likes.indexOf(currentUser)
-        if (!currentUser) {
-            return (
-                <button onClick={ () => alert('login to like, reply, and follow!') }>like reply</button>
-            );
-        } else if (i >= 0) {
-            return (
-                <button onClick={ () => unlikeReply(reply._id) }>unlike reply</button>
-            )
-        } else {
-            return (
-                <button onClick={ () => likeReply(reply._id) }>like reply</button>
-            );
-        };
-    };
+const RepliesC: React.SFC<Props> = ({
+    replies,
+    clipId
+}) => {
 
     const replyMapper = (replies: Array<Reply>, clipId: string) => {
         const replyArray = replies.map((reply) =>
@@ -37,7 +21,6 @@ const RepliesComp: React.SFC<Props> = ({ replies, clipId }) => {
                         <h1 style={{ fontSize: '1.3rem' }}>{ reply.author_name }: { reply.reply_text } </h1>
                         <DeleteReply reply={ reply } clipId={ clipId } />
                     </div>
-                    {/* { renderLikeButton(reply) } */}
                     <LikeReply reply={ reply } clipId={ clipId } />
                 </Card>
             </div>
@@ -52,4 +35,4 @@ const RepliesComp: React.SFC<Props> = ({ replies, clipId }) => {
     );
 };
 
-export default connect(null, { likeReply, unlikeReply })(RepliesComp);
+export default connect(null, { likeReply, unlikeReply })(RepliesC);

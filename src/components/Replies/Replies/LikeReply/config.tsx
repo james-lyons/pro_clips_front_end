@@ -1,3 +1,8 @@
+interface State {
+    comments: null | Array<Comment>,
+    showLoginModal: boolean
+};
+
 interface Props {
     reply: Reply,
     clipId: string,
@@ -5,10 +10,6 @@ interface Props {
     likeReply: (replyId: string) => void,
     unlikeReply: (replyId: string) => void,
     fetchComments: (clipId: string) => void
-};
-
-interface State {
-    comments: null | Array<Comment>
 };
 
 interface Reply {

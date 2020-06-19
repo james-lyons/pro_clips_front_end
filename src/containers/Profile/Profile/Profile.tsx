@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProfileComponent from '../../../components/ProfileComponent/profileComponent/profileComponent';
+import ProfileComp from '../../../components/Profile/Profile/profileComp';
 import ProfileClips from '../ProfileClips/ProfileClips';
 import { fetchCurrentUser, fetchUser } from '../../../redux/actions/userActions/userActions';
 import { followUser, unfollowUser, fetchFollowers, fetchFollowingList } from '../../../redux/actions/followActions/followActions';
@@ -117,7 +117,7 @@ class Profile extends React.PureComponent<Props, State> {
             <>
                 {
                     user && 
-                            <ProfileComponent
+                            <ProfileComp
                             user={ user }
                             match={ match }
                             isFollowed={ isFollowed }

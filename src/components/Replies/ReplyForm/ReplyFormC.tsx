@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
 import { Props } from './config';
 
 const ReplyFormC: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }) =>{
@@ -25,7 +26,7 @@ const ReplyFormC: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }
 
     const loggedOut = () => {
         return (
-            <span>Please login to reply</span>
+            <span><Link to="/login">Login</Link> to like, comment, or reply!</span>
         );
     };
 

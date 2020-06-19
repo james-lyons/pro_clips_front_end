@@ -41,7 +41,7 @@ const followersMapper = (followersList: Array<Follower>) => {
     return followerArray;
 };
 
-const ProfileComponent: React.SFC<Props> = ({
+const ProfileComp: React.SFC<Props> = ({
     user,
     match,
     isFollowed,
@@ -125,4 +125,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(ProfileComponent);
+export default connect(mapStateToProps, null)(ProfileComp);

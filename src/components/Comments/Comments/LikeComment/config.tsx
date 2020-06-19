@@ -1,13 +1,14 @@
+interface State {
+    comments: null | Array<Comment>,
+    showLoginModal: boolean
+};
+
 interface Props {
     comment: Comment,
     comments: Array<Comment>,
     likeComment: (commentId: string) => void,
     unlikeComment: (commentId: string) => void
     fetchComments: (clipId: string) => void,
-};
-
-interface State {
-    comments: null | Array<Comment>,
 };
 
 interface Comment {

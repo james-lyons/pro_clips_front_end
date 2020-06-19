@@ -30,7 +30,7 @@ const ClipPageComponent: React.SFC<Props> = ({
                 <Modal.Header closeButton>
                         <Modal.Title>ProClips</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body><Link to="/login">Login to like!</Link></Modal.Body>
+                    <Modal.Body><Link to="/login">Login</Link> to like, comment, and reply!</Modal.Body>
                 </Modal>
             <Card
                 key={ clip._id }

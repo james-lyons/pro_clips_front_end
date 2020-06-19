@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
-import { Props, Comment, ReplyRef } from './config';
+import { Props, Comment, ReplyRef, Clip } from './config';
 import { likeComment, unlikeComment  } from '../../../../redux/actions/commentActions/commentActions';
 import DeleteComment from '../DeleteComment/deleteComment';
-import RepliesComp from '../../../Replies/Replies/repliesC';
+import Replies from '../../../../containers/Replies/Replies/Replies';
 import ReplyForm from '../../../../containers/Replies/ReplyForm/ReplyForm';
 import LikeCommentComp from '../LikeComment/LikeComment';
 
 const CommentsComponent: React.SFC<Props> = ({
-    clip, replyRef, comments, handleReplyForm
+    clip,
+    replyRef,
+    comments,
+    handleReplyForm
 })=> {
 
     const commentMapper = (comments: Array<Comment>, clipId: string, replyRef: ReplyRef) => {
@@ -23,14 +26,14 @@ const CommentsComponent: React.SFC<Props> = ({
                         <DeleteComment comment={ comment } clipId={ clipId } />
                     </div>
                     <div>
-                        <button style={{ width: '5rem' }} onClick={ () => handleReplyForm(comment._id) }>Reply</button>
                         <LikeCommentComp comment={ comment } />
+                        <span style={{ width: '5rem', cursor: 'pointer' }} onClick={ () => handleReplyForm(comment._id) }>Reply</span>
                     </div>
                     {
                         comment.replies &&
-                        <RepliesComp
-                        replies={ comment.replies }
-                        clipId={ clipId }
+                        <Replies
+                            replies={ comment.replies }
+                            clipId={ clipId }
                         />
                     }
                     { replyRef === comment._id && <ReplyForm commentId={ comment._id }/>}

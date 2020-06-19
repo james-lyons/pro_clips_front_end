@@ -1,12 +1,14 @@
 interface State {
-    replies: Array<Reply>
+    showLoginModal: boolean
 };
 
 interface Props {
-    replies: Array<Reply>
+    replies: Array<ReplyI>,
+    clipId: string
 };
 
-interface Reply {
+interface ReplyI {
+    reply_text: string,
     author_name: string,
     _id: string,
     author_id: string,

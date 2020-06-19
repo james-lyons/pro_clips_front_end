@@ -1,8 +1,16 @@
 interface Props {
-    clip: null | object,
-    replyRef: null | string,
+    clip: null | Clip,
+    replyRef: ReplyRef,
     comments: null | Array<Comment>,
     handleReplyForm: (commentId: string) => void
+};
+
+interface Clip {
+    _id: string
+};
+
+interface ReplyRef {
+    replyRef: null | string
 };
 
 interface Comment {
@@ -23,12 +31,7 @@ interface Reply {
     likes: Array<string>
 };
 
-interface ReplyRef {
-    replyRef: null | string
-};
-
 export {
-    Clip,
     Props,
     Comment,
     ReplyRef

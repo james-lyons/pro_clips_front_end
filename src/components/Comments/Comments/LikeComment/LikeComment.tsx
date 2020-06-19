@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchComments, likeComment, unlikeComment } from '../../../../redux/actions/commentActions/commentActions';
 import { Props, State, Comment } from './config';
+import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class LikeCommentComp extends React.PureComponent<Props, State> {
 
-    state = {
-        comments: null
+    state: State = {
+        comments: null,
+        showLoginModal: false
     };
 
     likeCommentSubmit = async (comment: Comment) => {
@@ -27,30 +30,42 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
         });
     };
 
+    private handleShowLoginModal = () => {
+        this.setState({
+            showLoginModal: true
+        });
+    };
+
+    private handleCloseLoginModal = () => {
+        this.setState({
+            showLoginModal: false
+        });
+    };
+
     renderLikeButton = (comment: Comment) => {
         let currentUser = localStorage.getItem('uid');
         let i = comment.likes.indexOf(currentUser)
 
         if (!currentUser) {
             return (
-                <button style={{ width: '5rem '}}
-                    onClick={ () => alert('login to like, comment, and follow!') }>
-                        like clip
-                </button>
+                <span style={{ cursor: 'pointer', margin: '0 5px' }}
+                    onClick={ () => this.handleShowLoginModal() }>
+                        🤍
+                </span>
             );
         } else if (i >= 0) {
             return (
-                <button style={{ width: '5rem '}}
+                <span style={{ cursor: 'pointer', margin: '0 5px'  }}
                     onClick={ () => this.unlikeCommentSubmit(comment) }>
-                        unlike
-                </button>
+                        ♥️
+                </span>
             )
         } else {
             return (
-                <button style={{ width: '5rem '}}
+                <span style={{ cursor: 'pointer', margin: '0 5px'  }}
                     onClick={ () => this.likeCommentSubmit(comment) }>
-                        like
-                </button>
+                        🤍
+                </span>
             );
         };
     };
@@ -62,6 +77,12 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
         return (
             <>
                 { renderLikeButton(this.props.comment) }
+                <Modal show={ this.state.showLoginModal } onHide={ this.handleCloseLoginModal }>
+                    <Modal.Header closeButton>
+                        <Modal.Title>ProClips</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body><Link to="/login">Login</Link> to like, comment, and reply!</Modal.Body>
+                </Modal>
             </>
         );
     };

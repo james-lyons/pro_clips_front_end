@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import { likeReply, unlikeReply } from '../../../../redux/actions/replyActions/replyActions';
 import { fetchComments,  } from '../../../../redux/actions/commentActions/commentActions';
 import { Props, State, Reply } from './config';
+import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class LikeReply extends React.PureComponent<Props, State> {
 
-    state = {
-        comments: null
+    state: State = {
+        comments: null,
+        showLoginModal: false
     };
 
-    likeReplySubmit = async (reply: Reply, clipId: string) => {
+    private likeReplySubmit = async (reply: Reply, clipId: string) => {
         await this.props.likeReply(reply._id);
         await this.props.fetchComments(clipId);
         this.setState({
@@ -18,11 +21,23 @@ class LikeReply extends React.PureComponent<Props, State> {
         });
     };
 
-    unlikeReplySubmit = async (reply: Reply, clipId: string) => {
+    private unlikeReplySubmit = async (reply: Reply, clipId: string) => {
         await this.props.unlikeReply(reply._id);
         await this.props.fetchComments(clipId);
         this.setState({
             comments: this.props.comments
+        });
+    };
+
+    private handleShowLoginModal = () => {
+        this.setState({
+            showLoginModal: true
+        });
+    };
+
+    private handleCloseLoginModal = () => {
+        this.setState({
+            showLoginModal: false
         });
     };
 
@@ -32,24 +47,24 @@ class LikeReply extends React.PureComponent<Props, State> {
 
         if (!currentUser) {
             return (
-                <button style={{ width: '5rem '}}
-                    onClick={ () => alert('login to like, comment, and follow!') }>
-                        like clip
-                </button>
+                <span style={{ cursor: 'pointer', margin: '0 5px' }}
+                    onClick={ () => this.handleShowLoginModal() }>
+                        🤍
+                </span>
             );
         } else if (i >= 0) {
             return (
-                <button style={{ width: '5rem '}}
+                <span style={{ cursor: 'pointer', margin: '0 5px' }}
                     onClick={ () => this.unlikeReplySubmit(reply, clipId) }>
-                        unlike
-                </button>
+                         ♥️
+                </span>
             )
         } else {
             return (
-                <button style={{ width: '5rem '}}
+                <span style={{ cursor: 'pointer', margin: '0 5px' }}
                     onClick={ () => this.likeReplySubmit(reply, clipId) }>
-                        like
-                </button>
+                        🤍
+                </span>
             );
         };
     };
@@ -61,6 +76,12 @@ class LikeReply extends React.PureComponent<Props, State> {
         return (
             <>
                 { renderLikeButton(this.props.reply, this.props.clipId) }
+                <Modal show={ this.state.showLoginModal } onHide={ this.handleCloseLoginModal }>
+                    <Modal.Header closeButton>
+                        <Modal.Title>ProClips</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body><Link to="/login">Login</Link> to like, comment, and reply!</Modal.Body>
+                </Modal>
             </>
         );
     };
