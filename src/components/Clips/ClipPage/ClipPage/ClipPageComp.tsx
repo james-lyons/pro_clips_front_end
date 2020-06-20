@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Card, Modal } from 'react-bootstrap';
-import ClipSettings from '../ClipSettings/ClipSettings/ClipSettingsComp';
-import UserClipSettings from '../ClipSettings/UserClipSettings/UserClipSettingsComp';
-import CommentForm from '../../../containers/Comments/CommentForm/CommentForm';
-import Comments from '../../../containers/Comments/Comments/Comments';
+import ClipSettings from '../../ClipSettings/ClipSettings/ClipSettingsComp';
+import UserClipSettings from '../../ClipSettings/UserClipSettings/UserClipSettingsComp';
+import CommentForm from '../../../../containers/Comments/CommentForm/CommentForm';
+import Comments from '../../../../containers/Comments/Comments/Comments';
+import LikeClip from '../LikeClip/LikeClipComp';
 import { Props } from './config';
-import { likeClip, unlikeClip } from '../../../redux/actions/clipActions/clipActions';
-import LikeClip from './LikeClip/LikeClipComp';
+import { likeClip, unlikeClip } from '../../../../redux/actions/clipActions/clipActions';
 
 const ClipPageComponent: React.SFC<Props> = ({
     clip,

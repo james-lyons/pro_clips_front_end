@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BrowseClipsComponent from '../../../../components/Clips/BrowseClips/BrowseClipsComponent';
+import BrowseClipsComponent from '../../../../components/Clips/BrowseClips/BrowseClips/BrowseClipsComp';
 import { fetchBrowseClips } from '../../../../redux/actions/clipActions/clipActions';
 import { Props, State } from './config';
 

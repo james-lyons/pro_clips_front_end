@@ -2,15 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { deleteUser } from '../../../redux/actions/userActions/userActions';
-import { styles } from './config';
+import { Props, styles } from './config';
 
-interface Props {
-    deleteUser: () => {}
-};
-
-const AccountDeleteComponent: React.SFC<Props> = ({
+const AccountDeleteComponent: React.SFC <Props> = ({
     deleteUser
 }) => {
+
     const currentUser = localStorage.getItem('uid')
     return (
         <>

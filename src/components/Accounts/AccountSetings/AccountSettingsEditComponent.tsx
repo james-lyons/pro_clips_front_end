@@ -4,7 +4,7 @@ import { Form, Button, Col } from 'react-bootstrap';
 import { deleteUser } from '../../../redux/actions/userActions/userActions';
 import { Props, styles } from './config';
 
-const editPasswordComponent: React.SFC<Props> = ({
+const editPasswordComponent: React.SFC <Props> = ({
     email,
     oldPassword,
     password,

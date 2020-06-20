@@ -15,13 +15,13 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
         message: null
     };
 
-    private handleChange = (event:any) => {
+    private handleChange = () => {
         this.setState({
             [event.target.name]: event.target.value
         });
     };
 
-    private handleSubmit = async (event:any) => {
+    private handleSubmit = async () => {
         event.preventDefault();
 
         const { userName, email, password, password2 } = this.state;
@@ -29,10 +29,6 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
         const loginCredentials = { email, password };
 
         const res = await this.props.userRegister(newUser);
-        
-        console.log('res', res);
-        console.log('new user', newUser);
-        console.log('login credentials', loginCredentials)
 
         if (res.type === 'USER_REGISTRATION_REJECTED') {
             this.setState({
@@ -75,7 +71,7 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
     }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
     return {
         errors: state.authReducer.errors,
         message: state.authReducer.message

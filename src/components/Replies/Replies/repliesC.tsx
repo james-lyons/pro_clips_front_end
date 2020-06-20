@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DeleteReply from './DeleteReply/deleteReply';
 import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
 import { Card } from 'react-bootstrap';
 import { Props, Reply } from './config';
-import LikeReply from './LikeReply/LikeReply';
+import DeleteReply from '../../../containers/Replies/DeleteReply/deleteReply';
+import LikeReply from '../../../containers/Replies/LikeReply/LikeReply';
 
 const RepliesC: React.SFC<Props> = ({
     replies,

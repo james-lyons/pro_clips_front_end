@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ClipPageComponent from '../../../components/Clips/ClipPage/ClipPageComponent';
-import { State, Props } from './config';
+import ClipPageComponent from '../../../components/Clips/ClipPage/ClipPage/ClipPageComp';
 import { fetchClip, editClip, deleteClip } from '../../../redux/actions/clipActions/clipActions';
+import { State, Props } from './config';
 
 class ClipPage extends React.PureComponent<Props, State> {
     state: State = {

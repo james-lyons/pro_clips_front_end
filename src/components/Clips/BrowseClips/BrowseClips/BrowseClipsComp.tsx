@@ -1,23 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-interface Clips {
-    clip: null | Clip
-};
-
-interface Clip {
-    _id: string,
-    poster: string,
-    title: string,
-    game: string,
-    url: string
-};
-
-const BrowseClipsComponent: React.SFC<{ browseClips: Array<object> }> = ({
-    browseClips
-}) => {
+const BrowseClipsComponent: React.SFC <{}> = ({}) => {
     return (
         <>
             <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '20% 20% 20% 20% 20%' }}>
@@ -151,10 +135,4 @@ const BrowseClipsComponent: React.SFC<{ browseClips: Array<object> }> = ({
     );
 };
 
-const mapStateToProps = (state: any) => {
-    return {
-        browseClips: state.clipReducer.browseClips
-    };
-};
-
-export default connect(mapStateToProps, null)(BrowseClipsComponent);
+export default BrowseClipsComponent;

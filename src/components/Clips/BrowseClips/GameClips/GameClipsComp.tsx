@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Props, Clip } from './config';
 
-const GameClipsComp: React.SFC <> = ({ gameClips }) => {
+const GameClipsComp: React.SFC <Props> = ({ gameClips }) => {
 
     const clipMapper = (gameClips: Array<Clip>) => {
         const clipArr = gameClips.map((clip) =>
@@ -36,6 +37,5 @@ const mapStateToProps = (state: any) => {
         gameClips: state.clipReducer.gameClips
     };
 };
-
 
 export default connect(mapStateToProps, null)(GameClipsComp);

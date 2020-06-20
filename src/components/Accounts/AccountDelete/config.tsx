@@ -1,3 +1,7 @@
+interface Props {
+    deleteUser: (currentUser: string) => void
+};
+
 const styles = {
     divWrapper: {
         padding: '1rem'
@@ -9,5 +13,6 @@ const styles = {
 };
 
 export {
+    Props,
     styles
 };

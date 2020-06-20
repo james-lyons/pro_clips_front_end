@@ -13,13 +13,13 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         message: null
     };
 
-    private handleChange = (event: any) => {
+    private handleChange = () => {
         this.setState({
             [event.target.name]: event.target.value
         });
     };
 
-    private handleSubmit = async (event:any) => {
+    private handleSubmit = async () => {
         event.preventDefault();
 
         const { email, password } = this.state;
@@ -28,7 +28,6 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
         await this.props.userLogin(user);
 
         if (this.props.errors) {
-            console.log(this.props.errors)
             this.setState({
                 errors: this.props.errors,
                 message: this.props.message

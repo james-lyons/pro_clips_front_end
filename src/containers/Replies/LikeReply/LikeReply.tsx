@@ -1,30 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchComments, likeComment, unlikeComment } from '../../../../redux/actions/commentActions/commentActions';
-import { Props, State, Comment } from './config';
+import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
+import { fetchComments,  } from '../../../redux/actions/commentActions/commentActions';
+import { Props, State, Reply } from './config';
 import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-class LikeCommentComp extends React.PureComponent<Props, State> {
+class LikeReply extends React.PureComponent<Props, State> {
 
     state: State = {
         comments: null,
         showLoginModal: false
     };
 
-    likeCommentSubmit = async (comment: Comment) => {
-        await this.props.likeComment(comment._id);
-        await this.props.fetchComments(comment.clip_id);
-        
+    private likeReplySubmit = async (reply: Reply, clipId: string) => {
+        await this.props.likeReply(reply._id);
+        await this.props.fetchComments(clipId);
         this.setState({
             comments: this.props.comments
         });
     };
 
-    unlikeCommentSubmit = async (comment: Comment) => {
-        await this.props.unlikeComment(comment._id);
-        await this.props.fetchComments(comment.clip_id);
-
+    private unlikeReplySubmit = async (reply: Reply, clipId: string) => {
+        await this.props.unlikeReply(reply._id);
+        await this.props.fetchComments(clipId);
         this.setState({
             comments: this.props.comments
         });
@@ -42,9 +41,9 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
         });
     };
 
-    renderLikeButton = (comment: Comment) => {
+    renderLikeButton = (reply: Reply, clipId: string) => {
         let currentUser = localStorage.getItem('uid');
-        let i = comment.likes.indexOf(currentUser)
+        let i = reply.likes.indexOf(currentUser)
 
         if (!currentUser) {
             return (
@@ -55,15 +54,15 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
             );
         } else if (i >= 0) {
             return (
-                <span style={{ cursor: 'pointer', margin: '0 5px'  }}
-                    onClick={ () => this.unlikeCommentSubmit(comment) }>
-                        ♥️
+                <span style={{ cursor: 'pointer', margin: '0 5px' }}
+                    onClick={ () => this.unlikeReplySubmit(reply, clipId) }>
+                         ♥️
                 </span>
             )
         } else {
             return (
-                <span style={{ cursor: 'pointer', margin: '0 5px'  }}
-                    onClick={ () => this.likeCommentSubmit(comment) }>
+                <span style={{ cursor: 'pointer', margin: '0 5px' }}
+                    onClick={ () => this.likeReplySubmit(reply, clipId) }>
                         🤍
                 </span>
             );
@@ -76,7 +75,7 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
 
         return (
             <>
-                { renderLikeButton(this.props.comment) }
+                { renderLikeButton(this.props.reply, this.props.clipId) }
                 <Modal show={ this.state.showLoginModal } onHide={ this.handleCloseLoginModal }>
                     <Modal.Header closeButton>
                         <Modal.Title>ProClips</Modal.Title>
@@ -94,4 +93,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchComments, likeComment, unlikeComment })(LikeCommentComp);
+export default connect(mapStateToProps, { fetchComments, likeReply, unlikeReply })(LikeReply);

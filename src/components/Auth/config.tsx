@@ -1,21 +1,25 @@
 interface RegisterComponentProps {
-    handleChange: () => {},
-    handleSubmit: () => {},
-    userName: String,
-    email: String,
-    password: String,
-    password2: String,
-    errors: null | Array<string>,
+    handleChange: () => void,
+    handleSubmit: () => void,
+    userName: string,
+    email: string,
+    password: string,
+    password2: string,
+    errors: null | Array<Error>,
     message: string,
 };
 
 interface LoginComponentProps {
-    handleChange: () => {},
-    handleSubmit: () => {},
+    handleChange: () => void,
+    handleSubmit: () => void,
     email: string,
     password: string,
-    errors: null | Array<string>,
+    errors: null | Array<Error>,
     message: string,
+};
+
+interface Error {
+    message: string
 };
 
 const styles = {

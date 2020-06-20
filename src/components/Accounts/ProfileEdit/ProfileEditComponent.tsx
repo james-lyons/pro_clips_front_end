@@ -2,7 +2,7 @@ import React from 'react';
 import { Form , Col, Button } from 'react-bootstrap';
 import { Props, styles } from './config';
 
-const ProfileEdit: React.SFC<Props> = ({
+const ProfileEdit: React.SFC <Props> = ({
     bio,
     userName,
     profile_image,
@@ -87,7 +87,7 @@ const ProfileEdit: React.SFC<Props> = ({
                                     <Form.Control
                                         as="textarea"
                                         size="sm"
-                                        rows="3"
+                                        rows={ 3 }
                                         name="bio"
                                         value={ bio }
                                         onChange={ handleChange }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
-import { Props, Comment, ReplyRef, Clip } from './config';
+import { Props, Comment, ReplyRef } from './config';
 import { likeComment, unlikeComment  } from '../../../../redux/actions/commentActions/commentActions';
-import DeleteComment from '../DeleteComment/deleteComment';
+import DeleteComment from '../../../../containers/Comments/DeleteComment/deleteComment';
+import LikeCommentComp from '../../../../containers/Comments/LikeComment/LikeComment';
 import Replies from '../../../../containers/Replies/Replies/Replies';
 import ReplyForm from '../../../../containers/Replies/ReplyForm/ReplyForm';
-import LikeCommentComp from '../LikeComment/LikeComment';
 
 const CommentsComponent: React.SFC<Props> = ({
     clip,

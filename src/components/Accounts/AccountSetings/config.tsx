@@ -7,9 +7,9 @@ interface Props {
     editEmailMessage: string,
     editPasswordErrors: Array<string>,
     editPasswordMessage: string,
-    handleChange: () => {},
-    editEmailSubmit: () => {},
-    editPasswordSubmit: () => {},
+    handleChange: () => void,
+    editEmailSubmit: () => void,
+    editPasswordSubmit: () => void,
 };
 
 const styles = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteComment, fetchComments } from '../../../../redux/actions/commentActions/commentActions';
+import { deleteComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
 import { Props } from './config';
 
 class DeleteComment extends React.PureComponent <Props> {
