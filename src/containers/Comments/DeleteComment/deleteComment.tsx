@@ -1,13 +1,14 @@
 import React from 'react';
+import { Props } from './config';
 import { connect } from 'react-redux';
 import { deleteComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
-import { Props } from './config';
 
-class DeleteComment extends React.PureComponent <Props> {
+class DeleteComment extends React.PureComponent<Props> {
 
     handleSubmit = async (commentId: string, clipId: string) => {
-        await this.props.deleteComment(commentId);
-        await this.props.fetchComments(clipId);
+        const { deleteComment, fetchComments } = this.props;
+        await deleteComment(commentId);
+        await fetchComments(clipId);
     };
 
     render() {

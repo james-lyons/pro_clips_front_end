@@ -1,9 +1,16 @@
 interface Props {
     commentText: null | string,
-    handleChange: (event: any) => void,
-    handleSubmit: (event: any) => void
+    handleChange: () => void,
+    handleSubmit: () => void
 };
 
+interface LoggedInProps {
+    commentText: string,
+    handleChange: () => void,
+    handleSubmit: () => void
+}
+
 export {
-    Props
+    Props,
+    LoggedInProps
 };

@@ -1,5 +1,6 @@
 interface Props {
     clip: Clip,
+    showLoginModal: boolean,
     likeClip: (clipdId: string) => void,
     unlikeClip: (clipdId: string) => void,
     handleShowLoginModal: () => void

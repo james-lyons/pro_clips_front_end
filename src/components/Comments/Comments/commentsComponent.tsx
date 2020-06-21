@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
-import { Props, Comment, ReplyRef } from './config';
-import { likeComment, unlikeComment  } from '../../../../redux/actions/commentActions/commentActions';
-import DeleteComment from '../../../../containers/Comments/DeleteComment/deleteComment';
-import LikeCommentComp from '../../../../containers/Comments/LikeComment/LikeComment';
-import Replies from '../../../../containers/Replies/Replies/Replies';
-import ReplyForm from '../../../../containers/Replies/ReplyForm/ReplyForm';
+import { Props, Comment } from './config';
+import { likeComment, unlikeComment  } from '../../../redux/actions/commentActions/commentActions';
+import DeleteComment from '../../../containers/Comments/DeleteComment/deleteComment';
+import LikeCommentComp from '../../../containers/Comments/LikeComment/LikeComment';
+import ReplyForm from '../../../containers/Replies/ReplyForm/ReplyForm';
+import Replies from '../../../containers/Replies/Replies/Replies';
 
 const CommentsComponent: React.SFC<Props> = ({
     clip,
@@ -15,19 +15,31 @@ const CommentsComponent: React.SFC<Props> = ({
     handleReplyForm
 })=> {
 
-    const commentMapper = (comments: Array<Comment>, clipId: string, replyRef: ReplyRef) => {
+    const commentMapper = (
+            comments: Array<Comment>,
+            clipId: string,
+            replyRef: null | string
+        ) => {
+
         const commentArray = comments.map((comment) =>
+        
             <div key={ comment._id } style={{ margin: '.5 rem' }}>
                 <Card
                     style={{ margin: '.5rem' }}
                 >
                     <div style={{ display: 'grid', gridTemplateColumns: '90% 10%', width: '100%'}}>
-                        <h1 style={{ fontSize: '1.3rem' }}>{ comment.author_name }: { comment.comment_text } </h1>
+                        <h1 style={{ fontSize: '1.3rem' }}>
+                            { comment.author_name }: { comment.comment_text }
+                        </h1>
                         <DeleteComment comment={ comment } clipId={ clipId } />
                     </div>
                     <div>
                         <LikeCommentComp comment={ comment } />
-                        <span style={{ width: '5rem', cursor: 'pointer' }} onClick={ () => handleReplyForm(comment._id) }>Reply</span>
+                        <span
+                            style={{ width: '5rem', cursor: 'pointer' }}
+                            onClick={ () => handleReplyForm(comment._id) }>
+                                Reply
+                        </span>
                     </div>
                     {
                         comment.replies &&

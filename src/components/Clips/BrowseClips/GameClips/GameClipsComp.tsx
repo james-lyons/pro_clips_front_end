@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Props, Clip } from './config';
 
-const GameClipsComp: React.SFC <Props> = ({ gameClips }) => {
+const GameClipsComp: React.SFC<Props> = ({ gameClips }) => {
 
     const clipMapper = (gameClips: Array<Clip>) => {
         const clipArr = gameClips.map((clip) =>

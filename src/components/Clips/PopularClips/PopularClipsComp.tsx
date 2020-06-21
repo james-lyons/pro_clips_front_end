@@ -1,22 +1,11 @@
 import React from 'react';
+import { Props, Clip } from './config';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-interface Clips {
-    clip: null | Clip
-};
-
-interface Clip {
-    _id: string,
-    poster: string,
-    title: string,
-    game: string,
-    url: string
-};
-
-const clipMapper = (clips: Clip) => {
-    const clipArr = clips.map((clip) =>
+const clipMapper = (clips: Array<Clip>) => {
+    const clipArr = clips.map((clip: Clip) =>
         <div key={ clip._id } style={{ display: 'inline-block', margin: '.5 rem' }}>
             <Link to={ `/clip/${ clip._id }` } style={{ textDecoration: 'none', color: 'black' }}>
                 <Card
@@ -31,9 +20,10 @@ const clipMapper = (clips: Clip) => {
     return clipArr;
 };
 
-const PopularClipsComp: React.SFC<{ browseClips: Array<object> }> = ({
+const PopularClipsComp: React.SFC<Props> = ({
     browseClips
 }) => {
+
     return (
         <>
             <div style={{ marginTop: '2.5rem', padding: '0 auto' }}>

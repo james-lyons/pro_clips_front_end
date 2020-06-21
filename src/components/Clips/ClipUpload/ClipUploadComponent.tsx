@@ -1,13 +1,6 @@
 import React from 'react';
+import { Props } from './config';
 import { Form, Button } from 'react-bootstrap';
-
-interface Props {
-    title: string,
-    game: null | string,
-    uploadClip: () => {},
-    handleChange: () => {},
-    handleSelect: () => {}
-};
 
 const ClipUploadComponent: React.SFC<Props> = ({ title, game, uploadClip, handleChange, handleSelect }) => {
 

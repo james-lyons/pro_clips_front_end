@@ -25,15 +25,17 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = ({
                 style={ styles.form }
                 onSubmit={ handleSubmit }
             >
-                
+
                 <div style={{ marginBottom: '1rem' }}>
-                    {  errors && errors.map((error, i) => (
+                    {
+                        errors && errors.map((error, i) => (
                         <div
                             style={ styles.errorDiv } role="alert" key={ i }>
                             <p style={ styles.errorP }>{ error.message }  </p>
                         </div>
                     ))}
-                    { message &&
+                    {
+                        message &&
                         <div style={ styles.errorDiv } role="alert">
                             <p style={ styles.errorP }>{ message }</p>
                         </div>

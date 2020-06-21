@@ -1,13 +1,14 @@
 import React from 'react';
+import { Props, ReduxState } from './config';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { userLogout } from '../../redux/actions/authActions/authActions';
 import Search from '../../containers/Search/Search';
 
-const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
+const NavBarComponent: React.SFC<Props> = ({ currentUser, userLogout }) => {
 
     const element = <FontAwesomeIcon icon={ faBars } />
     const currentUserId = localStorage.getItem('uid');
@@ -44,8 +45,12 @@ const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
                     <Nav.Link as={ Link } to="/clipupload">Upload</Nav.Link>
                     <Nav.Link href={`/${ currentUser.userName }`}>Profile</Nav.Link>
                     <NavDropdown alignRight title={ element } id="basic-nav-dropdown">
-                        <NavDropdown.Item as={ Link } to="/accounts">Settings</NavDropdown.Item>
-                        <NavDropdown.Item onClick={ () => userLogout(currentUserId) }>Logout</NavDropdown.Item>
+                        <NavDropdown.Item as={ Link } to="/accounts">
+                            Settings
+                        </NavDropdown.Item>
+                        <NavDropdown.Item onClick={ () => userLogout(currentUserId) }>
+                            Logout
+                        </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
@@ -59,7 +64,7 @@ const NavBarComponent: React.SFC<{}> = ({ userLogout, currentUser }) => {
     );
 };
 
-const mapStateToProps = (state:object) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         currentUser: state.userReducer.currentUser
     };

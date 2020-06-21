@@ -8,11 +8,12 @@ interface Props {
 };
 
 interface ReplyI {
-    reply_text: string,
-    author_name: string,
     _id: string,
     author_id: string,
     comment_id: string,
+    time_stamp: string,
+    reply_text: string,
+    author_name: string,
     likes: Array<string>
 };
 

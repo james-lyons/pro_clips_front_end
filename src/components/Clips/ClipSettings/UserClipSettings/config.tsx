@@ -1,24 +1,20 @@
 interface Props {
     clip: Clip,
-    match: object,
-    editClip: (clipId: string) => {},
-    deleteClip: (clipId: string) => {},};
-
-interface State {
     clipVis: string,
     newTitle: string,
+    showClip: () => void,
+    handleChange: () => void,
+    handleClipEdit: () => void,
+    handleClipDelete: (clipId: string) => void
 };
 
 interface Clip {
     _id: string,
-    poster: string,
-    poster_name: string,
-    title: string,
     key: string,
-    url: string
+    game: string,
+    title: string,
 };
 
 export {
-    Props,
-    State
+    Props
 };

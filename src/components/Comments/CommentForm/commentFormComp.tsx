@@ -1,40 +1,23 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { Props } from './config';
+import LoggedIn from './loggedIn';
+import LoggedOut from './loggedOut';
 
 const CommentComponent: React.SFC<Props> = ({ commentText, handleChange, handleSubmit }) => {
 
     const currentUser = localStorage.getItem('uid');
 
-
-    const loggedIn = () => {
-        return (
-            <Form onSubmit={ handleSubmit }>
-                <Form.Group>
-                    <Form.Control
-                        type="text"
-                        name="commentText"
-                        value={ commentText }
-                        placeholder='Add a comment'
-                        onChange={ handleChange }
-                    />
-                </Form.Group>
-            </Form>
-        );
-    };
-
-    const loggedOut = () => {
-        return (
-            <div style={{ padding: '1rem' }}>
-                <span><Link to="/login">Login</Link> to like, comment, or reply!</span>
-            </div>
-        );
-    };
-
     return (
         <>
-            { currentUser ? loggedIn() : loggedOut() }
+            {
+                currentUser
+                ? <LoggedIn
+                    commentText={ commentText }
+                    handleChange={ handleChange }
+                    handleSubmit={ handleSubmit }
+                />
+                : <LoggedOut />
+            }
         </>
     );
 };

@@ -13,18 +13,19 @@ const LoginComponent: React.SFC<LoginComponentProps> = ({
 
     return (
         <>
-            <h1 className="col-lg-4 col-md-6 col-sm-10 mb-4" style={ styles.h1 }>Login</h1>
-                
+            <h1 className="col-lg-4 col-md-6 col-sm-10 mb-4" style={ styles.h1 }>Login</h1>  
             <Form className="col-lg-4 col-md-6 col-sm-10 mb-4" style={ styles.form } onSubmit={ handleSubmit }>
 
                 <div style={{ marginBottom: '1rem' }}>
-                    {  errors && errors.map((error, i) => (
+                    { 
+                        errors && errors.map((error, i) => (
                         <div
                             style={ styles.errorDiv } role="alert" key={ i }>
                             <p style={ styles.errorP }>{ error.message }  </p>
                         </div>
                     ))}
-                    { message &&
+                    {
+                        message &&
                         <div style={ styles.errorDiv } role="alert">
                             <p style={ styles.errorP }>{ message }</p>
                         </div>

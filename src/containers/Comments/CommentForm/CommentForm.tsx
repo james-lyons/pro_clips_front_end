@@ -10,16 +10,19 @@ class CommentForm extends React.PureComponent<Props, State> {
         commentText: ''
     };
 
-    private handleChange = (event: any) => {
+    private handleChange = () => {
         this.setState({
             [event.target.name]: event.target.value
         });
     };
 
-    private handleSubmit = async (event: any) => {
+    private handleSubmit = async () => {
         event.preventDefault();
-        await this.props.createComment(this.state.commentText, this.props.clipId);
-        await this.props.fetchComments(this.props.clipId);
+        const { clipId, createComment, fetchComments } = this.props;
+
+        await createComment(this.state.commentText, clipId);
+        await fetchComments(clipId);
+        this.setState({ commentText: '' });
     };
 
     render() {

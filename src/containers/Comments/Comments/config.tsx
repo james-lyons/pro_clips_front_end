@@ -6,8 +6,8 @@ interface State {
 
 interface Props {
     clip: Clip,
-    fetchComments: (clipId: string) => void,
-    deleteComment: (commentId: string) => void
+    comments: null | Array<Comment>,
+    fetchComments: (clipId: string) => void
 };
 
 interface Clip {
@@ -17,7 +17,7 @@ interface Clip {
     key: string,
     url: string,
     comments: Array<Comment>
-}
+};
 
 interface Comment {
     _id: string,

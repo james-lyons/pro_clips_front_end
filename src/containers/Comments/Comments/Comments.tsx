@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentsComponent from '../../../components/Comments/Comments/Comments/commentsComponent';
-import { fetchComments, deleteComment } from '../../../redux/actions/commentActions/commentActions';
+import CommentsComponent from '../../../components/Comments/Comments/commentsComponent';
+import { fetchComments } from '../../../redux/actions/commentActions/commentActions';
 import { State, Props } from './config';
 
 class Comments extends React.PureComponent<Props, State> {
@@ -12,47 +12,32 @@ class Comments extends React.PureComponent<Props, State> {
     };
 
     componentDidMount = async () => {
-        const { clip } = this.props;
+        const { clip, comments, fetchComments } = this.props;
 
         if (clip.comments.length > 0) {
-            await this.props.fetchComments(clip._id);
-            this.setState({
-                comments: this.props.comments
-            });
+            await fetchComments(clip._id);
+            this.setState({ comments });
         };
-    };
-
-    private deleteComment = async (commentId: string) => {
-        console.log(this.props);
-        await this.props.deleteComment(commentId);
-        await this.props.fetchComments(this.props.clip._id);
     };
 
     private handleReplyForm = (commentId: string) => {
         if (commentId === this.state.replyRef) {
-            this.setState({
-                replyRef: null
-            });
+            this.setState({ replyRef: null });
         } else {
-            this.setState({
-                replyRef: commentId
-            });
+            this.setState({ replyRef: commentId });
         };
-        console.log(this.state.replyRef);
     };
 
     render() {
 
-        const { handleReplyForm } = this;
         const { replyRef } = this.state;
+        const { handleReplyForm } = this;
 
         return (
             <>
                 <CommentsComponent
                     replyRef={ replyRef }
-                    comments={ this.props.comments }
                     handleReplyForm={ handleReplyForm }
-                    deleteComment= { this.deleteComment }
                 />
             </>
         );
@@ -66,4 +51,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchComments, deleteComment })(Comments);
+export default connect(mapStateToProps, { fetchComments })(Comments);

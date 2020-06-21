@@ -1,13 +1,12 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
-import { ClipSettingsProps } from './config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-
-const element = <FontAwesomeIcon icon={ faBars } />
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ClipSettingsProps } from './config';
 
 const ClipSettings: React.SFC<ClipSettingsProps> = ({ clip }) => {
+    const element = <FontAwesomeIcon icon={ faBars } />
+
     return (
         <div style={{ display: 'grid', gridTemplateColumns: '91.9% 8.1%' }}>
             <h1 style={{ fontSize: '1.3rem' }}>{ clip.title } { clip.game }</h1>
