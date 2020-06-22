@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
-import { Props, Comment } from './config';
-import { likeComment, unlikeComment  } from '../../../redux/actions/commentActions/commentActions';
+import { Props, Comment, ReduxProps } from './config';
+import { likeComment, unlikeComment } from '../../../redux/actions/commentActions/commentActions';
 import DeleteComment from '../../../containers/Comments/DeleteComment/deleteComment';
 import LikeCommentComp from '../../../containers/Comments/LikeComment/LikeComment';
 import ReplyForm from '../../../containers/Replies/ReplyForm/ReplyForm';
@@ -27,7 +27,11 @@ const CommentsComponent: React.SFC<Props> = ({
                 <Card
                     style={{ margin: '.5rem' }}
                 >
-                    <div style={{ display: 'grid', gridTemplateColumns: '90% 10%', width: '100%'}}>
+                    <div style={{
+                        width: '100%',
+                        display: 'grid',
+                        gridTemplateColumns: '90% 10%'
+                    }}>
                         <h1 style={{ fontSize: '1.3rem' }}>
                             { comment.author_name }: { comment.comment_text }
                         </h1>
@@ -62,7 +66,7 @@ const CommentsComponent: React.SFC<Props> = ({
     );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxProps) => {
     return {
         comments: state.commentReducer.comments,
         clip: state.clipReducer.clip

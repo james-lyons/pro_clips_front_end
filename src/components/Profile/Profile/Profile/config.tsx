@@ -4,6 +4,7 @@ interface Props {
     followingList: Array<Follower>,
     currentUser: CurrentUser,
     match: boolean,
+    showLogin: boolean,
     isFollowed: boolean,
     showFollowers: boolean,
     showFollowing: boolean
@@ -36,6 +37,20 @@ interface CurrentUser {
     followers: [],
     following: [],
     id: string
+};
+
+interface Follower {
+    userName: string,
+    profile_image: string
+};
+
+interface ReduxState {
+    followerReducer: FollowProps
+};
+
+interface FollowProps {
+    followersList: Array<Follower>,
+    followingList: Array<Follower>
 };
 
 interface Follower {
@@ -84,5 +99,6 @@ const styles = {
 export {
     Props,
     Follower,
+    ReduxState,
     styles
 };

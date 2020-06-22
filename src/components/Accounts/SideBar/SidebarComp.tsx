@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { styles } from './config';
 
-const AccountsSidebar: React.SFC <{}> = ({}) => {
+const AccountsSidebar: React.SFC<{}> = () => {
     return (
         <>
             <ul style={ styles.ul }>

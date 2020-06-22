@@ -2,6 +2,14 @@ interface Props {
     gameClips: Array<Clip>
 };
 
+interface ReduxProps {
+    clipReducer: ClipReducer
+};
+
+interface ClipReducer {
+    gameClips: Array<Clip>
+};
+
 interface Clip {
     _id: string,
     poster: string,
@@ -13,5 +21,6 @@ interface Clip {
 
 export {
     Props,
-    Clip
+    Clip,
+    ReduxProps
 };

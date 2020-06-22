@@ -33,7 +33,8 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = ({
                             style={ styles.errorDiv } role="alert" key={ i }>
                             <p style={ styles.errorP }>{ error.message }  </p>
                         </div>
-                    ))}
+                        ))
+                    }
                     {
                         message &&
                         <div style={ styles.errorDiv } role="alert">
@@ -55,6 +56,7 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = ({
                         />
                     </Form.Group>
                 </Form.Row>
+
                 <Form.Row>
                     <Form.Group as={ Col } controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
@@ -68,6 +70,7 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = ({
                         />
                     </Form.Group>
                 </Form.Row>
+
                 <Form.Row>
                     <Form.Group as={ Col } controlId="formGridPassword">
                         <Form.Label>Password</Form.Label>
@@ -81,6 +84,7 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = ({
                         />
                     </Form.Group>
                 </Form.Row>
+                
                 <Form.Row>
                     <Form.Group as={ Col } controlId="formGridPassword2">
                         <Form.Label>Please confirm your password</Form.Label>

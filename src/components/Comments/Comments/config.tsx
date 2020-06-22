@@ -29,7 +29,21 @@ interface ReplyI {
     likes: Array<string>
 };
 
+interface ReduxProps {
+    commentReducer: CommentReducer,
+    clipReducer: ClipReducer
+};
+
+interface CommentReducer {
+    comments: Array<Comment>
+};
+
+interface ClipReducer {
+    clip: Clip
+};
+
 export {
     Props,
     Comment,
+    ReduxProps
 };

@@ -1,10 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import ProfileComp from '../../../components/Profile/Profile/profileComp';
-import ProfileClips from '../ProfileClips/ProfileClips';
-import { fetchCurrentUser, fetchUser } from '../../../redux/actions/userActions/userActions';
-import { followUser, unfollowUser, fetchFollowers, fetchFollowingList } from '../../../redux/actions/followActions/followActions';
 import { State, Props } from './config';
+import { connect } from 'react-redux';
+import { fetchCurrentUser, fetchUser }
+    from '../../../redux/actions/userActions/userActions';
+import { followUser, unfollowUser, fetchFollowers, fetchFollowingList }
+    from '../../../redux/actions/followActions/followActions';
+import ProfileComp from '../../../components/Profile/Profile/Profile/profileComp';
+import ProfileClips from '../ProfileClips/ProfileClips';
 
 class Profile extends React.PureComponent<Props, State> {
     state: State = {

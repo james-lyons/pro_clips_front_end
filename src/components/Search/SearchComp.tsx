@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Col } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Props } from './config';
 
 const SearchComp: React.SFC<Props> = ({ search, handleChange, handleSubmit }) => {

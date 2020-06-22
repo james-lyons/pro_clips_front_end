@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BrowseClipsComponent: React.SFC <{}> = ({}) => {
+const BrowseClipsComponent: React.SFC<{}> = () => {
     return (
         <>
-            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '20% 20% 20% 20% 20%' }}>
+            <div style={{
+                marginTop: '2rem',
+                display: 'grid',
+                gridTemplateColumns: '20% 20% 20% 20% 20%'
+            }}>
                 <Link to={`/browseclips/Valorant`}>
                     <img
                         style={{ maxWidth: '148px', height: '197px' }}
@@ -46,7 +50,12 @@ const BrowseClipsComponent: React.SFC <{}> = ({}) => {
                     />
                 </Link>
             </div>
-            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '20% 20% 20% 20% 20%' }}>
+
+            <div style={{
+                marginTop: '2rem',
+                display: 'grid',
+                gridTemplateColumns: '20% 20% 20% 20% 20%'
+            }}>
                 <Link to={`/browseclips/Grand%20Theft%20Auto%20V`}>
                     <img
                         style={{ maxWidth: '148px', height: '197px' }}
@@ -89,7 +98,11 @@ const BrowseClipsComponent: React.SFC <{}> = ({}) => {
                 </Link>
             </div>
 
-            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: '20% 20% 20% 20% 20%' }}>
+            <div style={{
+                marginTop: '2rem',
+                display: 'grid',
+                gridTemplateColumns: '20% 20% 20% 20% 20%'
+            }}>
                 <Link to={`/browseclips/Teamfight%20Tactics`}>
                     <img
                         style={{ maxWidth: '148px', height: '197px' }}

@@ -23,7 +23,6 @@ const ReplyFormC: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }
         );
     };
 
-
     const loggedOut = () => {
         return (
             <span><Link to="/login">Login</Link> to like, comment, or reply!</span>

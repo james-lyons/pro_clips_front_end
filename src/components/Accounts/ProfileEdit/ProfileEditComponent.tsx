@@ -19,12 +19,23 @@ const ProfileEdit: React.SFC <Props> = ({
                 <div style={ styles.editProfileImgDiv }>
 
                     <div style={{ padding: '1rem' }}>
-                        <img src={ profile_image } style={{ height: '7rem', borderRadius: '100%' }}/>
+                        <img
+                            src={ profile_image }
+                            style={{ height: '7rem', borderRadius: '100%' }}
+                        />
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <Form className="col-12" style={{ padding: '1.3rem' }} onSubmit={ editProfilePictureSubmit }>
-                            <h1 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '1rem' }}>Change up yo look here!</h1>
+                        <Form
+                            className="col-12" style={{ padding: '1.3rem' }}
+                            onSubmit={ editProfilePictureSubmit }
+                        >
+                            <h1 style={{
+                                fontSize: '1.3rem',
+                                fontWeight: 600, marginBottom: '1rem'
+                            }}>
+                                Change up yo look here!
+                            </h1>
 
                             <Form.Group>
                                 <Form.Row>
@@ -39,7 +50,12 @@ const ProfileEdit: React.SFC <Props> = ({
                                     </Col>
                                 </Form.Row>
                             </Form.Group>
-                            <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '60%'}}>
+                            <Button
+                                size="sm"
+                                type="submit"
+                                variant="primary"
+                                style={{ marginLeft: '60%' }}
+                            >
                                 Save Changes
                             </Button>
                         </Form>
@@ -47,18 +63,30 @@ const ProfileEdit: React.SFC <Props> = ({
                 </div>
                 <div style={ styles.editProfileDiv }>
                     <Form onSubmit={ editUserSubmit }>
-                    <h1 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '1rem' }}>Update your profile here!</h1>
+                    <h1 style={{
+                            fontSize: '1.3rem',
+                            fontWeight: 600, marginBottom: '1rem'
+                        }}>
+                            Update your profile here!
+                    </h1>
 
                         <div style={{ margin: '1.5rem 0' }}>
-                            {  editProfileErrors && editProfileErrors.map((error, i) => (
+                            {
+                                editProfileErrors && editProfileErrors.map((error, i) => (
                                 <div
                                     style={ styles.errorDiv } role="alert" key={ i }>
-                                    <p style={ styles.errorP }>{ error.message }  </p>
+                                    <p style={ styles.errorP }>
+                                        { error.message }
+                                    </p>
                                 </div>
-                            ))}
-                            { editProfileMessage &&
+                                ))
+                            }
+                            {
+                                editProfileMessage &&
                                 <div style={ styles.errorDiv } role="alert">
-                                    <p style={ styles.errorP }>{ editProfileMessage }</p>
+                                    <p style={ styles.errorP }>
+                                        { editProfileMessage }
+                                    </p>
                                 </div>
                             }
                         </div>
@@ -70,8 +98,8 @@ const ProfileEdit: React.SFC <Props> = ({
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
-                                        type="text"
                                         size="sm"
+                                        type="text"
                                         name="userName"
                                         value={ userName }
                                         onChange={ handleChange }
@@ -85,8 +113,8 @@ const ProfileEdit: React.SFC <Props> = ({
                                 </Form.Label>
                                 <Col>
                                     <Form.Control
-                                        as="textarea"
                                         size="sm"
+                                        as="textarea"
                                         rows={ 3 }
                                         name="bio"
                                         value={ bio }
@@ -95,7 +123,12 @@ const ProfileEdit: React.SFC <Props> = ({
                                 </Col>
                             </Form.Row>
                         </Form.Group>
-                        <Button variant="primary" type="submit" size="sm" style={{ marginLeft: '74%'}}>
+                        <Button
+                            size="sm"
+                            type="submit"
+                            variant="primary"
+                            style={{ marginLeft: '74%' }}
+                        >
                             Save Changes
                         </Button>
                     </Form>
