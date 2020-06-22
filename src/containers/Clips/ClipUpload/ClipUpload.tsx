@@ -1,62 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ClipUploadComponent from '../../../components/Clips/ClipUpload/ClipUploadComponent';
+import { State, Props, Event } from './config';
 import { uploadClip } from '../../../redux/actions/clipActions/clipActions';
-
-interface State {
-    clip: null | object,
-    game: null | string,
-    title: string
-};
+import ClipUploadComponent from '../../../components/Clips/ClipUpload/ClipUploadComp';
 
 class ClipUpload extends React.PureComponent<Props, State> {
-
-    static defaultProps = {
-
-    };
-
     state: State = {
         clip: null,
         title: '',
         game: ''
     };
 
-    private handleSelect = (event: any) => {
+    private handleSelect = (event: Event) => {
         let files = event.target.files;
         let file = files[0]
-
-        console.log('FILES', files);
-        console.log('FILE', file);
 
         this.setState({
             clip: file
         });
     };
 
-    private handleChange = (event: any) => {
+    private handleChange = (event: Event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state);
     };
 
-
-    private uploadClip = async () => {
+    private handleUploadClip = async () => {
         event.preventDefault();
         const { clip, game, title} = this.state;
-        await this.props.uploadClip(clip, title, game)
+        const { uploadClip } = this.props;
+
+        await uploadClip(clip, title, game)
     };
 
     render() {
         const { title, game } = this.state;
-        const { uploadClip, handleSelect, handleChange } = this;
+        const { handleUploadClip, handleSelect, handleChange } = this;
 
         return (
             <>
                 <ClipUploadComponent
-                    title={ title }
-                    uploadClip={ uploadClip }
                     game={ game }
+                    title={ title }
+                    handleUploadClip={ handleUploadClip }
                     handleSelect={ handleSelect }
                     handleChange={ handleChange }
                 />

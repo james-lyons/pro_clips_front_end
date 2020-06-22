@@ -48,10 +48,10 @@ const fetchUser = (user:string) => {
     };
 };
 
-const editUserProfile = (user:string, profileChanges:object) => {
+const editUserProfile = (userId: string, profileChanges: object) => {
     return async dispatch => {
         try {
-            let res = await fetch(`${ API_URL }/accounts/${ user }/profile`,
+            let res = await fetch(`${ API_URL }/accounts/${ userId }/profile`,
                 {
                     method: 'PUT',
                     credentials: 'include',
@@ -65,7 +65,7 @@ const editUserProfile = (user:string, profileChanges:object) => {
             if (data.status >= 400) {
                 return dispatch({ type: 'EDIT_PROFILE_REJECTED', payload: data });
             } else {
-                return dispatch({ type: 'EDIT_PROFILE_FULFILLED', payload: data });
+                return dispatch({ type: 'EDIT_PROFILE_FULFILLED', payload: data.data });
             };
 
         } catch (error) {

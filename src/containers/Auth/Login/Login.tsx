@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userLogin } from '../../redux/actions/authActions/authActions';
-import { LoginState, LoginProps } from './config';
-import LoginComponent from '../../components/Auth/loginComponent';
+import { State, Props, Event,  ReduxState } from './config';
+import { userLogin } from '../../../redux/actions/authActions/authActions';
+import LoginComponent from '../../../components/Auth/Login/LoginComponent';
 
-class Login extends React.PureComponent<LoginProps, LoginState> {
+class Login extends React.PureComponent<Props, State> {
 
-    state: LoginState = {
+    state: State = {
         email: "",
         password: "",
         errors: null,
         message: null
     };
 
-    private handleChange = () => {
+    private handleChange = (event: Event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -24,18 +24,19 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
 
         const { email, password } = this.state;
         const user = { email, password };
+        const { errors, message, history, userLogin } = this.props;
 
-        await this.props.userLogin(user);
+        await userLogin(user);
 
-        if (this.props.errors) {
+        if (errors) {
             this.setState({
-                errors: this.props.errors,
-                message: this.props.message
+                errors: errors,
+                message: message
             })
             return;
         };
 
-        this.props.history.push('/browseclips');
+        history.push('/browseclips');
     };
 
     render() {
@@ -56,7 +57,7 @@ class Login extends React.PureComponent<LoginProps, LoginState> {
     };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         errors: state.authReducer.errors,
         message: state.authReducer.message

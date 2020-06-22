@@ -2,12 +2,22 @@ import React from 'react';
 import { Props } from './config';
 import { Form, Button } from 'react-bootstrap';
 
-const ClipUploadComponent: React.SFC<Props> = ({ title, game, uploadClip, handleChange, handleSelect }) => {
+const ClipUploadComponent: React.SFC<Props> = ({
+    game,
+    title,
+    handleUploadClip,
+    handleChange,
+    handleSelect
+}) => {
 
     return (
         <>
-            <div className="col-lg-2 col-md-6 col-sm-10 mb-4" style={{ margin: '4rem auto' }}>
-                <Form onSubmit={ uploadClip } encType="multipart/form-data">
+            <div
+                className="col-lg-2 col-md-6 col-sm-10 mb-4"
+                style={{ margin: '4rem auto' }}
+            >
+
+                <Form onSubmit={ handleUploadClip } encType="multipart/form-data">
                     <Form.Row>
                         <Form.Group>
                             <Form.Label htmlFor="file">Upload Clips</Form.Label>
@@ -20,6 +30,7 @@ const ClipUploadComponent: React.SFC<Props> = ({ title, game, uploadClip, handle
                             />
                         </Form.Group>
                     </Form.Row>
+
                     <Form.Row>
                         <Form.Group>
                             <Form.Control
@@ -55,6 +66,7 @@ const ClipUploadComponent: React.SFC<Props> = ({ title, game, uploadClip, handle
                             </Form.Control>
                         </Form.Group>
                     </Form.Row>
+
                     <Form.Row>
                         <Form.Group>
                             <Form.Control
@@ -68,6 +80,7 @@ const ClipUploadComponent: React.SFC<Props> = ({ title, game, uploadClip, handle
                             />
                         </Form.Group>
                     </Form.Row>
+
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>

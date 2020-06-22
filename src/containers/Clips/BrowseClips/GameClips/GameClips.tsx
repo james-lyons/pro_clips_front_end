@@ -1,18 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Props, State } from './config';
+import { Props, ReduxState } from './config';
 import { fetchGameClips } from '../../../../redux/actions/clipActions/clipActions';
 import GameClipsComp from '../../../../components/Clips/BrowseClips/GameClips/GameClipsComp';
 
-class GameClips extends React.PureComponent <Props, State> {
-    state = {
-
-    };
+class GameClips extends React.PureComponent<Props> {
 
     componentDidMount = async () => {
-        await this.props.fetchGameClips(this.props.match.params.game);
-        console.log(this.props.gameClips);
+        const { match, fetchGameClips } = this.props;
+        await fetchGameClips(match.params.game);
     };
 
     render() {
@@ -26,10 +22,10 @@ class GameClips extends React.PureComponent <Props, State> {
     };
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         gameClips: state.clipReducer.gameClips
     };
 };
 
-export default connect(mapStateToProps, { fetchGameClips })(withRouter(GameClips));
+export default connect(mapStateToProps, { fetchGameClips })(GameClips);

@@ -15,10 +15,11 @@ interface Action {
 
 interface Clip {
     _id: string,
-    poster: string,
-    title: string,
+    url: string,
     game: string,
-    url: string
+    title: string,
+    poster: string,
+    poster_name: string
 };
 
 export {

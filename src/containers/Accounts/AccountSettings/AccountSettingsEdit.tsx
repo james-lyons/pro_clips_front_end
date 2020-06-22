@@ -1,10 +1,10 @@
 import React from 'react';
+import { State, Props, ReduxState, Event } from './config';
 import { connect } from 'react-redux';
-import EditPasswordComponent from '../../../components/Accounts/AccountSetings/AccountSettingsEditComponent';
 import { fetchCurrentUser, editUserEmail, editUserPassword } from '../../../redux/actions/userActions/userActions';
-import { State } from './config';
+import EditPasswordComponent from '../../../components/Accounts/AccountSetings/AccountSettingsEditComp';
 
-class AccountSettingsEdit extends React.PureComponent<{}, State> {
+class AccountSettingsEdit extends React.PureComponent<Props, State> {
 
     state: State = {
         email: '',
@@ -17,7 +17,7 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
         editPasswordMessage: null,
     };
 
-    private handleChange = (event:any) => {
+    private handleChange = (event: Event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -29,22 +29,26 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
         let { email } = this.state;
         let newEmail = { email };
 
-        console.log('email', email)
-        console.log('props', this.props.currentUser)
+        let {
+            currentUser,
+            editEmailErrors,
+            editEmailMessage,
+            editUserEmail
+        } = this.props;
 
-        if (email !== this.props.currentUser.email) {
-            await this.props.editUserEmail(currentUserId, newEmail);
+        if (email !== currentUser.email) {
+            await editUserEmail(currentUserId, newEmail);
         };
 
-        if (this.props.editEmailErrors) {
-            console.log(this.props)
+        if (editEmailErrors) {
             this.setState({
-                editEmailErrors: this.props.editEmailErrors,
-                editEmailMessage: this.props.editEmailMessage
+                editEmailErrors: editEmailErrors,
+                editEmailMessage: editEmailMessage
             })
             return;
         } else {
             this.setState({
+                email: 'Success',
                 editEmailErrors: null,
                 editEmailMessage: null
             });
@@ -57,16 +61,25 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
         let { oldPassword, password, password2 } = this.state;
         let newPassword = { oldPassword, password, password2 };
 
-        await this.props.editUserPassword(user, newPassword);
+        let {
+            editPasswordErrors,
+            editPasswordMessage,
+            editUserPassword
+        } = this.props;
 
-        if (this.props.editPasswordErrors) {
+        await editUserPassword(user, newPassword);
+
+        if (editPasswordErrors) {
             this.setState({
-                editPasswordErrors: this.props.editPasswordErrors,
-                editPasswordMessage: this.props.editPasswordMessage
+                editPasswordErrors: editPasswordErrors,
+                editPasswordMessage: editPasswordMessage
             })
             return;
         } else {
             this.setState({
+                password: '',
+                password2: '',
+                oldPassword: '',
                 editPasswordErrors: null,
                 editPasswordMessage: null
             });
@@ -75,9 +88,10 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
 
     render() {
         const {
-            oldPassword,
+            email,
             password,
             password2,
+            oldPassword,
             editEmailErrors,
             editEmailMessage,
             editPasswordErrors,
@@ -88,13 +102,14 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
         return (
             <>
                 <EditPasswordComponent
+                    email={ email }
+                    password={ password }
+                    password2={ password2 }
+                    oldPassword={ oldPassword }
                     editEmailErrors={ editEmailErrors }
                     editEmailMessage={ editEmailMessage }
                     editPasswordErrors={ editPasswordErrors }
                     editPasswordMessage={ editPasswordMessage }
-                    oldPassword={ oldPassword }
-                    password={ password }
-                    password2={ password2 }
                     handleChange={ handleChange }
                     editEmailSubmit={ editEmailSubmit }
                     editPasswordSubmit={ editPasswordSubmit }
@@ -104,7 +119,7 @@ class AccountSettingsEdit extends React.PureComponent<{}, State> {
     };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         currentUser: state.userReducer.currentUser,
         editEmailErrors: state.userReducer.editEmailErrors,
@@ -114,4 +129,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchCurrentUser, editUserEmail, editUserPassword })(AccountSettingsEdit);
+export default connect(mapStateToProps,
+    { fetchCurrentUser, editUserEmail, editUserPassword }
+)(AccountSettingsEdit);

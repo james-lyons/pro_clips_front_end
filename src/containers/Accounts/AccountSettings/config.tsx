@@ -1,20 +1,79 @@
 interface State {
     email: string,
-    oldPassword: string,
     password: string,
     password2: string,
-    editEmailErrors: Array<string>,
-    editEmailMessage: string,
-    editPasswordErrors: Array<string>,
-    editPasswordMessage: string
+    oldPassword: string,
+    editEmailErrors: null | Array<Error>,
+    editEmailMessage: null | string,
+    editPasswordErrors: null | Array<Error>,
+    editPasswordMessage: null | string
 };
 
 interface Props {
-    errors: null | Array<string>,
+    errors: null | Array<Error>,
     message: null | string,
-    editUserPassword: () => {}
+    currentUser: CurrentUser,
+    editEmailErrors: Array<Error>,
+    editEmailMessage: string,
+    editPasswordErrors: Array<Error>,
+    editPasswordMessage: string,
+    editUserPassword: (user: string, newPassword: NewPassword) => void,
+    editUserEmail: (currentUserId: string, newEmail: NewEmail) => void
+};
+
+interface ReduxState {
+    userReducer: UserReducer
+};
+
+interface UserReducer {
+    currentUser: CurrentUser,
+    editEmailErrors: Array<Error>,
+    editEmailMessage: string,
+    editPasswordErrors: Array<Error>,
+    editPasswordMessage: string
+};
+
+interface CurrentUser {
+    email: string
+};
+
+interface Error {
+    message: string
+};
+
+interface CurrentUser {
+    email: string
+};
+
+interface NewEmail {
+    email: string
+};
+
+interface NewPassword {
+    oldPassword: string,
+    password: string,
+    password2: string
+};
+
+interface Event {
+    target: Target,
+};
+
+interface Target {
+    name: StateTargets,
+    value: string
+};
+
+interface StateTargets {
+    email: string,
+    password: string,
+    password2: string,
+    oldPassword: string
 };
 
 export {
-    State
+    State,
+    Props,
+    ReduxState,
+    Event
 };

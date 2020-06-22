@@ -1,9 +1,11 @@
-interface Props {
-    title: string,
+interface State {
+    clip: null | File,
     game: null | string,
-    handleUploadClip: () => void,
-    handleChange: (event: Event) => void,
-    handleSelect: (event: Event) => void
+    title: null | string
+};
+
+interface Props {
+    uploadClip: (clip: File, title: string, game: string) => void
 };
 
 interface Event {
@@ -34,5 +36,7 @@ interface File {
 };
 
 export {
-    Props
+    State,
+    Props,
+    Event
 };

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Form, Col, Button } from 'react-bootstrap';
-import { LoginComponentProps, styles } from './config';
+import { Form, Col, Button} from 'react-bootstrap';
+import { Props, styles } from './config';
 
-const LoginComponent: React.SFC<LoginComponentProps> = ({
+const RegisterComponent: React.SFC<Props> = ({
     email,
+    userName,
     password,
+    password2,
     errors,
     message,
     handleChange,
@@ -14,18 +16,18 @@ const LoginComponent: React.SFC<LoginComponentProps> = ({
     return (
         <>
             <h1
-                className="col-lg-4 col-md-6 col-sm-10 mb-4"
-                style={ styles.h1 }>
-                    Login
-            </h1>  
-            
+                className="col-lg-4 col-md-6 col-sm-10 mb-4" style={ styles.h1 }>
+                    Sign up
+            </h1>
+
             <Form
                 className="col-lg-4 col-md-6 col-sm-10 mb-4"
-                style={ styles.form } onSubmit={ handleSubmit }
+                style={ styles.form }
+                onSubmit={ handleSubmit }
             >
 
                 <div style={{ marginBottom: '1rem' }}>
-                    { 
+                    {
                         errors && errors.map((error, i) => (
                         <div
                             style={ styles.errorDiv } role="alert" key={ i }>
@@ -42,16 +44,30 @@ const LoginComponent: React.SFC<LoginComponentProps> = ({
                 </div>
 
                 <Form.Row>
+                    <Form.Group as={ Col } controlId="formGridUserName">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            name="userName"
+                            placeholder="Enter Username"
+                            value={ userName }
+                            onChange={ handleChange }
+                        />
+                    </Form.Group>
+                </Form.Row>
+
+                <Form.Row>
                     <Form.Group as={ Col } controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             required
-                            type="email" 
+                            type="email"
                             name="email"
                             placeholder="Enter email"
                             value={ email }
                             onChange={ handleChange }
-                    />
+                        />
                     </Form.Group>
                 </Form.Row>
 
@@ -68,7 +84,21 @@ const LoginComponent: React.SFC<LoginComponentProps> = ({
                         />
                     </Form.Group>
                 </Form.Row>
-
+                
+                <Form.Row>
+                    <Form.Group as={ Col } controlId="formGridPassword2">
+                        <Form.Label>Please confirm your password</Form.Label>
+                        <Form.Control
+                            required
+                            type="password"
+                            name="password2"
+                            placeholder="Password"
+                            value={ password2 }
+                            onChange={ handleChange }
+                        />
+                    </Form.Group>
+                </Form.Row>
+                
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
@@ -77,4 +107,4 @@ const LoginComponent: React.SFC<LoginComponentProps> = ({
     );
 };
 
-export default LoginComponent;
+export default RegisterComponent;

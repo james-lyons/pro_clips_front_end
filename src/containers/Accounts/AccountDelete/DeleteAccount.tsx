@@ -1,8 +1,8 @@
 import React from 'react';
-import AccountDelete from '../../../components/AccountComponent/AccountDelete/AccountDeleteComponent';
+import AccountDelete from '../../../components/Accounts/AccountDelete/AccountDeleteComp';
 
-class DeleteAccount extends React.PureComponent <{}> {
 
+class DeleteAccount extends React.PureComponent<{}> {
     render() {
         return (
             <>

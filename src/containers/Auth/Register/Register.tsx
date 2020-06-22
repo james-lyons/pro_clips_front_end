@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userRegister, userLogin } from '../../redux/actions/authActions/authActions';
-import RegisterComponent from '../../components/Auth/RegisterComponent';
-import { RegisterState, RegisterProps } from './config';
+import { State, Props, Event, ReduxState } from './config';
+import { userRegister, userLogin } from '../../../redux/actions/authActions/authActions';
+import RegisterComponent from '../../../components/Auth/Register/RegisterComponent';
 
-class Register extends React.PureComponent<RegisterProps, RegisterState> {
+class Register extends React.PureComponent<Props, State> {
 
-    state: RegisterState = {
+    state: State = {
         userName: "",
         email: "",
         password: "",
@@ -15,7 +15,7 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
         message: null
     };
 
-    private handleChange = () => {
+    private handleChange = (event: Event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -71,7 +71,7 @@ class Register extends React.PureComponent<RegisterProps, RegisterState> {
     }
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         errors: state.authReducer.errors,
         message: state.authReducer.message

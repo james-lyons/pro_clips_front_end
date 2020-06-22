@@ -1,34 +1,35 @@
 import React from 'react';
-import { Props, State } from './config';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
+import { Props, State, ReduxState, Event } from './config';
 import { editClip, deleteClip } from '../../../redux/actions/clipActions/clipActions';
 import UserClipSettingsComp from '../../../components/Clips/ClipSettings/UserClipSettings/UserClipSettingsComp';
 
-class UserClipSettings extends React.PureComponent<Props, State> {
+class UserClipSettings extends React.PureComponent<Props & RouteComponentProps, State> {
 
     state: State = {
         clipVis: 'none',
         newTitle: ''
     };
 
-    private handleChange = () => {
+    private handleChange = (event: Event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
     };
 
     private handleClipEdit = () => {
+        event.preventDefault();
         const { editClip, clip } = this.props;
         const { newTitle } = this.state;
 
-        event.preventDefault();
         editClip(clip._id, newTitle);
         this.showClip();
     };
 
     private handleClipDelete = (clipId: string) => {
-        const { deleteClip, history, clip } = this.props;
+        const { history, clip, deleteClip } = this.props;
 
         deleteClip(clipId);
         history.push(`/${ clip.poster_name }`)
@@ -67,7 +68,7 @@ class UserClipSettings extends React.PureComponent<Props, State> {
     };
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         clip: state.clipReducer.clip
     };

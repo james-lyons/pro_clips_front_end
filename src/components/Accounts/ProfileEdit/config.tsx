@@ -4,15 +4,28 @@ interface Props {
     profile_image: string,
     editProfileErrors: null | Array<Error>,
     editProfileMessage: null | string,
-    edit_profile_success: null | string,
-    edit_profile_picture_success: null | string,
-    handleChange: () => void,
+    handleChange: (event: Event) => void,
     editUserSubmit: () => void,
     editProfilePictureSubmit: () => void
 };
 
 interface Error {
     message: string
+};
+
+interface Event {
+    target: Target
+};
+
+interface Target {
+    name: TargetState,
+    value: string
+};
+
+interface TargetState {
+    bio: string,
+    userName: string,
+    profile_image: string
 };
 
 const styles = {

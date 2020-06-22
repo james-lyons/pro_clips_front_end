@@ -4,7 +4,7 @@ interface Props {
     newTitle: string,
     showLoginModal: boolean,
     showClip: () => void,
-    handleChange: () => void,
+    handleChange: (event: Event) => void,
     handleClipEdit: (clipId: string) => void,
     handleClipDelete: (clipId: string) => void,
     handleShowLoginModal: () => void,
@@ -19,7 +19,21 @@ interface Clip {
     title: string,
     poster: string,
     poster_name: string
-}
+};
+
+interface Event {
+    target: Target
+};
+
+interface Target {
+    name: TargetState,
+    value: string
+};
+
+interface TargetState {
+    userName: string,
+    password: string,
+};
 
 export {
     Props

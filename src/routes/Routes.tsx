@@ -1,15 +1,15 @@
 import React from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import Accounts from '../containers/Accounts/Accounts/Accounts';
-import Login from '../containers/Auth/Login';
-import Register from '../containers/Auth/Register';
 import Home from '../containers/Home/Home';
-import BrowseClips from '../containers/Clips/BrowseClips/BrowseClips/BrowseClips';
-import PopularClips from '../containers/Clips/PopularClips/PopularClips';
+import Login from '../containers/Auth/Login/Login';
+import Register from '../containers/Auth/Register/Register';
 import Profile from '../containers/Profile/Profile/Profile';
-import ClipUpload from '../containers/Clips/ClipUpload/ClipUpload';
+import Accounts from '../containers/Accounts/Accounts/Accounts';
 import ClipPage from '../containers/Clips/ClipPage/ClipPage';
+import ClipUpload from '../containers/Clips/ClipUpload/ClipUpload';
+import PopularClips from '../containers/Clips/PopularClips/PopularClips';
 import GameClips from '../containers/Clips/BrowseClips/GameClips/GameClips';
+import BrowseClips from '../containers/Clips/BrowseClips/BrowseClips/BrowseClips';
 import Settings from '../containers/Settings/Settings';
 
 export default withRouter(() => {

@@ -3,13 +3,33 @@ interface Props {
     oldPassword: string,
     password: string,
     password2: string,
-    editEmailErrors: Array<string>,
+    editEmailErrors: Array<Error>,
     editEmailMessage: string,
-    editPasswordErrors: Array<string>,
+    editPasswordErrors: Array<Error>,
     editPasswordMessage: string,
-    handleChange: () => void,
+    handleChange: (event: Event) => void,
     editEmailSubmit: () => void,
     editPasswordSubmit: () => void,
+};
+
+interface Error {
+    message: string
+};
+
+interface Event {
+    target: Target,
+};
+
+interface Target {
+    name: StateTargets,
+    value: string
+};
+
+interface StateTargets {
+    email: string,
+    password: string,
+    password2: string,
+    oldPassword: string
 };
 
 const styles = {

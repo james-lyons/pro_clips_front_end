@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ClipPageComponent from '../../../components/Clips/ClipPage/ClipPage/ClipPageComp';
+import { State, Props, Event, ReduxState } from './config';
 import { fetchClip, editClip, deleteClip } from '../../../redux/actions/clipActions/clipActions';
-import { State, Props } from './config';
+import ClipPageComponent from '../../../components/Clips/ClipPage/ClipPage/ClipPageComp';
 
 class ClipPage extends React.PureComponent<Props, State> {
     state: State = {
@@ -19,19 +19,24 @@ class ClipPage extends React.PureComponent<Props, State> {
         });
     };
 
-    private handleChange = (event: any) => {
+    private handleChange = (event: Event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
     };
 
     private handleClipEdit = (clipId: string) => {
-        this.props.editClip(clipId, this.state.newTitle);
+        const { newTitle } = this.state;
+        const { editClip } = this.props;
+
+        editClip(clipId, newTitle);
     };
 
     private handleClipDelete = (clipId: string) => {
-        this.props.deleteClip(clipId);
-        this.props.history.push(`/${ this.props.user.userName }`)
+        const { user, history, deleteClip } = this.props;
+
+        deleteClip(clipId);
+        history.push(`/${ user.userName }`)
     };
 
     private showClip = () => {
@@ -93,7 +98,7 @@ class ClipPage extends React.PureComponent<Props, State> {
     };
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         clip: state.clipReducer.clip,
         user: state.userReducer.user
