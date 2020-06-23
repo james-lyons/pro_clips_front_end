@@ -1,9 +1,14 @@
 interface Props {
     search: string,
-    handleChange: (event: any) => void,
-    handleSubmit: () => void
-}
+    handleSubmit: () => void,
+    handleChange: (event: Event) => void
+};
+
+interface Event {
+    target: { value: string }
+};
 
 export {
-    Props
+    Props,
+    Event
 };

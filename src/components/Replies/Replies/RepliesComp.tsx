@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
 import { Card } from 'react-bootstrap';
 import { Props, Reply } from './config';
-import DeleteReply from '../../../containers/Replies/DeleteReply/deleteReply';
+import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
 import LikeReply from '../../../containers/Replies/LikeReply/LikeReply';
+import DeleteReply from '../../../containers/Replies/DeleteReply/deleteReply';
 
-const RepliesC: React.SFC<Props> = ({
+const RepliesComp: React.SFC<Props> = ({
     replies,
     clipId
 }) => {
@@ -42,4 +42,4 @@ const RepliesC: React.SFC<Props> = ({
     );
 };
 
-export default connect(null, { likeReply, unlikeReply })(RepliesC);
+export default connect(null, { likeReply, unlikeReply })(RepliesComp);

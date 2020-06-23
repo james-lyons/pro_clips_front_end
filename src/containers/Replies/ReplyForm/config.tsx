@@ -1,5 +1,3 @@
-import { string } from "prop-types";
-
 interface State {
     replyText: null | string
 };
@@ -7,8 +5,16 @@ interface State {
 interface Props {
     clip: Clip,
     commentId: string,
-    createReply: (replyText: string, commentId: string) => void,
-    fetchComments: (clipId: string) => void
+    fetchComments: (clipId: string) => void,
+    createReply: (replyText: string, commentId: string) => void
+};
+
+interface ReduxState {
+    clipReducer: { clip: Clip }
+};
+
+interface Event {
+    target: { value: string }
 };
 
 interface Clip {
@@ -17,5 +23,7 @@ interface Clip {
 
 export {
     State,
-    Props
+    Props,
+    Event,
+    ReduxState
 };

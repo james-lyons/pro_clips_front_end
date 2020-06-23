@@ -3,11 +3,11 @@ interface State {
 };
 
 interface Props {
-    replies: Array<ReplyI>,
-    clipId: string
+    clipId: string,
+    replies: Array<Reply>
 };
 
-interface ReplyI {
+interface Reply {
     _id: string,
     author_id: string,
     comment_id: string,

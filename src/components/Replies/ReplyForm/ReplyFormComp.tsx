@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import { Props } from './config';
 
-const ReplyFormC: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }) =>{
+const ReplyFormComp: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }) =>{
 
     const currentUser = localStorage.getItem('uid');
 
@@ -36,4 +36,4 @@ const ReplyFormC: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }
     );
 };
 
-export default ReplyFormC;
+export default ReplyFormComp;

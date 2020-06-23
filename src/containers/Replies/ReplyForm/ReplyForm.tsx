@@ -1,27 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Props, State, ReduxState, Event } from './config';
 import { createReply } from '../../../redux/actions/replyActions/replyActions';
 import { fetchComments } from '../../../redux/actions/commentActions/commentActions';
-import ReplyFormC from '../../../components/Replies/ReplyForm/ReplyFormC';
-import { Props, State } from './config';
+import ReplyFormComp from '../../../components/Replies/ReplyForm/ReplyFormComp';
 
 class ReplyForm extends React.PureComponent<Props, State> {
 
     state: State = {
         replyText: ''
-    }
+    };
 
-    private handleChange = (event: any) => {
+    private handleChange = (event: Event) => {
         this.setState({
-            [event.target.name]: event.target.value
+            replyText: event.target.value
         });
-        console.log(this.state)
     };
 
     private handleSubmit = async () => {
         event.preventDefault();
-        await this.props.createReply(this.state.replyText, this.props.commentId);
-        await this.props.fetchComments(this.props.clip._id);
+        const { commentId, clip, createReply, fetchComments } = this.props;
+
+        await createReply(this.state.replyText, commentId);
+        await fetchComments(clip._id);
+
         this.setState({ replyText: '' });
     };
 
@@ -31,7 +33,7 @@ class ReplyForm extends React.PureComponent<Props, State> {
 
         return (
             <>
-                <ReplyFormC
+                <ReplyFormComp
                     replyText={ replyText }
                     handleChange={ handleChange }
                     handleSubmit={ handleSubmit }
@@ -41,7 +43,7 @@ class ReplyForm extends React.PureComponent<Props, State> {
     };
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         clip: state.clipReducer.clip
     };

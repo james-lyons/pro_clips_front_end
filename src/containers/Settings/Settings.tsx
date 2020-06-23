@@ -1,12 +1,5 @@
 import React from 'react';
-
-interface State {
-
-};
-
-interface Props {
-
-};
+import { State, Props } from './config'
 
 class Settings extends React.PureComponent<Props, State> {
 

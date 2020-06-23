@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Props, State, Reply, ReduxState } from './config';
+import { fetchComments } from '../../../redux/actions/commentActions/commentActions';
 import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
-import { fetchComments,  } from '../../../redux/actions/commentActions/commentActions';
-import { Props, State, Reply } from './config';
-import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import LoginModal from '../../../components/LoginModal/LoginModal';
 
 class LikeReply extends React.PureComponent<Props, State> {
 
@@ -14,19 +13,21 @@ class LikeReply extends React.PureComponent<Props, State> {
     };
 
     private likeReplySubmit = async (reply: Reply, clipId: string) => {
-        await this.props.likeReply(reply._id);
-        await this.props.fetchComments(clipId);
-        this.setState({
-            comments: this.props.comments
-        });
+        const { likeReply, fetchComments, comments } = this.props;
+        
+        await likeReply(reply._id);
+        await fetchComments(clipId);
+
+        this.setState({ comments });
     };
 
     private unlikeReplySubmit = async (reply: Reply, clipId: string) => {
-        await this.props.unlikeReply(reply._id);
-        await this.props.fetchComments(clipId);
-        this.setState({
-            comments: this.props.comments
-        });
+        const { unlikeReply, fetchComments, comments } = this.props;
+
+        await unlikeReply(reply._id);
+        await fetchComments(clipId);
+
+        this.setState({ comments });
     };
 
     private handleShowLoginModal = () => {
@@ -71,26 +72,30 @@ class LikeReply extends React.PureComponent<Props, State> {
 
     render() {
 
-        const { renderLikeButton } = this;
+        const { reply, clipId } = this.props;
+        const { showLoginModal } = this.state;
+        const { renderLikeButton, handleCloseLoginModal } = this;
 
         return (
             <>
-                { renderLikeButton(this.props.reply, this.props.clipId) }
-                <Modal show={ this.state.showLoginModal } onHide={ this.handleCloseLoginModal }>
-                    <Modal.Header closeButton>
-                        <Modal.Title>ProClips</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body><Link to="/login">Login</Link> to like, comment, and reply!</Modal.Body>
-                </Modal>
+                { renderLikeButton(reply, clipId) }
+                <LoginModal 
+                    showLoginModal={ showLoginModal }
+                    handleCloseLoginModal={ handleCloseLoginModal }
+                /> 
             </>
         );
     };
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         comments: state.commentReducer.comments
     };
 };
 
-export default connect(mapStateToProps, { fetchComments, likeReply, unlikeReply })(LikeReply);
+export default connect(mapStateToProps, {
+    likeReply,
+    unlikeReply,
+    fetchComments
+})(LikeReply);

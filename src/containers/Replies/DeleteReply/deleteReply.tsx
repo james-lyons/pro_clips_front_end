@@ -1,8 +1,8 @@
 import React from 'react';
+import { Props } from './config';
 import { connect } from 'react-redux';
 import { deleteReply } from '../../../redux/actions/replyActions/replyActions';
 import { fetchComments } from '../../../redux/actions/commentActions/commentActions';
-import { Props } from './config';
 
 class DeleteComment extends React.PureComponent <Props> {
 
@@ -20,7 +20,9 @@ class DeleteComment extends React.PureComponent <Props> {
             <>
                 {
                     currentUser === reply.author_id &&
-                    <button onClick={ () => handleSubmit(reply._id, clipId) }>Delete</button>
+                    <button onClick={ () => handleSubmit(reply._id, clipId) }>
+                        Delete
+                    </button>
                 }
             </>
         );
