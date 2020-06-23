@@ -106,7 +106,6 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
                     editUserSubmit={ editUserSubmit }
                     editProfilePictureSubmit={ editProfilePictureSubmit }
                 />
-                <button onClick={ () => console.log(this.props.currentUser)}>button</button>
             </>
         );
     };

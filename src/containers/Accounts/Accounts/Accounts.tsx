@@ -2,10 +2,10 @@ import React from 'react';
 import { styles } from './config';
 import { RouteComponentProps } from 'react-router';
 import { Route, withRouter } from 'react-router-dom';
+import AccountDelete from '../AccountDelete/DeleteAccount';
 import ProfileEdit from '../ProfileEditingContainer/ProfileEdit';
 import AccountSettingsEdit from '../AccountSettings/AccountSettingsEdit';
 import AccountSidebar from '../../../components/Accounts/SideBar/SidebarComp';
-import AccountDelete from '../../../components/Accounts/AccountDelete/AccountDeleteComp';
 
 class Accounts extends React.PureComponent<RouteComponentProps, {}> {
 

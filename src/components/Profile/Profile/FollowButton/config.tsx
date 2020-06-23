@@ -3,7 +3,7 @@ interface Props {
     isFollowed: boolean,
     followUser: (userName: string) => void,
     unfollowUser: (userName: string) => void,
-    handleShowLogin: () => void
+    handleShowLoginModal: () => void
 };
 
 export {

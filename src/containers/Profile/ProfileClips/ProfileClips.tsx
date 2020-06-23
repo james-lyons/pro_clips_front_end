@@ -1,28 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProfileClipsComponent from '../../../components/Profile/ProfileClips/ProfileClipsComp';
-import { State, Props } from './config';
+import { State, Props, ReduxState, Event } from './config';
 import { fetchUserClips } from '../../../redux/actions/clipActions/clipActions';
+import ProfileClipsComp from '../../../components/Profile/ProfileClips/ProfileClipsComp';
 
 class ProfileClips extends React.PureComponent<Props, State> {
     state: State = {
-        userClips: null,
+        game: '',
         newTitle: '',
-        game: ''
+        userClips: null
     };
 
     componentDidMount = async () => {
-        let { user } = this.props;
+        let { user, fetchUserClips } = this.props;
         
         if (user.clips.length > 0) {
-            await this.props.fetchUserClips(user.userName);
-            this.setState({
-                userClips: this.props.userClips
-            });
+            await fetchUserClips(user.userName);
+            await this.setState({ userClips: this.props.userClips });
         };
     };
 
-    private handleChange = (event: any) => {        
+    private handleChange = (event: Event) => {        
         this.setState({
             game: event.target.value
         });
@@ -37,7 +35,7 @@ class ProfileClips extends React.PureComponent<Props, State> {
             <>
                 {
                     user && userClips &&
-                    <ProfileClipsComponent
+                    <ProfileClipsComp
                         user={ user }
                         game={ game }
                         userClips={ userClips }
@@ -49,7 +47,7 @@ class ProfileClips extends React.PureComponent<Props, State> {
     };
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         user: state.userReducer.user,
         userClips: state.clipReducer.userClips

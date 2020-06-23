@@ -1,47 +1,30 @@
 interface Props {
     user: User,
-    followersList: Array<Follower>,
-    followingList: Array<Follower>,
-    currentUser: CurrentUser,
-    match: boolean,
-    showLogin: boolean,
+    isMatch: boolean,
     isFollowed: boolean,
-    showFollowers: boolean,
-    showFollowing: boolean
+    showLoginModal: boolean,
+    handleShowLoginModal: () => void,
+    handleCloseLoginModal: () => void,
     followUser: (userName: string) => void,
     unfollowUser:  (userName: string) => void,
-    handleShowLogin: () => void,
-    handleShowFollowers: () => void,
-    handleShowFollowing: () => void,
-    handleCloseLogin: () => void,
-    handleCloseFollowers: () => void,
-    handleCloseFollowing: () => void
 };
 
 interface User {
-    userName: string,
     bio: string,
-    profile_image: string,
-    clips: [],
-    followers: [],
-    following: [],
+    userName: string,
+    clips: Array<Clip>,
     isFollowed: boolean
-};
-
-interface CurrentUser {
-    userName: string,
-    email: string,
-    bio: string,
     profile_image: string,
-    clips: [],
-    followers: [],
-    following: [],
-    id: string
 };
 
-interface Follower {
-    userName: string,
-    profile_image: string
+interface Clip {
+    _id: string,
+    url: string,
+    title: string,
+    poster: string,
+    poster_name: string,
+    replies: Array<string>,
+    comments: Array<string>
 };
 
 interface ReduxState {

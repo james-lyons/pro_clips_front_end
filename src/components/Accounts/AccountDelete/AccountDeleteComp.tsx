@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Props, styles } from './config';
 import { Button } from 'react-bootstrap';
 import { deleteUser } from '../../../redux/actions/userActions/userActions';
-import { Props, styles } from './config';
 
-const AccountDeleteComponent: React.SFC <Props> = ({
+const AccountDeleteComp: React.SFC <Props> = ({
     deleteUser
 }) => {
 
@@ -24,4 +24,4 @@ const AccountDeleteComponent: React.SFC <Props> = ({
     );
 };
 
-export default connect(null, { deleteUser })(AccountDeleteComponent);
+export default connect(null, { deleteUser })(AccountDeleteComp);

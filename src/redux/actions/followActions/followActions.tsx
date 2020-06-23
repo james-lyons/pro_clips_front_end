@@ -61,11 +61,9 @@ const fetchFollowers = (username: string) => {
             );
 
             const data = await res.json();
-            console.log(data);
 
             dispatch({ type: 'FETCH_FOLLOWERS_FULFILLED', payload: data });
         } catch (error) {
-            console.log(error);
             return dispatch({ type: 'FETCH_FOLLOWERS_REJECTED', payload: error })
         };
     };
@@ -82,11 +80,9 @@ const fetchFollowingList = (username: string) => {
             );
 
             const data = await res.json();
-            console.log(data);
 
             dispatch({ type: 'FETCH_FOLLOWINGLIST_FULFILLED', payload: data });
         } catch (error) {
-            console.log(error);
             return dispatch({ type: 'FETCH_FOLLOWINGLIST_REJECTED', payload: error })
         };
     };

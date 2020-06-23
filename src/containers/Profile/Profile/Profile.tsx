@@ -1,8 +1,7 @@
 import React from 'react';
-import { State, Props } from './config';
+import { State, Props, ReduxState } from './config';
 import { connect } from 'react-redux';
-import { fetchCurrentUser, fetchUser }
-    from '../../../redux/actions/userActions/userActions';
+import { fetchCurrentUser, fetchUser } from '../../../redux/actions/userActions/userActions';
 import { followUser, unfollowUser, fetchFollowers, fetchFollowingList }
     from '../../../redux/actions/followActions/followActions';
 import ProfileComp from '../../../components/Profile/Profile/Profile/profileComp';
@@ -11,30 +10,28 @@ import ProfileClips from '../ProfileClips/ProfileClips';
 class Profile extends React.PureComponent<Props, State> {
     state: State = {
         user: null,
-        match: false,
+        isMatch: false,
         isFollowed: false,
-        showLogin: false,
         showFollowers: false,
-        showFollowing: false
+        showFollowing: false,
+        showLoginModal: false
     };
 
     componentDidMount = async () => {
-        let currentUserId = localStorage.getItem('uid');
-
-        let userData = await this.props.fetchUser(this.props.match.params.username);
-        
-        let { user, currentUser, match } = this.props;
+        const { match, fetchUser } = this.props;
+        await fetchUser(match.params.username);
+        const { user, currentUser } = this.props;
 
         if (match.params.username === currentUser.userName) {
             this.setState({
                 user: currentUser,
-                match: true,
+                isMatch: true,
                 isFollowed: user.isFollowed
             });
         } else {
             this.setState({
                 user: user,
-                match: false,
+                isMatch: false,
                 isFollowed: user.isFollowed
             });
         };
@@ -43,6 +40,7 @@ class Profile extends React.PureComponent<Props, State> {
     private followUser = async (userName: string) => {
         const { followUser } = this.props;
         await followUser(userName);
+
         this.setState({
             isFollowed: true,
             user: this.props.user
@@ -52,103 +50,69 @@ class Profile extends React.PureComponent<Props, State> {
     private unfollowUser = async (userName: string) => {
         const { unfollowUser } = this.props;
         await unfollowUser(userName);
+        
         this.setState({
             isFollowed: false,
             user: this.props.user
         });
     };
 
-    private handleChange = (event:any) => {
+    private handleShowLoginModal = async () => {
         this.setState({
-            [event.target.name]: event.target.value
-        });
-    };
-    
-    private handleShowFollowers = async () => {
-        await this.props.fetchFollowers(this.state.user.userName);
-        this.setState({
-            showFollowers: true
-        });
-    };
-    
-    private handleShowFollowing = async () => {
-        await this.props.fetchFollowingList(this.state.user.userName);
-        this.setState({
-            showFollowing: true
+            showLoginModal: true
         });
     };
 
-    private handleShowLogin = async () => {
+    private handleCloseLoginModal = () => {
         this.setState({
-            showLogin: true
-        });
-    };
-
-    private handleCloseFollowers = () => {
-        this.setState({
-            showFollowers: false
-        });
-    };
-
-    private handleCloseFollowing = () => {
-        this.setState({
-            showFollowing: false
-        });
-    };
-
-    private handleCloseLogin = () => {
-        this.setState({
-            showLogin: false
+            showLoginModal: false
         });
     };
     
     render() {
-        const { user, match, isFollowed, showLogin, showFollowers, showFollowing  } = this.state;
+        const { user, isMatch, isFollowed, showLoginModal  } = this.state;
         const {
             followUser,
             unfollowUser,
-            handleShowLogin,
-            handleShowFollowers,
-            handleShowFollowing,
-            handleCloseLogin,
-            handleCloseFollowers,
-            handleCloseFollowing
+            handleShowLoginModal,
+            handleCloseLoginModal,
         } = this;
 
         return (
             <>
                 {
                     user && 
-                            <ProfileComp
-                            user={ user }
-                            match={ match }
-                            isFollowed={ isFollowed }
-                            showLogin={ showLogin }
-                            showFollowers={ showFollowers }
-                            showFollowing={ showFollowing }
-                            followUser={ followUser }
-                            unfollowUser={ unfollowUser }
-                            handleShowFollowers={ handleShowFollowers }
-                            handleShowFollowing={ handleShowFollowing }
-                            handleShowLogin={ handleShowLogin }
-                            handleCloseFollowers={ handleCloseFollowers }
-                            handleCloseFollowing={ handleCloseFollowing }
-                            handleCloseLogin={ handleCloseLogin }
-                        />
+                    <ProfileComp
+                        user={ user }
+                        isMatch={ isMatch }
+                        isFollowed={ isFollowed }
+                        showLoginModal={ showLoginModal }
+                        followUser={ followUser }
+                        unfollowUser={ unfollowUser }
+                        handleShowLoginModal={ handleShowLoginModal }
+                        handleCloseLoginModal={ handleCloseLoginModal }
+                    />
                 }
                 {
-                    user &&  <ProfileClips user={ user }/>
+                    user && <ProfileClips user={ user } />
                 }
             </>
         );
     };
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: ReduxState) => {
     return {
         user: state.userReducer.user,
         currentUser: state.userReducer.currentUser
     };
 };
 
-export default connect(mapStateToProps, { fetchCurrentUser, fetchUser, followUser, unfollowUser, fetchFollowers, fetchFollowingList })(Profile);
+export default connect(mapStateToProps, {
+    fetchUser,
+    followUser,
+    unfollowUser,
+    fetchFollowers,
+    fetchCurrentUser,
+    fetchFollowingList
+})(Profile);

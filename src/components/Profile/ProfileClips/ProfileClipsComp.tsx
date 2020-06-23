@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { Props, Clip } from './config';
 
-const ProfileComponent: React.SFC<Props> = ({ user, game, userClips, handleChange }) => {
+const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
 
     const clipMapper = (userClips: Array<Clip>) => {
         const clipArr = userClips.map((clip) =>
@@ -106,4 +106,4 @@ const ProfileComponent: React.SFC<Props> = ({ user, game, userClips, handleChang
     );
 };
 
-export default ProfileComponent;
+export default ProfileComp;

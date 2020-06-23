@@ -13,7 +13,7 @@ const LoginModal: React.SFC<Props> = ({
                 <Modal.Title>ProClips</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Link to="/login">Login</Link> to like, comment, and reply!
+                <Link to="/login">Login</Link> to like, comment, reply, and follow!
             </Modal.Body>
         </Modal>
     );

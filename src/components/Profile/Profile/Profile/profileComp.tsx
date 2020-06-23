@@ -1,41 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Modal } from 'react-bootstrap';
-import { Props, styles, Follower, ReduxState } from './config';
+import { Props, styles, ReduxState } from './config';
+import LoginModal from '../../../LoginModal/LoginModal';
 import FollowButton from '../FollowButton/FollowButton';
 import EditProfileButton from '../EditProfileButton/EditProfileButton';
-
-const followersMapper = (followersList: Array<Follower>, handleCloseFollowers?: () => void) => {
-    const followerArray = followersList.map((follower) => 
-        <div key={ follower.userName }>
-            <img style={{ width: '30px', borderRadius: '50%' }} src={ follower.profile_image }/>
-            <a href={`/${ follower.userName }`}>{ follower.userName }</a>
-        </div>
-    );
-    return followerArray;
-};
+import FollowingList from '../../../../containers/FollowLists/FollowingList/FollowingList';
+import FollowersList from '../../../../containers/FollowLists/FollowerList/FollowersList';
 
 const ProfileComp: React.SFC<Props> = ({
     user,
-    match,
+    isMatch,
     isFollowed,
-    followersList,
-    followingList,
-    showLogin,
-    showFollowers,
-    showFollowing,
+    showLoginModal,
     followUser,
     unfollowUser,
-    handleShowLogin,
-    handleShowFollowers,
-    handleShowFollowing,
-    handleCloseFollowers,
-    handleCloseFollowing,
-    handleCloseLogin
+    handleShowLoginModal,
+    handleCloseLoginModal
 }) => {
 
-    const { userName, profile_image, clips, followers, following, bio } = user;
+    const { userName, profile_image, clips, bio } = user;
  
     return (
         <>
@@ -50,19 +33,19 @@ const ProfileComp: React.SFC<Props> = ({
                             style={{ height: '7rem', borderRadius: '100%' }}
                         />
                     </div>
-                    
+
                     <section style={{ height: '100%' }}>
                         <div style={{ justifyContent: 'center' }}>
                             <h1 style={ styles.h1 }>{ userName }</h1>
                             {
-                                match
+                                isMatch
                                 ? <EditProfileButton />
                                 : <FollowButton
                                     userName={ userName }
                                     isFollowed={ isFollowed }
                                     followUser={ followUser }
                                     unfollowUser={ unfollowUser }
-                                    handleShowLogin={ handleShowLogin }
+                                    handleShowLoginModal={ handleShowLoginModal }
                                 />
                             }
                         </div>
@@ -72,14 +55,10 @@ const ProfileComp: React.SFC<Props> = ({
                                 <span>{ clips.length } clips</span>
                             </li>
                             <li style={ styles.li }>
-                                <a onClick={ handleShowFollowers }>
-                                    { followers.length } followers
-                                </a>
+                                <FollowersList />
                             </li>
                             <li style={ styles.li }>
-                                <a onClick={ handleShowFollowing }>
-                                    { following.length } following
-                                </a>
+                                <FollowingList />
                             </li>
                         </ul>
 
@@ -90,28 +69,10 @@ const ProfileComp: React.SFC<Props> = ({
                 </header>
             </div>
 
-            <Modal show={ showFollowers } onHide={ handleCloseFollowers }>
-                <Modal.Header closeButton>
-                    <Modal.Title>Followers</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    { followersList && followersMapper(followersList, handleCloseFollowers)}
-                </Modal.Body>
-            </Modal>
-
-            <Modal show={ showFollowing } onHide={ handleCloseFollowing }>
-                <Modal.Header closeButton>
-                    <Modal.Title>Following</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{ followingList && followersMapper(followingList)}</Modal.Body>
-            </Modal>
-
-            <Modal show={ showLogin } onHide={ handleCloseLogin }>
-                <Modal.Header closeButton>
-                    <Modal.Title>ProClips</Modal.Title>
-                </Modal.Header>
-                <Modal.Body><Link to="/login">Login to follow!</Link></Modal.Body>
-            </Modal>
+            <LoginModal
+                showLoginModal={ showLoginModal }
+                handleCloseLoginModal={ handleCloseLoginModal }
+            />
         </>
     );
 };

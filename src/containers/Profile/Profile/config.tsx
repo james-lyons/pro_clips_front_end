@@ -1,37 +1,61 @@
 interface State {
     user: null | User,
-    match: boolean,
+    isMatch: boolean,
     isFollowed: boolean,
-    showLogin: boolean,
     showFollowers: boolean,
     showFollowing: boolean,
+    showLoginModal: boolean,
 };
 
 interface Props {
     user: User,
     currentUser: CurrentUser,
-    match: object,
+    match: { params: { username: string }},
     fetchUser: (username: string) => void,
     followUser: (username: string) => void,
     unfollowUser: (username: string) => void
 };
 
-interface User {
-    userName: string,
-    email: string,
-    bio: string,
-    profile_image: string,
-    isFollowed?: boolean
+interface ReduxState {
+    userReducer: UserReducer
+};
+
+interface UserReducer {
+    user: User,
+    currentUser: CurrentUser
 };
 
 interface CurrentUser {
-    userName: string,
-    email: string,
     bio: string,
+    email: string,
+    userName: string,
+    clips: Array<Clip>,
+    isFollowed: boolean,
     profile_image: string
+};
+
+interface User {
+    bio: string,
+    email: string,
+    userName: string,
+    clips: Array<Clip>,
+    isFollowed: boolean,
+    profile_image: string
+};
+
+interface Clip {
+    _id: string,
+    url: string,
+    title: string,
+    game: string,
+    poster: string,
+    poster_name: string,
+    replies: Array<string>,
+    comments: Array<string>
 };
 
 export {
     State,
-    Props
+    Props,
+    ReduxState
 };

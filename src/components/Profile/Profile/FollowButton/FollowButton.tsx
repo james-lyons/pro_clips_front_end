@@ -6,7 +6,7 @@ const FollowButton: React.SFC<Props> = ({
     isFollowed,
     followUser,
     unfollowUser,
-    handleShowLogin
+    handleShowLoginModal
 }) => {
     const currentUser = localStorage.getItem('uid');
 
@@ -26,7 +26,7 @@ const FollowButton: React.SFC<Props> = ({
         };
     } else {
         return (
-            <button onClick={ () => handleShowLogin() }>follow</button>
+            <button onClick={ () => handleShowLoginModal() }>follow</button>
         )
     }
 };
