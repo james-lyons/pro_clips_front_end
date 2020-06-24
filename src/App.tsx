@@ -1,7 +1,7 @@
 import React from 'react';
 import Routes from './routes/Routes';
 import NavBar from './containers/NavBar/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'semantic-ui-css/semantic.min.css'
 
 interface State {
     theme: string
