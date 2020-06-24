@@ -1,16 +1,8 @@
 interface Props {
     currentUser: User,
     activeItem: string,
-    handleSelect: (event: Event) => void
+    handleSelect: (event: Event) => void,
     userLogout: (currentUserId: string) => void,
-};
-
-interface ReduxState {
-    userReducer: CurrentUser
-};
-
-interface CurrentUser {
-    currentUser: User
 };
 
 interface User {
@@ -22,6 +14,5 @@ interface Event {
 };
 
 export {
-    Props,
-    ReduxState
+    Props
 };

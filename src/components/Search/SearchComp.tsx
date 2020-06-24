@@ -1,20 +1,20 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
 import { Props } from './config';
+import { Form } from 'semantic-ui-react'
 
 const SearchComp: React.SFC<Props> = ({ search, handleChange, handleSubmit }) => {
     return (
         <>
-            <Form onSubmit={ handleSubmit }>
-                <Form.Group>
-                    <Form.Control
-                        type="text"
-                        name="search"
-                        placeholder="Search Users"
+              <Form onSubmit={ handleSubmit }>
+                <Form.Field>
+                    <input
+                        type='text'
+                        name='search'
                         value={ search }
                         onChange={ handleChange }
+                        placeholder='Search Users'
                     />
-                </Form.Group>
+                </Form.Field>
             </Form>
         </>
     );

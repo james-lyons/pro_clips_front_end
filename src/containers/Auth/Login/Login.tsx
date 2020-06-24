@@ -36,7 +36,7 @@ class Login extends React.PureComponent<Props, State> {
             return;
         };
 
-        history.push('/browseclips');
+        history.push('/browseClips');
     };
 
     render() {
