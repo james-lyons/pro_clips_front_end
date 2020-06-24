@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { State, Props, Event, ReduxState } from './config';
 import { userRegister, userLogin } from '../../../redux/actions/authActions/authActions';
-import RegisterComponent from '../../../components/Auth/Register/RegisterComponent';
+import RegisterComp from '../../../components/Auth/Register/RegisterComp';
 
 class Register extends React.PureComponent<Props, State> {
 
@@ -56,7 +56,7 @@ class Register extends React.PureComponent<Props, State> {
 
         return (
             <>
-                <RegisterComponent
+                <RegisterComp
                     userName={ userName }
                     email={ email }
                     password={ password }

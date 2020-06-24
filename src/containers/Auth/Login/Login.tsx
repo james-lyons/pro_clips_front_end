@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { State, Props, Event,  ReduxState } from './config';
+import { State, Props, Event, ReduxState } from './config';
 import { userLogin } from '../../../redux/actions/authActions/authActions';
-import LoginComponent from '../../../components/Auth/Login/LoginComponent';
+import LoginComp from '../../../components/Auth/Login/LoginComp';
 
 class Login extends React.PureComponent<Props, State> {
 
@@ -44,7 +44,7 @@ class Login extends React.PureComponent<Props, State> {
 
         return (
             <>
-                <LoginComponent
+                <LoginComp
                     email={ email }
                     password={ password }
                     errors={ errors }

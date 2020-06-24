@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Col, Button} from 'react-bootstrap';
 import { Props, styles } from './config';
 
-const RegisterComponent: React.SFC<Props> = ({
+const RegisterComp: React.SFC<Props> = ({
     email,
     userName,
     password,
@@ -107,4 +107,4 @@ const RegisterComponent: React.SFC<Props> = ({
     );
 };
 
-export default RegisterComponent;
+export default RegisterComp;
