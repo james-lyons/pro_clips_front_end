@@ -8,7 +8,9 @@ class ClipUpload extends React.PureComponent<Props, State> {
     state: State = {
         clip: null,
         title: '',
-        game: ''
+        game: null,
+        wasSubmitted: false,
+        error: false
     };
 
     private handleSelect = (event: Event) => {
@@ -24,6 +26,11 @@ class ClipUpload extends React.PureComponent<Props, State> {
         this.setState({
             [event.target.name]: event.target.value
         });
+        console.log(this.state.game)
+    };
+
+    private handleSubmitVer = () => {
+        this.setState((prevState) => ({ wasSubmitted: !prevState.wasSubmitted }));
     };
 
     private handleUploadClip = async () => {
@@ -31,21 +38,39 @@ class ClipUpload extends React.PureComponent<Props, State> {
         const { clip, game, title} = this.state;
         const { uploadClip } = this.props;
 
-        await uploadClip(clip, title, game)
+        if (!game || game === 'Select') {
+            this.setState({
+                error: true
+            });
+            console.log(this.state.error)
+            return;
+        };
+
+        console.log(this.state);
+
+        const res = await uploadClip(clip, title, game);
+        await this.setState({
+            clip: null,
+            title: '',
+            game: ''
+        })
+        console.log(res);
+        this.handleSubmitVer();
     };
 
     render() {
-        const { title, game } = this.state;
-        const { handleUploadClip, handleSelect, handleChange } = this;
+        const { title, wasSubmitted, error } = this.state;
+        const { handleUploadClip, handleSelect, handleChange, handleSubmitVer } = this;
 
         return (
             <>
                 <ClipUploadComponent
-                    game={ game }
+                    error={ error }
                     title={ title }
-                    handleUploadClip={ handleUploadClip }
+                    wasSubmitted={ wasSubmitted }
                     handleSelect={ handleSelect }
                     handleChange={ handleChange }
+                    handleUploadClip={ handleUploadClip }
                 />
             </>
         );

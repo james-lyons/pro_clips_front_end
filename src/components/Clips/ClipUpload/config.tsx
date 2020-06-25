@@ -1,6 +1,7 @@
 interface Props {
     title: string,
-    game: null | string,
+    error: boolean,
+    wasSubmitted: boolean,
     handleUploadClip: () => void,
     handleChange: (event: Event) => void,
     handleSelect: (event: Event) => void

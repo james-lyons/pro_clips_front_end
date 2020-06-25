@@ -16,7 +16,7 @@ const AuthLinks: React.SFC<Props> = ({
     const currentUserId = localStorage.getItem('uid');
 
     return (
-        <Menu className='navbar-menu-ui' secondary style={{ justifyContent: 'space-between' }}>
+        <Menu className='navbar-menu-ui' secondary size='large' style={{ justifyContent: 'space-between' }}>
             <Menu.Menu style={{ marginRight: '3rem' }}>
                 <Menu.Item
                     as={ Link }
@@ -53,11 +53,14 @@ const AuthLinks: React.SFC<Props> = ({
                 <Menu.Item
                     as={ Link }
                     to='/clipUpload'
-                    name='Upload Clip'
+                    name='Upload'
                     active={ activeItem === 'Upload Clip' }
                     onClick={ handleSelect }
-                />
-                <Dropdown item icon='bars' direction='left'>
+                >
+                    <Icon name='cloud upload' />
+                    Upload
+                </Menu.Item>
+                <Dropdown item icon='bars' direction='left' style={{ marginRight: '10px' }}>
                     <Dropdown.Menu>
                         <Dropdown.Item
                             href={ `/${ currentUser.userName }` }

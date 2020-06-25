@@ -1,7 +1,9 @@
 interface State {
     clip: null | File,
     game: null | string,
-    title: null | string
+    title: null | string,
+    wasSubmitted: boolean,
+    error: boolean
 };
 
 interface Props {

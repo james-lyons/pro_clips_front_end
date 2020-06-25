@@ -12,7 +12,7 @@ const LoginComp: React.SFC<Props> = ({
 
     return (
         <>  
-            <Form size='small' style={ styles.form } onSubmit={ handleSubmit }>
+            <Form style={ styles.form } onSubmit={ handleSubmit }>
                 <h1>Login</h1>  
 
                 {

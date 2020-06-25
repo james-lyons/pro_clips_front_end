@@ -9,7 +9,7 @@ const Links: React.SFC<Props> = ({
     handleSelect
 }) => {
     return (
-        <Menu className='navbar-menu-ui' secondary style={{ justifyContent: 'space-between' }}>
+        <Menu className='navbar-menu-ui' secondary size='large' style={{ justifyContent: 'space-between' }}>
             <Menu.Menu style={{ marginRight: '3rem' }}>
                 <Menu.Item
                     as={ Link }

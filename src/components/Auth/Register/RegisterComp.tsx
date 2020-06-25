@@ -20,23 +20,6 @@ const RegisterComp: React.SFC<Props> = ({
                 onSubmit={ handleSubmit }
             >
                 <h1>Sign up</h1>
-                {/* <div style={{ marginBottom: '1rem' }}>
-                    {
-                        errors && errors.map((error, i) => (
-                        <div
-                            style={ styles.errorDiv } role="alert" key={ i }>
-                            <p style={ styles.errorP }>{ error.message }  </p>
-                        </div>
-                        ))
-                    }
-                    {
-                        message &&
-                        <div style={ styles.errorDiv } role="alert">
-                            <p style={ styles.errorP }>{ message }</p>
-                        </div>
-                    }
-                </div> */}
-
                 {
                     errors && errors.map((error, i) => (
                         <Message negative key={ i } size='small'>
