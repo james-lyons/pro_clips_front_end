@@ -1,8 +1,11 @@
 import React from 'react';
+import { Button } from 'semantic-ui-react';
 import { Props } from './config';
+import LoginModal from '../../../LoginModal/LoginModal';
 
 const FollowButton: React.SFC<Props> = ({
     userName,
+    buttonName,
     isFollowed,
     followUser,
     unfollowUser,
@@ -12,21 +15,26 @@ const FollowButton: React.SFC<Props> = ({
 
     if (currentUser) {
         if (isFollowed) {
-            return (<button style={{ marginLeft: '4rem', borderRadius: '4px' }}
+            return (<Button size='tiny'
                 onClick={ () => unfollowUser(userName) }>
                     Unfollow
-                </button> )
+                </Button> )
         } else {
             return (
-                <button style={{ marginLeft: '4rem', borderRadius: '4px' }}
+                <Button size='tiny' basic color='red'
                     onClick={ () => followUser(userName) }>
                         Follow
-                </button>
+                </Button>
             );
         };
     } else {
         return (
-            <button onClick={ () => handleShowLoginModal() }>follow</button>
+            // <Button size='tiny' basic color='red'
+            //     onClick={ () =>  handleShowLoginModal() }>
+            //         <LoginModal
+            //         />
+            // </Button>
+            <LoginModal buttonName={ buttonName }/>
         )
     }
 };

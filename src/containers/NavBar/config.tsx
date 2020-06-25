@@ -1,5 +1,6 @@
 interface State {
-    activeItem: string
+    activeItem: string,
+    visible: boolean
 };
 
 interface Props {

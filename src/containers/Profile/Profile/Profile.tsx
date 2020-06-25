@@ -10,6 +10,7 @@ import ProfileClips from '../ProfileClips/ProfileClips';
 class Profile extends React.PureComponent<Props, State> {
     state: State = {
         user: null,
+        buttonName: 'Follow',
         isMatch: false,
         isFollowed: false,
         showFollowers: false,
@@ -70,7 +71,7 @@ class Profile extends React.PureComponent<Props, State> {
     };
     
     render() {
-        const { user, isMatch, isFollowed, showLoginModal  } = this.state;
+        const { user, isMatch, isFollowed, showLoginModal, buttonName  } = this.state;
         const {
             followUser,
             unfollowUser,
@@ -85,6 +86,7 @@ class Profile extends React.PureComponent<Props, State> {
                     <ProfileComp
                         user={ user }
                         isMatch={ isMatch }
+                        buttonName={ buttonName }
                         isFollowed={ isFollowed }
                         showLoginModal={ showLoginModal }
                         followUser={ followUser }

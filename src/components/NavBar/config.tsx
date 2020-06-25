@@ -1,6 +1,8 @@
 interface Props {
+    visible: boolean,
     currentUser: User,
     activeItem: string,
+    setVisibility: () => void,
     handleSelect: (event: Event) => void
     userLogout: (currentUserId: string) => void,
 };

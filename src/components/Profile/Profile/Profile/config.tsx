@@ -59,6 +59,8 @@ const styles = {
     h1: {
         display: 'inline-block',
         fontSize: '1.5rem',
+        marginLeft: '.55rem',
+        marginBottom: 0,
         padding: '.25rem',
     },
     li: {

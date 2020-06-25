@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Props, ReduxState } from './config';
-import Links from './Links/Links';
-import AuthLinks from './AuthLinks/AuthLinks';
+import MobileLinks from './Links/MobileLinks';
+import MobileAuthLinks from './AuthLinks/MobileAuthLinks';
 
-const NavBarComponent: React.SFC<Props> = ({
+const MobileNavBarComp: React.SFC<Props> = ({
+    visible,
     activeItem,
     currentUser,
-    handleSelect
+    handleSelect,
+    setVisibility
 }) => {
 
     const currentUserId = localStorage.getItem('uid');
@@ -16,14 +18,18 @@ const NavBarComponent: React.SFC<Props> = ({
         <>
             {
                 currentUserId ?
-                <AuthLinks
+                <MobileAuthLinks
+                    visible={ visible }
                     activeItem={ activeItem }
                     currentUser={ currentUser }
                     handleSelect={ handleSelect }
+                    setVisibility={ setVisibility }
                 /> :
-                <Links
+                <MobileLinks
+                    visible={ visible }
                     activeItem={ activeItem }
                     handleSelect={ handleSelect }
+                    setVisibility={ setVisibility }
                 />
             }
         </>
@@ -36,4 +42,4 @@ const mapStateToProps = (state: ReduxState) => {
     };
 };
 
-export default connect(mapStateToProps, null)(NavBarComponent);
+export default connect(mapStateToProps, null)(MobileNavBarComp);

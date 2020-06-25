@@ -1,13 +1,16 @@
 import React from 'react';
-import { Props, State, Event } from './config';
 import { connect } from 'react-redux';
+import { Props, State, Event } from './config';
+import { Segment, Responsive } from 'semantic-ui-react';
 import { fetchCurrentUser } from '../../redux/actions/userActions/userActions';
-import NavBarComponent from '../../components/NavBar/NavBarComp';
+import NavBarComp from '../../components/NavBar/NavBarComp';
+import MobileNavBarComp from '../../components/NavBar/MobileNavBarComp';
 
 class NavBar extends React.PureComponent<Props, State> {
 
     state: State = {
-        activeItem: 'home'
+        activeItem: 'home',
+        visible: false
     };
 
     componentDidMount = async () => {
@@ -23,16 +26,33 @@ class NavBar extends React.PureComponent<Props, State> {
         });
     };
 
+    private setVisibility = () => {
+        this.setState({ visible: !this.state.visible })
+    };
+
     render() {
-        const { activeItem } = this.state;
-        const { handleSelect } = this;
+        const { activeItem, visible } = this.state;
+        const { handleSelect, setVisibility } = this;
 
         return (
             <>
-                <NavBarComponent
-                    activeItem={ activeItem }
-                    handleSelect={ handleSelect }
-                />
+              <Segment.Group style={{ border: 'none', boxShadow: 'none' }}>
+                <Responsive as={ Segment } minWidth={ 700 } style={{ padding: 0 }}>
+                    <NavBarComp
+                        activeItem={ activeItem }
+                        handleSelect={ handleSelect }
+                    />
+                </Responsive>
+
+                <Responsive as={ Segment } maxWidth={ 699 } style={{ padding: 0 }}>
+                    <MobileNavBarComp
+                        visible={ visible }
+                        activeItem={ activeItem }
+                        handleSelect={ handleSelect }
+                        setVisibility={ setVisibility }
+                    />
+                </Responsive>
+            </Segment.Group>
             </>
         );
     };

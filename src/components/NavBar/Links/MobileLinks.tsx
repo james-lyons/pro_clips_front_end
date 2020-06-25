@@ -1,30 +1,38 @@
 import React from 'react';
 import { Props } from './config';
 import { Link } from 'react-router-dom';
-import { Menu, Icon } from 'semantic-ui-react';
+import { Menu, Icon, Sidebar } from 'semantic-ui-react';
 import Search from '../../../containers/Search/Search';
 
-const Links: React.SFC<Props> = ({
+const MobileLinks: React.SFC<Props> = ({
+    visible,
     activeItem,
-    handleSelect
+    handleSelect,
+    setVisibility
 }) => {
     return (
-        <Menu className='navbar-menu-ui' secondary size='large' style={{ justifyContent: 'space-between' }}>
-            <Menu.Menu style={{ marginRight: '3rem' }}>
+        <Menu className='navbar-menu-ui' secondary size='large'>
+
+            <Sidebar
+                as={ Menu }
+                animation='overlay'
+                icon='labeled'
+                inverted
+                onHide={ () => setVisibility() }
+                vertical
+                visible={ visible }
+                width='thin'
+            >
                 <Menu.Item
                     as={ Link }
                     to='/'
                     name='Clipped'
                     active={ activeItem === 'Clipped' }
                     onClick={ handleSelect }
+                    style={{ marginTop: '2rem' }}
                 >
-                    <Icon name='game' />
-                        Clipped
-                    <Icon name='film' style={{ marginLeft: '3px' }}/>
+                    Clipped
                 </Menu.Item>
-            </Menu.Menu>
-
-            <Menu.Menu>
                 <Menu.Item
                     as={ Link }
                     to='/popularClips'
@@ -32,7 +40,6 @@ const Links: React.SFC<Props> = ({
                     active={ activeItem === 'Popular Clips' }
                     onClick={ handleSelect }
                 />
-
                 <Menu.Item
                     as={ Link }
                     to='/browseClips'
@@ -40,15 +47,9 @@ const Links: React.SFC<Props> = ({
                     active={ activeItem === 'Browse Clips' }
                     onClick={ handleSelect }
                 />
-
-                <Menu.Item>
-                    <Search />
-                </Menu.Item>
-            </Menu.Menu>
-
-            <Menu.Menu>
                 <Menu.Item
                     as={ Link }
+                    fixed='bottom'
                     to='/login'
                     name='Login'
                     active={ activeItem === 'Login' }
@@ -62,9 +63,21 @@ const Links: React.SFC<Props> = ({
                     active={ activeItem === 'Register' }
                     onClick={ handleSelect }
                 />
+            </Sidebar>
+
+            <Menu.Menu>
+                <Menu.Item onClick={ () => setVisibility() }>
+                    <Icon name='film' />
+                </Menu.Item>
+            </Menu.Menu>
+
+            <Menu.Menu style={{ marginLeft: '1.7rem' }}>
+                <Menu.Item>
+                    <Search />
+                </Menu.Item>
             </Menu.Menu>
         </Menu>
     );
 };
 
-export default Links;
+export default MobileLinks;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Card, Container, Grid, Image, Menu } from 'semantic-ui-react';
 import { Props, styles, ReduxState } from './config';
 import LoginModal from '../../../LoginModal/LoginModal';
 import FollowButton from '../FollowButton/FollowButton';
@@ -11,6 +12,7 @@ const ProfileComp: React.SFC<Props> = ({
     user,
     isMatch,
     isFollowed,
+    buttonName,
     showLoginModal,
     followUser,
     unfollowUser,
@@ -22,25 +24,20 @@ const ProfileComp: React.SFC<Props> = ({
  
     return (
         <>
-            <div>
-                <header
-                    className="col-lg-6 col-md-10 col-sm-12 mb-4"
-                    style={ styles.headerWrapper }
-                >
-                    <div style={{ height: '100%' }}>
-                        <img
-                            src={ profile_image }
-                            style={{ height: '7rem', borderRadius: '100%' }}
-                        />
-                    </div>
+            <Container text style={{ margin: '3rem 0', paddingBottom: '4rem', borderBottom: '1px solid grey' }}>
+                <Grid>
+                    <Grid.Column width={ 4 } centered>
+                        <Image centered src={ user.profile_image } style={{ width: '75%', borderRadius: '100%' }}/>
+                    </Grid.Column>
 
-                    <section style={{ height: '100%' }}>
-                        <div style={{ justifyContent: 'center' }}>
+                    <Grid.Column width={ 11 } floated='right'>
+                        <Grid.Row>
                             <h1 style={ styles.h1 }>{ userName }</h1>
                             {
                                 isMatch
                                 ? <EditProfileButton />
                                 : <FollowButton
+                                    buttonName={ buttonName }
                                     userName={ userName }
                                     isFollowed={ isFollowed }
                                     followUser={ followUser }
@@ -48,31 +45,24 @@ const ProfileComp: React.SFC<Props> = ({
                                     handleShowLoginModal={ handleShowLoginModal }
                                 />
                             }
-                        </div>
+                        </Grid.Row>
+                        
+                        <Grid.Row>
+                            <Menu secondary>
+                                <Menu.Item name={`${ clips.length } clips`} />
+                                <Menu.Item color='red'><FollowersList /></Menu.Item>
+                                <Menu.Item color='black'><FollowingList /></Menu.Item>
+                            </Menu>
+                        </Grid.Row>
 
-                        <ul style={ styles.ulWrapper }>
-                            <li style={ styles.li }>
-                                <span>{ clips.length } clips</span>
-                            </li>
-                            <li style={ styles.li }>
-                                <FollowersList />
-                            </li>
-                            <li style={ styles.li }>
-                                <FollowingList />
-                            </li>
-                        </ul>
-
-                        <div>
-                            <h1 style={ styles.h1 }>{ bio }</h1>
-                        </div>
-                    </section>
-                </header>
-            </div>
-
-            <LoginModal
-                showLoginModal={ showLoginModal }
-                handleCloseLoginModal={ handleCloseLoginModal }
-            />
+                        <Grid.Row style={{ paddingLeft: '.9rem', paddingTop: '.5rem' }}>
+                            <Container>
+                                <p style={{ fontSize: '1.5rem' }}>{ bio }</p>
+                            </Container>
+                        </Grid.Row>
+                    </Grid.Column>
+                </Grid>
+            </Container>
         </>
     );
 };
