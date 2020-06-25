@@ -34,7 +34,8 @@ const styles = {
         paddingLeft: '0'
     },
     form: {
-        margin: '0 auto',
+        width: '35%',
+        margin: '7rem auto 0',
         border: '1px solid black',
         borderRadius: '5px',
         padding: '1.2rem'

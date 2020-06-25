@@ -1,5 +1,5 @@
 import API_URL from '../../../constants';
-import { NewUser } from './config';
+import { User, NewUser } from './config';
 
 const userRegister = (newUser: NewUser) => {
     return async dispatch => {
@@ -14,10 +14,11 @@ const userRegister = (newUser: NewUser) => {
             );
 
             const data = await res.json();
+            console.log('Hello from userRegister: data', data)
 
-            if (data.errors && data.message) {
+            if (data.status >= 400) {
                 return dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: data });
-            } else if (data.message) {
+            } else {
                 return dispatch({ type: 'USER_REGISTRATION_FULFILLED', payload: data});
             };
         } catch (error) {
@@ -26,7 +27,7 @@ const userRegister = (newUser: NewUser) => {
     };
 };
 
-const userLogin = (user:object) => {
+const userLogin = (user: User) => {
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/login`,
@@ -40,9 +41,7 @@ const userLogin = (user:object) => {
 
             const data = await res.json();
 
-            console.log(data)
-
-            console.log('hello 1', data)
+            console.log('Hello from userlogin 1: data', data)
 
             if (data.status >= 400) {
                 dispatch({ type: 'USER_LOGIN_REJECTED', payload: data });
@@ -51,10 +50,10 @@ const userLogin = (user:object) => {
 
             localStorage.setItem('uid', data.data._id);
             dispatch({ type: 'USER_LOGIN_FULFILLED' });
-            dispatch({ type: 'FETCH_CURRENT_USER_FULFILLED', payload: data })
+            return dispatch({ type: 'FETCH_CURRENT_USER_FULFILLED', payload: data })
 
         } catch (error) {
-            dispatch({ type: 'USER_LOGIN_REJECTED', payload: error });
+            return dispatch({ type: 'USER_LOGIN_REJECTED', payload: error });
         };
     };
 };

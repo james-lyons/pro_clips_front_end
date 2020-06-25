@@ -60,8 +60,7 @@ const AuthLinks: React.SFC<Props> = ({
                 <Dropdown item icon='bars' direction='left'>
                     <Dropdown.Menu>
                         <Dropdown.Item
-                            as={ Link }
-                            to={ `/${ currentUser.userName }` }
+                            href={ `/${ currentUser.userName }` }
                         >
                             Profile
                         </Dropdown.Item>

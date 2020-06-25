@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { State, Props, Event, ReduxState } from './config';
+import { State, Props, Event, Response } from './config';
 import { userLogin } from '../../../redux/actions/authActions/authActions';
 import LoginComp from '../../../components/Auth/Login/LoginComp';
 
@@ -23,20 +23,26 @@ class Login extends React.PureComponent<Props, State> {
         event.preventDefault();
 
         const { email, password } = this.state;
+        const { history, userLogin } = this.props;
         const user = { email, password };
-        const { errors, message, history, userLogin } = this.props;
 
-        await userLogin(user);
+        const res: Response = await userLogin(user);
 
-        if (errors) {
+        if (res.payload.errors) {
             this.setState({
-                errors: errors,
-                message: message
-            })
+                errors: res.payload.errors,
+                message: res.payload.message
+            });
+
             return;
+        } else {
+            this.setState({
+                errors: null,
+                message: null
+            });
         };
 
-        history.push('/browseClips');
+        return history.push('/browseClips');
     };
 
     render() {
@@ -57,11 +63,4 @@ class Login extends React.PureComponent<Props, State> {
     };
 };
 
-const mapStateToProps = (state: ReduxState) => {
-    return {
-        errors: state.authReducer.errors,
-        message: state.authReducer.message
-    };
-};
-
-export default connect(mapStateToProps, { userLogin })(Login);
+export default connect(null, { userLogin })(Login);

@@ -5,6 +5,12 @@ interface NewUser {
     password2: string,
 };
 
-export { 
+interface User {
+    email: string,
+    password: string
+};
+
+export {
+    User,
     NewUser
 };

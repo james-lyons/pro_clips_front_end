@@ -10,16 +10,12 @@ interface Props {
     errors: null | Array<Error>,
     message: null | string,
     setCurrentUser: () => void,
-    userLogin: (user: User) => void,
+    userLogin: (user: User) => Promise<any>,
 };
 
 interface User {
     email: string,
     password: string
-};
-
-interface Error {
-    message: string
 };
 
 interface History {
@@ -40,18 +36,24 @@ interface TargetState {
     password: string,
 };
 
-interface ReduxState {
-    authReducer: AuthReducer
+interface Response {
+    type: string,
+    payload: Payload,
 };
 
-interface AuthReducer {
+interface Payload {
+    errors: Array<Error>,
     message: string,
-    errors: Array<Error>
+    status: number
+};
+
+interface Error {
+    message: string
 };
 
 export {
     State,
     Props,
     Event,
-    ReduxState
+    Response
 };

@@ -1,63 +1,47 @@
 import React from 'react';
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Message } from 'semantic-ui-react'
 import { Props, styles } from './config';
 
 const LoginComp: React.SFC<Props> = ({
     email,
     password,
     errors,
-    message,
     handleChange,
     handleSubmit
 }) => {
 
     return (
-        <>
-            <h1
-                className="col-lg-4 col-md-6 col-sm-10 mb-4"
-                style={ styles.h1 }>
-                    Login
-            </h1>  
-            
-            <Form
-                style={ styles.form } onSubmit={ handleSubmit }
-            >
+        <>  
+            <Form size='small' style={ styles.form } onSubmit={ handleSubmit }>
+                <h1>Login</h1>  
 
-                <div style={{ marginBottom: '1rem' }}>
-                    { 
-                        errors && errors.map((error, i) => (
-                        <div
-                            style={ styles.errorDiv } role="alert" key={ i }>
-                            <p style={ styles.errorP }>{ error.message }  </p>
-                        </div>
-                        ))
-                    }
-                    {
-                        message &&
-                        <div style={ styles.errorDiv } role="alert">
-                            <p style={ styles.errorP }>{ message }</p>
-                        </div>
-                    }
-                </div>
+                {
+                    errors && errors.map((error, i) => (
+                        <Message negative key={ i } size='small'>
+                            <Message.Header>{ error.message }</Message.Header>
+                            <p>Please try again</p>
+                        </Message>
+                    ))
+                }
 
                 <Form.Field>
-                    <label>Email</label>
-                    <input
+                    <Form.Input
                         required
-                        type="email"
-                        name="email"
+                        label='Email'
+                        type='email'
+                        name='email'
+                        placeholder='Enter Email'
                         value={ email }
                         onChange={ handleChange }
-                        placeholder="Enter Email"
                     />
                 </Form.Field>
 
                 <Form.Field>
-                    <label>Password</label>
-                    <input 
+                    <Form.Input 
                         required
-                        type="password"
-                        name="password"
+                        label='password'
+                        type='password'
+                        name='password'
                         value={ password }
                         onChange={ handleChange }
                     />

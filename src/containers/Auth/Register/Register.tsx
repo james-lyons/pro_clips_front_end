@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { State, Props, Event, ReduxState } from './config';
+import { State, Props, Event, Response } from './config';
 import { userRegister, userLogin } from '../../../redux/actions/authActions/authActions';
 import RegisterComp from '../../../components/Auth/Register/RegisterComp';
 
@@ -25,28 +25,36 @@ class Register extends React.PureComponent<Props, State> {
         event.preventDefault();
 
         const { userName, email, password, password2 } = this.state;
+        const { userRegister, userLogin } = this.props;
         const newUser = { userName, email, password, password2 };
         const loginCredentials = { email, password };
 
-        const res = await this.props.userRegister(newUser);
+        const res: Response = await userRegister(newUser);
 
         if (res.type === 'USER_REGISTRATION_REJECTED') {
             this.setState({
-                errors: this.props.errors,
-                message: this.props.message
+                errors: res.payload.errors,
+                message: res.payload.message
             })
             return;
+
         } else if (res.type === 'USER_REGISTRATION_FULFILLED') {
-            await this.props.userLogin(loginCredentials);
-            if (res.type === 'USER_LOGIN_REJECTED') {
+            const res2: Response = await userLogin(loginCredentials);
+
+            console.log('Hi!', res2)
+            await this.setState({
+                errors: null,
+                message: null
+            });
+
+            if (res2.type === 'USER_LOGIN_REJECTED') {
                 this.setState({
-                    errors: this.props.errors,
-                    message: this.props.message
+                    errors: res.payload.errors,
+                    message: res.payload.message
                 })
                 return;
             };
-        }
-
+        };
         this.props.history.push('/browseclips');
     };
 
@@ -71,11 +79,4 @@ class Register extends React.PureComponent<Props, State> {
     }
 };
 
-const mapStateToProps = (state: ReduxState) => {
-    return {
-        errors: state.authReducer.errors,
-        message: state.authReducer.message
-    };
-};
-
-export default connect(mapStateToProps, { userRegister, userLogin })(Register);
+export default connect(null, { userRegister, userLogin })(Register);

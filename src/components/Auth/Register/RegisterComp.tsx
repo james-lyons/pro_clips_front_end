@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Col, Button} from 'react-bootstrap';
+import { Form, Button, Message } from 'semantic-ui-react';
 import { Props, styles } from './config';
 
 const RegisterComp: React.SFC<Props> = ({
@@ -15,18 +15,12 @@ const RegisterComp: React.SFC<Props> = ({
 
     return (
         <>
-            <h1
-                className="col-lg-4 col-md-6 col-sm-10 mb-4" style={ styles.h1 }>
-                    Sign up
-            </h1>
-
             <Form
-                className="col-lg-4 col-md-6 col-sm-10 mb-4"
                 style={ styles.form }
                 onSubmit={ handleSubmit }
             >
-
-                <div style={{ marginBottom: '1rem' }}>
+                <h1>Sign up</h1>
+                {/* <div style={{ marginBottom: '1rem' }}>
                     {
                         errors && errors.map((error, i) => (
                         <div
@@ -41,65 +35,55 @@ const RegisterComp: React.SFC<Props> = ({
                             <p style={ styles.errorP }>{ message }</p>
                         </div>
                     }
-                </div>
+                </div> */}
 
-                <Form.Row>
-                    <Form.Group as={ Col } controlId="formGridUserName">
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control
-                            required
-                            type="text"
-                            name="userName"
-                            placeholder="Enter Username"
-                            value={ userName }
-                            onChange={ handleChange }
-                        />
-                    </Form.Group>
-                </Form.Row>
+                {
+                    errors && errors.map((error, i) => (
+                        <Message negative key={ i } size='small'>
+                            <Message.Header>{ error.message }</Message.Header>
+                            <p>Please try again</p>
+                        </Message>
+                    ))
+                }
 
-                <Form.Row>
-                    <Form.Group as={ Col } controlId="formGridEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                            required
-                            type="email"
-                            name="email"
-                            placeholder="Enter email"
-                            value={ email }
-                            onChange={ handleChange }
-                        />
-                    </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
-                    <Form.Group as={ Col } controlId="formGridPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            required
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            value={ password }
-                            onChange={ handleChange }
-                        />
-                    </Form.Group>
-                </Form.Row>
+                <Form.Input
+                    required
+                    label='Username'
+                    type='text'
+                    name='userName'
+                    placeholder='Enter Username'
+                    value={ userName }
+                    onChange={ handleChange }
+                />
+                <Form.Input
+                    required
+                    label='Email'
+                    type='email'
+                    name='email'
+                    placeholder='Enter Email'
+                    value={ email }
+                    onChange={ handleChange }
+                />
+                <Form.Input
+                    required
+                    label='Password'
+                    type='password'
+                    name='password'
+                    placeholder='Enter Username'
+                    value={ password }
+                    onChange={ handleChange }
+                />
+                <Form.Input
+                    required
+                    label='Confirm Password'
+                    type='password'
+                    name='password2'
+                    placeholder='Enter Username'
+                    value={ password2 }
+                    onChange={ handleChange }
+                />
                 
-                <Form.Row>
-                    <Form.Group as={ Col } controlId="formGridPassword2">
-                        <Form.Label>Please confirm your password</Form.Label>
-                        <Form.Control
-                            required
-                            type="password"
-                            name="password2"
-                            placeholder="Password"
-                            value={ password2 }
-                            onChange={ handleChange }
-                        />
-                    </Form.Group>
-                </Form.Row>
-                
-                <Button variant="primary" type="submit">
+                <Button type="submit">
                     Submit
                 </Button>
             </Form>
