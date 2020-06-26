@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import { Card, Grid, Responsive } from 'semantic-ui-react';
 import { Props, Clip } from './config';
 
 const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
@@ -10,61 +10,46 @@ const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
             {
                 if (game === '') {
                     return (
-                        <div
-                            key={ clip._id }
-                            style={{ display: 'inline-block', margin: '.5 rem' }}
-                        >
-                            <Link
+                        <React.Fragment key={ clip._id }>
+                            <Card
+                                as={ Link }
                                 to={ `/clip/${ clip._id }` }
-                                style={{ textDecoration: 'none', color: 'black' }}
+                                style={{ color: 'black' }}
                             >
-                                <Card
-                                    style={{ display: 'inline-block', margin: '.5rem' }}
+                                <video
+                                    width='100%'
+                                    src={ clip.url }
+                                    controls
+                                />
+                                <Card.Description textAlign='left'
+                                    style={{ fontSize: '1.3rem', padding: '.5rem', font: 'color' }}
                                 >
-                                    <video
-                                        width={ 300 }
-                                        height={ 190 }
-                                        src={ clip.url }
-                                        controls
-                                    />
-                                    <h1 style={{ fontSize: '1.3rem' }}>
-                                        { clip.game }
-                                    </h1>
-                                    <h1 style={{ fontSize: '1.3rem' }}>
-                                        { clip.title }
-                                    </h1>
-                                </Card>
-                            </Link>
-                        </div>
+                                    { clip.game }
+                                </Card.Description>
+                            </Card>
+                        </React.Fragment>
                     )
                 } else if (game === clip.game) {
                     return (
-                        <div
-                            key={ clip._id }
-                            style={{ display: 'inline-block', margin: '.5 rem' }}
-                        >
-                            <Link
+                        <React.Fragment key={ clip._id }>
+                            <Card
+                                as={ Link }
                                 to={ `/clip/${ clip._id }` }
-                                style={{ textDecoration: 'none', color: 'black' }}
+                                style={{ color: 'black' }}
+                                key={ clip._id }
                             >
-                                <Card
-                                    style={{ display: 'inline-block', margin: '.5rem' }}
+                                <video
+                                    width='100%'
+                                    src={ clip.url }
+                                    controls
+                                />
+                                <Card.Description textAlign='left'
+                                    style={{ fontSize: '1.3rem', padding: '.5rem', font: 'color' }}
                                 >
-                                    <video
-                                        width={ 300 }
-                                        height={ 190 }
-                                        src={ clip.url }
-                                        controls
-                                    />
-                                    <h1 style={{ fontSize: '1.3rem' }}>
-                                        { clip.game }
-                                    </h1>
-                                    <h1 style={{ fontSize: '1.3rem' }}>
-                                        { clip.title }
-                                    </h1>
-                                </Card>
-                            </Link>
-                        </div>
+                                    { clip.game }
+                                </Card.Description>
+                            </Card>
+                        </React.Fragment>
                     );
                 };
             }
@@ -100,7 +85,31 @@ const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
                         <option value="Fortnite">Fortnite</option>
                     </select>
                 </form>
-                { userClips && clipMapper(userClips) }
+                
+                <Responsive minWidth={ 1100 }>
+                    <Card.Group stackable itemsPerRow={ 3 }
+                        style={{ maxWidth: '75%', margin: '0 auto' }}
+                    >
+                        { userClips && clipMapper(userClips) }
+                    </Card.Group>
+                </Responsive>
+
+                <Responsive minWidth={ 600 } maxWidth={ 1099 }>
+                    <Card.Group stackable itemsPerRow={ 3 }
+                        style={{ maxWidth: '90%', margin: '0 auto' }}
+                    >
+                        { userClips && clipMapper(userClips) }
+                    </Card.Group>
+                </Responsive>
+
+                <Responsive maxWidth={ 599 }>
+                    <Card.Group stackable itemsPerRow={ 3 }
+                        style={{ maxWidth: '95%', margin: '0 auto' }}
+                    >
+                        { userClips && clipMapper(userClips) }
+                    </Card.Group>
+                </Responsive>
+
             </div>
         </>
     );

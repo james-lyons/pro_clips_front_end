@@ -21,8 +21,8 @@ const ProfileComp: React.SFC<Props> = ({
         <>
             <Container text style={{ margin: '2rem 0', paddingBottom: '2rem', borderBottom: '1px solid grey' }}>
                 <Grid>
-                    <Grid.Column width={ 4 } centered>
-                        <Image centered src={ user.profile_image } style={{ width: '75%', borderRadius: '100%' }}/>
+                    <Grid.Column width={ 4 } centered='true'>
+                        <Image centered src={ profile_image } style={{ width: '75%', borderRadius: '100%' }}/>
                     </Grid.Column>
 
                     <Grid.Column width={ 11 }>
