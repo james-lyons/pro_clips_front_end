@@ -1,6 +1,5 @@
 interface Props {
-    showLoginModal: boolean,
-    handleCloseLoginModal: () => void,
+    modalName: string
 };
 
 export {

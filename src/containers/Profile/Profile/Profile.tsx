@@ -10,12 +10,10 @@ import ProfileClips from '../ProfileClips/ProfileClips';
 class Profile extends React.PureComponent<Props, State> {
     state: State = {
         user: null,
-        buttonName: 'Follow',
         isMatch: false,
         isFollowed: false,
         showFollowers: false,
-        showFollowing: false,
-        showLoginModal: false
+        showFollowing: false
     };
 
     componentDidMount = async () => {

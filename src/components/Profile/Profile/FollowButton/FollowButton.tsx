@@ -5,23 +5,22 @@ import LoginModal from '../../../LoginModal/LoginModal';
 
 const FollowButton: React.SFC<Props> = ({
     userName,
-    buttonName,
     isFollowed,
     followUser,
-    unfollowUser,
-    handleShowLoginModal
+    unfollowUser
 }) => {
     const currentUser = localStorage.getItem('uid');
 
     if (currentUser) {
         if (isFollowed) {
-            return (<Button size='tiny'
-                onClick={ () => unfollowUser(userName) }>
-                    Unfollow
+            return (
+                <Button size='mini' style={{ marginLeft: '2rem' }}
+                    onClick={ () => unfollowUser(userName) }>
+                        Unfollow
                 </Button> )
         } else {
             return (
-                <Button size='tiny' basic color='red'
+                <Button size='mini' basic color='black' style={{ marginLeft: '2rem' }}
                     onClick={ () => followUser(userName) }>
                         Follow
                 </Button>
@@ -29,14 +28,11 @@ const FollowButton: React.SFC<Props> = ({
         };
     } else {
         return (
-            // <Button size='tiny' basic color='red'
-            //     onClick={ () =>  handleShowLoginModal() }>
-            //         <LoginModal
-            //         />
-            // </Button>
-            <LoginModal buttonName={ buttonName }/>
-        )
-    }
+            <Button size='mini' basic color='black' style={{ marginLeft: '2rem' }}>
+                <LoginModal modalName='Follow'/>
+            </Button>
+        );
+    };
 };
 
 export default FollowButton;

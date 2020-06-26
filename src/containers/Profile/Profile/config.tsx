@@ -3,8 +3,7 @@ interface State {
     isMatch: boolean,
     isFollowed: boolean,
     showFollowers: boolean,
-    showFollowing: boolean,
-    showLoginModal: boolean,
+    showFollowing: boolean
 };
 
 interface Props {

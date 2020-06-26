@@ -2,7 +2,7 @@ import React from 'react';
 import { Form , Col, Button } from 'react-bootstrap';
 import { Props, styles } from './config';
 
-const ProfileEdit: React.SFC <Props> = ({
+const ProfileEditComp: React.SFC <Props> = ({
     bio,
     userName,
     profile_image,
@@ -138,4 +138,4 @@ const ProfileEdit: React.SFC <Props> = ({
     );
 };
 
-export default ProfileEdit;
+export default ProfileEditComp;

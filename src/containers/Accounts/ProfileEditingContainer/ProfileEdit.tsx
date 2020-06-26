@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { State, Props, Event, ReduxState } from './config';
 import { fetchCurrentUser, editUserProfile, editUserPassword } from '../../../redux/actions/userActions/userActions';
-import ProfileEditComponent from '../../../components/Accounts/ProfileEdit/ProfileEditComponent';
+import ProfileEditComp from '../../../components/Accounts/ProfileEdit/ProfileEditComp';
 
 class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State> {
 
@@ -96,7 +96,7 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
 
         return (
             <>
-                <ProfileEditComponent
+                <ProfileEditComp
                     bio={ bio }
                     userName={ userName }
                     profile_image={ profile_image }

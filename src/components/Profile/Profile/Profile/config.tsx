@@ -2,9 +2,6 @@ interface Props {
     user: User,
     isMatch: boolean,
     isFollowed: boolean,
-    showLoginModal: boolean,
-    handleShowLoginModal: () => void,
-    handleCloseLoginModal: () => void,
     followUser: (userName: string) => void,
     unfollowUser:  (userName: string) => void,
 };
@@ -59,9 +56,9 @@ const styles = {
     h1: {
         display: 'inline-block',
         fontSize: '1.5rem',
-        marginLeft: '.55rem',
         marginBottom: 0,
         padding: '.25rem',
+        fontWeight: 200
     },
     li: {
         marginRight: '1.25rem'
