@@ -1,48 +1,66 @@
 import React from 'react';
-import { styles } from './config';
+import { connect } from 'react-redux';
+import { Props, Event } from './config';
+import { Responsive } from 'semantic-ui-react';
 import { RouteComponentProps } from 'react-router';
-import { Route, withRouter } from 'react-router-dom';
-import AccountDelete from '../AccountDelete/DeleteAccount';
-import ProfileEdit from '../ProfileEditingContainer/ProfileEdit';
-import AccountSettingsEdit from '../AccountSettings/AccountSettingsEdit';
-import AccountSidebar from '../../../components/Accounts/SideBar/SidebarComp';
+import { setActiveItem } from '../../../redux/actions/accountActions/accountActions';
+import AccountsComp from '../../../components/Accounts/Accounts/AccountsComp';
+import MobileAccountsComp from '../../../components/Accounts/Accounts/MobileAccountsComp';
 
-class Accounts extends React.PureComponent<RouteComponentProps, {}> {
+class Accounts extends React.PureComponent<Props & RouteComponentProps> {
+
+    componentDidMount = async () => {
+        const { setActiveItem, history } = this.props;
+        const { pathname } = history.location;
+        
+        if (pathname === '/accounts') {
+            await setActiveItem('Profile Settings');
+
+        } else if (pathname === '/accounts/account_settings') {
+            await setActiveItem('Account Settings');
+
+        } else if (pathname === '/accounts/delete') {
+            await setActiveItem('Delete Account');
+
+        };
+    };
+    
+    private handleSelect = async (event: Event) => {
+        const { history } = this.props;
+        const navPoint = event.target.text;
+
+        if (navPoint === 'Profile Settings') {
+            await this.props.history.push('/accounts');
+
+        } else if (navPoint === 'Account Settings') {
+            this.props.history.push('/accounts/account_settings');
+
+        } else if (navPoint === 'Delete Account') {
+            this.props.history.push('/accounts/delete');
+        };
+    };
+
 
     render() {
+        
+        const { handleSelect } = this;
 
         return (
             <>
-                <div
-                    className="col-lg-6 col-md-10 col-sm-12 mb-4"
-                    style={ styles.wrapperDiv }
-                >
-                    <div style={{
-                        borderTop: '1px solid grey',
-                        borderLeft: '1px solid grey',
-                        borderBottom: '1px solid grey'
-                    }}>
-                        <AccountSidebar />
-                    </div>
+                <Responsive minWidth={ 1050 }>
+                    <AccountsComp
+                        handleSelect={ handleSelect }
+                    />
+                </Responsive>
 
-                    <div style={{ border: '1px solid grey' }}>
-                        <Route
-                            exact path="/accounts"
-                            component={ ProfileEdit }
-                        />
-                        <Route
-                            path="/accounts/account_settings"
-                            component={ AccountSettingsEdit }
-                        />
-                        <Route
-                            path="/accounts/delete"
-                            component={ AccountDelete }
-                        />
-                    </div>
-                </div>
+                <Responsive maxWidth={ 1049 }>
+                    <MobileAccountsComp
+                        handleSelect={ handleSelect }
+                    />
+                </Responsive>
             </>
         );
     };
 };
 
-export default withRouter(Accounts);
+export default connect(null, { setActiveItem })(Accounts);

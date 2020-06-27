@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer/authReducer';
+import accountReducer from './accountReducer/accountReducer';
 import userReducer from './userReducer/userReducer';
 import followerReducer from './followReducer/followReducer';
 import commentReducer from './commentReducer/commentReducer';
@@ -9,8 +10,9 @@ import clipReducer from './clipReducer/clipReducer';
 export default combineReducers({
     authReducer,
     userReducer,
-    followerReducer,
-    commentReducer,
+    clipReducer,
     replyReducer,
-    clipReducer
+    accountReducer,
+    commentReducer,
+    followerReducer
 });

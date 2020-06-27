@@ -3,24 +3,27 @@ import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
 import { Props, styles } from './config';
 
-const SidebarComp: React.SFC<Props> = ({ activeItem, handleSelect }) => {
+const MobileSidebarComp: React.SFC<Props> = ({ activeItem, handleSelect }) => {
     return (
         <>
-            <Menu pointing secondary vertical fluid>
+            <Menu pointing secondary>
                 <Menu.Item
                     name='Profile Settings'
                     active={ activeItem === 'Profile Settings' }
                     onClick={ handleSelect }
+                    style={{ fontSize: '.9rem' }}
                 />
                 <Menu.Item
                     name='Account Settings'
                     active={ activeItem === 'Account Settings' }
                     onClick={ handleSelect }
+                    style={{ fontSize: '.9rem' }}
                 />
                 <Menu.Item
                     name='Delete Account'
                     active={ activeItem === 'Delete Account' }
                     onClick={ handleSelect }
+                    style={{ fontSize: '.9rem' }}
                 />
             </Menu>
         </>
@@ -33,4 +36,4 @@ const mapStateToProps = (state: any) => {
     };
 };
 
-export default connect(mapStateToProps, null)(SidebarComp);
+export default connect(mapStateToProps, null)(MobileSidebarComp);

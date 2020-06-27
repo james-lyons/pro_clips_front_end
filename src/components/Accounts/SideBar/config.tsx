@@ -1,3 +1,11 @@
+interface Props {
+    activeItem: string,
+    handleSelect: (event: Event) => void
+};
+
+interface Event {
+    target: { text: string }
+};
 
 const styles = {
     ul: {
@@ -13,5 +21,6 @@ const styles = {
 };
 
 export {
+    Props,
     styles
 };

@@ -1,3 +1,12 @@
+interface Props {
+    setActiveItem: (activeItem: string) => void,
+    history: { push: () => void }
+}
+
+interface Event {
+    target: { text: string }
+};
+
 const styles = {
     wrapperDiv: {
         display: 'grid',
@@ -7,5 +16,7 @@ const styles = {
 };
 
 export {
+    Props,
+    Event,
     styles
 };

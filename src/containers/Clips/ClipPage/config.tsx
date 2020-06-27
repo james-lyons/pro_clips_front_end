@@ -1,4 +1,4 @@
-import { User } from "../../../redux/reducers/authReducer/reducer.config";
+import { User } from "../../../redux/reducers/authReducer/config";
 
 interface State {
     clip: null | Clip,

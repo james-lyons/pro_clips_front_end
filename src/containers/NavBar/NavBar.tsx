@@ -9,7 +9,7 @@ import MobileNavBarComp from '../../components/NavBar/MobileNavBarComp';
 class NavBar extends React.PureComponent<Props, State> {
 
     state: State = {
-        activeItem: 'home',
+        activeItem: '',
         visible: false
     };
 

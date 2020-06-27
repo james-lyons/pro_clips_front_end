@@ -1,4 +1,4 @@
-import { State, Action } from './reducer.config';
+import { State, Action } from './config';
 
 function authReducer(state:State = {
     errors: null,
