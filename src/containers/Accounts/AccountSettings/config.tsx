@@ -4,9 +4,7 @@ interface State {
     password2: string,
     oldPassword: string,
     editEmailErrors: null | Array<Error>,
-    editEmailMessage: null | string,
     editPasswordErrors: null | Array<Error>,
-    editPasswordMessage: null | string
 };
 
 interface Props {
@@ -14,9 +12,7 @@ interface Props {
     message: null | string,
     currentUser: CurrentUser,
     editEmailErrors: Array<Error>,
-    editEmailMessage: string,
     editPasswordErrors: Array<Error>,
-    editPasswordMessage: string,
     editUserPassword: (user: string, newPassword: NewPassword) => void,
     editUserEmail: (currentUserId: string, newEmail: NewEmail) => void
 };
@@ -28,9 +24,7 @@ interface ReduxState {
 interface UserReducer {
     currentUser: CurrentUser,
     editEmailErrors: Array<Error>,
-    editEmailMessage: string,
     editPasswordErrors: Array<Error>,
-    editPasswordMessage: string
 };
 
 interface CurrentUser {

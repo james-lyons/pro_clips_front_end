@@ -13,7 +13,6 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
         userName: '',
         profile_image: '',
         editProfileErrors: null,
-        editProfileMessage: null,
         edit_profile_success: null,
         edit_profile_picture_success: null
     };
@@ -58,18 +57,16 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
         };
 
         if (this.props.editProfileErrors) {
-            let { editProfileErrors, editProfileMessage } = this.props;
+            let { editProfileErrors } = this.props;
 
             this.setState({
                 editProfileErrors,
-                editProfileMessage
             });
             return;
 
         } else {
             this.setState({
                 editProfileErrors: null,
-                editProfileMessage: null,
                 edit_profile_success: 'Success!'
             });
         };
@@ -91,7 +88,7 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
     };
     
     render() {
-        const { userName, bio, profile_image, editProfileErrors, editProfileMessage } = this.state;
+        const { userName, bio, profile_image, editProfileErrors } = this.state;
         const { handleChange, editUserSubmit, editProfilePictureSubmit } = this;
 
         return (
@@ -101,7 +98,6 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
                     userName={ userName }
                     profile_image={ profile_image }
                     editProfileErrors={ editProfileErrors }
-                    editProfileMessage={ editProfileMessage }
                     handleChange={ handleChange }
                     editUserSubmit={ editUserSubmit }
                     editProfilePictureSubmit={ editProfilePictureSubmit }
@@ -114,8 +110,7 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
 const mapStateToProps = (state: ReduxState) => {
     return {
         currentUser: state.userReducer.currentUser,
-        editProfileErrors: state.userReducer.editProfileErrors,
-        editProfileMessage: state.userReducer.editProfileMessage
+        editProfileErrors: state.userReducer.editProfileErrors
     };
 };
 

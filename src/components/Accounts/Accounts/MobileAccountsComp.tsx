@@ -11,7 +11,7 @@ import MobileSidebarComp from '../SideBar/MobileSidebarComp';
 const MobileAccountsComp: React.SFC<Props & RouteComponentProps> = ({ handleSelect }) => {
     return (
         <>
-            <Grid centered style={{ width: '95%', margin: '0 auto' }}>
+            <Grid centered>
                 <Grid.Row>
                     <MobileSidebarComp
                         handleSelect={ handleSelect }

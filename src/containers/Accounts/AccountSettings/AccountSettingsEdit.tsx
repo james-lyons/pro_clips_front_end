@@ -1,8 +1,8 @@
 import React from 'react';
-import { State, Props, ReduxState, Event } from './config';
 import { connect } from 'react-redux';
+import { State, Props, ReduxState, Event } from './config';
 import { fetchCurrentUser, editUserEmail, editUserPassword } from '../../../redux/actions/userActions/userActions';
-import EditPasswordComponent from '../../../components/Accounts/AccountSetings/AccountSettingsEditComp';
+import EditAccountComp from '../../../components/Accounts/AccountSetings/AccountSettingsEditComp';
 
 class AccountSettingsEdit extends React.PureComponent<Props, State> {
 
@@ -12,9 +12,7 @@ class AccountSettingsEdit extends React.PureComponent<Props, State> {
         password: '',
         password2: '',
         editEmailErrors: null,
-        editEmailMessage: null,
         editPasswordErrors: null,
-        editPasswordMessage: null,
     };
 
     private handleChange = (event: Event) => {
@@ -32,7 +30,6 @@ class AccountSettingsEdit extends React.PureComponent<Props, State> {
         let {
             currentUser,
             editEmailErrors,
-            editEmailMessage,
             editUserEmail
         } = this.props;
 
@@ -43,14 +40,12 @@ class AccountSettingsEdit extends React.PureComponent<Props, State> {
         if (editEmailErrors) {
             this.setState({
                 editEmailErrors: editEmailErrors,
-                editEmailMessage: editEmailMessage
             })
             return;
         } else {
             this.setState({
                 email: 'Success',
                 editEmailErrors: null,
-                editEmailMessage: null
             });
         };
     };
@@ -63,7 +58,6 @@ class AccountSettingsEdit extends React.PureComponent<Props, State> {
 
         let {
             editPasswordErrors,
-            editPasswordMessage,
             editUserPassword
         } = this.props;
 
@@ -72,7 +66,6 @@ class AccountSettingsEdit extends React.PureComponent<Props, State> {
         if (editPasswordErrors) {
             this.setState({
                 editPasswordErrors: editPasswordErrors,
-                editPasswordMessage: editPasswordMessage
             })
             return;
         } else {
@@ -81,7 +74,6 @@ class AccountSettingsEdit extends React.PureComponent<Props, State> {
                 password2: '',
                 oldPassword: '',
                 editPasswordErrors: null,
-                editPasswordMessage: null
             });
         };
     };
@@ -93,23 +85,19 @@ class AccountSettingsEdit extends React.PureComponent<Props, State> {
             password2,
             oldPassword,
             editEmailErrors,
-            editEmailMessage,
             editPasswordErrors,
-            editPasswordMessage
         } = this.state;
         const { handleChange, editPasswordSubmit, editEmailSubmit } = this;
 
         return (
             <>
-                <EditPasswordComponent
+                <EditAccountComp
                     email={ email }
                     password={ password }
                     password2={ password2 }
                     oldPassword={ oldPassword }
                     editEmailErrors={ editEmailErrors }
-                    editEmailMessage={ editEmailMessage }
                     editPasswordErrors={ editPasswordErrors }
-                    editPasswordMessage={ editPasswordMessage }
                     handleChange={ handleChange }
                     editEmailSubmit={ editEmailSubmit }
                     editPasswordSubmit={ editPasswordSubmit }
@@ -123,9 +111,7 @@ const mapStateToProps = (state: ReduxState) => {
     return {
         currentUser: state.userReducer.currentUser,
         editEmailErrors: state.userReducer.editEmailErrors,
-        editEmailMessage: state.userReducer.editEmailMessage,
         editPasswordErrors: state.userReducer.editPasswordErrors,
-        editPasswordMessage: state.userReducer.editPasswordMessage
     };
 };
 

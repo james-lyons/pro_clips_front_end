@@ -1,0 +1,50 @@
+import React from 'react';
+import { Form, Message } from 'semantic-ui-react';
+import { Props } from './config';
+
+const MobileEmailEditComp: React.SFC<Props> = ({
+    email,
+    editEmailErrors,
+    handleChange,
+    editEmailSubmit
+}) => {
+    return (
+        <>
+            <Form
+
+                onSubmit={ editEmailSubmit }
+                style={{ width: '75%', margin: '0 auto' }}
+            >
+
+                {
+                    editEmailErrors && editEmailErrors.map((error, i) => (
+                        <Message negative key={ i } size='small'>
+                            <Message.Header>{ error.message }</Message.Header>
+                            <p>Please try again</p>
+                        </Message>
+                    ))
+                }
+
+                <Form.Field>
+                    <Form.Input
+                        required
+                        size='small'
+                        label='Email'
+                        type='email'
+                        name='email'
+                        placeholder='Enter Email'
+                        value={ email }
+                        onChange={ handleChange }
+                    />
+                </Form.Field>
+
+                <Form.Button
+                    size='mini' basic color='red' type='submit'>
+                        Save Changes
+                </Form.Button>
+            </Form>
+        </>
+    );
+};
+
+export default MobileEmailEditComp;

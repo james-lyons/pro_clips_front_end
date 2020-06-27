@@ -3,7 +3,6 @@ interface Props {
     userName: string,
     profile_image: string,
     editProfileErrors: null | Array<Error>,
-    editProfileMessage: null | string,
     handleChange: (event: Event) => void,
     editUserSubmit: () => void,
     editProfilePictureSubmit: () => void

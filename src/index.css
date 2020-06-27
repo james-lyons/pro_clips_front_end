@@ -5,8 +5,116 @@ html, body {
 
 .navbar-menu-ui:after {
     content: none !important
-};
+}
 
 .ui.grid {
     margin: 0 !important
-  }
+}
+
+
+/* ----------------- Profile Settings ----------------- */
+
+
+#profile-edit-message {
+    width: 75%;
+    text-align: center;
+    margin: 0 auto 3rem
+}
+
+#edit-profile-img {
+    border-radius: 100%;
+}
+
+#edit-profile-row-1 {
+    padding-bottom: 4rem;
+    border-bottom: 1px solid grey;
+}
+
+#edit-profile-form-1 {
+    padding: 1rem 2rem;
+}
+
+#edit-profile-row-2 {
+    margin-top: 3rem
+}
+
+#edit-profile-form-2 {
+    width: 75%;
+    margin: 0 auto
+}
+
+#edit-username-field {
+    margin-bottom: 1.5rem;
+}
+
+
+/* ----------------- Account Settings ----------------- */
+
+
+#account-settings-message {
+    width: 50%;
+    margin: 1rem 0 1rem 5rem;
+}
+
+#edit-email-form {
+    width: 50%;
+    margin-left: 5rem
+}
+
+#edit-password-form {
+    width: 50%;
+    margin-left: 5rem
+}
+
+#account-settings-email-row {
+    border-bottom: 1px solid grey;
+    padding-bottom: 3rem
+}
+
+
+#account-delete-button {
+    margin: 3rem auto 2rem;
+}
+
+
+@media only screen and (max-width: 1100px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* ----------------- Profile Settings ----------------- */
+
+    #edit-profile-img {
+        margin-top: .8rem;
+    }
+
+    #edit-profile-form-1 {
+        padding: 0;
+    }
+
+    #edit-profile-form-2 {
+        width: 85%
+    }
+
+    /* ----------------- Account Settings ----------------- */
+
+    #account-settings-message {
+        width: 75%;
+        margin: 1rem auto
+    }
+
+    #edit-email-form {
+        width: 75%;
+        margin: 0 auto
+    }
+
+    #edit-password-form {
+        width: 75%;
+        margin: 0 auto
+    }
+
+    #account-delete-button {
+        margin: 2rem auto;
+    }
+}

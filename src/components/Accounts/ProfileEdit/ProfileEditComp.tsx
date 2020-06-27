@@ -1,13 +1,13 @@
 import React from 'react';
-import { Form , Col, Button } from 'react-bootstrap';
 import { Props, styles } from './config';
+import { Grid, Form, Message, TextArea } from 'semantic-ui-react';
+// import { Form , Col, Button } from 'react-bootstrap';
 
 const ProfileEditComp: React.SFC <Props> = ({
     bio,
     userName,
     profile_image,
     editProfileErrors,
-    editProfileMessage,
     handleChange,
     editUserSubmit,
     editProfilePictureSubmit
@@ -15,7 +15,92 @@ const ProfileEditComp: React.SFC <Props> = ({
 
     return (
         <>
-            <div style={ styles.divWrapper }>
+            <Grid>
+                <Message size='mini' id='profile-edit-message'>
+                    Update your profile here!
+                </Message>
+
+                <Grid.Row id='edit-profile-row-1'>
+                    <Grid.Column
+                        width={ 4 }
+                    >
+                        <img id='edit-profile-img' src={ profile_image } />
+                    </Grid.Column>
+
+                    <Grid.Column width={ 12 }>
+                        <Form
+                            id='edit-profile-form-1'
+                            onSubmit={ editProfilePictureSubmit }
+                        >
+
+                            <Form.Field>
+                                <Form.Input
+                                    label='Profile Image'
+                                    type='text'
+                                    name='profile_image'
+                                    value={ profile_image }
+                                    onChange={ handleChange }
+                                />
+                            </Form.Field>
+
+                            <Form.Button basic color='black' size='tiny' type='submit'>Save Change</Form.Button>
+
+                        </Form>
+                    </Grid.Column>
+                </Grid.Row>
+
+                <Grid.Row id='edit-profile-row-2'>
+                    <Form
+                         id='edit-profile-form-2'
+                        onSubmit={ editUserSubmit }
+                    >
+
+                        {
+                            editProfileErrors && editProfileErrors.map((error, i) => (
+                                <Message negative key={ i } size='small'>
+                                    <Message.Header>{ error.message }</Message.Header>
+                                    <p>Please try again</p>
+                                </Message>
+                            ))
+                        }
+
+                        <Form.Field>
+                            <Form.Input
+                                id='edit-username-field'
+                                label='Username'
+                                type='text'
+                                name='userName'
+                                value={ userName }
+                                onChange={ handleChange }
+                            />
+                        </Form.Field>
+
+                        <Form.Field>
+                            <Form.Input
+                                id='edit-bio-field'
+                                control={ TextArea }
+                                textArea={ 4 }
+                                label='Bio'
+                                type='text'
+                                name='bio'
+                                value={ bio }
+                                onChange={ handleChange }
+                            />
+                        </Form.Field>
+
+                        <Form.Button basic color='black' size='tiny' type='submit'>Save Changes</Form.Button>
+
+                    </Form>
+                </Grid.Row>
+            </Grid>
+
+
+
+
+
+
+
+            {/* <div style={ styles.divWrapper }>
                 <div style={ styles.editProfileImgDiv }>
 
                     <div style={{ padding: '1rem' }}>
@@ -81,14 +166,6 @@ const ProfileEditComp: React.SFC <Props> = ({
                                 </div>
                                 ))
                             }
-                            {
-                                editProfileMessage &&
-                                <div style={ styles.errorDiv } role="alert">
-                                    <p style={ styles.errorP }>
-                                        { editProfileMessage }
-                                    </p>
-                                </div>
-                            }
                         </div>
 
                         <Form.Group>
@@ -133,7 +210,9 @@ const ProfileEditComp: React.SFC <Props> = ({
                         </Button>
                     </Form>
                 </div>
-            </div>
+            </div> */}
+
+
         </>
     );
 };
