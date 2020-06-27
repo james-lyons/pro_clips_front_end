@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Props, styles } from './config';
+import { Props } from './config';
 import { Grid, Message, Responsive } from 'semantic-ui-react';
 import { deleteUser } from '../../../redux/actions/userActions/userActions';
 import EditEmailComp from './EmailEdit/EmailEditComp';
@@ -20,13 +20,11 @@ const EditAccountComp: React.SFC <Props> = ({
     return (
         <>
             <Grid>
-                <Message info size='small' id='account-settings-message'>
+                <Message info size='tiny' id='account-settings-message'>
                     Update your login credentials here!
                 </Message>
 
-                <Grid.Row
-                    id='account-settings-email-row'
-                >
+                <Grid.Row id='account-settings-email-row'>
                     <EditEmailComp
                         email={ email }
                         editEmailErrors={ editEmailErrors }
@@ -36,9 +34,7 @@ const EditAccountComp: React.SFC <Props> = ({
 
                 </Grid.Row>
 
-                <Grid.Row
-                    style={{ paddingTop: '3rem' }}
-                >
+                <Grid.Row id='account-settings-password-row'>
                     <PasswordEditComp
                         password={ password }
                         password2={ password2 }

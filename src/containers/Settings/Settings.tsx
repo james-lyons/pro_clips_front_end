@@ -1,4 +1,5 @@
 import React from 'react';
+import { message } from 'semantic-ui-react';
 import { State, Props } from './config'
 
 class Settings extends React.PureComponent<Props, State> {

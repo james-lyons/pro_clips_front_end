@@ -22,6 +22,9 @@ class Accounts extends React.PureComponent<Props & RouteComponentProps> {
         } else if (pathname === '/accounts/delete') {
             await setActiveItem('Delete Account');
 
+        } else if (pathname === '/accounts/site_settings') {
+            await setActiveItem('Site Settings');
+
         };
     };
     
@@ -37,6 +40,9 @@ class Accounts extends React.PureComponent<Props & RouteComponentProps> {
 
         } else if (navPoint === 'Delete Account') {
             this.props.history.push('/accounts/delete');
+
+        } else if (navPoint === 'Site Settings') {
+            this.props.history.push('/accounts/site_settings');
         };
     };
 
@@ -47,13 +53,13 @@ class Accounts extends React.PureComponent<Props & RouteComponentProps> {
 
         return (
             <>
-                <Responsive minWidth={ 1050 }>
+                <Responsive minWidth={ 650 }>
                     <AccountsComp
                         handleSelect={ handleSelect }
                     />
                 </Responsive>
 
-                <Responsive maxWidth={ 1049 }>
+                <Responsive maxWidth={ 649 }>
                     <MobileAccountsComp
                         handleSelect={ handleSelect }
                     />

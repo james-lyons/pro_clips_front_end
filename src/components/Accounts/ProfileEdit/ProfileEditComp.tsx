@@ -15,7 +15,7 @@ const ProfileEditComp: React.SFC <Props> = ({
     return (
         <>
             <Grid>
-                <Message size='mini' id='profile-edit-message'>
+                <Message info size='mini' id='profile-edit-message'>
                     Update your profile here!
                 </Message>
 
@@ -42,7 +42,9 @@ const ProfileEditComp: React.SFC <Props> = ({
                                 />
                             </Form.Field>
 
-                            <Form.Button basic color='black' size='tiny' type='submit'>Save Change</Form.Button>
+                            <Form.Button basic color='black' size='tiny' type='submit'>
+                                Save Change
+                            </Form.Button>
 
                         </Form>
                     </Grid.Column>

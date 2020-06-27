@@ -90,7 +90,7 @@ const MobileAuthLinks: React.SFC<Props> = ({
                         </Dropdown.Item>
                         <Dropdown.Item
                             as={ Link }
-                            to='/settings'
+                            to='/accounts/site_settings'
                         >
                             Settings
                         </Dropdown.Item>

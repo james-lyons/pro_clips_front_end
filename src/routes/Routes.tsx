@@ -40,6 +40,7 @@ export default withRouter(() => {
             <HideRoute exact path='/login' component={ Login } />
             <HideRoute exact path='/register' component={ Register } />
             <PrivateRoute exact path='/accounts' component={ Accounts } />
+            <PrivateRoute exact path='/accounts/site_settings' component={ Accounts } />
             <PrivateRoute exact path='/accounts/account_settings' component={ Accounts } />
             <PrivateRoute exact path='/accounts/delete' component={ Accounts } />
             <PrivateRoute exact path='/clipUpload' component={ ClipUpload } />

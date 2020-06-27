@@ -1,6 +1,6 @@
 import React from 'react';
+import { Props } from './config';
 import { connect } from 'react-redux';
-import { Props, styles } from './config';
 import { Container, Message, Button } from 'semantic-ui-react';
 import { deleteUser } from '../../../redux/actions/userActions/userActions';
 
