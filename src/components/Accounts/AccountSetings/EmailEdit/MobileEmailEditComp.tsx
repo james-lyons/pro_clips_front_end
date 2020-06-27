@@ -39,7 +39,7 @@ const MobileEmailEditComp: React.SFC<Props> = ({
                 </Form.Field>
 
                 <Form.Button
-                    size='mini' basic color='red' type='submit'>
+                    size='mini' basic color='black' type='submit'>
                         Save Changes
                 </Form.Button>
             </Form>

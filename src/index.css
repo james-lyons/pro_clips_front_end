@@ -12,6 +12,38 @@ html, body {
 }
 
 
+/* ----------------- Login / Register Pages ----------------- */
+
+
+#login-form {
+    margin: 8rem auto 0;
+    width: 35%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1.2rem
+}
+
+#register-form {
+    width: 35%;
+    margin: 7rem auto 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1.2rem
+}
+
+
+/* ------------------- Clip Upload ------------------- */
+
+
+#clip-upload-container {
+    width: 35%;
+    border: 1px solid grey;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin: 8rem 0
+}
+
+
 /* ----------------- Profile Settings ----------------- */
 
 
@@ -79,9 +111,43 @@ html, body {
 
 @media only screen and (max-width: 1100px) {
 
+    /* ----------------- Login / Register Pages ----------------- */
+
+    #login-form {
+        width: 60%;
+        padding: 1.5rem;
+        margin-top: 25%
+    }
+
+    #register-form {
+        width: 60%;
+        padding: 1.5rem;
+        margin-top: 20%
+    }
+
+
+    /* ------------------- Clip Upload ------------------- */
+
+
+    #clip-upload-container {
+        margin-top: 30%;
+        width: 55%
+    }
 }
 
 @media only screen and (max-width: 600px) {
+
+    /* ----------------- Login / Register Pages ----------------- */
+
+    #login-form {
+        margin-top: 45%;
+        width: 85%
+    }
+
+    #register-form {
+        margin-top: 30%;
+        width: 85%
+    }
 
     /* ----------------- Profile Settings ----------------- */
 

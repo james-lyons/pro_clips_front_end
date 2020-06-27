@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button, Message } from 'semantic-ui-react'
-import { Props, styles } from './config';
+import { Props } from './config';
 
 const LoginComp: React.SFC<Props> = ({
     email,
@@ -12,7 +12,7 @@ const LoginComp: React.SFC<Props> = ({
 
     return (
         <>  
-            <Form style={ styles.form } onSubmit={ handleSubmit }>
+            <Form id='login-form' onSubmit={ handleSubmit }>
                 <h1>Login</h1>  
 
                 {
@@ -47,7 +47,9 @@ const LoginComp: React.SFC<Props> = ({
                     />
                 </Form.Field>
 
-                <Button type='submit'>Submit</Button>
+                <Button basic color='black' type='submit'>
+                    Submit
+                </Button>
             </Form>
         </>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button, Message } from 'semantic-ui-react';
-import { Props, styles } from './config';
+import { Props } from './config';
 
 const RegisterComp: React.SFC<Props> = ({
     email,
@@ -16,7 +16,7 @@ const RegisterComp: React.SFC<Props> = ({
     return (
         <>
             <Form
-                style={ styles.form }
+                id='register-form'
                 onSubmit={ handleSubmit }
             >
                 <h1>Sign up</h1>
@@ -66,7 +66,7 @@ const RegisterComp: React.SFC<Props> = ({
                     onChange={ handleChange }
                 />
                 
-                <Button type="submit">
+                <Button basic color='black' type="submit">
                     Submit
                 </Button>
             </Form>

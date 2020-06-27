@@ -37,14 +37,7 @@ interface TargetState {
 };
 
 interface Response {
-    type: string,
-    payload: Payload,
-};
-
-interface Payload {
-    errors: Array<Error>,
-    message: string,
-    status: number
+    errors: Array<Error>
 };
 
 interface Error {

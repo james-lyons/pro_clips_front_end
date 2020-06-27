@@ -26,23 +26,33 @@ class Login extends React.PureComponent<Props, State> {
         const { history, userLogin } = this.props;
         const user = { email, password };
 
-        const res: Response = await userLogin(user);
+        try {
+            const res: Response = await userLogin(user);
 
-        if (res.payload.errors) {
+            if (res.errors) {
+                this.setState({
+                    errors: res.errors
+                });
+
+                return;
+    
+            } else {
+                this.setState({
+                    errors: null,
+                    message: null
+                });
+            };
+    
+            return history.push('/browseClips');
+
+        } catch (error) {
+            console.log('Hello from login 4: error', error)
             this.setState({
-                errors: res.payload.errors,
-                message: res.payload.message
+                errors: error
             });
 
             return;
-        } else {
-            this.setState({
-                errors: null,
-                message: null
-            });
         };
-
-        return history.push('/browseClips');
     };
 
     render() {

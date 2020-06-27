@@ -13,13 +13,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
 
     return (
         <>
-            <Container style={{
-                width: '35%',
-                border: '1px solid grey',
-                padding: '1.5rem',
-                borderRadius: '5px',
-                margin: '8rem 0'
-            }}>
+            <Container id='clip-upload-container'>
                 { error && <Message error><p>Please select a game!</p></Message> }
 
                 <Form onSubmit={ handleUploadClip }>
