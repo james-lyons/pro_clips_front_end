@@ -14,13 +14,13 @@ const FollowButton: React.SFC<Props> = ({
     if (currentUser) {
         if (isFollowed) {
             return (
-                <Button size='mini' style={{ marginLeft: '2rem' }}
+                <Button size='mini' className='profile-follow-button'
                     onClick={ () => unfollowUser(userName) }>
                         Unfollow
                 </Button> )
         } else {
             return (
-                <Button size='mini' basic color='black' style={{ marginLeft: '2rem' }}
+                <Button size='mini' basic color='black' className='profile-follow-button'
                     onClick={ () => followUser(userName) }>
                         Follow
                 </Button>
@@ -28,7 +28,7 @@ const FollowButton: React.SFC<Props> = ({
         };
     } else {
         return (
-            <Button size='mini' basic color='black' style={{ marginLeft: '2rem' }}>
+            <Button size='mini' basic color='black' className='profile-follow-button'>
                 <LoginModal modalName='Follow'/>
             </Button>
         );

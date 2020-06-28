@@ -1,6 +1,5 @@
 interface State {
-    user: null | User,
-    showFollowing: boolean
+    user: null | User
 };
 
 interface Props {

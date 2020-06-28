@@ -9,8 +9,7 @@ import FollowingListComp from '../../../components/FollowLists/FollowingList/Fol
 class FollowingList extends React.PureComponent<Props & RouteComponentProps, State> {
 
     state: State = {
-        user: null,
-        showFollowing: false,
+        user: null
     };
 
     componentDidMount = async () => {
@@ -29,26 +28,18 @@ class FollowingList extends React.PureComponent<Props & RouteComponentProps, Sta
         const { userName } = this.state.user;
 
         await fetchFollowingList(userName);        
-        this.setState({ showFollowing: true });
-    };
-
-    private handleCloseFollowing = () => {
-        this.setState({ showFollowing: false });
     };
 
     render() {
-        const { showFollowing } = this.state;
         const { user } = this.state;
-        const { handleShowFollowing, handleCloseFollowing } = this;
+        const { handleShowFollowing } = this;
         return (
             <>
                 {
                     user && 
                     <FollowingListComp
                         user={ user }
-                        showFollowing={ showFollowing }
                         handleShowFollowing={ handleShowFollowing }
-                        handleCloseFollowing={ handleCloseFollowing }
                     />
                 }
             </>

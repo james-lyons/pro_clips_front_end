@@ -1,7 +1,7 @@
 import React from 'react';
+import { Props } from './config';
 import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
-import { Props } from './config';
 
 const SidebarComp: React.SFC<Props> = ({ activeItem, handleSelect }) => {
     return (

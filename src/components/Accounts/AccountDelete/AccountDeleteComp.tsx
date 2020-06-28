@@ -16,7 +16,10 @@ const AccountDeleteComp: React.SFC <Props> = ({
                 <Message id='account-delete-button'>
                     Are you sure you want to delete your account? We'd hate to see you go!
                 </Message>
-                <Button center='true' negative onClick={ () => deleteUser(currentUser) }>Delete Account</Button>
+                <Button
+                    negative
+                    center='true'
+                    onClick={ () => deleteUser(currentUser) }>Delete Account</Button>
             </Container>
         </>
     );

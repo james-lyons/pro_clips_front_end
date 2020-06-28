@@ -9,8 +9,7 @@ import FollowersListComp from '../../../components/FollowLists/FollowersList/Fol
 class FollowersList extends React.PureComponent<Props & RouteComponentProps, State> {
 
     state: State = {
-        user: null,
-        showFollowers: false,
+        user: null
     };
 
     componentDidMount = async () => {
@@ -29,26 +28,18 @@ class FollowersList extends React.PureComponent<Props & RouteComponentProps, Sta
         const { userName } = this.state.user;
 
         await fetchFollowers(userName);        
-        this.setState({ showFollowers: true });
-    };
-
-    private handleCloseFollowers = () => {
-        this.setState({ showFollowers: false });
     };
 
     render() {
-        const { showFollowers } = this.state;
         const { user } = this.state;
-        const { handleShowFollowers, handleCloseFollowers } = this;
+        const { handleShowFollowers } = this;
         return (
             <>
                 {
                     user && 
                     <FollowersListComp
                         user={ user }
-                        showFollowers={ showFollowers }
                         handleShowFollowers={ handleShowFollowers }
-                        handleCloseFollowers={ handleCloseFollowers }
                     />
                 }
             </>

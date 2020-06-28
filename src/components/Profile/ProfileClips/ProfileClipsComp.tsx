@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, Grid, Responsive } from 'semantic-ui-react';
 import { Props, Clip } from './config';
+import { Link } from 'react-router-dom';
+import { Card, Responsive } from 'semantic-ui-react';
 
 const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
 
@@ -14,15 +14,16 @@ const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
                             <Card
                                 as={ Link }
                                 to={ `/clip/${ clip._id }` }
-                                style={{ color: 'black' }}
+                                className='profile-clips-card'
                             >
                                 <video
                                     width='100%'
                                     src={ clip.url }
                                     controls
                                 />
-                                <Card.Description textAlign='left'
-                                    style={{ fontSize: '1.3rem', padding: '.5rem', font: 'color' }}
+                                <Card.Description
+                                    textAlign='left'
+                                    className='profile-clips-card-description'
                                 >
                                     { clip.game }
                                 </Card.Description>
@@ -35,16 +36,16 @@ const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
                             <Card
                                 as={ Link }
                                 to={ `/clip/${ clip._id }` }
-                                style={{ color: 'black' }}
-                                key={ clip._id }
+                                className='profile-clips-card'
                             >
                                 <video
                                     width='100%'
                                     src={ clip.url }
                                     controls
                                 />
-                                <Card.Description textAlign='left'
-                                    style={{ fontSize: '1.3rem', padding: '.5rem', font: 'color' }}
+                                <Card.Description
+                                    textAlign='left'
+                                    className='profile-clips-card-description'
                                 >
                                     { clip.game }
                                 </Card.Description>
@@ -59,8 +60,8 @@ const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
  
     return (
         <>
-            <div style={{ margin: '0 auto', textAlign: 'center' }}>
-                <form style={{ marginBottom: '2rem' }}>
+            <div id='profile-clips-game-select'>
+                <form id='profile-clips-form'>
                     <select onChange={ handleChange }>
                         <option value="">All clips</option>
                         <option value="Apex Legends">Apex Legends</option>
@@ -87,24 +88,27 @@ const ProfileComp: React.SFC<Props> = ({ game, userClips, handleChange }) => {
                 </form>
                 
                 <Responsive minWidth={ 1100 }>
-                    <Card.Group stackable itemsPerRow={ 3 }
-                        style={{ maxWidth: '75%', margin: '0 auto' }}
+                    <Card.Group
+                        stackable itemsPerRow={ 3 }
+                        className='profile-clips-card-group'
                     >
                         { userClips && clipMapper(userClips) }
                     </Card.Group>
                 </Responsive>
 
-                <Responsive minWidth={ 600 } maxWidth={ 1099 }>
-                    <Card.Group stackable itemsPerRow={ 3 }
-                        style={{ maxWidth: '90%', margin: '0 auto' }}
+                <Responsive minWidth={ 650 } maxWidth={ 1099 }>
+                    <Card.Group
+                        stackable itemsPerRow={ 3 }
+                        className='profile-clips-card-group'
                     >
                         { userClips && clipMapper(userClips) }
                     </Card.Group>
                 </Responsive>
 
-                <Responsive maxWidth={ 599 }>
-                    <Card.Group stackable itemsPerRow={ 3 }
-                        style={{ maxWidth: '95%', margin: '0 auto' }}
+                <Responsive maxWidth={ 649 }>
+                    <Card.Group
+                        stackable itemsPerRow={ 3 }
+                        className='profile-clips-card-group'
                     >
                         { userClips && clipMapper(userClips) }
                     </Card.Group>

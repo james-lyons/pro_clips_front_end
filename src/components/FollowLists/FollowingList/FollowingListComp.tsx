@@ -1,37 +1,53 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal } from 'react-bootstrap';
+import { Modal, Item } from 'semantic-ui-react';
 import { Props, ReduxState, Follower } from './config';
 
 const FollowingListComp: React.SFC<Props> = ({
     user,
-    showFollowing,
     followingList,
-    handleShowFollowing,
-    handleCloseFollowing
+    handleShowFollowing
 }) => {
     const { following } = user;
 
-    const followersMapper = (followersList: Array<Follower>, handleCloseFollowers?: () => void) => {
+    const followersMapper = (followersList: Array<Follower>) => {
         const followerArray = followersList.map((follower) => 
-            <div key={ follower.userName }>
-                <img style={{ width: '30px', borderRadius: '50%' }} src={ follower.profile_image }/>
-                <a href={`/${ follower.userName }`}>{ follower.userName }</a>
-            </div>
+
+            <Item key={ follower.userName }>
+                <Item.Image
+                    avatar
+                    size='mini'
+                    id='following-list-img'
+                    src={ follower.profile_image }
+                />
+                <Item.Content
+                    as='a'
+                    verticalAlign='middle'
+                    className='follow-list-a'
+                >
+                    { follower.userName }
+                </Item.Content>
+            </Item>
+
         );
         return followerArray;
     };
 
     return (
         <>
-            <a onClick={ handleShowFollowing }>
-                { following.length } following
-            </a>
-            <Modal show={ showFollowing } onHide={ handleCloseFollowing }>
-                <Modal.Header closeButton>
-                    <Modal.Title>Following</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{ followingList && followersMapper(followingList)}</Modal.Body>
+            <Modal
+                size='mini'
+                id='following-modal'
+                centered={ false }
+                onMount={ handleShowFollowing }
+                trigger={ <span>{ following.length } Following</span> }
+            >
+                <Modal.Header>Following</Modal.Header>
+                <Modal.Content>
+                    <Item.Group divided>
+                        { followingList && followersMapper(followingList) }
+                    </Item.Group>
+                </Modal.Content>
             </Modal>
         </>
     );

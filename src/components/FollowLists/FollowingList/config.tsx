@@ -1,9 +1,7 @@
 interface Props {
     user: User,
-    showFollowing: boolean,
     followingList: Array<Follower>,
     handleShowFollowing: () => void
-    handleCloseFollowing: () => void
 };
 
 interface ReduxState {
