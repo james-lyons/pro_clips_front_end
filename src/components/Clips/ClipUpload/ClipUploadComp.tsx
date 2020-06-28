@@ -5,6 +5,7 @@ import { Form, Button, Container, Message } from 'semantic-ui-react';
 const ClipUploadComponent: React.SFC<Props> = ({
     title,
     error,
+    fileError,
     wasSubmitted,
     handleChange,
     handleSelect,
@@ -15,12 +16,13 @@ const ClipUploadComponent: React.SFC<Props> = ({
         <>
             <Container id='clip-upload-container'>
                 { error && <Message error><p>Please select a game!</p></Message> }
+                { fileError && <Message error><p>The file you have selected is too large, try another</p></Message>}
 
                 <Form onSubmit={ handleUploadClip }>
                     <Form.Field>
                         <Form.Input
-                            label={`Title ${ title.length } / 100` }
-                            error={ title.length > 100 && 'Please shorten your title' }
+                            label={`Title ${ title.length } / 50` }
+                            error={ title.length > 50 && 'Please shorten your title' }
                             required
                             type="text"
                             name="title"
@@ -44,14 +46,14 @@ const ClipUploadComponent: React.SFC<Props> = ({
                     >
                         <option value="Select">Select</option>
                         <option value="Apex Legends">Apex Legends</option>
-                        <option value="League of Legends">League of Legends</option>
-                        <option value="C.O.D. Warzone">C.O.D. Warzone</option>
                         <option value="Valorant">Valorant</option>
                         <option value="Crucible">Crucible</option>
-                        <option value="C.S.G.O">C.S.G.O</option>
+                        <option value="League of Legends">League of Legends</option>
+                        <option value="Call of Duty: Warzone">Call of Duty: Warzone</option>
+                        <option value="Counter Strike: Global Offensive">Counter Strike: Global Offensive</option>
                         <option value="Escape from Tarkov">Escape from Tarkov</option>
                         <option value="World of Warcraft">World of Warcraft</option>
-                        <option value="G.T.A. V">G.T.A. V</option>
+                        <option value="Grand Theft Auto: V">Grand Theft Auto: V</option>
                         <option value="Hearthstone">Hearthstone</option>
                         <option value="Gwent">Gwent</option>
                         <option value="Dota 2">Dota 2</option>

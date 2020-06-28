@@ -14,9 +14,7 @@ class GameClips extends React.PureComponent<Props> {
     render() {
         return (
             <>
-                <div className="col-lg-10 col-md-12 col-sm-12 mb-4" style={{ margin: '0 auto' }}>
-                    { this.props.gameClips && <GameClipsComp /> }
-                </div>
+                { this.props.gameClips && <GameClipsComp /> }
             </>
         );
     };

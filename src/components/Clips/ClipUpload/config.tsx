@@ -1,6 +1,7 @@
 interface Props {
     title: string,
     error: boolean,
+    fileError:  boolean,
     wasSubmitted: boolean,
     handleUploadClip: () => void,
     handleChange: (event: Event) => void,

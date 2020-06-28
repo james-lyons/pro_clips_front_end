@@ -12,6 +12,44 @@ html, body {
 }
 
 
+/* ----------------------- Home Page ----------------------- */
+
+
+#home-page-container-div {
+    margin: 50px 0;
+    text-align: center
+}
+
+#home-page-h1 {
+    line-height: 1;
+    font-size: 74px;
+    font-weight: 700
+}
+
+#home-page-h2 {
+    font-size: 24px
+}
+
+
+/* ------------------------- Footer ------------------------- */
+
+#footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 90%;
+    width: 100%;
+    padding: 1rem 0;
+    height: 4rem
+}
+
+#footer-p {
+    color: red;
+    text-align: center
+}
+
 /* ----------------- Login / Register Pages ----------------- */
 
 
@@ -101,9 +139,6 @@ html, body {
     font-size: 1.2rem;
 }
 
-/* .follow-list-img {
-    width: 5rem;
-} */
 
 .follow-list-a {
     color: black;
@@ -135,6 +170,42 @@ html, body {
 .profile-clips-card-group {
     max-width: 75% !important;
     margin: 0 auto !important
+}
+
+
+/* ------------------ Browser Clips ------------------ */
+
+
+#browser-clips-grid {
+    margin: 2rem auto 0 !important
+}
+
+.browser-clips-image {
+    width: 75% !important
+}
+
+
+/* ------------------ Popular Clips ------------------ */
+
+
+#popular-clips-grid-container {
+    margin: 0 auto !important
+}
+
+.popular-clips-row {
+    margin-bottom: 3rem !important;
+}
+
+
+/* -------------------- Game Clips ------------------- */
+
+
+#game-clips-header {
+    margin-left: 1rem
+}
+
+#game-clips-grid-container {
+    margin: 2rem auto !important
 }
 
 
@@ -305,6 +376,11 @@ html, body {
         margin: 0;
         padding: 10px 5px !important
     }    
+
+
+    .browser-clips-column {
+        width: 90% !important
+    }
 
 
     /* ----------------- Profile Settings ----------------- */

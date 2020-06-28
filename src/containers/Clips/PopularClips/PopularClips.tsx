@@ -13,12 +13,9 @@ class PopularClips extends React.PureComponent<Props> {
         const { browseClips } = this.props;
         
         return (
-            <div
-                className="col-lg-10 col-md-12 col-sm-12 mb-4"
-                style={{ margin: '0 auto' }}
-            >
+            <>
                 { browseClips && <PopularClipsComp /> }
-            </div>
+            </>
         );
     };
 };

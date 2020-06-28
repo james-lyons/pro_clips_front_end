@@ -3,7 +3,8 @@ interface State {
     game: null | string,
     title: null | string,
     wasSubmitted: boolean,
-    error: boolean
+    error: boolean,
+    fileError: boolean
 };
 
 interface Props {

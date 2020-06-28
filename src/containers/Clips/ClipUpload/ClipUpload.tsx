@@ -10,23 +10,32 @@ class ClipUpload extends React.PureComponent<Props, State> {
         title: '',
         game: null,
         wasSubmitted: false,
-        error: false
+        error: false,
+        fileError: false
     };
 
     private handleSelect = (event: Event) => {
         let files = event.target.files;
         let file = files[0]
 
-        this.setState({
-            clip: file
-        });
+        if (file.size > 3000000) {
+            this.setState({
+                fileError: true 
+            });
+        } else {
+            this.setState({
+                clip: file,
+                fileError: false 
+            });
+        };
+
+        console.log(file)
     };
 
     private handleChange = (event: Event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state.game)
     };
 
     private handleSubmitVer = () => {
@@ -46,27 +55,26 @@ class ClipUpload extends React.PureComponent<Props, State> {
             return;
         };
 
-        console.log(this.state);
-
         const res = await uploadClip(clip, title, game);
         await this.setState({
             clip: null,
             title: '',
-            game: ''
+            game: 'Select'
         })
-        console.log(res);
+
         this.handleSubmitVer();
     };
 
     render() {
-        const { title, wasSubmitted, error } = this.state;
+        const { title, wasSubmitted, error, fileError } = this.state;
         const { handleUploadClip, handleSelect, handleChange, handleSubmitVer } = this;
 
         return (
             <>
                 <ClipUploadComponent
-                    error={ error }
                     title={ title }
+                    error={ error }
+                    fileError={ fileError }
                     wasSubmitted={ wasSubmitted }
                     handleSelect={ handleSelect }
                     handleChange={ handleChange }

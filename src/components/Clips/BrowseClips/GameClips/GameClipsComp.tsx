@@ -1,41 +1,58 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'react-bootstrap';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Grid, Card, Header, Image, Container } from 'semantic-ui-react'
 import { Props, Clip, ReduxProps } from './config';
 
-const GameClipsComp: React.SFC<Props> = ({ gameClips }) => {
+const GameClipsComp: React.SFC<Props> = ({ gameClips, history }) => {
 
     const clipMapper = (gameClips: Array<Clip>) => {
         const clipArr = gameClips.map((clip) =>
-            <div
-                key={ clip._id }
-                style={{ display: 'inline-block', margin: '.5 rem' }}
-            >
+
+            <Grid.Column key={ clip._id }>
                 <Card
-                    style={{ display: 'inline-block', margin: '.5rem' }}
+                    as={ Link }
+                    to={ `/clip/${ clip._id }` }
+                    className='profile-clips-card'
                 >
-                    <Link
-                        to={ `/clip/${ clip._id }` }
-                        style={{ textDecoration: 'none', color: 'black' }}
+                    <video
+                        width='100%'
+                        src={ clip.url }
+                        controls
+                    />
+                    <Card.Description
+                        textAlign='left'
+                        className='profile-clips-card-description'
                     >
-                        <video width={ 300 } height={ 190 } src={ clip.url } controls/>
-                    </Link>
-
-                    <Link to={ `/${ clip.poster_name }`}>
-                        <h1 style={{ fontSize: '1.3rem' }}>{ clip.poster_name }</h1>
-                    </Link>
-
-                    <h1 style={{ fontSize: '1.3rem' }}>{ clip.title }</h1>
+                        { clip.poster_name }
+                    </Card.Description>
                 </Card>
-            </div>
+            </Grid.Column>
+
         );
-        return clipArr;
+         return clipArr;
     };
     
+    const path = history.location.pathname.slice(13, history.location.pathname.length);
+
     return (
         <>
-            { gameClips && clipMapper(gameClips) }
+            <Container>
+                <Header as='h1' id='game-clips-header'>
+                    <Image
+                        rounded
+                        as={ Link }
+                        to={`/browseclips/${ path }`}
+                        src={`https://static-cdn.jtvnw.net/ttv-boxart/${ path }-285x380.jpg`}
+                    /> 
+                    Apex Legends
+                </Header>
+
+                <Grid stackable={ true } columns={ 4 } id='game-clips-grid-container'>
+                    { gameClips && clipMapper(gameClips) }
+                </Grid>
+            </Container>
         </>
     );
 };
@@ -46,4 +63,4 @@ const mapStateToProps = (state: ReduxProps) => {
     };
 };
 
-export default connect(mapStateToProps, null)(GameClipsComp);
+export default connect(mapStateToProps, null)(withRouter(GameClipsComp));

@@ -15,7 +15,8 @@ interface Clip {
     url: string,
     game: string,
     title: string,
-    poster: string
+    poster: string,
+    poster_name: string
 };
 
 export {
