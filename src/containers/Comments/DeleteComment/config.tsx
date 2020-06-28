@@ -1,18 +1,18 @@
 interface Props {
-    comment: Comment,
     clipId: string,
+    comment: Comment,
     deleteComment: (commentId: string) => void,
     fetchComments: (clipId: string) => void,
 };
 
-interface Clip {
-    _id?: string
+interface Comment {
+    _id: string,
+    clip_id: string,
+    author_id: string,
+    author_name: string,
+    comment_text: string
 };
 
-interface Comment {
-    author_id: string,
-    _id: string
-};
 
 export {
     Props

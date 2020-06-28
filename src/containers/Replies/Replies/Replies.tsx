@@ -1,8 +1,8 @@
 import React from 'react';
-import RepliesComp from '../../../components/Replies/Replies/RepliesComp';
 import { connect } from 'react-redux';
-import { deleteReply } from '../../../redux/actions/replyActions/replyActions';
 import { Props, State } from './config';
+import { deleteReply } from '../../../redux/actions/replyActions/replyActions';
+import RepliesComp from '../../../components/Replies/Replies/RepliesComp';
 
 class Replies extends React.PureComponent<Props, State> {
 

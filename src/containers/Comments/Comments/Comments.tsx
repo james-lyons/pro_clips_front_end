@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentsComponent from '../../../components/Comments/Comments/commentsComponent';
-import { fetchComments } from '../../../redux/actions/commentActions/commentActions';
 import { State, Props } from './config';
+import { fetchComments } from '../../../redux/actions/commentActions/commentActions';
+import CommentsComp from '../../../components/Comments/Comments/CommentsComp';
 
 class Comments extends React.PureComponent<Props, State> {
     state: State = {
@@ -35,7 +35,7 @@ class Comments extends React.PureComponent<Props, State> {
 
         return (
             <>
-                <CommentsComponent
+                <CommentsComp
                     replyRef={ replyRef }
                     handleReplyForm={ handleReplyForm }
                 />

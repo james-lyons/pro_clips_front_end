@@ -8,7 +8,7 @@ import LikeCommentComp from '../../../containers/Comments/LikeComment/LikeCommen
 import ReplyForm from '../../../containers/Replies/ReplyForm/ReplyForm';
 import Replies from '../../../containers/Replies/Replies/Replies';
 
-const CommentsComponent: React.SFC<Props> = ({
+const CommentsComp: React.SFC<Props> = ({
     clip,
     replyRef,
     comments,
@@ -52,7 +52,7 @@ const CommentsComponent: React.SFC<Props> = ({
                             clipId={ clipId }
                         />
                     }
-                    { replyRef === comment._id && <ReplyForm commentId={ comment._id }/>}
+                    { replyRef === comment._id && <ReplyForm commentId={ comment._id }/> }
                 </Card>
             </div>
         );
@@ -73,4 +73,4 @@ const mapStateToProps = (state: ReduxProps) => {
     };
 };
 
-export default connect(mapStateToProps, { likeComment, unlikeComment })(CommentsComponent);
+export default connect(mapStateToProps, { likeComment, unlikeComment })(CommentsComp);

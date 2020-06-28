@@ -1,10 +1,8 @@
-import { User } from "../../../redux/reducers/authReducer/config";
-
 interface State {
     clip: null | Clip,
-    clipVis: string,
-    newTitle: string,
-    showLoginModal: boolean
+    user: null | User,
+    editFormVis: boolean,
+    newTitle: null | string,
 };
 
 interface Props {
@@ -12,9 +10,10 @@ interface Props {
     user: User,
     match: {params: { clipId: string }},
     history: { push: (location: string) => void },
-    editClip: (clipId: string, newTitle: string) => void,
+    fetchUser: (user: string) => void,
     fetchClip: (clipId: string) => void,
-    deleteClip: (clipId: string) => void
+    deleteClip: (clipId: string) => void,
+    editClip: (clipId: string, newTitle: string) => void,
 };
 
 interface Clip {
@@ -24,11 +23,13 @@ interface Clip {
     game: string,
     title: string,
     poster: string,
-    poster_name: string
+    poster_name: string,
+    likes: Array<string>
 };
 
 interface User {
-    userName: string
+    username: string,
+    profile_image: string
 };
 
 interface ReduxState {
@@ -46,7 +47,7 @@ interface Target {
 };
 
 interface TargetState {
-    userName: string,
+    username: string,
     password: string,
 };
 

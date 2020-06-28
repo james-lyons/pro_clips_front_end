@@ -2,13 +2,13 @@ interface Props {
     user: User,
     isMatch: boolean,
     isFollowed: boolean,
-    followUser: (userName: string) => void,
-    unfollowUser:  (userName: string) => void,
+    followUser: (username: string) => void,
+    unfollowUser:  (username: string) => void,
 };
 
 interface User {
     bio: string,
-    userName: string,
+    username: string,
     clips: Array<Clip>,
     isFollowed: boolean
     profile_image: string,
@@ -34,7 +34,7 @@ interface FollowProps {
 };
 
 interface Follower {
-    userName: string,
+    username: string,
     profile_image: string
 };
 

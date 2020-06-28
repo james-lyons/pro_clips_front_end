@@ -1,22 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { State, Props, Event, ReduxState } from './config';
+import { fetchUser } from '../../../redux/actions/userActions/userActions';
 import { fetchClip, editClip, deleteClip } from '../../../redux/actions/clipActions/clipActions';
 import ClipPageComponent from '../../../components/Clips/ClipPage/ClipPage/ClipPageComp';
 
 class ClipPage extends React.PureComponent<Props, State> {
     state: State = {
         clip: null,
-        clipVis: 'display',
+        user: null,
         newTitle: '',
-        showLoginModal: false
+        editFormVis: false
     };
 
     componentDidMount = async () => {
-        await this.props.fetchClip(this.props.match.params.clipId);
-        this.setState({
-            clip: this.props.clip
-        });
+        const { match, fetchClip, fetchUser } = this.props;
+
+        await fetchClip(match.params.clipId);
+        await fetchUser(this.props.clip.poster_name);
+
+        const { clip, user } = this.props;
+
+        this.setState({ clip, user });
     };
 
     private handleChange = (event: Event) => {
@@ -25,55 +30,39 @@ class ClipPage extends React.PureComponent<Props, State> {
         });
     };
 
-    private handleClipEdit = (clipId: string) => {
-        const { newTitle } = this.state;
-        const { editClip } = this.props;
+    private handleClipEdit = async () => {
+        const { clip, newTitle } = this.state;
+        const { match, editClip, fetchClip } = this.props;
 
-        editClip(clipId, newTitle);
+        await editClip(clip._id, newTitle);
+        await fetchClip(clip._id);
+        this.setState({
+            newTitle: null,
+            editFormVis: false,
+            clip: this.props.clip,
+        })
     };
 
     private handleClipDelete = (clipId: string) => {
         const { user, history, deleteClip } = this.props;
 
         deleteClip(clipId);
-        history.push(`/${ user.userName }`)
+        history.push(`/${ user.username }`)
     };
 
-    private showClip = () => {
-        const { clipVis } = this.state;
+    private handleFormVis = () => {
+        const { editFormVis } = this.state;
 
-        if (clipVis === 'display') {
-            this.setState({
-                clipVis: 'none'
-            });
-        } else {
-            this.setState({
-                clipVis: 'display'
-            });
-        };
-    };
-
-    private handleShowLoginModal = async () => {
-        this.setState({
-            showLoginModal: true
-        });
-    };
-
-    private handleCloseLoginModal = () => {
-        this.setState({
-            showLoginModal: false
-        });
+        this.setState({ editFormVis: !editFormVis })
     };
 
     render() {
-        const { clip, clipVis, newTitle, showLoginModal } = this.state;
+        const { clip, user, newTitle, editFormVis } = this.state;
         const {
-            showClip,
             handleChange,
+            handleFormVis,
             handleClipEdit,
             handleClipDelete,
-            handleShowLoginModal,
-            handleCloseLoginModal
         } = this;
 
         return (
@@ -82,15 +71,13 @@ class ClipPage extends React.PureComponent<Props, State> {
                     clip && 
                     <ClipPageComponent
                         clip={ clip }
-                        clipVis={ clipVis }
+                        user={ user }
+                        editFormVis={ editFormVis }
                         newTitle={ newTitle }
-                        showLoginModal={ showLoginModal }
-                        showClip={ showClip }
                         handleChange={ handleChange }
+                        handleFormVis={ handleFormVis }
                         handleClipEdit={ handleClipEdit }
                         handleClipDelete={ handleClipDelete }
-                        handleShowLoginModal={ handleShowLoginModal }
-                        handleCloseLoginModal={ handleCloseLoginModal }
                     />
                 }
             </>
@@ -105,4 +92,4 @@ const mapStateToProps = (state: ReduxState) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchClip, editClip, deleteClip })(ClipPage);
+export default connect(mapStateToProps, { fetchClip, editClip, deleteClip, fetchUser })(ClipPage);

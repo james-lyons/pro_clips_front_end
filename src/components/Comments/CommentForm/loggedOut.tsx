@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const LoggedOut: React.SFC<{}> = () => {
     return (
-        <div style={{ padding: '1rem' }}>
+        <div id='clip-page-login-message'>
             <span><Link to="/login">Login</Link> to like, comment, or reply!</span>
         </div>
     );

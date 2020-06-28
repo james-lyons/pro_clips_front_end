@@ -5,7 +5,7 @@ import { Modal } from 'semantic-ui-react';
 
 const LoginModal: React.SFC<Props> = ({ modalName }) => {
     return (
-        <Modal trigger={ <span>{ modalName }</span> }>
+        <Modal trigger={ <span>{ modalName }</span> } size='tiny' centered={ false }>
             <Modal.Header>Clipped</Modal.Header>
             <Modal.Content>
                 <Modal.Description>

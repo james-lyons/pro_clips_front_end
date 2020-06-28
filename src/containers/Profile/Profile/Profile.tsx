@@ -55,27 +55,10 @@ class Profile extends React.PureComponent<Props, State> {
             user: this.props.user
         });
     };
-
-    private handleShowLoginModal = async () => {
-        this.setState({
-            showLoginModal: true
-        });
-    };
-
-    private handleCloseLoginModal = () => {
-        this.setState({
-            showLoginModal: false
-        });
-    };
     
     render() {
         const { user, isMatch, isFollowed  } = this.state;
-        const {
-            followUser,
-            unfollowUser,
-            handleShowLoginModal,
-            handleCloseLoginModal,
-        } = this;
+        const { followUser, unfollowUser } = this;
 
         return (
             <>
@@ -87,8 +70,6 @@ class Profile extends React.PureComponent<Props, State> {
                         isFollowed={ isFollowed }
                         followUser={ followUser }
                         unfollowUser={ unfollowUser }
-                        handleShowLoginModal={ handleShowLoginModal }
-                        handleCloseLoginModal={ handleCloseLoginModal }
                     />
                 }
                 {

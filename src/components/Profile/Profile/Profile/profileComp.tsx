@@ -15,7 +15,7 @@ const ProfileComp: React.SFC<Props> = ({
     unfollowUser
 }) => {
 
-    const { userName, profile_image, clips, bio } = user;
+    const { username, profile_image, clips, bio } = user;
  
     return (
         <>
@@ -27,12 +27,12 @@ const ProfileComp: React.SFC<Props> = ({
 
                     <Grid.Column width={ 11 }>
                         <Grid.Row id='profile-row-1'>
-                            <h1 id='profile-name-h1'>{ userName }</h1>
+                            <h1 id='profile-name-h1'>{ username }</h1>
                             {
                                 isMatch
                                 ? <EditProfileButton />
                                 : <FollowButton
-                                    userName={ userName }
+                                    username={ username }
                                     isFollowed={ isFollowed }
                                     followUser={ followUser }
                                     unfollowUser={ unfollowUser }

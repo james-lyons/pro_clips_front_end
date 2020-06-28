@@ -1,13 +1,6 @@
-import { User } from "../../../../redux/actions/authActions/config";
-
 interface Props {
     clip: Clip,
-    user: User,
-    newTitle: null | string,
-    editFormVis: boolean,
     handleFormVis: () => void,
-    handleClipEdit: () => void,
-    handleChange: (event: Event) => void,
     handleClipDelete: (clipId: string) => void,
 };
 
@@ -20,11 +13,6 @@ interface Clip {
     poster: string,
     poster_name: string,
     likes: Array<string>,
-};
-
-interface User {
-    username: string,
-    profile_image: string
 };
 
 interface Event {

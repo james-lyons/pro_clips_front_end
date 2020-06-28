@@ -42,6 +42,7 @@ class UserClipSettings extends React.PureComponent<Props & RouteComponentProps, 
             this.setState({
                 clipVis: 'none'
             });
+            
         } else if (clipVis === 'none') {
             this.setState({
                 clipVis: ''

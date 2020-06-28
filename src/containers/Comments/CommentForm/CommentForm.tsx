@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CommentFormComp from '../../../components/Comments/CommentForm/commentFormComp';
 import { Props, State } from './config';
 import { createComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
+import CommentFormComp from '../../../components/Comments/CommentForm/CommentFormComp';
 
 class CommentForm extends React.PureComponent<Props, State> {
 
@@ -30,7 +30,7 @@ class CommentForm extends React.PureComponent<Props, State> {
         const { commentText } = this.state;
 
         return (
-            <div style={{ borderTop: '1px solid grey', marginTop: '1rem' }}>
+            <div id='comment-form-container-div'>
                 <CommentFormComp
                     commentText={ commentText }
                     handleChange={ handleChange }

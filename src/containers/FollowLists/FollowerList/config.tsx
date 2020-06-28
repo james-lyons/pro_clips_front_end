@@ -6,7 +6,7 @@ interface Props {
     user: User,
     currentUser: User,
     match: { params: { username: string }},
-    fetchFollowers: (userName: string) => void
+    fetchFollowers: (username: string) => void
 };
 
 interface ReduxState {
@@ -19,7 +19,7 @@ interface UserReducer {
 };
 
 interface User {
-    userName: string,
+    username: string,
     following: Array<string>
 };
 

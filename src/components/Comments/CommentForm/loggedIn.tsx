@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Form } from 'semantic-ui-react';
 import { LoggedInProps } from './config';
 
 const LoggedIn: React.SFC<LoggedInProps> = ({
@@ -9,15 +9,15 @@ const LoggedIn: React.SFC<LoggedInProps> = ({
 }) => {
     return (
         <Form onSubmit={ handleSubmit }>
-            <Form.Group>
-                <Form.Control
+            <Form.Field>
+                <Form.Input
                     type="text"
                     name="commentText"
                     value={ commentText }
                     placeholder='Add a comment'
                     onChange={ handleChange }
                 />
-            </Form.Group>
+            </Form.Field>
         </Form>
     );
 };
