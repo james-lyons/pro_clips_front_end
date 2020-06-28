@@ -15,7 +15,7 @@ class FollowingList extends React.PureComponent<Props & RouteComponentProps, Sta
     componentDidMount = async () => {
         const { match, user, currentUser } = this.props;
 
-        if (match.params.username === currentUser.userName) {
+        if (match.params.username === currentUser.username) {
             await this.setState({ user: currentUser })
 
         } else {
@@ -25,9 +25,9 @@ class FollowingList extends React.PureComponent<Props & RouteComponentProps, Sta
 
     private handleShowFollowing = async () => {
         const { fetchFollowingList } = this.props;
-        const { userName } = this.state.user;
+        const { username } = this.state.user;
 
-        await fetchFollowingList(userName);        
+        await fetchFollowingList(username);        
     };
 
     render() {

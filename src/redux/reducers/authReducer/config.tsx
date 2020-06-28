@@ -1,27 +1,17 @@
-interface User {
-    userName: string,
-    email: string,
-    bio: string,
-    profile_image: string,
-    clips: [],
-    followers: [],
-    following: [],
-    id: string
-};
-
 interface State {
-    user: User,
-    errors: null | Array<object>,
-    message: null | string
+    errors: null | Array<Error>
 };
 
 interface Action {
     type: string,
-    payload: object
+    payload: { errors: Array<Error> }
 };
 
+interface Error {
+    message: string
+}
+
 export {
-    User,
     State,
     Action
 };

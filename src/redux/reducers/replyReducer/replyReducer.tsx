@@ -11,9 +11,8 @@ const commentReducer = (state: State ={
         text: '',
         id: ''
     },
-    errors: null,
-    message: null
-    
+    error: null
+
 }, action: Action) => {
     
     switch(action.type) {
@@ -22,25 +21,25 @@ const commentReducer = (state: State ={
             return { ...state };
 
         case "FETCH_REPLIES_REJECTED":
-            return { ...state };
+            return { ...state, error: action.payload.error };
 
         case "CREATE_REPLY_FULFILLED":
             return { ...state };
 
         case "CREATE_REPLY_REJECTED":
-            return { ...state };
+            return { ...state, error: action.payload.error };
 
         case "DELETE_REPLY_FULFILLED":
             return { ...state };
 
         case "DELETE_REPLY_REJECTED":
-            return { ...state };
+            return { ...state, error: action.payload.error };
 
         case "LIKE_REPLY_FULFILLED": 
             return { ...state };
         
         case "UNLIKE_REPLY_REJECTED": 
-            return { ...state, errors: action.payload.errors, message: action.payload.message };
+            return { ...state, error: action.payload.error };
 
         default:
             return { ...state };

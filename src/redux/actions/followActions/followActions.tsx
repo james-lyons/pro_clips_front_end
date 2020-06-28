@@ -1,9 +1,9 @@
 import API_URL from '../../../constants';
 
-const followUser = (userName: string) => {
+const followUser = (username: string) => {
     return async dispatch => {        
         try {
-            const res = await fetch(`${ API_URL }/follow/follow/${ userName }`, 
+            const res = await fetch(`${ API_URL }/follow/follow/${ username }`, 
                 {
                     method: 'POST',
                     credentials: 'include'
@@ -25,10 +25,10 @@ const followUser = (userName: string) => {
     };
 };
 
-const unfollowUser = (userName: string) => {
+const unfollowUser = (username: string) => {
     return async dispatch => {
         try {
-            const res = await fetch(`${ API_URL }/follow/unfollow/${ userName }`, 
+            const res = await fetch(`${ API_URL }/follow/unfollow/${ username }`, 
                 {
                     method: 'POST',
                     credentials: 'include'

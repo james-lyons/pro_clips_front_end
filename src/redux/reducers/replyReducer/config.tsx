@@ -9,13 +9,16 @@ interface State {
         text: string,
         id: string
     },
-    errors: null | Array<object>,
-    message: null | string
-}
+    error: null | Error
+};
 
 interface Action {
     type: string,
-    payload: object
+    payload: { error: Error }
+};
+
+interface Error {
+    message: string
 };
 
 export {

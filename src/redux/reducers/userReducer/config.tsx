@@ -1,43 +1,64 @@
-interface CurrentUser {
-    userName: string,
-    email: string,
-    bio: string,
-    profile_image: string,
-    clips: Array<object>,
-    comments: Array<object>,
-    followers: Array<object>,
-    following: Array<object>,
-    id: string
-};
-
-interface User {
-    userName: string,
-    bio: string,
-    profile_image: string,
-    clips: Array<object>,
-    followers: Array<object>,
-    following: Array<object>,
-    isFollowed: boolean
-};
-
 interface State {
     user: User,
     currentUser: CurrentUser,
-    errors: null | Array<object>,
-    message: null | string,
-    editProfileErrors: null | Array<object>,
-    editProfileMessage: null | string,
-    editProfilePictureErrors: null | Array<object>,
-    editProfilePictureMessage: null | string,
-    editEmailErrors: null | Array<object>,
-    editEmailMessage: null | string,
-    editPasswordErrors: null | Array<object>,
-    editPasswordMessage: null | string
+    errors: null | Array<Error>,
+    editProfileErrors: null | Array<Error>,
+    editProfilePictureErrors: null | Array<Error>,
+    editEmailErrors: null | Array<Error>,
+    editPasswordErrors: null | Array<Error>,
 };
 
 interface Action {
     type: string,
     payload: object
+};
+
+interface User {
+    username: string,
+    bio: string,
+    profile_image: string,
+    clips: Array<Clip>,
+    followers: Array<Follower>,
+    following: Array<Follower>,
+    isFollowed: boolean
+};
+
+interface CurrentUser {
+    username: string,
+    email: string,
+    bio: string,
+    profile_image: string,
+    clips: Array<Clip>,
+    comments: Array<Comment>,
+    followers: Array<Follower>,
+    following: Array<Follower>,
+    id: string
+};
+
+interface Clip {
+    _id: string,
+    url: string,
+    game: string,
+    title: string,
+    poster: string,
+    poster_name: string,
+};
+
+interface Follower {
+    username: string,
+    profile_image: string
+};
+
+interface Comment {
+    _id: string,
+    clip_id: string,
+    author_id: string,
+    author_name: string,
+    comment_text: string
+};
+
+interface Error {
+    message: string
 };
 
 export {

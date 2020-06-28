@@ -1,21 +1,24 @@
 interface State {
     comments: null | Array<Comment>,
     comment: Comment,
-    errors: null | Array<object>,
-    message: null | string
+    error: null | Error
 };
 
 interface Action {
     type: string,
-    payload: object
+    payload: { error: Error }
 };
 
 interface Comment {
-    comment_text: string,
     _id: string,
+    clip_id: string,
     author_id: string,
     author_name: string,
-    clip_id: string
+    comment_text: string
+};
+
+interface Error {
+    message: string
 };
 
 export {
