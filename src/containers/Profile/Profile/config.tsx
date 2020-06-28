@@ -27,7 +27,7 @@ interface UserReducer {
 interface CurrentUser {
     bio: string,
     email: string,
-    userName: string,
+    username: string,
     clips: Array<Clip>,
     isFollowed: boolean,
     profile_image: string
@@ -36,7 +36,7 @@ interface CurrentUser {
 interface User {
     bio: string,
     email: string,
-    userName: string,
+    username: string,
     clips: Array<Clip>,
     isFollowed: boolean,
     profile_image: string

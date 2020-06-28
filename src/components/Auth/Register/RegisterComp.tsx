@@ -4,11 +4,10 @@ import { Props } from './config';
 
 const RegisterComp: React.SFC<Props> = ({
     email,
-    userName,
+    username,
     password,
     password2,
     errors,
-    message,
     handleChange,
     handleSubmit
 }) => {
@@ -33,9 +32,9 @@ const RegisterComp: React.SFC<Props> = ({
                     required
                     label='Username'
                     type='text'
-                    name='userName'
+                    name='username'
                     placeholder='Enter Username'
-                    value={ userName }
+                    value={ username }
                     onChange={ handleChange }
                 />
                 <Form.Input

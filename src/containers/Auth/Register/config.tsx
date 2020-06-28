@@ -1,16 +1,14 @@
 interface State {
-    userName: string,
+    username: string,
     email: string,
     password: string,
     password2: string,
-    errors: null | Array<Error>,
-    message: null | string
+    errors: null | Array<Error>
 };
 
 interface Props {
     history: History,
     errors: null | Array<Error>,
-    message: null | string,
     setCurrentUser: () => void,
     userLogin: (user: User) => Promise<any>,
     userRegister: (newUser: NewUser) => Promise<any>
@@ -22,7 +20,7 @@ interface User {
 };
 
 interface NewUser {
-    userName: string,
+    username: string,
     email: string,
     password: string,
     password2: string,
@@ -38,7 +36,7 @@ interface Target {
 };
 
 interface TargetState {
-    userName: string,
+    username: string,
     email: string,
     password: string,
     password2: string,

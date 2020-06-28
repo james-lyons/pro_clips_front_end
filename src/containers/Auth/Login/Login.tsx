@@ -9,8 +9,7 @@ class Login extends React.PureComponent<Props, State> {
     state: State = {
         email: "",
         password: "",
-        errors: null,
-        message: null
+        error: null,
     };
 
     private handleChange = (event: Event) => {
@@ -29,41 +28,33 @@ class Login extends React.PureComponent<Props, State> {
         try {
             const res: Response = await userLogin(user);
 
-            if (res.errors) {
-                this.setState({
-                    errors: res.errors
-                });
-
+            if (res.error) {
+                this.setState({ error: res.error });
                 return;
     
             } else {
-                this.setState({
-                    errors: null,
-                    message: null
-                });
+                this.setState({ error: null });
             };
     
             return history.push('/browseClips');
 
         } catch (error) {
             console.log('Hello from login 4: error', error)
-            this.setState({
-                errors: error
-            });
+            this.setState({ error });
 
             return;
         };
     };
 
     render() {
-        const { email, password, errors, message } = this.state;
+        const { email, password, error, message } = this.state;
 
         return (
             <>
                 <LoginComp
                     email={ email }
                     password={ password }
-                    errors={ errors }
+                    error={ error }
                     message={ message }
                     handleChange={ this.handleChange }
                     handleSubmit={ this.handleSubmit }

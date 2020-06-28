@@ -5,7 +5,7 @@ import { Props } from './config';
 const LoginComp: React.SFC<Props> = ({
     email,
     password,
-    errors,
+    error,
     handleChange,
     handleSubmit
 }) => {
@@ -16,12 +16,11 @@ const LoginComp: React.SFC<Props> = ({
                 <h1>Login</h1>  
 
                 {
-                    errors && errors.map((error, i) => (
-                        <Message negative key={ i } size='small'>
-                            <Message.Header>{ error.message }</Message.Header>
-                            <p>Please try again</p>
-                        </Message>
-                    ))
+                    error && 
+                    <Message negative size='small'>
+                        <Message.Header>{ error.message }</Message.Header>
+                        <p>Please try again</p>
+                    </Message>
                 }
 
                 <Form.Field>

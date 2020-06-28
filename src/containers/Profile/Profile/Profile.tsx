@@ -21,10 +21,10 @@ class Profile extends React.PureComponent<Props, State> {
         await fetchUser(match.params.username);
         const { user, currentUser } = this.props;
 
-        if (match.params.username === currentUser.userName) {
+        if (match.params.username === currentUser.username) {
             this.setState({
-                user: currentUser,
                 isMatch: true,
+                user: currentUser,
                 isFollowed: user.isFollowed
             });
         } else {
@@ -36,9 +36,9 @@ class Profile extends React.PureComponent<Props, State> {
         };
     };
 
-    private followUser = async (userName: string) => {
+    private followUser = async (username: string) => {
         const { followUser } = this.props;
-        await followUser(userName);
+        await followUser(username);
 
         this.setState({
             isFollowed: true,
@@ -46,9 +46,9 @@ class Profile extends React.PureComponent<Props, State> {
         });
     };
 
-    private unfollowUser = async (userName: string) => {
+    private unfollowUser = async (username: string) => {
         const { unfollowUser } = this.props;
-        await unfollowUser(userName);
+        await unfollowUser(username);
         
         this.setState({
             isFollowed: false,
@@ -69,7 +69,7 @@ class Profile extends React.PureComponent<Props, State> {
     };
     
     render() {
-        const { user, isMatch, isFollowed, showLoginModal, buttonName  } = this.state;
+        const { user, isMatch, isFollowed  } = this.state;
         const {
             followUser,
             unfollowUser,
@@ -84,9 +84,7 @@ class Profile extends React.PureComponent<Props, State> {
                     <ProfileComp
                         user={ user }
                         isMatch={ isMatch }
-                        buttonName={ buttonName }
                         isFollowed={ isFollowed }
-                        showLoginModal={ showLoginModal }
                         followUser={ followUser }
                         unfollowUser={ unfollowUser }
                         handleShowLoginModal={ handleShowLoginModal }

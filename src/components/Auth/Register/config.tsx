@@ -1,9 +1,8 @@
 interface Props {
-    userName: string,
+    username: string,
     email: string,
     password: string,
     password2: string,
-    message: string,
     errors: null | Array<Error>,
     handleChange: (event: Event) => void,
     handleSubmit: () => void
@@ -23,7 +22,7 @@ interface Target {
 };
 
 interface TargetState {
-    userName: string,
+    username: string,
     password: string,
 };
 

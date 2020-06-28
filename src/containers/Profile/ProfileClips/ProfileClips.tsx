@@ -15,7 +15,7 @@ class ProfileClips extends React.PureComponent<Props, State> {
         let { user, fetchUserClips } = this.props;
         
         if (user.clips.length > 0) {
-            await fetchUserClips(user.userName);
+            await fetchUserClips(user.username);
             await this.setState({ userClips: this.props.userClips });
         };
     };

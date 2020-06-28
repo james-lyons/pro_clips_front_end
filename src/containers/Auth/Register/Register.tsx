@@ -7,12 +7,11 @@ import RegisterComp from '../../../components/Auth/Register/RegisterComp';
 class Register extends React.PureComponent<Props, State> {
 
     state: State = {
-        userName: "",
+        username: "",
         email: "",
         password: "",
         password2: "",
-        errors: null,
-        message: null
+        errors: null
     };
 
     private handleChange = (event: Event) => {
@@ -24,17 +23,29 @@ class Register extends React.PureComponent<Props, State> {
     private handleSubmit = async () => {
         event.preventDefault();
 
-        const { userName, email, password, password2 } = this.state;
+        const { username, email, password, password2 } = this.state;
         const { userRegister, userLogin } = this.props;
-        const newUser = { userName, email, password, password2 };
+        const newUser = { username, email, password, password2 };
         const loginCredentials = { email, password };
+
+        if (password.length < 6) {
+            this.setState({ errors: [{ message: 'Password must be at least 6 characters long' }]});
+            return;
+
+        } else if (password2.length < 6) {
+            this.setState({ errors: [{ message: 'Password must be at least 6 characters long' }]});
+            return;
+
+        } else if (password !== password2) {
+            this.setState({ errors: [{ message: 'Password must match' }]});
+            return;
+        };
 
         const res: Response = await userRegister(newUser);
 
         if (res.type === 'USER_REGISTRATION_REJECTED') {
             this.setState({
                 errors: res.payload.errors,
-                message: res.payload.message
             })
             return;
 
@@ -44,13 +55,11 @@ class Register extends React.PureComponent<Props, State> {
             console.log('Hi!', res2)
             await this.setState({
                 errors: null,
-                message: null
             });
 
             if (res2.type === 'USER_LOGIN_REJECTED') {
                 this.setState({
                     errors: res.payload.errors,
-                    message: res.payload.message
                 })
                 return;
             };
@@ -60,17 +69,16 @@ class Register extends React.PureComponent<Props, State> {
 
     render() {
 
-        const { userName, email, password, password2, errors, message } = this.state;
+        const { username, email, password, password2, errors } = this.state;
 
         return (
             <>
                 <RegisterComp
-                    userName={ userName }
                     email={ email }
+                    username={ username }
                     password={ password }
                     password2={ password2 }
                     errors={ errors }
-                    message={ message }
                     handleChange={ this.handleChange }
                     handleSubmit={ this.handleSubmit }
                 />

@@ -1,6 +1,7 @@
 import { State, Action } from './config';
 
 function authReducer(state: State = {
+    error: null,
     errors: null
 
 }, action: Action) {
@@ -16,7 +17,7 @@ function authReducer(state: State = {
             return { ...state, errors: null };
 
         case "USER_LOGIN_REJECTED":
-            return { ...state, errors: action.payload.errors };
+            return { ...state, error: action.payload.error };
 
         case "USER_LOGOUT_FULFILLED":
             return { ...state, errors: null };

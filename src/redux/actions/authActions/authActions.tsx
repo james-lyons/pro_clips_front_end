@@ -47,7 +47,7 @@ const userLogin = (user: User) => {
                 console.log('Hello from user login: error 1', data)
 
                 dispatch({ type: 'USER_LOGIN_REJECTED', payload: data });
-                return { errors: data.errors };
+                return { error: data.error };
             };
 
             localStorage.setItem('uid', data.data._id);
@@ -55,7 +55,6 @@ const userLogin = (user: User) => {
             return dispatch({ type: 'FETCH_CURRENT_USER_FULFILLED', payload: data })
 
         } catch (error) {
-            console.log('Hello from user login 2: error', error)
             return dispatch({ type: 'USER_LOGIN_REJECTED', payload: error });
         };
     };
