@@ -38,7 +38,7 @@ const GameClipsComp: React.SFC<Props> = ({ gameClips, history }) => {
 
     return (
         <>
-            <Container>
+            <Container id='game-clips-container'>
                 <Header as='h1' id='game-clips-header'>
                     <Image
                         rounded

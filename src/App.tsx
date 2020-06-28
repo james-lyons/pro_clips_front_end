@@ -1,6 +1,7 @@
 import React from 'react';
 import Routes from './routes/Routes';
 import NavBar from './containers/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
@@ -30,9 +31,10 @@ class App extends React.PureComponent<Props, State> {
         return (
             <>
                 <div>
-                    <div style={{ minHeight: '100vh' }}>
+                    <div id='app-container'>
                         <NavBar />
                         <Routes />
+                        <Footer />
                     </div>
                 </div>
             </>

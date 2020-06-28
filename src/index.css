@@ -11,6 +11,12 @@ html, body {
     margin: 0 !important
 }
 
+#app-container {
+    min-height: 100vh !important;
+    min-width: 100vw !important;
+    position: relative;
+}
+
 
 /* ----------------------- Home Page ----------------------- */
 
@@ -147,6 +153,10 @@ html, body {
 
 /* ------------------ Profile Clips ------------------ */
 
+#profile-clips-container-div {
+    padding-bottom: 8rem;
+}
+
 
 #profile-clips-game-select {
     margin: 0 auto;
@@ -177,7 +187,8 @@ html, body {
 
 
 #browser-clips-grid {
-    margin: 2rem auto 0 !important
+    margin: 2rem auto 0 !important;
+    padding-bottom: 8rem;
 }
 
 .browser-clips-image {
@@ -189,7 +200,8 @@ html, body {
 
 
 #popular-clips-grid-container {
-    margin: 0 auto !important
+    margin: 0 auto !important;
+    padding-bottom: 8rem;
 }
 
 .popular-clips-row {
@@ -199,6 +211,9 @@ html, body {
 
 /* -------------------- Game Clips ------------------- */
 
+#game-clips-container {
+    padding-bottom: 8rem;
+}
 
 #game-clips-header {
     margin-left: 1rem
