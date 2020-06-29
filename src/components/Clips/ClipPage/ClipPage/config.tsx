@@ -27,6 +27,10 @@ interface User {
     profile_image: string
 };
 
+interface ReduxState {
+    clipReducer: { clip: Clip }
+};
+
 interface Event {
     target: Target
 };
@@ -42,5 +46,6 @@ interface TargetState {
 };
 
 export {
-    Props
+    Props,
+    ReduxState
 };

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Props, Reply } from './config';
+import { Comment, Grid, Image } from 'semantic-ui-react';
 import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
 import DeleteReply from '../../../containers/Replies/DeleteReply/deleteReply';
 import LikeReply from '../../../containers/Replies/LikeReply/LikeReply';
@@ -13,24 +14,27 @@ const RepliesComp: React.SFC<Props> = ({
 
     const replyMapper = (replies: Array<Reply>, clipId: string) => {
         const replyArray = replies.map((reply) =>
-            <div key={ reply._id } style={{ margin: '.5 rem' }}>
-                <Card
-                    style={{ margin: '.5rem' }}
-                >
-                    <div style={{
-                        width: '100%',
-                        display: 'grid',
-                        gridTemplateColumns: '90% 10%'
-                    }}>
-                        <h1 style={{ fontSize: '1.3rem' }}>
-                            { reply.author_name }: { reply.reply_text }
-                        </h1>
-                        <DeleteReply reply={ reply } clipId={ clipId } />
-                    </div>
-                    
+            <Comment key={ reply._id }>
+
+                <Image
+                    as={ Link }
+                    to={ `/${ reply.author_name }` }
+                    circular
+                    size='mini'
+                    floated='left'
+                    src={ reply.author_profile_image }
+                />
+
+                <Grid.Column floated='right'>
+                    <DeleteReply reply={ reply } clipId={ clipId } />
+                </Grid.Column>
+
+                <Comment.Content className='comment-content-container'>
+                    <Comment.Author as={ Link } to={`/${ reply.author_name }`}>{ reply.author_name }</Comment.Author>
+                    <Comment.Text>{ reply.reply_text }</Comment.Text>
                     <LikeReply reply={ reply } clipId={ clipId } />
-                </Card>
-            </div>
+                </Comment.Content>
+            </Comment>
         );
         return replyArray;
     };

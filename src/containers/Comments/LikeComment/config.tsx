@@ -1,6 +1,5 @@
 interface State {
-    comments: null | Array<Comment>,
-    showLoginModal: boolean
+    comments: null | Array<Comment>
 };
 
 interface Props {

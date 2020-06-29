@@ -43,7 +43,7 @@ class LikeReply extends React.PureComponent<Props, State> {
             );
         } else if (i >= 0) {
             return (
-                <span style={{ cursor: 'pointer', margin: '0 5px' }}
+                <span className='like-button'
                     onClick={ () => this.unlikeReplySubmit(reply, clipId) }
                 >
                         <Icon name='heart' color='red' />
@@ -51,7 +51,7 @@ class LikeReply extends React.PureComponent<Props, State> {
             )
         } else {
             return (
-                <span style={{ cursor: 'pointer', margin: '0 5px' }}
+                <span className='like-button'
                     onClick={ () => this.likeReplySubmit(reply, clipId) }
                 >
                     <Icon name='heart outline' color='red' />

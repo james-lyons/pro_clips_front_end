@@ -4,7 +4,7 @@ import { Props } from './config';
 import LoginModal from '../../../LoginModal/LoginModal';
 
 const FollowButton: React.SFC<Props> = ({
-    userName,
+    username,
     isFollowed,
     followUser,
     unfollowUser
@@ -14,14 +14,14 @@ const FollowButton: React.SFC<Props> = ({
     if (currentUser) {
         if (isFollowed) {
             return (
-                <Button size='mini' className='profile-follow-button'
-                    onClick={ () => unfollowUser(userName) }>
+                <Button size='mini' basic color='black' className='profile-follow-button'
+                    onClick={ () => unfollowUser(username) }>
                         Unfollow
                 </Button> )
         } else {
             return (
                 <Button size='mini' basic color='black' className='profile-follow-button'
-                    onClick={ () => followUser(userName) }>
+                    onClick={ () => followUser(username) }>
                         Follow
                 </Button>
             );

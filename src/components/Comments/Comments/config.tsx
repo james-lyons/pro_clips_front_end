@@ -1,7 +1,7 @@
 interface Props {
     clip: null | Clip,
     replyRef: null | string,
-    comments: null | Array<Comment>,
+    comments: null | Array<CommentI>,
     handleReplyForm: (commentId: string) => void
 };
 
@@ -9,14 +9,15 @@ interface Clip {
     _id: string
 };
 
-interface Comment {
+interface CommentI {
     _id: string,
-    comment_text: string,
-    author_name: string,
-    author_id: string,
     clip_id: string,
+    author_id: string,
+    author_name: string,
+    comment_text: string,
+    likes: Array<string>,
     replies: Array<ReplyI>,
-    likes: Array<string>
+    author_profile_image: string,
 };
 
 interface ReplyI {
@@ -26,7 +27,8 @@ interface ReplyI {
     time_stamp: string,
     reply_text: string,
     author_name: string,
-    likes: Array<string>
+    likes: Array<string>,
+    author_profile_image: string
 };
 
 interface ReduxProps {
@@ -35,7 +37,7 @@ interface ReduxProps {
 };
 
 interface CommentReducer {
-    comments: Array<Comment>
+    comments: Array<CommentI>
 };
 
 interface ClipReducer {
@@ -44,6 +46,6 @@ interface ClipReducer {
 
 export {
     Props,
-    Comment,
+    CommentI,
     ReduxProps
 };

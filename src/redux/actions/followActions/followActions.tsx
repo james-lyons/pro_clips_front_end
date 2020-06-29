@@ -12,12 +12,12 @@ const followUser = (username: string) => {
             
             const data = await res.json();
 
+            console.log(data);
             if (data.status >= 400) {
                 return dispatch({ type: 'FOLLOW_USER_REJECTED', payload: data });
+            } else {
+                return dispatch({ type: 'FETCH_USER_FULFILLED', payload: data });
             };
-
-            dispatch({ type: 'FOLLOW_USER_FULFILLED', payload: data });
-            dispatch({ type: 'FOLLOW_USER_UPDATE_FULFILLED', payload: data });
 
         } catch (error) {
             dispatch({ type: "FOLLOW_USER_REJECTED", payload: error });

@@ -38,7 +38,7 @@ const fetchUser = (user: string) => {
 
             if (data.status >= 400) {
                 return dispatch({ type: 'FETCH_USER_REJECTED', payload: data });
-            } else if (data.message) {
+            } else {
                 return dispatch({ type: 'FETCH_USER_FULFILLED', payload: data });
             };
 

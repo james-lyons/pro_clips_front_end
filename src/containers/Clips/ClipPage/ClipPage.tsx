@@ -70,7 +70,6 @@ class ClipPage extends React.PureComponent<Props, State> {
                 {
                     clip && 
                     <ClipPageComponent
-                        clip={ clip }
                         user={ user }
                         editFormVis={ editFormVis }
                         newTitle={ newTitle }

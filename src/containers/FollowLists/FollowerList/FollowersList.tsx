@@ -38,7 +38,6 @@ class FollowersList extends React.PureComponent<Props & RouteComponentProps, Sta
                 {
                     user && 
                     <FollowersListComp
-                        user={ user }
                         handleShowFollowers={ handleShowFollowers }
                     />
                 }

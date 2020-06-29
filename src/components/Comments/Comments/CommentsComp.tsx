@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card } from 'react-bootstrap';
-import { Props, Comment, ReduxProps } from './config';
+import { Link } from 'react-router-dom';
+import { Comment, Header, Grid, Image } from 'semantic-ui-react';
+import { Props, CommentI, ReduxProps } from './config';
 import { likeComment, unlikeComment } from '../../../redux/actions/commentActions/commentActions';
 import DeleteComment from '../../../containers/Comments/DeleteComment/deleteComment';
 import LikeCommentComp from '../../../containers/Comments/LikeComment/LikeComment';
@@ -16,53 +17,60 @@ const CommentsComp: React.SFC<Props> = ({
 })=> {
 
     const commentMapper = (
-            comments: Array<Comment>,
+            comments: Array<CommentI>,
             clipId: string,
             replyRef: null | string
         ) => {
 
         const commentArray = comments.map((comment) =>
-        
-            <div key={ comment._id } style={{ margin: '.5 rem' }}>
-                <Card
-                    style={{ margin: '.5rem' }}
-                >
-                    <div style={{
-                        width: '100%',
-                        display: 'grid',
-                        gridTemplateColumns: '90% 10%'
-                    }}>
-                        <h1 style={{ fontSize: '1.3rem' }}>
-                            { comment.author_name }: { comment.comment_text }
-                        </h1>
-                        <DeleteComment comment={ comment } clipId={ clipId } />
-                    </div>
-                    <div>
-                        <LikeCommentComp comment={ comment } />
-                        <span
-                            style={{ width: '5rem', cursor: 'pointer' }}
-                            onClick={ () => handleReplyForm(comment._id) }>
-                                Reply
-                        </span>
-                    </div>
+            <Comment key={ comment._id }>
+                <Grid.Column floated='right'>
+                    <DeleteComment comment={ comment } clipId={ clip._id } />
+                </Grid.Column>
+
+                <Image
+                    as={ Link }
+                    to={ `/${ comment.author_name }` }
+                    circular
+                    size='mini'
+                    floated='left'
+                    src={ comment.author_profile_image }
+                />
+
+                <Comment.Content className='comment-content-container'>
+                    <Comment.Author as={ Link } to={`/${ comment.author_name }`}>
+                        { comment.author_name }
+                    </Comment.Author>
+                    <Comment.Text>{ comment.comment_text }</Comment.Text>
+
+                    <LikeCommentComp comment={ comment }/>
+                    <span
+                        className='reply-button'
+                        onClick={ () => handleReplyForm(comment._id) }
+                    >
+                        Reply
+                    </span>
+
+                </Comment.Content>
+
+                <Comment.Content id='comment-replies-container'>
                     {
                         comment.replies &&
-                        <Replies
-                            replies={ comment.replies }
-                            clipId={ clipId }
-                        />
+                        <Comment.Group>
+                            <Replies replies={ comment.replies } clipId={ clipId }/>
+                        </Comment.Group>
                     }
                     { replyRef === comment._id && <ReplyForm commentId={ comment._id }/> }
-                </Card>
-            </div>
+                </Comment.Content>
+            </Comment>
         );
         return commentArray;
     };
 
     return (
-        <>
+        <Comment.Group id='comment-group-container'>
             { comments && commentMapper(comments, clip._id, replyRef) }
-        </>
+        </Comment.Group>
     );
 };
 

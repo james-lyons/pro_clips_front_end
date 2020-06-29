@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Form } from 'react-bootstrap';
 import { Props } from './config';
+import { Link } from 'react-router-dom';
+import { Form } from 'semantic-ui-react';
 
 const ReplyFormComp: React.SFC <Props> = ({ replyText, handleChange, handleSubmit }) =>{
 
@@ -9,16 +9,16 @@ const ReplyFormComp: React.SFC <Props> = ({ replyText, handleChange, handleSubmi
 
     const loggedIn = () => {
         return (
-            <Form onSubmit={ handleSubmit }>
-                <Form.Group>
-                    <Form.Control
+            <Form onSubmit={ handleSubmit } id='reply-form'>
+                <Form.Field>
+                    <Form.Input
                         type="text"
                         name="replyText"
-                        value={ replyText }
                         placeholder='Reply'
+                        value={ replyText }
                         onChange={ handleChange }
                     />
-                </Form.Group>
+                </Form.Field>
             </Form>
         );
     };

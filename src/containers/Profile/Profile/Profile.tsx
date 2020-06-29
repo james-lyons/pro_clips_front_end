@@ -40,7 +40,7 @@ class Profile extends React.PureComponent<Props, State> {
         const { followUser } = this.props;
         await followUser(username);
 
-        this.setState({
+        await this.setState({
             isFollowed: true,
             user: this.props.user
         });
@@ -50,7 +50,7 @@ class Profile extends React.PureComponent<Props, State> {
         const { unfollowUser } = this.props;
         await unfollowUser(username);
         
-        this.setState({
+        await this.setState({
             isFollowed: false,
             user: this.props.user
         });

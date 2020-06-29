@@ -35,13 +35,13 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
 
         if (!currentUser) {
             return (
-                <span style={{ cursor: 'pointer', margin: '0 5px' }}>
+                <span className='like-button'>
                     <LoginModal modalName={ <Icon name='heart outline' color='red'/> }/>
                 </span>
             );
         } else if (i >= 0) {
             return (
-                <span style={{ cursor: 'pointer', margin: '0 5px'  }}
+                <span className='like-button'
                     onClick={ () => this.unlikeCommentSubmit(comment) }
                 >
                      <Icon name='heart' color='red' />
@@ -49,7 +49,7 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
             )
         } else {
             return (
-                <span style={{ cursor: 'pointer', margin: '0 5px'  }}
+                <span className='like-button'
                     onClick={ () => this.likeCommentSubmit(comment) }
                 >
                     <Icon name='heart outline' color='red' />

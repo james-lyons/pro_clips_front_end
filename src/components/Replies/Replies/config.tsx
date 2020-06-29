@@ -4,11 +4,12 @@ interface Props {
 };
 
 interface Reply {
+    _id: string,
+    comment_id: string,
+    author_id: string,
     reply_text: string,
     author_name: string,
-    _id: string,
-    author_id: string,
-    comment_id: string,
+    author_profile_image: string,
     likes: Array<string>
 };
 

@@ -5,11 +5,12 @@ interface Props {
 };
 
 interface ReduxState {
-    followerReducer: FollowerReducer
+    followerReducer: FollowerReducer,
+    userReducer: { user: User }
 };
 
 interface FollowerReducer {
-    followers: Array<Follower>
+    followersList: Array<Follower>
 };
 
 interface Follower {

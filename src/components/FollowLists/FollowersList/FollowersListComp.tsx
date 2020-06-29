@@ -40,7 +40,7 @@ const FollowersListComp: React.SFC<Props> = ({
                 id='follower-modal'
                 centered={ false }
                 onMount={ handleShowFollowers }
-                trigger={ <span>{ followers.length } Followers</span> }
+                trigger={ <span>{ user.followers.length } Followers</span> }
             >
                 <Modal.Header>Followers</Modal.Header>
                 <Modal.Content>
@@ -55,7 +55,8 @@ const FollowersListComp: React.SFC<Props> = ({
 
 const mapStateToProps = (state: ReduxState) => {
     return {
-        followersList: state.followerReducer.followersList
+        followersList: state.followerReducer.followersList,
+        user: state.userReducer.user
     };
 };
 

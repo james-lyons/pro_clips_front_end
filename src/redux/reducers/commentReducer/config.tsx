@@ -14,7 +14,8 @@ interface Comment {
     clip_id: string,
     author_id: string,
     author_name: string,
-    comment_text: string
+    comment_text: string,
+    author_profile_image: string,
 };
 
 interface Error {

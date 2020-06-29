@@ -1,7 +1,7 @@
 import React from 'react';
-import { Props } from './config';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Props, ReduxState } from './config';
 import { Card, Grid, Image } from 'semantic-ui-react';
 import { likeClip, unlikeClip } from '../../../../redux/actions/clipActions/clipActions';
 import CommentForm from '../../../../containers/Comments/CommentForm/CommentForm';
@@ -20,7 +20,6 @@ const ClipPageComponent: React.SFC<Props> = ({
     handleClipEdit,
     handleClipDelete
 }) => {
-    const currentUser = localStorage.getItem('uid');
 
     return (
         <>
@@ -62,11 +61,14 @@ const ClipPageComponent: React.SFC<Props> = ({
                                 { clip.likes.length } likes
                             </Grid.Column>
                             
-                            <Grid.Column width={ 11 }>
+                            <Grid.Column id='clip-page-card-title' width={ 10 }>
                                 { clip.title }
                             </Grid.Column>
 
-                            <Grid.Column id='clip-page-actions-column' width={ 2 } floated='right'>
+                            <Grid.Column id='clip-page-actions-column'
+                                width={ 3 }
+                                floated='right'
+                            >
                                 <ClipActions
                                     clip={ clip }
                                     handleFormVis={ handleFormVis }
@@ -95,4 +97,10 @@ const ClipPageComponent: React.SFC<Props> = ({
     );
 };
 
-export default connect(null, { likeClip, unlikeClip })(ClipPageComponent);
+const mapStateToProps = (state: ReduxState) => {
+    return {
+        clip: state.clipReducer.clip,
+    };
+};
+
+export default connect(mapStateToProps, { likeClip, unlikeClip })(ClipPageComponent);

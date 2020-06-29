@@ -7,6 +7,7 @@ const commentReducer = (state: State ={
         clip_id: null,
         author_id: null,
         author_name: null,
+        author_profile_image: null,
         comment_text: null,
     },
     error: null

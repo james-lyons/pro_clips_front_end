@@ -1,8 +1,8 @@
 interface Props {
-    userName: string,
+    username: string,
     isFollowed: boolean,
-    followUser: (userName: string) => void,
-    unfollowUser: (userName: string) => void
+    followUser: (username: string) => void,
+    unfollowUser: (username: string) => void
 };
 
 export {
