@@ -52,10 +52,7 @@ class Register extends React.PureComponent<Props, State> {
         } else if (res.type === 'USER_REGISTRATION_FULFILLED') {
             const res2: Response = await userLogin(loginCredentials);
 
-            console.log('Hi!', res2)
-            await this.setState({
-                errors: null,
-            });
+            await this.setState({ errors: null });
 
             if (res2.type === 'USER_LOGIN_REJECTED') {
                 this.setState({

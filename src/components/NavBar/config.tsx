@@ -16,7 +16,7 @@ interface CurrentUser {
 };
 
 interface User {
-    userName: String
+    username: String
 };
 
 interface Event {

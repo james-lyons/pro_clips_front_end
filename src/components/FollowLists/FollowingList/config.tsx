@@ -13,12 +13,12 @@ interface FollowerReducer {
 };
 
 interface Follower {
-    userName: string,
+    username: string,
     profile_image: string
 };
 
 interface User {
-    userName: string,
+    username: string,
     following: Array<string>
 };
 

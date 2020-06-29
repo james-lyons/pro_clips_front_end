@@ -8,7 +8,7 @@ interface Props {
 };
 
 interface User {
-    userName: String
+    username: String
 };
 
 interface Event {

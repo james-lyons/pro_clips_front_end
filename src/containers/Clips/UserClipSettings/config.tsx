@@ -11,7 +11,7 @@ interface Props {
 };
 
 interface History {
-    push: (userName: string) => void
+    push: (username: string) => void
 };
 
 interface Clip {

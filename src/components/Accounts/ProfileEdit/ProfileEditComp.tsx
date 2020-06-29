@@ -4,7 +4,7 @@ import { Grid, Form, Message, TextArea } from 'semantic-ui-react';
 
 const ProfileEditComp: React.SFC <Props> = ({
     bio,
-    userName,
+    username,
     profile_image,
     editProfileErrors,
     handleChange,
@@ -70,8 +70,8 @@ const ProfileEditComp: React.SFC <Props> = ({
                                 id='edit-username-field'
                                 label='Username'
                                 type='text'
-                                name='userName'
-                                value={ userName }
+                                name='username'
+                                value={ username }
                                 onChange={ handleChange }
                             />
                         </Form.Field>

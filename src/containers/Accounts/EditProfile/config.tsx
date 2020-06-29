@@ -1,6 +1,6 @@
 interface State {
     bio: string,
-    userName: string,
+    username: string,
     profile_image: string,
     editProfileErrors: null | Array<Error>,
     edit_profile_success: null | string,
@@ -15,18 +15,18 @@ interface Props {
 };
 
 interface History {
-    push: (userName?: string) => void
+    push: (username?: string) => void
 };
 
 interface CurrentUser {
-    userName: string,
+    username: string,
     bio: string,
     profile_image: string
 }
 
 interface ProfileChanges {
     bio?: string,
-    userName?: string,
+    username?: string,
     profile_image?: string
 };
 
@@ -54,7 +54,7 @@ interface Target {
 
 interface TargetState {
     bio: string,
-    userName: string,
+    username: string,
     profile_image: string
 };
 

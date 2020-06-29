@@ -10,7 +10,7 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
 
     state: State = {
         bio: '',
-        userName: '',
+        username: '',
         profile_image: '',
         editProfileErrors: null,
         edit_profile_success: null,
@@ -18,11 +18,11 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
     };
 
     componentDidMount = async () => {
-        let { userName, bio, profile_image } = this.props.currentUser;
+        let { username, bio, profile_image } = this.props.currentUser;
 
         this.setState({
             bio,
-            userName,
+            username,
             profile_image
         });
     };
@@ -36,23 +36,23 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
     private editUserSubmit = async () => {
         event.preventDefault();
         let currentUserId = localStorage.getItem('uid');
-        let { userName, bio } = this.state;
+        let { username, bio } = this.state;
         let { history, currentUser, editUserProfile } = this.props;
 
-        if (userName !== currentUser.userName && bio !== currentUser.bio) {
-            let profileChanges = { userName, bio };
+        if (username !== currentUser.username && bio !== currentUser.bio) {
+            let profileChanges = { username, bio };
             await editUserProfile(currentUserId, profileChanges);
-            history.push(`/${ userName }`);
+            history.push(`/${ username }`);
 
-        } else if (userName !== currentUser.userName) {
-            let profileChanges = { userName };
+        } else if (username !== currentUser.username) {
+            let profileChanges = { username };
             await editUserProfile(currentUserId, profileChanges);
-            history.push(`/${ userName }`);
+            history.push(`/${ username }`);
 
         } else if (bio !== currentUser.bio) {
             let profileChanges = { bio };
             await editUserProfile(currentUserId, profileChanges);
-            history.push(`/${ userName }`);
+            history.push(`/${ username }`);
 
         };
 
@@ -80,7 +80,7 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
         let { history, currentUser,  editUserProfile } = this.props;
 
         await editUserProfile(userId, profileChanges);
-        history.push(`/${ currentUser.userName }`)
+        history.push(`/${ currentUser.username }`)
 
         this.setState({
             edit_profile_picture_success: 'Success!'
@@ -88,14 +88,14 @@ class ProfileEdit extends React.PureComponent<Props & RouteComponentProps, State
     };
     
     render() {
-        const { userName, bio, profile_image, editProfileErrors } = this.state;
+        const { username, bio, profile_image, editProfileErrors } = this.state;
         const { handleChange, editUserSubmit, editProfilePictureSubmit } = this;
 
         return (
             <>
                 <ProfileEditComp
                     bio={ bio }
-                    userName={ userName }
+                    username={ username }
                     profile_image={ profile_image }
                     editProfileErrors={ editProfileErrors }
                     handleChange={ handleChange }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Modal, Item } from 'semantic-ui-react';
 import { Props, ReduxState, Follower } from './config';
 
@@ -13,7 +14,7 @@ const FollowingListComp: React.SFC<Props> = ({
     const followersMapper = (followersList: Array<Follower>) => {
         const followerArray = followersList.map((follower) => 
 
-            <Item key={ follower.userName }>
+            <Item key={ follower.username }>
                 <Item.Image
                     avatar
                     size='mini'
@@ -22,10 +23,11 @@ const FollowingListComp: React.SFC<Props> = ({
                 />
                 <Item.Content
                     as='a'
+                    href={ `/${ follower.username }` }
                     verticalAlign='middle'
                     className='follow-list-a'
                 >
-                    { follower.userName }
+                    { follower.username }
                 </Item.Content>
             </Item>
 

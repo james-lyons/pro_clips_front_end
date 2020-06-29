@@ -16,7 +16,7 @@ interface Target {
 };
 
 interface TargetState {
-    userName: string,
+    username: string,
     password: string,
 };
 

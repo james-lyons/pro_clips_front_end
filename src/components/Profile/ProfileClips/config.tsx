@@ -12,7 +12,7 @@ interface Event {
 interface User {
     bio: string,
     email: string,
-    userName: string,
+    username: string,
     clips: Array<Clip>,
     isFollowed: boolean,
     profile_image: string

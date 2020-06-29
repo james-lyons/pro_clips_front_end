@@ -13,7 +13,7 @@ const FollowersListComp: React.SFC<Props> = ({
     const followersMapper = (followersList: Array<Follower>) => {
         const followerArray = followersList.map((follower) =>
 
-            <Item key={ follower.userName }>
+            <Item key={ follower.username }>
                 <Item.Image
                     avatar
                     size='mini'
@@ -22,10 +22,11 @@ const FollowersListComp: React.SFC<Props> = ({
                 />
                 <Item.Content
                     as='a'
+                    href={ `/${ follower.username }` }
                     verticalAlign='middle'
                     className='follow-list-a'
                 >
-                    { follower.userName }
+                    { follower.username }
                 </Item.Content>
             </Item>
 
