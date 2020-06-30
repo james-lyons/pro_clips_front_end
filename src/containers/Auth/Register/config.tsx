@@ -3,12 +3,12 @@ interface State {
     email: string,
     password: string,
     password2: string,
-    errors: null | Array<Error>
+    error: null | { message: string }
 };
 
 interface Props {
     history: History,
-    errors: null | Array<Error>,
+    error: null | { message: string },
     setCurrentUser: () => void,
     userLogin: (user: User) => Promise<any>,
     userRegister: (newUser: NewUser) => Promise<any>

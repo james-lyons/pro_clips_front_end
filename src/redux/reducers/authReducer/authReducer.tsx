@@ -2,7 +2,6 @@ import { State, Action } from './config';
 
 function authReducer(state: State = {
     error: null,
-    errors: null
 
 }, action: Action) {
 
@@ -11,7 +10,7 @@ function authReducer(state: State = {
             return { ...state, errors: null };
 
         case "USER_REGISTRATION_REJECTED":
-            return { ...state, errors: action.payload.errors };
+            return { ...state, errors: action.payload.error };
 
         case "USER_LOGIN_FULFILLED":
             return { ...state, errors: null };
@@ -23,7 +22,7 @@ function authReducer(state: State = {
             return { ...state, errors: null };
 
         case "USER_LOGOUT_REJECTED":
-            return { ...state, errors: action.payload.errors };
+            return { ...state, error: action.payload.error };
 
         default:
             return { ...state };

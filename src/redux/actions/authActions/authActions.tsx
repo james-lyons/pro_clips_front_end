@@ -14,7 +14,6 @@ const userRegister = (newUser: NewUser) => {
             );
 
             const data = await res.json();
-            console.log('Hello from userRegister: data', data)
 
             if (data.status >= 400) {
                 return dispatch({ type: 'USER_REGISTRATION_REJECTED', payload: data });
@@ -41,11 +40,8 @@ const userLogin = (user: User) => {
 
             const data = await res.json();
 
-            console.log('Hello from userlogin 1: data', data)
 
             if (data.status >= 400) {
-                console.log('Hello from user login: error 1', data)
-
                 dispatch({ type: 'USER_LOGIN_REJECTED', payload: data });
                 return { error: data.error };
             };

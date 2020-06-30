@@ -11,7 +11,7 @@ class Register extends React.PureComponent<Props, State> {
         email: "",
         password: "",
         password2: "",
-        errors: null
+        error: null
     };
 
     private handleChange = (event: Event) => {
@@ -29,35 +29,32 @@ class Register extends React.PureComponent<Props, State> {
         const loginCredentials = { email, password };
 
         if (password.length < 6) {
-            this.setState({ errors: [{ message: 'Password must be at least 6 characters long' }]});
+            this.setState({ error: { message: 'Password must be at least 6 characters long' }});
             return;
 
         } else if (password2.length < 6) {
-            this.setState({ errors: [{ message: 'Password must be at least 6 characters long' }]});
+            this.setState({ error: { message: 'Password must be at least 6 characters long' }});
             return;
 
         } else if (password !== password2) {
-            this.setState({ errors: [{ message: 'Password must match' }]});
+            this.setState({ error: { message: 'Password must match' }});
             return;
         };
 
         const res: Response = await userRegister(newUser);
 
         if (res.type === 'USER_REGISTRATION_REJECTED') {
-            this.setState({
-                errors: res.payload.errors,
-            })
+            this.setState({ error: res.payload.error })
             return;
 
         } else if (res.type === 'USER_REGISTRATION_FULFILLED') {
             const res2: Response = await userLogin(loginCredentials);
 
-            await this.setState({ errors: null });
+            await this.setState({ error: null });
 
             if (res2.type === 'USER_LOGIN_REJECTED') {
-                this.setState({
-                    errors: res.payload.errors,
-                })
+                this.setState({ error: res.payload.error })
+
                 return;
             };
         };
@@ -66,7 +63,7 @@ class Register extends React.PureComponent<Props, State> {
 
     render() {
 
-        const { username, email, password, password2, errors } = this.state;
+        const { username, email, password, password2, error } = this.state;
 
         return (
             <>
@@ -75,7 +72,7 @@ class Register extends React.PureComponent<Props, State> {
                     username={ username }
                     password={ password }
                     password2={ password2 }
-                    errors={ errors }
+                    error={ error }
                     handleChange={ this.handleChange }
                     handleSubmit={ this.handleSubmit }
                 />

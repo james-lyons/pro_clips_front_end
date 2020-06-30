@@ -14,21 +14,21 @@ class LikeReply extends React.PureComponent<Props, State> {
     };
 
     private likeReplySubmit = async (reply: Reply, clipId: string) => {
-        const { likeReply, fetchComments, comments } = this.props;
+        const { likeReply, fetchComments } = this.props;
         
         await likeReply(reply._id);
         await fetchComments(clipId);
 
-        this.setState({ comments });
+        this.setState({ comments: this.props.comments });
     };
 
     private unlikeReplySubmit = async (reply: Reply, clipId: string) => {
-        const { unlikeReply, fetchComments, comments } = this.props;
+        const { unlikeReply, fetchComments } = this.props;
 
         await unlikeReply(reply._id);
         await fetchComments(clipId);
 
-        this.setState({ comments });
+        this.setState({ comments: this.props.comments });
     };
 
     renderLikeButton = (reply: Reply, clipId: string) => {

@@ -12,21 +12,21 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
     };
 
     likeCommentSubmit = async (comment: Comment) => {
-        await this.props.likeComment(comment._id);
-        await this.props.fetchComments(comment.clip_id);
+        const { likeComment, fetchComments } = this.props;
+
+        await likeComment(comment._id);
+        await fetchComments(comment.clip_id);
         
-        this.setState({
-            comments: this.props.comments
-        });
+        this.setState({ comments: this.props.comments });
     };
 
     unlikeCommentSubmit = async (comment: Comment) => {
-        await this.props.unlikeComment(comment._id);
-        await this.props.fetchComments(comment.clip_id);
+        const { unlikeComment, fetchComments } = this.props;
 
-        this.setState({
-            comments: this.props.comments
-        });
+        await unlikeComment(comment._id);
+        await fetchComments(comment.clip_id);
+
+        this.setState({ comments: this.props.comments });
     };
 
     renderLikeButton = (comment: Comment) => {
@@ -61,10 +61,11 @@ class LikeCommentComp extends React.PureComponent<Props, State> {
     render() {
 
         const { renderLikeButton } = this;
+        const { comment } = this.props;
 
         return (
             <>
-                { renderLikeButton(this.props.comment) }
+                { renderLikeButton(comment) }
             </>
         );
     };

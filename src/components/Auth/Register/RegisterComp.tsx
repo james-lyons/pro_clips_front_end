@@ -7,7 +7,7 @@ const RegisterComp: React.SFC<Props> = ({
     username,
     password,
     password2,
-    errors,
+    error,
     handleChange,
     handleSubmit
 }) => {
@@ -20,12 +20,11 @@ const RegisterComp: React.SFC<Props> = ({
             >
                 <h1>Sign up</h1>
                 {
-                    errors && errors.map((error, i) => (
-                        <Message negative key={ i } size='small'>
-                            <Message.Header>{ error.message }</Message.Header>
-                            <p>Please try again</p>
-                        </Message>
-                    ))
+                    error && 
+                    <Message size='small'>
+                        <Message.Header>{ error.message }</Message.Header>
+                        <p>Please try again</p>
+                    </Message>
                 }
 
                 <Form.Input

@@ -3,8 +3,6 @@ import API_URL from '../../../constants';
 const createReply = (replyText: string, commentId: string) => {
     let replyBody = { replyText }
     
-    console.log('HELLO 1 FROM CREATEREPLY', replyBody)
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/replies/${ commentId }`,
@@ -18,12 +16,9 @@ const createReply = (replyText: string, commentId: string) => {
 
             const data = await res.json();
 
-            console.log('HELLO 1 FROM CREATEREPLY', data)
-
             return dispatch({ type: 'CREATE_REPLY_FULFILLED', payload: data });
 
         } catch (error) {
-            console.log(error);
             return dispatch({ type: 'CREATE_REPLY_REJECTED', payload: error });
         };
     };
@@ -44,14 +39,13 @@ const deleteReply = (replyId: string) => {
             return dispatch({ type: 'FETCH_REPLYS_FULFILLED', payload: data.data });
 
         } catch (error) {
-            console.log(error);
             return dispatch({ type: 'DELETE_REPLY_REJECTED', payload: error });
         };
     };
 };
 
 const likeReply = (replyId: string) => {
-    console.log('hello');
+
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/replies/like/${ replyId }`,
@@ -61,17 +55,16 @@ const likeReply = (replyId: string) => {
                 }
             );
 
-            const data = await res.json();
-            return dispatch({ type: 'UNLIKE_REPLY_FULFILLED', payload: data });
+            return dispatch({ type: 'LIKE_REPLY_FULFILLED' });
 
         } catch (error) {
-            console.log(error);
             return dispatch({ type: 'LIKE_REPLY_REJECTED', payload: error });
         };
     };
 };
 
 const unlikeReply = (replyId: string) => {
+
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/replies/unlike/${ replyId }`,
@@ -81,11 +74,9 @@ const unlikeReply = (replyId: string) => {
                 }
             );
 
-            const data = await res.json();
-            return dispatch({ type: 'UNLIKE_REPLY_FULFILLED', payload: data });
+            return dispatch({ type: 'UNLIKE_REPLY_FULFILLED' });
 
         } catch (error) {
-            console.log(error);
             return dispatch({ type: 'UNLIKE_REPLY_REJECTED', payload: error });
         };
     };

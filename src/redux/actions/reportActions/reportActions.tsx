@@ -14,9 +14,6 @@ const reportUser = (
         report_description
     };
 
-    console.log('hello from reportUser 1a: body', body);
-    console.log('hello from reportUser 1b: body.json', JSON.stringify(body));
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/report/user`,
@@ -29,12 +26,10 @@ const reportUser = (
         );
 
         const data = await res.json();
-        console.log('hello from reportUser 1: data', data);
 
         return dispatch({ type: 'REPORT_USER_FULFILLED', payload: data });
 
         } catch (error) {
-            console.log('Hello from reportUser: error', error);
             return dispatch({ type: 'REPORT_USER_FAILED', payload: error })
         };
     };
@@ -56,9 +51,6 @@ const reportClip = (
         report_description
     };
 
-    console.log('hello from reportUser 1a: body', body);
-    console.log('hello from reportUser 1b: body.json', JSON.stringify(body));
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/report/clip`,
@@ -71,12 +63,10 @@ const reportClip = (
         );
 
         const data = await res.json();
-        console.log('hello from reportUser 1: data', data);
 
         return dispatch({ type: 'REPORT_USER_FULFILLED', payload: data });
 
         } catch (error) {
-            console.log('Hello from reportUser: error', error);
             return dispatch({ type: 'REPORT_USER_FAILED', payload: error })
         };
     };
@@ -100,9 +90,6 @@ const reportReply = (
         report_description
     };
 
-    console.log('hello from reportUser 1a: body', body);
-    console.log('hello from reportUser 1b: body.json', JSON.stringify(body));
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/report/reply`,
@@ -115,12 +102,10 @@ const reportReply = (
         );
 
         const data = await res.json();
-        console.log('hello from reportUser 1: data', data);
 
         return dispatch({ type: 'REPORT_USER_FULFILLED', payload: data });
 
         } catch (error) {
-            console.log('Hello from reportUser: error', error);
             return dispatch({ type: 'REPORT_USER_FAILED', payload: error })
         };
     };
@@ -144,9 +129,6 @@ const reportComment = (
         report_description
     };
 
-    console.log('hello from reportUser 1a: body', body);
-    console.log('hello from reportUser 1b: body.json', JSON.stringify(body));
-
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/report/comment`,
@@ -159,12 +141,10 @@ const reportComment = (
         );
 
         const data = await res.json();
-        console.log('hello from reportUser 1: data', data);
 
         return dispatch({ type: 'REPORT_USER_FULFILLED', payload: data });
 
         } catch (error) {
-            console.log('Hello from reportUser: error', error);
             return dispatch({ type: 'REPORT_USER_FAILED', payload: error })
         };
     };

@@ -14,7 +14,6 @@ class ReportComment extends React.PureComponent<Props, State> {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state);
     };
 
     private handleSubmit = () => {

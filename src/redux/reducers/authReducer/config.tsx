@@ -1,6 +1,5 @@
 interface State {
     error: null | Error,
-    errors: null | Array<Error>
 };
 
 interface Action {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Comment, Header, Grid, Image } from 'semantic-ui-react';
+import { Comment, Grid, Image } from 'semantic-ui-react';
 import { Props, CommentI, ReduxProps } from './config';
 import { likeComment, unlikeComment } from '../../../redux/actions/commentActions/commentActions';
 import CommentActions from '../../../containers/Comments/CommentActions/CommentActions';
@@ -43,7 +43,6 @@ const CommentsComp: React.SFC<Props> = ({
                     </Comment.Author>
                     <Comment.Text>
                         { comment.comment_text }
-
                     </Comment.Text>
                     
                     <LikeCommentComp comment={ comment }/>

@@ -14,15 +14,12 @@ class ReportClip extends React.PureComponent<Props, State> {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state);
     };
 
     private handleSubmit = () => {
         event.preventDefault();
         const { report_reason, report_description } = this.state;
         const { offender, reporter, clip_id, reportClip } = this.props;
-
-        console.log('hello', this.props, this.state);
 
         reportClip(offender, reporter, clip_id, report_reason, report_description);
     };
