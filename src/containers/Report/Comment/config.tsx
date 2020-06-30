@@ -8,7 +8,7 @@ interface Props {
     reporter: string,
     comment_id: string,
     report_text: string,
-    reportReply: (
+    reportComment: (
         offender: string,
         reporter: string,
         comment_id: string,

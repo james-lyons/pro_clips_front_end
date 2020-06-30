@@ -13,24 +13,29 @@ const ClipActions: React.SFC<Props> = ({
 
     const userActions = () => {
         return (
-            <Dropdown
-                basic
-                floating
-                size='mini'
-                direction='left'
-                icon='ellipsis vertical'
-                className='icon'
-            >
-            <Dropdown.Menu>
-                <Dropdown.Item>
-                    <ReportClip
-                        offender={ clip.poster }
-                        reporter={ userId }
-                        clip_id={ clip._id }
-                    />
-                </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+            <>
+                {
+                    userId &&
+                    <Dropdown
+                        basic
+                        floating
+                        size='mini'
+                        direction='left'
+                        icon='ellipsis vertical'
+                        className='icon'
+                    >
+                        <Dropdown.Menu>
+                            <Dropdown.Item>
+                                <ReportClip
+                                    offender={ clip.poster }
+                                    reporter={ userId }
+                                    clip_id={ clip._id }
+                                />
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                }
+            </>
         );
     };
 

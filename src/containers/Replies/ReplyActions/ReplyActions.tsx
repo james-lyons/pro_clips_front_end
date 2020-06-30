@@ -19,25 +19,30 @@ class DeleteComment extends React.PureComponent <Props> {
 
         const userActions = () => {
             return (
-                <Dropdown
-                    basic
-                    floating
-                    size='mini'
-                    direction='left'
-                    icon='ellipsis vertical'
-                    className='icon'
-                >
-                <Dropdown.Menu>
-                    <Dropdown.Item>
-                        <ReportReply
-                            offender={ reply.author_id }
-                            reporter={ reporter }
-                            reply_id={ reply._id }
-                            report_text={ reply.reply_text }
-                        />
-                    </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                <>
+                    {
+                        reporter &&
+                        <Dropdown
+                            basic
+                            floating
+                            size='mini'
+                            direction='left'
+                            icon='ellipsis vertical'
+                            className='icon'
+                        >
+                            <Dropdown.Menu>
+                                <Dropdown.Item>
+                                    <ReportReply
+                                        offender={ reply.author_id }
+                                        reporter={ reporter }
+                                        reply_id={ reply._id }
+                                        report_text={ reply.reply_text }
+                                    />
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    }
+                </>
             );
         };
     
