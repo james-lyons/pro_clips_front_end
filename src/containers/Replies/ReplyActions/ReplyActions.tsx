@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
 import { deleteReply } from '../../../redux/actions/replyActions/replyActions';
 import { fetchComments } from '../../../redux/actions/commentActions/commentActions';
+import ReportReply from '../../../containers/Report/Reply/ReportReply';
 
 class DeleteComment extends React.PureComponent <Props> {
 
@@ -14,17 +15,27 @@ class DeleteComment extends React.PureComponent <Props> {
 
     render() {
 
+        const reporter = localStorage.getItem('uid');
+
         const userActions = () => {
             return (
                 <Dropdown
                     basic
                     floating
                     size='mini'
+                    direction='left'
                     icon='ellipsis vertical'
                     className='icon'
                 >
                 <Dropdown.Menu>
-                    <Dropdown.Item icon='attention' text='Report' />
+                    <Dropdown.Item>
+                        <ReportReply
+                            offender={ reply.author_id }
+                            reporter={ reporter }
+                            reply_id={ reply._id }
+                            report_text={ reply.reply_text }
+                        />
+                    </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             );
@@ -36,6 +47,7 @@ class DeleteComment extends React.PureComponent <Props> {
                     basic
                     floating
                     size='mini'
+                    direction='left'
                     icon='ellipsis vertical'
                     className='icon'
                 >

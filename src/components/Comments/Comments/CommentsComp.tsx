@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Comment, Header, Grid, Image } from 'semantic-ui-react';
 import { Props, CommentI, ReduxProps } from './config';
 import { likeComment, unlikeComment } from '../../../redux/actions/commentActions/commentActions';
-import DeleteComment from '../../../containers/Comments/DeleteComment/deleteComment';
+import CommentActions from '../../../containers/Comments/CommentActions/CommentActions';
 import LikeCommentComp from '../../../containers/Comments/LikeComment/LikeComment';
 import ReplyForm from '../../../containers/Replies/ReplyForm/ReplyForm';
 import Replies from '../../../containers/Replies/Replies/Replies';
@@ -25,7 +25,7 @@ const CommentsComp: React.SFC<Props> = ({
         const commentArray = comments.map((comment) =>
             <Comment key={ comment._id }>
                 <Grid.Column floated='right'>
-                    <DeleteComment comment={ comment } clipId={ clip._id } />
+                    <CommentActions comment={ comment } clipId={ clip._id } />
                 </Grid.Column>
 
                 <Image
@@ -41,8 +41,11 @@ const CommentsComp: React.SFC<Props> = ({
                     <Comment.Author as={ Link } to={`/${ comment.author_name }`}>
                         { comment.author_name }
                     </Comment.Author>
-                    <Comment.Text>{ comment.comment_text }</Comment.Text>
+                    <Comment.Text>
+                        { comment.comment_text }
 
+                    </Comment.Text>
+                    
                     <LikeCommentComp comment={ comment }/>
                     <span
                         className='reply-button'
@@ -50,6 +53,7 @@ const CommentsComp: React.SFC<Props> = ({
                     >
                         Reply
                     </span>
+
 
                 </Comment.Content>
 

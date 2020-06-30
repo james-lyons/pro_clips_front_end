@@ -35,15 +35,15 @@ function userReducer(state: State = {
             return {
                 ...state,
                 currentUser: {
-                    username: action.payload.data.username,
+                    id: action.payload.data._id,
                     bio: action.payload.data.bio,
-                    profile_image: action.payload.data.profile_image,
                     email: action.payload.data.email,
                     clips: action.payload.data.clips,
+                    username: action.payload.data.username,
                     comments: action.payload.data.comments,
                     followers: action.payload.data.followers,
                     following: action.payload.data.following,
-                    id: action.payload.data._id,
+                    profile_image: action.payload.data.profile_image,
                 },
                 errors: null,
             };
@@ -55,6 +55,7 @@ function userReducer(state: State = {
             return {
                 ...state,
                 user: {
+                    id: action.payload.data._id,
                     username: action.payload.data.username,
                     bio: action.payload.data.bio,
                     profile_image: action.payload.data.profile_image,
@@ -73,15 +74,15 @@ function userReducer(state: State = {
             return {
                     ...state,
                     currentUser: {
-                        username: action.payload.username,
+                        id: action.payload._id,
                         bio: action.payload.bio,
-                        profile_image: action.payload.profile_image,
                         email: action.payload.email,
                         clips: action.payload.clips,
+                        username: action.payload.username,
                         comments: action.payload.comments,
                         followers: action.payload.followers,
                         following: action.payload.following,
-                        id: action.payload._id,
+                        profile_image: action.payload.profile_image,
                     },
                     errors: action.payload.errors
                 }
@@ -117,13 +118,14 @@ function userReducer(state: State = {
             return {
                 ...state,
                 user: {
-                    username: action.payload.data.username,
+                    isFollowed: true,
+                    id: action.payload.data._id,
                     bio: action.payload.data.bio,
-                    profile_image: action.payload.data.profile_image,
                     clips: action.payload.data.clips,
+                    username: action.payload.data.username,
                     followers: action.payload.data.followers,
                     following: action.payload.data.following,
-                    isFollowed: true
+                    profile_image: action.payload.data.profile_image,
                 }
             };
 
@@ -131,13 +133,14 @@ function userReducer(state: State = {
             return {
                 ...state,
                 user: {
-                    username: action.payload.data.username,
+                    isFollowed: false,
+                    id: action.payload.data._id,
                     bio: action.payload.data.bio,
-                    profile_image: action.payload.data.profile_image,
                     clips: action.payload.data.clips,
+                    username: action.payload.data.username,
                     followers: action.payload.data.followers,
                     following: action.payload.data.following,
-                    isFollowed: false
+                    profile_image: action.payload.data.profile_image,
                 }
             };
 

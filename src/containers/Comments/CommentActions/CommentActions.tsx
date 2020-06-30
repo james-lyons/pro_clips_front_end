@@ -3,6 +3,7 @@ import { Props } from './config';
 import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
 import { deleteComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
+import ReportComment from '../../Report/Comment/ReportComment';
 
 class DeleteComment extends React.PureComponent<Props> {
 
@@ -24,11 +25,19 @@ class DeleteComment extends React.PureComponent<Props> {
                     basic
                     floating
                     size='mini'
+                    direction='left'
                     icon='ellipsis vertical'
                     className='icon'
                 >
                 <Dropdown.Menu>
-                    <Dropdown.Item icon='attention' text='Report' />
+                    <Dropdown.Item>
+                        <ReportComment
+                            offender={ comment.author_id }
+                            reporter={ userId }
+                            comment_id={ comment._id }
+                            report_text={ comment.comment_text }
+                        />
+                    </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             );
@@ -40,6 +49,7 @@ class DeleteComment extends React.PureComponent<Props> {
                     basic
                     floating
                     size='mini'
+                    direction='left'
                     icon='ellipsis vertical'
                     className='icon'
                 >

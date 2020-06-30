@@ -1,9 +1,5 @@
 import API_URL from '../../../constants';
 
-const fetchReplies = () => {
-    console.log('hi');
-};
-
 const createReply = (replyText: string, commentId: string) => {
     let replyBody = { replyText }
     
@@ -96,7 +92,6 @@ const unlikeReply = (replyId: string) => {
 };
 
 export {
-    fetchReplies,
     createReply,
     deleteReply,
     likeReply,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Props } from './config';
 import { Dropdown } from 'semantic-ui-react';
+import ReportClip from '../../../../containers/Report/Clip/ReportClip';
 
 const ClipActions: React.SFC<Props> = ({
     clip,
@@ -16,11 +17,18 @@ const ClipActions: React.SFC<Props> = ({
                 basic
                 floating
                 size='mini'
+                direction='left'
                 icon='ellipsis vertical'
                 className='icon'
             >
             <Dropdown.Menu>
-                <Dropdown.Item icon='attention' text='Report' />
+                <Dropdown.Item>
+                    <ReportClip
+                        offender={ clip.poster }
+                        reporter={ userId }
+                        clip_id={ clip._id }
+                    />
+                </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         );
@@ -32,6 +40,7 @@ const ClipActions: React.SFC<Props> = ({
                 basic
                 floating
                 size='mini'
+                direction='left'
                 icon='ellipsis vertical'
                 className='icon'
             >

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Props, Reply } from './config';
 import { Comment, Grid, Image } from 'semantic-ui-react';
 import { likeReply, unlikeReply } from '../../../redux/actions/replyActions/replyActions';
-import DeleteReply from '../../../containers/Replies/DeleteReply/deleteReply';
+import ReplyActions from '../../../containers/Replies/ReplyActions/ReplyActions';
 import LikeReply from '../../../containers/Replies/LikeReply/LikeReply';
 
 const RepliesComp: React.SFC<Props> = ({
@@ -26,7 +26,7 @@ const RepliesComp: React.SFC<Props> = ({
                 />
 
                 <Grid.Column floated='right'>
-                    <DeleteReply reply={ reply } clipId={ clipId } />
+                    <ReplyActions reply={ reply } clipId={ clipId } />
                 </Grid.Column>
 
                 <Comment.Content className='comment-content-container'>

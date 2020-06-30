@@ -13,35 +13,35 @@ const HomeComp: React.SFC<{}> = ({}) => {
             </div>
 
             <Grid stackable columns={ 5 }>
-                <Grid.Column>
+                <Grid.Column className='column-item'>
                     <Image
                         as={ Link }
                         to={`/browseClips/Apex%20Legends`}
                         src="https://static-cdn.jtvnw.net/ttv-boxart/Apex%20Legends-285x380.jpg"
                     />
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className='column-item'>
                     <Image
                         as={ Link }
                         to={`/browseClips/League%20of%20Legends`}
                         src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends-285x380.jpg"
                     />
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className='column-item'>
                     <Image
                         as={ Link }
                         to={`/browseClips/VALORANT`}
                         src="https://static-cdn.jtvnw.net/ttv-boxart/VALORANT-285x380.jpg"
                     />
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className='column-item'>
                     <Image
                         as={ Link }
                         to={`/browseClips/Call%20of%20Duty:%20Modern%20Warfare`}
                         src="https://static-cdn.jtvnw.net/ttv-boxart/Call%20of%20Duty:%20Modern%20Warfare-285x380.jpg"
                     />
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column className='column-item'>
                     <Image
                         as={ Link }
                         to={`/browseClips/Fortnite`}
@@ -49,8 +49,6 @@ const HomeComp: React.SFC<{}> = ({}) => {
                     />
                 </Grid.Column>
             </Grid>
-
-            {/* <Footer /> */}
         </>
     );
 };

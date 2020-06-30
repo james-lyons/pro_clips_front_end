@@ -9,7 +9,7 @@ const BrowseClipsComponent: React.SFC<{}> = () => {
     const gridMapper = (gridItems: Array<string>) => {
 
         const gridArray = gridItems.map((gridItem) => 
-            <Grid.Column key={ gridItem } className='browser-clips-column'>
+            <Grid.Column key={ gridItem } className='browser-clips-column column-item'>
                 <Image
                     as={ Link }
                     to={`/browseclips/${ gridItem }`}

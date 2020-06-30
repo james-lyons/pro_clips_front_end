@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Props, State, Event } from './config';
 import { Segment, Responsive } from 'semantic-ui-react';
 import { fetchCurrentUser } from '../../redux/actions/userActions/userActions';
-import NavBarComp from '../../components/NavBar/NavBarComp';
 import MobileNavBarComp from '../../components/NavBar/MobileNavBarComp';
+import NavBarComp from '../../components/NavBar/NavBarComp';
 
 class NavBar extends React.PureComponent<Props, State> {
 
@@ -37,14 +37,14 @@ class NavBar extends React.PureComponent<Props, State> {
         return (
             <>
               <Segment.Group style={{ border: 'none', boxShadow: 'none' }}>
-                <Responsive as={ Segment } minWidth={ 700 } style={{ padding: 0 }}>
+                <Responsive minWidth={ 700 }>
                     <NavBarComp
                         activeItem={ activeItem }
                         handleSelect={ handleSelect }
                     />
                 </Responsive>
 
-                <Responsive as={ Segment } maxWidth={ 699 } style={{ padding: 0 }}>
+                <Responsive maxWidth={ 699 }>
                     <MobileNavBarComp
                         visible={ visible }
                         activeItem={ activeItem }

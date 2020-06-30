@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Props, ReduxState } from './config';
 import { Container, Grid, Image, Menu, Responsive } from 'semantic-ui-react';
 import FollowButton from '../FollowButton/FollowButton';
+import ReportUser from '../../../../containers/Report/User/ReportUser';
 import EditProfileButton from '../EditProfileButton/EditProfileButton';
 import FollowersList from '../../../../containers/FollowLists/FollowerList/FollowersList';
 import FollowingList from '../../../../containers/FollowLists/FollowingList/FollowingList';
@@ -15,7 +16,8 @@ const ProfileComp: React.SFC<Props> = ({
     unfollowUser
 }) => {
 
-    const { username, profile_image, clips, bio } = user;
+    const { id, bio, username, profile_image, clips } = user;
+    const userId = localStorage.getItem('uid');
  
     return (
         <>
@@ -36,6 +38,12 @@ const ProfileComp: React.SFC<Props> = ({
                                     isFollowed={ isFollowed }
                                     followUser={ followUser }
                                     unfollowUser={ unfollowUser }
+                                />
+                            }
+                            {   userId && user.id !== userId &&
+                                <ReportUser
+                                    offender={ id  }
+                                    reporter={ userId }
                                 />
                             }
                         </Grid.Row>

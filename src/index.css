@@ -1,10 +1,6 @@
 html, body {
     min-height: 100% !important;
-    min-width: 100% !important
-}
-
-.navbar-menu-ui:after {
-    content: none !important
+    min-width: 100% !important;
 }
 
 .ui.grid {
@@ -15,6 +11,28 @@ html, body {
     min-height: 100vh !important;
     min-width: 100vw !important;
     position: relative;
+}
+
+
+/* ------------------------- Navbar ------------------------ */
+
+
+
+.navbar-segment {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.wide-screen-nav{
+    justify-content: space-between;
+    border-radius: 0;
+}
+
+.navbar-menu-ui:after {
+    content: none !important
 }
 
 
@@ -34,6 +52,10 @@ html, body {
 
 #home-page-h2 {
     font-size: 24px
+}
+
+.column-item {
+    text-align: center;
 }
 
 
@@ -81,10 +103,10 @@ html, body {
 
 #clip-upload-container {
     width: 35%;
-    border: 1px solid grey;
+    margin: 10% 0;
     padding: 1.5rem;
     border-radius: 5px;
-    margin: 8rem 0
+    border: 1px solid grey;
 }
 
 
@@ -122,6 +144,19 @@ html, body {
     margin-left: .6rem
 }
 
+#report-icon {
+    margin-left: 2rem;
+    cursor: pointer
+}
+
+.report-form {
+    padding: 1rem !important;
+}
+
+.report-form-button {
+    margin-bottom: 1rem !important;
+}
+
 .profile-follow-button {
     margin-left: 2rem !important
 }
@@ -157,7 +192,6 @@ html, body {
     padding-bottom: 8rem;
 }
 
-
 #profile-clips-game-select {
     margin: 0 auto;
     text-align: center
@@ -168,7 +202,7 @@ html, body {
 }
 
 .profile-clips-card {
-    color: black
+    color: black;
 }
 
 .profile-clips-card-description {
@@ -286,11 +320,14 @@ html, body {
 
 .like-button {
     cursor: pointer;
-    margin: 0 5px
 }
 
 .reply-button {
     cursor: pointer;
+}
+
+.comment-content-container {
+    padding-left: 3.4rem;
 }
 
 
@@ -395,10 +432,16 @@ html, body {
 
 
     #clip-upload-container {
-        margin-top: 30%;
+        margin-top: 25rem;
         width: 55%
     }
 }
+
+
+
+/* ------------------------ MEDIA QUERIES ------------------------ */
+
+
 
 @media only screen and (max-width: 767px) {
     #follower-modal {
@@ -441,6 +484,19 @@ html, body {
     /* --------------------- Profile --------------------- */
 
 
+    #profile-row-1 {
+        margin-left: 0 !important
+    }
+
+    #report-icon {
+        margin-left: 1rem;
+        cursor: pointer
+    }
+    
+    .profile-follow-button {
+        margin-left: 1rem !important
+    }
+
     .profile-bio-p {
         padding: 0 .8rem
     }
@@ -457,6 +513,10 @@ html, body {
         max-width: 95% !important;
     }
 
+    .profile-clips-card {
+        margin: 3.5rem auto !important
+    }
+
     .profile-menu-item {
         margin: 0;
         padding: 10px 5px !important
@@ -468,7 +528,33 @@ html, body {
     }
 
 
+    /* ------------------ Browser Clips ------------------ */
+
+
+    .browser-clips-image {
+        margin: .75rem auto;
+    }
+
+
+    /* -------------------- Clip Page -------------------- */
+
+
+    #clip-page-card {
+        width: 95%;
+    }
+
+
+    /* ------------------- Clip Upload -------------------- */
+
+
+    #clip-upload-container {
+        margin: 40% auto !important;
+        width: 80% !important;
+    }
+
+
     /* ----------------- Profile Settings ----------------- */
+
 
     #edit-profile-img {
         margin-top: .8rem;
