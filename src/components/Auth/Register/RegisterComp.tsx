@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
+import { Form, Button, Message, Header } from 'semantic-ui-react';
 import { Props } from './config';
 
 const RegisterComp: React.SFC<Props> = ({
@@ -12,13 +12,20 @@ const RegisterComp: React.SFC<Props> = ({
     handleSubmit
 }) => {
 
+    const theme = localStorage.getItem('theme');
+    const styles = {
+        light: 'register-form',
+        dark: 'register-form-dark'
+    }
+
     return (
         <>
             <Form
-                id='register-form'
                 onSubmit={ handleSubmit }
+                inverted={ theme === 'dark' }
+                id={ theme === 'dark' ? styles.dark : styles.light }
             >
-                <h1>Sign up</h1>
+                <Header as='h1' inverted={ theme === 'dark' }>Sign up</Header>
                 {
                     error && 
                     <Message size='small'>
@@ -64,7 +71,12 @@ const RegisterComp: React.SFC<Props> = ({
                     onChange={ handleChange }
                 />
                 
-                <Button basic color='black' type="submit">
+                <Button
+                    basic
+                    color='black'
+                    type='submit'
+                    inverted={ theme === 'dark' }
+                >
                     Submit
                 </Button>
             </Form>

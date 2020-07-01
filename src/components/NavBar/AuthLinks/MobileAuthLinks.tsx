@@ -15,13 +15,18 @@ const MobileAuthLinks: React.SFC<Props> = ({
     setVisibility
 }) => {
 
+    const theme = localStorage.getItem('theme');
     const currentUserId = localStorage.getItem('uid');
 
     return (
-        <Segment className='navbar-segment'>
+        <Segment
+            className='navbar-segment'
+            inverted={ theme === 'dark' }
+        >
             <Menu
-                secondary
                 size='small'
+                secondary
+                inverted={ theme === 'dark' }
                 className='navbar-menu-ui wide-screen-nav'
             >
                 <Sidebar

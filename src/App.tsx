@@ -5,33 +5,21 @@ import Footer from './components/Footer/Footer';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
-interface State {
-    theme: string
-};
-
-interface Props {
-    history: {
-        push(url: string): void
-    };
-};
-
 const styles = {
-    light: { minHeight: '100%' },
-    dark: {
-        minHeight: '100%',
-        color: '#DADADA',
-        background: '#1c2022'
-    }
-}
+    light: 'app-container-light',
+    dark: 'app-container-dark'
+};
 
-class App extends React.PureComponent<Props, State> {
+class App extends React.PureComponent<{}> {
 
     render() {
+
+        const theme = localStorage.getItem('theme');
 
         return (
             <>
                 <div>
-                    <div id='app-container'>
+                    <div id={ theme === 'dark' ? styles.dark : styles.light }>
                         <NavBar />
                         <Routes />
                         <Footer />

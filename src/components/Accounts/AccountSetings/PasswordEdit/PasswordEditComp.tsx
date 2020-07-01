@@ -10,10 +10,14 @@ const PasswordEditComp: React.SFC<Props> = ({
     handleChange,
     editPasswordSubmit
 }) => {
+
+    const theme = localStorage.getItem('theme');
+
     return (
         <>
             <Form
                 id='edit-password-form'
+                inverted={ theme === 'dark' }
                 onSubmit={ editPasswordSubmit }
             >
 
@@ -60,7 +64,12 @@ const PasswordEditComp: React.SFC<Props> = ({
                 </Form.Field>
 
                 <Form.Button
-                    size='mini' basic color='black' type='submit'>
+                    basic
+                    size='mini'
+                    color='black'
+                    type='submit'
+                    inverted={ theme === 'dark' }
+                >
                         Save Changes
                 </Form.Button>
             </Form>

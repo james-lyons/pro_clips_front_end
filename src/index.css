@@ -7,16 +7,45 @@ html, body {
     margin: 0 !important
 }
 
-#app-container {
+#app-container-light {
+    position: relative;
     min-height: 100vh !important;
     min-width: 100vw !important;
+}
+
+#app-container-dark  {
     position: relative;
+    min-height: 100vh !important;
+    min-width: 100vw !important;
+    background-color: #0e0e10 !important;
 }
 
 
 /* ------------------------- Navbar ------------------------ */
 
 
+#navbar-segment-container {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#navbar-header {
+    margin: 0 5px 0 3px;
+    padding: 0
+}
+
+#navbar-icon-2 {
+    margin-left: 3px
+}
+
+#navbar-menu-header {
+    margin-right: 3rem;
+}
+
+#navbar-dropdown-icon {
+    margin-right: 10px
+}
 
 .navbar-segment {
     margin: 0 !important;
@@ -45,13 +74,11 @@ html, body {
 }
 
 #home-page-h1 {
-    line-height: 1;
-    font-size: 74px;
-    font-weight: 700
+    font-size: 5rem
 }
 
 #home-page-h2 {
-    font-size: 24px
+    font-size: 1.75rem
 }
 
 .column-item {
@@ -89,10 +116,26 @@ html, body {
     padding: 1.2rem
 }
 
+#login-form-dark {
+    margin: 8rem auto 0;
+    width: 35%;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding: 1.2rem
+}
+
 #register-form {
     width: 35%;
     margin: 7rem auto 0;
     border: 1px solid black;
+    border-radius: 5px;
+    padding: 1.2rem
+}
+
+#register-form-dark {
+    width: 35%;
+    margin: 7rem auto 0;
+    border: 1px solid whitesmoke;
     border-radius: 5px;
     padding: 1.2rem
 }
@@ -400,6 +443,14 @@ html, body {
 
 .account-setting-menu-item {
     margin: 1rem 0 !important
+}
+
+
+/* ----------------- Webite Settings ----------------- */
+
+
+#settings-com-container {
+    margin-top: 3rem
 }
 
 

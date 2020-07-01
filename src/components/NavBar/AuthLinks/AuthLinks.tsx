@@ -2,7 +2,7 @@ import React from 'react';
 import { Props } from './config';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown, Icon, Segment } from 'semantic-ui-react';
+import { Menu, Dropdown, Icon, Segment, Header } from 'semantic-ui-react';
 import { userLogout } from '../../../redux/actions/authActions/authActions';
 import Search from '../../../containers/Search/Search';
 
@@ -12,17 +12,22 @@ const AuthLinks: React.SFC<Props> = ({
     userLogout,
     handleSelect
 }) => {
-
+    
+    const theme = localStorage.getItem('theme');
     const currentUserId = localStorage.getItem('uid');
 
     return (
-        <Segment className='navbar-segment'>
+        <Segment
+            inverted={ theme === 'dark' }
+            className='navbar-segment'
+        >
             <Menu
                 secondary
                 size='small'
+                inverted={ theme === 'dark' }
                 className='navbar-menu-ui wide-screen-nav'
             >
-                <Menu.Menu style={{ marginRight: '3rem' }}>
+                <Menu.Menu id='navbar-menu-header'>
                     <Menu.Item
                         as={ Link }
                         to='/'
@@ -32,7 +37,7 @@ const AuthLinks: React.SFC<Props> = ({
                     >
                         <Icon name='game' />
                             Clipped
-                        <Icon name='film' style={{ marginLeft: '3px' }}/>
+                        <Icon id='navbar-icon-2' name='film' />
                     </Menu.Item>
                 </Menu.Menu>
                 <Menu.Menu>
@@ -40,6 +45,7 @@ const AuthLinks: React.SFC<Props> = ({
                         as={ Link }
                         to='/popularClips'
                         name='Popular Clips'
+                    
                         active={ activeItem === 'Popular Clips' }
                         onClick={ handleSelect }
                     />
@@ -65,7 +71,7 @@ const AuthLinks: React.SFC<Props> = ({
                         <Icon name='cloud upload' />
                         Upload
                     </Menu.Item>
-                    <Dropdown item icon='bars' direction='left' style={{ marginRight: '10px' }}>
+                    <Dropdown item icon='bars' direction='left' id='navbar-dropdown-icon'>
                         <Dropdown.Menu>
                             <Dropdown.Item
                                 href={ `/${ currentUser.username }` }

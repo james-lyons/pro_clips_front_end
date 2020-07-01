@@ -1,6 +1,6 @@
 import React from 'react';
-import { Form, Button, Message } from 'semantic-ui-react'
 import { Props } from './config';
+import { Form, Button, Message, Header } from 'semantic-ui-react'
 
 const LoginComp: React.SFC<Props> = ({
     email,
@@ -10,10 +10,20 @@ const LoginComp: React.SFC<Props> = ({
     handleSubmit
 }) => {
 
+    const theme = localStorage.getItem('theme');
+    const styles = {
+        light: 'login-form',
+        dark: 'login-form-dark'
+    };
+
     return (
         <>  
-            <Form id='login-form' onSubmit={ handleSubmit }>
-                <h1>Login</h1>  
+            <Form
+                onSubmit={ handleSubmit }
+                inverted={ theme === 'dark' }
+                id={ theme === 'dark' ? styles.dark : styles.light }
+            >
+                <Header as='h2' inverted={ theme === 'dark' }>Login</Header> 
 
                 {
                     error && 
@@ -46,7 +56,12 @@ const LoginComp: React.SFC<Props> = ({
                     />
                 </Form.Field>
 
-                <Button basic color='black' type='submit'>
+                <Button
+                    basic
+                    color='black'
+                    type='submit'
+                    inverted={ theme === 'dark' }
+                >
                     Submit
                 </Button>
             </Form>

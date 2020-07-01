@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 
 const clipMapper = (clips: Array<Clip>) => {
 
+    const theme = localStorage.getItem('theme');
+
     const clipArr = clips.map((clip: Clip) =>
         <Grid.Column key={ clip._id }>
             <Card
@@ -35,11 +37,21 @@ const PopularClipsComp: React.SFC<Props> = ({
     browseClips
 }) => {
 
+    const theme = localStorage.getItem('theme');
+    const styles = {
+        light: 'login-form',
+        dark: 'login-form-dark'
+    };
+
     return (
         <>
             <Grid id='popular-clips-grid-container' container stackable>
 
-                <Header as='h1' className='popular-clip-category-header'>
+                <Header
+                    as='h1'
+                    inverted={ theme === 'dark' }
+                    className='popular-clip-category-header'
+                >
                     <Image
                         rounded
                         as={ Link }
@@ -53,7 +65,11 @@ const PopularClipsComp: React.SFC<Props> = ({
                     { browseClips.ApexLegends && clipMapper(browseClips.ApexLegends) }
                 </Grid.Row>
 
-                <Header as='h1' className='popular-clip-category-header'>
+                <Header
+                    as='h1'
+                    inverted={ theme === 'dark' }
+                    className='popular-clip-category-header'
+                >
                     <Image
                         rounded
                         as={ Link }
@@ -66,8 +82,11 @@ const PopularClipsComp: React.SFC<Props> = ({
                     { browseClips.LeagueOfLegends && clipMapper(browseClips.LeagueOfLegends) }
                 </Grid.Row>
 
-                <Header as='h1' className='popular-clip-category-header'>
-                    <Image
+                <Header
+                    as='h1'
+                    inverted={ theme === 'dark' }
+                    className='popular-clip-category-header'
+                >                    <Image
                         rounded
                         as={ Link }
                         to={`/browseclips/Call%20of%20Duty:%20Modern%20Warfare`}
@@ -79,8 +98,11 @@ const PopularClipsComp: React.SFC<Props> = ({
                     { browseClips.CODWarzone && clipMapper(browseClips.CODWarzone) }
                 </Grid.Row>
 
-                <Header as='h1' className='popular-clip-category-header'>
-                    <Image
+                <Header
+                    as='h1'
+                    inverted={ theme === 'dark' }
+                    className='popular-clip-category-header'
+                >                    <Image
                         rounded
                         as={ Link }
                         to={`/browseclips/Valorant`}
@@ -92,8 +114,11 @@ const PopularClipsComp: React.SFC<Props> = ({
                     { browseClips.Valorant && clipMapper(browseClips.Valorant) }
                 </Grid.Row>
 
-                <Header as='h1' className='popular-clip-category-header'>
-                    <Image
+                <Header
+                    as='h1'
+                    inverted={ theme === 'dark' }
+                    className='popular-clip-category-header'
+                >                    <Image
                         rounded
                         as={ Link }
                         to={`/browseclips/Fortnite`}

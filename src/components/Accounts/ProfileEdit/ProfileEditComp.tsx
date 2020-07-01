@@ -12,6 +12,8 @@ const ProfileEditComp: React.SFC <Props> = ({
     editProfilePictureSubmit
 }) => {
 
+    const theme = localStorage.getItem('theme');
+
     return (
         <>
             <Grid>
@@ -29,6 +31,7 @@ const ProfileEditComp: React.SFC <Props> = ({
                     <Grid.Column width={ 12 }>
                         <Form
                             id='edit-profile-form-1'
+                            inverted={ theme === 'dark' }
                             onSubmit={ editProfilePictureSubmit }
                         >
 
@@ -42,7 +45,13 @@ const ProfileEditComp: React.SFC <Props> = ({
                                 />
                             </Form.Field>
 
-                            <Form.Button basic color='black' size='tiny' type='submit'>
+                            <Form.Button
+                                basic
+                                color='black'
+                                size='tiny'
+                                type='submit'
+                                inverted={ theme === 'dark' }
+                            >
                                 Save Change
                             </Form.Button>
 
@@ -52,8 +61,9 @@ const ProfileEditComp: React.SFC <Props> = ({
 
                 <Grid.Row id='edit-profile-row-2'>
                     <Form
-                         id='edit-profile-form-2'
+                        id='edit-profile-form-2'
                         onSubmit={ editUserSubmit }
+                        inverted={ theme === 'dark' }
                     >
 
                         {
@@ -89,7 +99,15 @@ const ProfileEditComp: React.SFC <Props> = ({
                             />
                         </Form.Field>
 
-                        <Form.Button basic color='black' size='tiny' type='submit'>Save Changes</Form.Button>
+                        <Form.Button
+                            basic
+                            size='tiny'
+                            color='black'
+                            type='submit'
+                            inverted={ theme === 'dark' }
+                        >
+                            Save Changes
+                        </Form.Button>
 
                     </Form>
                 </Grid.Row>

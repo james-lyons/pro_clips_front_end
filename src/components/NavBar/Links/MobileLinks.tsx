@@ -10,11 +10,18 @@ const MobileLinks: React.SFC<Props> = ({
     handleSelect,
     setVisibility
 }) => {
+
+    const theme = localStorage.getItem('theme');
+
     return (
-        <Segment className='navbar-segment'>
+        <Segment
+            className='navbar-segment'
+            inverted={ theme === 'dark' }
+        >
             <Menu
                 secondary
                 size='small'
+                inverted={ theme === 'dark' }
                 className='navbar-menu-ui wide-screen-nav'
             >
                 <Sidebar

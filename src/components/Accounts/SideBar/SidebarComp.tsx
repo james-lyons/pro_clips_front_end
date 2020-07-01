@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
 
 const SidebarComp: React.SFC<Props> = ({ activeItem, handleSelect }) => {
+
+    const theme = localStorage.getItem('theme');
+
     return (
         <>
-            <Menu pointing secondary vertical fluid>
+            <Menu pointing secondary vertical fluid inverted={ theme === 'dark' }>
                 <Menu.Item
                     className='account-setting-menu-item'
                     name='Profile Settings'

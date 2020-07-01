@@ -35,11 +35,16 @@ const GameClipsComp: React.SFC<Props> = ({ gameClips, history }) => {
     };
     
     const path = history.location.pathname.slice(13, history.location.pathname.length);
+    const theme = localStorage.getItem('theme');
 
     return (
         <>
             <Container id='game-clips-container'>
-                <Header as='h1' id='game-clips-header'>
+                <Header
+                    as='h1'
+                    id='game-clips-header'
+                    inverted={ theme === 'dark' }
+                >
                     <Image
                         rounded
                         as={ Link }

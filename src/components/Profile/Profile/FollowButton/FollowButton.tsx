@@ -9,26 +9,46 @@ const FollowButton: React.SFC<Props> = ({
     followUser,
     unfollowUser
 }) => {
+
+    const theme = localStorage.getItem('theme');
     const currentUser = localStorage.getItem('uid');
 
     if (currentUser) {
         if (isFollowed) {
             return (
-                <Button size='mini' basic color='black' className='profile-follow-button'
-                    onClick={ () => unfollowUser(username) }>
+                <Button
+                    basic
+                    size='mini'
+                    color='black'
+                    inverted={ theme === 'dark' }
+                    className='profile-follow-button'
+                    onClick={ () => unfollowUser(username) }
+                >
                         Unfollow
                 </Button> )
         } else {
             return (
-                <Button size='mini' basic color='black' className='profile-follow-button'
-                    onClick={ () => followUser(username) }>
+                <Button
+                    basic
+                    size='mini'
+                    color='black'
+                    inverted={ theme === 'dark' }
+                    className='profile-follow-button'
+                    onClick={ () => followUser(username) }
+                >
                         Follow
                 </Button>
             );
         };
     } else {
         return (
-            <Button size='mini' basic color='black' className='profile-follow-button'>
+            <Button
+                basic
+                size='mini'
+                color='black'
+                inverted={ theme === 'dark' }
+                className='profile-follow-button'
+            >
                 <LoginModal modalName='Follow'/>
             </Button>
         );

@@ -1,15 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image } from 'semantic-ui-react';
-import Footer from '../Footer/Footer';
+import { Grid, Image, Header } from 'semantic-ui-react';
 
 const HomeComp: React.SFC<{}> = ({}) => {
+
+    const theme = localStorage.getItem('theme');
 
     return (
         <>
             <div id='home-page-container-div'>
-                <h1 id='home-page-h1'>Rep yourself</h1>
-                <h2 id='home-page-h2'>Real Gamers, Real Moments</h2>
+                <Header as='h1' inverted={ theme === 'dark' } id='home-page-h1'>
+                    Rep Yourself
+                </Header>
+                <Header as='h3' inverted={ theme === 'dark' } id='home-page-h2'>
+                    Real Gamers, Real Awesome Momentss
+                </Header>
             </div>
 
             <Grid stackable columns={ 5 }>

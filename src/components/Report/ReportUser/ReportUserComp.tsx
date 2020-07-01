@@ -7,10 +7,20 @@ const ReportUserComp: React.SFC<Props> = ({
     handleChange,
     handleSubmit
 }) => {
+
+    const theme = localStorage.getItem('theme');
+
     return (
         <Modal
             size='tiny'
-            trigger={ <Icon color='black' name='cog' id='report-icon' /> }
+            trigger={ 
+                <Icon
+                    name='cog'
+                    color='black'
+                    id='report-icon'
+                    inverted={ theme === 'dark' }
+                />
+            }
         >
             <Modal.Header>Report</Modal.Header>
             <Form className='report-form' onSubmit={ handleSubmit }>

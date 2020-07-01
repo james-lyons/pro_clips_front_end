@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { State, Props, ReduxState, Event } from './config';
 import { fetchCurrentUser, editUserEmail, editUserPassword } from '../../../redux/actions/userActions/userActions';
-import EditAccountComp from '../../../components/Accounts/AccountSetings/AccountSettingsEditComp';
+import EditAccountComp from '../../../components/Accounts/AccountSetings/AccountSettings/AccountSettingsEditComp';
 
 class AccountSettingsEdit extends React.PureComponent<Props, State> {
 

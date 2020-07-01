@@ -31,28 +31,31 @@ class NavBar extends React.PureComponent<Props, State> {
     };
 
     render() {
+        const theme = localStorage.getItem('theme');
         const { activeItem, visible } = this.state;
         const { handleSelect, setVisibility } = this;
 
         return (
             <>
-              <Segment.Group style={{ border: 'none', boxShadow: 'none' }}>
-                <Responsive minWidth={ 700 }>
-                    <NavBarComp
-                        activeItem={ activeItem }
-                        handleSelect={ handleSelect }
-                    />
-                </Responsive>
+                <Segment.Group
+                    id='navbar-segment-container'
+                >
+                    <Responsive minWidth={ 700 }>
+                        <NavBarComp
+                            activeItem={ activeItem }
+                            handleSelect={ handleSelect }
+                        />
+                    </Responsive>
 
-                <Responsive maxWidth={ 699 }>
-                    <MobileNavBarComp
-                        visible={ visible }
-                        activeItem={ activeItem }
-                        handleSelect={ handleSelect }
-                        setVisibility={ setVisibility }
-                    />
-                </Responsive>
-            </Segment.Group>
+                    <Responsive maxWidth={ 699 }>
+                        <MobileNavBarComp
+                            visible={ visible }
+                            activeItem={ activeItem }
+                            handleSelect={ handleSelect }
+                            setVisibility={ setVisibility }
+                        />
+                    </Responsive>
+                </Segment.Group>
             </>
         );
     };

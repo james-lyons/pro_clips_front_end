@@ -8,12 +8,19 @@ const Links: React.SFC<Props> = ({
     activeItem,
     handleSelect
 }) => {
+
+    const theme = localStorage.getItem('theme');
+
     return (
-        <Segment className='navbar-segment'>
+        <Segment
+            className='navbar-segment'
+            inverted={ theme === 'dark' }
+        >
             <Menu
                 secondary
-                className='navbar-menu-ui wide-screen-nav'
                 size='small'
+                inverted={ theme === 'dark' }
+                className='navbar-menu-ui wide-screen-nav'
             >
                 <Menu.Menu style={{ marginRight: '3rem' }}>
                     <Menu.Item

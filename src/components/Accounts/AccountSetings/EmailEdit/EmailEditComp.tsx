@@ -8,10 +8,14 @@ const EmailEditComp: React.SFC<Props> = ({
     handleChange,
     editEmailSubmit
 }) => {
+    
+    const theme = localStorage.getItem('theme');
+
     return (
         <>
             <Form
                 id='edit-email-form'
+                inverted={ theme === 'dark' }
                 onSubmit={ editEmailSubmit }
             >
 
@@ -37,7 +41,12 @@ const EmailEditComp: React.SFC<Props> = ({
                 </Form.Field>
 
                 <Form.Button
-                    size='mini' basic color='black' type='submit'>
+                    basic
+                    size='mini'
+                    color='black'
+                    type='submit'
+                    inverted={ theme === 'dark' }
+                >
                         Save Changes
                 </Form.Button>
             </Form>

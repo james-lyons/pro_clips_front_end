@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Props } from './config';
-import { Grid, Message, Responsive } from 'semantic-ui-react';
-import { deleteUser } from '../../../redux/actions/userActions/userActions';
-import EditEmailComp from './EmailEdit/EmailEditComp';
-import PasswordEditComp from './PasswordEdit/PasswordEditComp';
+import { Grid, Message } from 'semantic-ui-react';
+import { deleteUser } from '../../../../redux/actions/userActions/userActions';
+import EditEmailComp from '../EmailEdit/EmailEditComp';
+import PasswordEditComp from '../PasswordEdit/PasswordEditComp';
 
 const EditAccountComp: React.SFC <Props> = ({
     email,
@@ -17,10 +17,17 @@ const EditAccountComp: React.SFC <Props> = ({
     editEmailSubmit,
     editPasswordSubmit
 }) => {
+
+    const theme = localStorage.getItem('theme');
+
     return (
         <>
             <Grid>
-                <Message info size='tiny' id='account-settings-message'>
+                <Message
+                    info
+                    size='tiny'
+                    id='account-settings-message'
+                >
                     Update your login credentials here!
                 </Message>
 

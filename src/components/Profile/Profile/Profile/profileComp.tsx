@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Props, ReduxState } from './config';
-import { Container, Grid, Image, Menu, Responsive } from 'semantic-ui-react';
+import { Container, Grid, Image, Menu, Responsive, Header } from 'semantic-ui-react';
 import FollowButton from '../FollowButton/FollowButton';
 import ReportUser from '../../../../containers/Report/User/ReportUser';
 import EditProfileButton from '../EditProfileButton/EditProfileButton';
@@ -16,8 +16,9 @@ const ProfileComp: React.SFC<Props> = ({
     unfollowUser
 }) => {
 
-    const { id, bio, username, profile_image, clips } = user;
     const userId = localStorage.getItem('uid');
+    const theme = localStorage.getItem('theme');
+    const { id, bio, username, profile_image, clips } = user;
  
     return (
         <>
@@ -29,7 +30,7 @@ const ProfileComp: React.SFC<Props> = ({
 
                     <Grid.Column width={ 11 }>
                         <Grid.Row id='profile-row-1'>
-                            <h1 id='profile-name-h1'>{ username }</h1>
+                            <Header as='h3' id='profile-name-h1' inverted={ theme === 'dark' }>{ username }</Header>
                             {
                                 isMatch
                                 ? <EditProfileButton />
@@ -49,7 +50,7 @@ const ProfileComp: React.SFC<Props> = ({
                         </Grid.Row>
                         
                         <Grid.Row>
-                            <Menu secondary>
+                            <Menu secondary inverted={ theme === 'dark' }>
                                 <Menu.Item name={`${ clips.length } clips`}
                                     className='profile-menu-item'
                                 />
@@ -74,7 +75,13 @@ const ProfileComp: React.SFC<Props> = ({
                         >
                             <Grid.Row className='profile-bio-grid-row'>
                                 <Container>
-                                    <p className='profile-bio-p'>{ bio }</p>
+                                    <Header
+                                        as='h4'
+                                        className='profile-bio-p'
+                                        inverted={ theme === 'dark' }
+                                    >
+                                        { bio }
+                                    </Header>
                                 </Container>
                             </Grid.Row>
                         </Responsive>
@@ -85,7 +92,13 @@ const ProfileComp: React.SFC<Props> = ({
                     >
                         <Grid.Row className='profile-bio-grid-row'>
                             <Container>
-                                <p className='profile-bio-p'>{ bio }</p>
+                                <Header
+                                    as='h4'
+                                    className='profile-bio-p'
+                                    inverted={ theme === 'dark' }
+                                >
+                                    { bio }
+                                </Header>
                             </Container>
                         </Grid.Row>
                     </Responsive>
