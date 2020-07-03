@@ -7,7 +7,9 @@ import ReportUserComp from '../../../components/Report/ReportUser/ReportUserComp
 class ReportUser extends React.PureComponent<Props, State> {
     state: State = {
         report_reason: '',
-        report_description: ''
+        report_description: '',
+        error: false,
+        successMessage: false
     };
 
     private handleChange = (event: Event) => {
@@ -16,20 +18,23 @@ class ReportUser extends React.PureComponent<Props, State> {
         });
     };
 
-    private handleSubmit = () => {
+    private handleSubmit = async () => {
         event.preventDefault();
         const { report_reason, report_description } = this.state;
         const { offender, reporter, reportUser } = this.props;
+        
         reportUser(offender, reporter, report_reason, report_description);
+        await this.setState({ successMessage: !this.state.successMessage });
+        return;
     };
 
     render() {
-        const { report_reason, report_description } = this.state;
+        const { report_description, successMessage } = this.state;
         const { handleChange, handleSubmit } = this;
         return (
             <>
                 <ReportUserComp
-                    report_reason={ report_reason }
+                    successMessage={ successMessage }
                     report_description={ report_description }
                     handleChange={ handleChange }
                     handleSubmit={ handleSubmit }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Props } from './config';
-import { Form, Icon, Modal, Button, TextArea } from 'semantic-ui-react';
+import { Form, Icon, Modal, Button, TextArea, Message } from 'semantic-ui-react';
 
 const ReportUserComp: React.SFC<Props> = ({
     report_description,
+    successMessage,
     handleChange,
     handleSubmit
 }) => {
@@ -23,6 +24,14 @@ const ReportUserComp: React.SFC<Props> = ({
             }
         >
             <Modal.Header>Report</Modal.Header>
+
+            { 
+                successMessage &&
+                <Message className='report-message' error>
+                    <p>Thank you for your report.</p>
+                </Message>
+            }
+
             <Form className='report-form' onSubmit={ handleSubmit }>
                 <Form.Field
                     required

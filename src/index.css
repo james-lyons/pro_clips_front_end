@@ -17,7 +17,7 @@ html, body {
     position: relative;
     min-height: 100vh !important;
     min-width: 100vw !important;
-    background-color: #0e0e10 !important;
+    background-color: #212121 !important;
 }
 
 
@@ -64,6 +64,11 @@ html, body {
     content: none !important
 }
 
+/* .nav-dropdown {
+    margin: 0 !important;
+    padding: 0 !important
+} */
+
 
 /* ----------------------- Home Page ----------------------- */
 
@@ -88,7 +93,7 @@ html, body {
 
 /* ------------------------- Footer ------------------------- */
 
-#footer {
+#light-footer {
     background-color: black;
     position: absolute;
     bottom: 0;
@@ -100,8 +105,25 @@ html, body {
     height: 4rem
 }
 
-#footer-p {
+#dark-footer {
+    background-color: 212121;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 90%;
+    width: 100%;
+    padding: 1rem 0;
+    height: 4rem
+}
+
+#light-footer-p {
     color: red;
+    text-align: center
+}
+
+#dark-footer-p {
+    color: whitesmoke;
     text-align: center
 }
 
@@ -192,6 +214,10 @@ html, body {
     cursor: pointer
 }
 
+.report-message {
+    margin: 1rem 1rem 0 !important
+}
+
 .report-form {
     padding: 1rem !important;
 }
@@ -221,6 +247,7 @@ html, body {
 
 .profile-bio-p {
     font-size: 1.2rem;
+    font-weight: 200 !important
 }
 
 

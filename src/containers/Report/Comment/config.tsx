@@ -1,6 +1,7 @@
 interface State {
     report_reason: string,
-    report_description: string
+    report_description: string,
+    successMessage: boolean
 };
 
 interface Props {

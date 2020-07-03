@@ -3,8 +3,7 @@ interface State {
     username: string,
     profile_image: string,
     editProfileErrors: null | Array<Error>,
-    edit_profile_success: null | string,
-    edit_profile_picture_success: null | string
+    editProfileSuccess: boolean,
 };
 
 interface Props {

@@ -3,6 +3,7 @@ interface Props {
     error: boolean,
     fileError:  boolean,
     wasSubmitted: boolean,
+    submitSuccess: boolean,
     handleUploadClip: () => void,
     handleChange: (event: Event) => void,
     handleSelect: (event: Event) => void

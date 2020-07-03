@@ -28,12 +28,12 @@ class Register extends React.PureComponent<Props, State> {
         const newUser = { username, email, password, password2 };
         const loginCredentials = { email, password };
 
-        if (password.length < 6) {
-            this.setState({ error: { message: 'Password must be at least 6 characters long' }});
+        if (password.length < 6 || password.length > 16) {
+            this.setState({ error: { message: 'Password must be at 6 to 16 characters long' }});
             return;
 
-        } else if (password2.length < 6) {
-            this.setState({ error: { message: 'Password must be at least 6 characters long' }});
+        } else if (password2.length < 6 || password2.length > 16) {
+            this.setState({ error: { message: 'Password must be at 6 to 16 characters long' }});
             return;
 
         } else if (password !== password2) {

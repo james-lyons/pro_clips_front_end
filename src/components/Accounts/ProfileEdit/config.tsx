@@ -2,6 +2,7 @@ interface Props {
     bio: string,
     username: string,
     profile_image: string,
+    editProfileSuccess: boolean,
     editProfileErrors: null | Array<Error>,
     handleChange: (event: Event) => void,
     editUserSubmit: () => void,

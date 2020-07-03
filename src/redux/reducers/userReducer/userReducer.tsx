@@ -74,17 +74,17 @@ function userReducer(state: State = {
             return {
                     ...state,
                     currentUser: {
-                        id: action.payload._id,
-                        bio: action.payload.bio,
-                        email: action.payload.email,
-                        clips: action.payload.clips,
-                        username: action.payload.username,
-                        comments: action.payload.comments,
-                        followers: action.payload.followers,
-                        following: action.payload.following,
-                        profile_image: action.payload.profile_image,
+                        id: action.payload.data._id,
+                        bio: action.payload.data.bio,
+                        email: action.payload.data.email,
+                        clips: action.payload.data.clips,
+                        username: action.payload.data.username,
+                        comments: action.payload.data.comments,
+                        followers: action.payload.data.followers,
+                        following: action.payload.data.following,
+                        profile_image: action.payload.data.profile_image,
                     },
-                    errors: action.payload.errors
+                    errors: action.payload.data.errors
                 }
 
         case "EDIT_PROFILE_REJECTED": 

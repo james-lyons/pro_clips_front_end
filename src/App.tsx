@@ -5,16 +5,16 @@ import Footer from './components/Footer/Footer';
 import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 
-const styles = {
-    light: 'app-container-light',
-    dark: 'app-container-dark'
-};
-
 class App extends React.PureComponent<{}> {
 
     render() {
 
         const theme = localStorage.getItem('theme');
+        
+        const styles = {
+            light: 'app-container-light',
+            dark: 'app-container-dark'
+        };
 
         return (
             <>

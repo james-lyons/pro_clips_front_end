@@ -1,5 +1,5 @@
 interface Props {
-    report_reason: string,
+    successMessage: boolean,
     report_description: string,
     handleChange: () => void,
     handleSubmit: () => void

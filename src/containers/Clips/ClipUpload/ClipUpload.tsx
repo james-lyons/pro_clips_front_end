@@ -9,19 +9,18 @@ class ClipUpload extends React.PureComponent<Props, State> {
         clip: null,
         title: '',
         game: null,
-        wasSubmitted: false,
+        submitSuccess: false,
         error: false,
-        fileError: false
+        fileError: false,
+        wasSubmitted: false
     };
 
     private handleSelect = (event: Event) => {
         let files = event.target.files;
         let file = files[0]
 
-        if (file.size > 3000000) {
-            this.setState({
-                fileError: true 
-            });
+        if (file.size > 7500000) { 
+            this.setState({ fileError: true });
         } else {
             this.setState({
                 clip: file,
@@ -38,20 +37,13 @@ class ClipUpload extends React.PureComponent<Props, State> {
         });
     };
 
-    private handleSubmitVer = () => {
-        this.setState((prevState) => ({ wasSubmitted: !prevState.wasSubmitted }));
-    };
-
     private handleUploadClip = async () => {
         event.preventDefault();
         const { clip, game, title} = this.state;
         const { uploadClip } = this.props;
 
         if (!game || game === 'Select') {
-            this.setState({
-                error: true
-            });
-            console.log(this.state.error)
+            this.setState({ error: true });
             return;
         };
 
@@ -60,14 +52,17 @@ class ClipUpload extends React.PureComponent<Props, State> {
             clip: null,
             title: '',
             game: 'Select'
-        })
+        });
 
-        this.handleSubmitVer();
+        if (res.payload < 400) {
+            this.setState({ wasSubmitted: !this.state.wasSubmitted });
+            this.setState({ submitSuccess: !this.state.submitSuccess });
+        };
     };
 
     render() {
-        const { title, wasSubmitted, error, fileError } = this.state;
-        const { handleUploadClip, handleSelect, handleChange, handleSubmitVer } = this;
+        const { title, error, fileError, wasSubmitted, submitSuccess } = this.state;
+        const { handleUploadClip, handleSelect, handleChange } = this;
 
         return (
             <>
@@ -76,6 +71,7 @@ class ClipUpload extends React.PureComponent<Props, State> {
                     error={ error }
                     fileError={ fileError }
                     wasSubmitted={ wasSubmitted }
+                    submitSuccess={ submitSuccess }
                     handleSelect={ handleSelect }
                     handleChange={ handleChange }
                     handleUploadClip={ handleUploadClip }

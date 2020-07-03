@@ -81,7 +81,7 @@ const MobileAuthLinks: React.SFC<Props> = ({
                 </Menu.Menu>
 
                 <Menu.Menu>
-                    <Dropdown item icon='bars' direction='left'>
+                    <Dropdown item icon='bars' direction='left' className='nav-dropdown'>
                         <Dropdown.Menu>
                             <Dropdown.Item
                                 href={ `/${ currentUser.username }` }

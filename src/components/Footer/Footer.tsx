@@ -1,9 +1,19 @@
 import React from 'react';
 
-const Footer: React.SFC<> = () => {
+const Footer: React.SFC<{}> = () => {
+
+    const theme = localStorage.getItem('theme');
+    
+    const styles = {
+        light: 'light-footer',
+        dark: 'dark-footer',
+        lightP: 'light-footer-p',
+        darkP: 'dark-footer-p',
+    };
+
     return (
-        <footer id='footer'>
-            <p id='footer-p'>©James Lyons, 2020</p>
+        <footer id={ theme === 'dark' ? styles.dark : styles.light }>
+            <p id={ theme === 'dark' ? styles.darkP : styles.lightP }>© J. Lyons, 2020</p>
         </footer>
     );
 };

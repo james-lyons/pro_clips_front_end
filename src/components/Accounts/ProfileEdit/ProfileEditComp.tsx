@@ -7,6 +7,7 @@ const ProfileEditComp: React.SFC <Props> = ({
     username,
     profile_image,
     editProfileErrors,
+    editProfileSuccess,
     handleChange,
     editUserSubmit,
     editProfilePictureSubmit
@@ -21,10 +22,11 @@ const ProfileEditComp: React.SFC <Props> = ({
                     Update your profile here!
                 </Message>
 
+
                 <Grid.Row id='edit-profile-row-1'>
                     <Grid.Column
                         width={ 4 }
-                    >
+                        >
                         <img id='edit-profile-img' src={ profile_image } />
                     </Grid.Column>
 
@@ -73,6 +75,13 @@ const ProfileEditComp: React.SFC <Props> = ({
                                     <p>Please try again</p>
                                 </Message>
                             ))
+                        }
+
+                        {
+                            editProfileSuccess &&
+                            <Message info>
+                                Success!
+                            </Message>
                         }
 
                         <Form.Field>

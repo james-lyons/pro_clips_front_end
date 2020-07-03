@@ -39,25 +39,6 @@ const fetchUserClips = (username: string) => {
     };
 };
 
-const fetchPopularClips = () => {
-    return async dispatch => {
-        try {
-            let res = await fetch(`${ API_URL }/clips/browseclips`,
-                {
-                    method: 'GET',
-                    credentials: 'include'
-                }
-            );
-
-            let data = await res.json();
-            return dispatch({ type: 'FETCH_BROWSE_CLIPS_FULFILLED', payload: data });
-
-        } catch (error) {
-            return dispatch({ type: 'FETCH_BROWSE_CLIPS_REJECTED', payload: error })
-        };
-    };
-};
-
 const fetchGameClips = (game: string) => {
     return async dispatch => {
         try {
@@ -114,7 +95,7 @@ const uploadClip = (clip: File, title: string, game: string) => {
             );
             let data = await res.json();
 
-            return dispatch({ type: "CLIP_UPLOAD_FULFILLED" });
+            return dispatch({ type: "CLIP_UPLOAD_FULFILLED", payload: data.status });
 
         } catch (error) {
             return dispatch({ type: "CLIP_UPLOAD_REJECTED" })

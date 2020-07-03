@@ -7,6 +7,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
     error,
     fileError,
     wasSubmitted,
+    submitSuccess,
     handleChange,
     handleSelect,
     handleUploadClip,
@@ -17,6 +18,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
     return (
         <>
             <Container id='clip-upload-container'>
+                { submitSuccess && <Message info><p>Success!</p></Message> }
                 { error && <Message error><p>Please select a game!</p></Message> }
                 { fileError && <Message error><p>The file you have selected is too large, try another</p></Message>}
 

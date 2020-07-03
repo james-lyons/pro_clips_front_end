@@ -7,7 +7,8 @@ import ReportReplyComp from '../../../components/Report/ReportReply/ReportReplyC
 class ReportReply extends React.PureComponent<Props, State> {
     state: State = {
         report_reason: '',
-        report_description: ''
+        report_description: '',
+        successMessage: false
     };
 
     private handleChange = (event: Event) => {
@@ -16,21 +17,23 @@ class ReportReply extends React.PureComponent<Props, State> {
         });
     };
 
-    private handleSubmit = () => {
+    private handleSubmit = async () => {
         event.preventDefault();
         const { report_reason, report_description } = this.state;
         const { offender, reporter, reply_id, report_text, reportReply } = this.props;
 
         reportReply(offender, reporter, reply_id, report_text, report_reason, report_description);
+        await this.setState({ successMessage: !this.state.successMessage });
+        return;
     };
 
     render() {
-        const { report_reason, report_description } = this.state;
+        const { successMessage, report_description } = this.state;
         const { handleChange, handleSubmit } = this;
         return (
             <>
                 <ReportReplyComp
-                    report_reason={ report_reason }
+                    successMessage={ successMessage }
                     report_description={ report_description }
                     handleChange={ handleChange }
                     handleSubmit={ handleSubmit }
