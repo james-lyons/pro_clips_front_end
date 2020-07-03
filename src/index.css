@@ -64,11 +64,6 @@ html, body {
     content: none !important
 }
 
-/* .nav-dropdown {
-    margin: 0 !important;
-    padding: 0 !important
-} */
-
 
 /* ----------------------- Home Page ----------------------- */
 
@@ -542,6 +537,14 @@ html, body {
         font-size: 1.5rem !important;
         padding-top: .5rem !important
     }
+
+    .profile-clips-card {
+        margin: 0 auto !important
+    }
+
+    .wide-screen-nav{
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 650px) {
@@ -589,6 +592,7 @@ html, body {
 
     .profile-clips-card-group {
         max-width: 95% !important;
+        margin: 0 auto
     }
 
     .profile-clips-card {

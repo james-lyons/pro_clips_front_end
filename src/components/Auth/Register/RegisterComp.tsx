@@ -36,36 +36,39 @@ const RegisterComp: React.SFC<Props> = ({
 
                 <Form.Input
                     required
-                    label='Username'
                     type='text'
                     name='username'
+                    label='Username'
                     placeholder='Enter Username'
                     value={ username }
                     onChange={ handleChange }
                 />
+
                 <Form.Input
                     required
-                    label='Email'
                     type='email'
                     name='email'
+                    label='Email'
                     placeholder='Enter Email'
                     value={ email }
                     onChange={ handleChange }
                 />
+
                 <Form.Input
                     required
-                    label='Password'
                     type='password'
                     name='password'
+                    label='Password'
                     placeholder='Enter Username'
                     value={ password }
                     onChange={ handleChange }
                 />
+
                 <Form.Input
                     required
-                    label='Confirm Password'
                     type='password'
                     name='password2'
+                    label='Confirm Password'
                     placeholder='Enter Username'
                     value={ password2 }
                     onChange={ handleChange }

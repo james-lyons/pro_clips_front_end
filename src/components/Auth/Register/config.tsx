@@ -3,7 +3,7 @@ interface Props {
     email: string,
     password: string,
     password2: string,
-    errors: null | Array<Error>,
+    error: null | Error,
     handleChange: (event: Event) => void,
     handleSubmit: () => void
 };

@@ -49,7 +49,6 @@ const fetchUser = (user: string) => {
 };
 
 const editUserProfile = (userId: string, profileChanges: object) => {
-    console.log('userId', userId);
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/accounts/${ userId }/profile`,
@@ -62,7 +61,6 @@ const editUserProfile = (userId: string, profileChanges: object) => {
             );
 
             let data = await res.json();
-            console.log('data:', data);
 
             if (data.status >= 400) {
                 return dispatch({ type: 'EDIT_PROFILE_REJECTED', payload: data });

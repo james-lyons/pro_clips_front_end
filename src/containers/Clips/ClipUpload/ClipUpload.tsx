@@ -27,8 +27,6 @@ class ClipUpload extends React.PureComponent<Props, State> {
                 fileError: false 
             });
         };
-
-        console.log(file)
     };
 
     private handleChange = (event: Event) => {

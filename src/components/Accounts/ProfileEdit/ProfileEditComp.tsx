@@ -117,7 +117,6 @@ const ProfileEditComp: React.SFC <Props> = ({
                         >
                             Save Changes
                         </Form.Button>
-
                     </Form>
                 </Grid.Row>
             </Grid>

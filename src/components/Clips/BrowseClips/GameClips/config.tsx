@@ -1,5 +1,6 @@
 interface Props {
-    gameClips: Array<Clip>
+    gameClips: Array<Clip>,
+    history: { location: { pathname: string }}
 };
 
 interface ReduxProps {

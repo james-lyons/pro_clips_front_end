@@ -20,21 +20,25 @@ const ClipUploadComponent: React.SFC<Props> = ({
             <Container id='clip-upload-container'>
                 { submitSuccess && <Message info><p>Success!</p></Message> }
                 { error && <Message error><p>Please select a game!</p></Message> }
-                { fileError && <Message error><p>The file you have selected is too large, try another</p></Message>}
+                {
+                    fileError &&
+                    <Message error>
+                        <p>The file you have selected is too large, try another</p>
+                    </Message>
+                }
 
                 <Form onSubmit={ handleUploadClip } inverted={ theme === 'dark' }>
-                    <Form.Field>
-                        <Form.Input
-                            label={`Title ${ title.length } / 50` }
-                            error={ title.length > 50 && 'Please shorten your title' }
-                            required
-                            type="text"
-                            name="title"
-                            placeholder="Rad 1v5 man"
-                            value={ title }
-                            onChange={ handleChange }
-                        />
-                    </Form.Field>
+                    <Form.Input
+                        label={`Title ${ title.length } / 50` }
+                        error={ title.length > 50 && 'Please shorten your title' }
+                        required
+                        type="text"
+                        name="title"
+                        placeholder="Rad 1v5 man"
+                        value={ title }
+                        onChange={ handleChange }
+                    />
+
                     <Form.Input
                         required
                         label='File'
@@ -42,6 +46,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
                         name='file'
                         onChange={ handleSelect }
                     />
+
                     <Form.Field
                         required
                         name='game'
@@ -70,6 +75,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
                         <option value="Smite">Smite</option>
                         <option value="Fortnite">Fortnite</option>
                     </Form.Field>
+                    
                     <Button color='red' content={ wasSubmitted ? 'Success!' : 'Submit' } />
                 </Form>
             </Container>

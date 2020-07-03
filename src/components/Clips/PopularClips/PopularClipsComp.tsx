@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 
 const clipMapper = (clips: Array<Clip>) => {
 
-    const theme = localStorage.getItem('theme');
-
     const clipArr = clips.map((clip: Clip) =>
         <Grid.Column key={ clip._id }>
             <Card
@@ -28,8 +26,7 @@ const clipMapper = (clips: Array<Clip>) => {
                 </Card.Description>
             </Card>
         </Grid.Column>
-    )
-
+    );
     return clipArr;
 };
 
@@ -38,10 +35,6 @@ const PopularClipsComp: React.SFC<Props> = ({
 }) => {
 
     const theme = localStorage.getItem('theme');
-    const styles = {
-        light: 'login-form',
-        dark: 'login-form-dark'
-    };
 
     return (
         <>

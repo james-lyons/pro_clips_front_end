@@ -25,9 +25,7 @@ const BrowseClipsComponent: React.SFC<{}> = () => {
     return (
         <>
             <Grid stackable container columns={ 5 } id='browser-clips-grid'>
-
                 { gridMapper(gridItems) }
-
             </Grid>
         </>
     );

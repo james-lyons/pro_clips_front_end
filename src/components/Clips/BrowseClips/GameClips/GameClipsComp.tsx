@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Grid, Card, Header, Image, Container } from 'semantic-ui-react'
+import { withRouter } from 'react-router';
 import { Props, Clip, ReduxProps } from './config';
+import { Grid, Card, Header, Image, Container } from 'semantic-ui-react'
 
 const GameClipsComp: React.SFC<Props> = ({ gameClips, history }) => {
 
