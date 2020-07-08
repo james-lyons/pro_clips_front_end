@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Props, State } from './config';
 import { createComment, fetchComments } from '../../../redux/actions/commentActions/commentActions';
-import CommentFormComp from '../../../components/Comments/CommentForm/CommentFormComp';
+import CommentFormComp from '../../../components/Comments/CommentForm/CommentFormC';
 
 class CommentForm extends React.PureComponent<Props, State> {
 

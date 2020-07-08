@@ -33,16 +33,16 @@ class Accounts extends React.PureComponent<Props & RouteComponentProps> {
         const navPoint = event.target.text;
 
         if (navPoint === 'Profile Settings') {
-            await this.props.history.push('/accounts');
+            await history.push('/accounts');
 
         } else if (navPoint === 'Account Settings') {
-            this.props.history.push('/accounts/account_settings');
+            history.push('/accounts/account_settings');
 
         } else if (navPoint === 'Delete Account') {
-            this.props.history.push('/accounts/delete');
+            history.push('/accounts/delete');
 
         } else if (navPoint === 'Site Settings') {
-            this.props.history.push('/accounts/site_settings');
+            history.push('/accounts/site_settings');
         };
     };
 
