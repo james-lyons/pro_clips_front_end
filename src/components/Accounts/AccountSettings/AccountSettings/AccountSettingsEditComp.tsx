@@ -18,8 +18,6 @@ const EditAccountComp: React.SFC <Props> = ({
     editPasswordSubmit
 }) => {
 
-    const theme = localStorage.getItem('theme');
-
     return (
         <>
             <Grid>
@@ -35,8 +33,8 @@ const EditAccountComp: React.SFC <Props> = ({
                     <EditEmailComp
                         email={ email }
                         editEmailErrors={ editEmailErrors }
-                        handleChange={ handleChange }
                         editEmailSubmit={ editEmailSubmit }
+                        handleChange={ handleChange }
                     />
 
                 </Grid.Row>

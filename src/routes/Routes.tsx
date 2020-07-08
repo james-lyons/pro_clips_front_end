@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import Home from '../containers/Home/Home';
+import Home from '../components/Home/Home';
 import Login from '../containers/Auth/Login/Login';
 import Register from '../containers/Auth/Register/Register';
 import Profile from '../containers/Profile/Profile/Profile';

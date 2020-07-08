@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Image, Header } from 'semantic-ui-react';
 
-const HomeComp: React.SFC<{}> = ({}) => {
+const Home: React.SFC<{}> = ({}) => {
 
     const theme = localStorage.getItem('theme');
 
@@ -58,4 +58,4 @@ const HomeComp: React.SFC<{}> = ({}) => {
     );
 };
 
-export default HomeComp;
+export default Home;
