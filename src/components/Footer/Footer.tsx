@@ -13,7 +13,7 @@ const Footer: React.SFC<{}> = () => {
 
     return (
         <footer id={ theme === 'dark' ? styles.dark : styles.light }>
-            <p id={ theme === 'dark' ? styles.darkP : styles.lightP }>© J. Lyons, 2020</p>
+            <p id={ theme === 'dark' ? styles.darkP : styles.lightP }>© ProClips, 2020</p>
         </footer>
     );
 };
