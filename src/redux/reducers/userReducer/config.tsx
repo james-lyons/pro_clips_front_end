@@ -1,6 +1,8 @@
 interface State {
     user: User,
     currentUser: CurrentUser,
+    searchResults: Array<string>,
+    searchResultsError: null | Error,
     errors: null | Array<Error>,
     editProfileErrors: null | Array<Error>,
     editProfilePictureErrors: null | Array<Error>,

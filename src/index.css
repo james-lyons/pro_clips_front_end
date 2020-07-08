@@ -20,6 +20,12 @@ html, body {
     background-color: #212121 !important;
 }
 
+#unavailable-container {
+    width: 90%;
+    text-align: center;
+    margin: 5rem auto
+}
+
 
 /* ------------------------- Navbar ------------------------ */
 
@@ -543,7 +549,9 @@ html, body {
     }
 
     .wide-screen-nav{
-        justify-content: center;
+        justify-content: space-between;
+        margin: 0 !important;
+        width: 100%
     }
 }
 

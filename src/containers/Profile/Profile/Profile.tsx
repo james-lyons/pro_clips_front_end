@@ -6,6 +6,7 @@ import { followUser, unfollowUser, fetchFollowers, fetchFollowingList }
     from '../../../redux/actions/followActions/followActions';
 import ProfileComp from '../../../components/Profile/Profile/Profile/profileComp';
 import ProfileClips from '../ProfileClips/ProfileClips';
+import UnavailableComp from '../../../components/Unavailable/UnavailableComp';
 
 class Profile extends React.PureComponent<Props, State> {
     state: State = {
@@ -18,6 +19,7 @@ class Profile extends React.PureComponent<Props, State> {
 
     componentDidMount = async () => {
         const { match, fetchUser } = this.props;
+
         await fetchUser(match.params.username);
         const { user, currentUser } = this.props;
 
@@ -27,7 +29,7 @@ class Profile extends React.PureComponent<Props, State> {
                 user: currentUser,
                 isFollowed: user.isFollowed
             });
-        } else {
+        } else if (user) {
             this.setState({
                 user: user,
                 isMatch: false,
@@ -73,7 +75,11 @@ class Profile extends React.PureComponent<Props, State> {
                     />
                 }
                 {
-                    user && <ProfileClips user={ user } />
+                    user &&
+                    <ProfileClips user={ user } />
+                }
+                {
+                    !user && <UnavailableComp />
                 }
             </>
         );

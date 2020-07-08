@@ -43,10 +43,33 @@ const fetchUser = (user: string) => {
             };
 
         } catch (error) {
-            dispatch({ type: 'FETCH_USER_REJECTED', payload: error })
+            return dispatch({ type: 'FETCH_USER_REJECTED', payload: error })
         };
     };
 };
+
+const userSearch = (search: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/accounts/users/${ search }`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            let data = await res.json();
+
+            if (data.status >= 400) {
+                return dispatch({ type: 'FETCH_USER_SEARCH_REJECTED', payload: data });
+            } else {
+                return data;
+            };
+        } catch (error) {
+            return dispatch({ type: 'FETCH_USER_SEARCH_FAILED', payload: error })
+        }
+    }
+}
 
 const editUserProfile = (userId: string, profileChanges: object) => {
     return async dispatch => {
@@ -148,8 +171,9 @@ const deleteUser = (user) => {
 };
 
 export {
-    fetchCurrentUser,
     fetchUser,
+    userSearch,
+    fetchCurrentUser,
     editUserProfile,
     editUserEmail,
     editUserPassword,

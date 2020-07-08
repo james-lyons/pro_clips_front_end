@@ -21,6 +21,8 @@ function userReducer(state: State = {
         following: [],
         isFollowed: false
     },
+    searchResults: [],
+    searchResultsError: null,
     errors: null,
     editProfileErrors: null,
     editProfilePictureErrors: null,
@@ -68,7 +70,13 @@ function userReducer(state: State = {
             };
 
         case "FETCH_USER_REJECTED": 
-            return { ...state, errors: action.payload.errors };
+            return { ...state, user: null, errors: action.payload.errors };
+
+        case "FETCH_USER_SEARCH_FULFILLED":
+            return { ...state, searchResults: action.payload.data };
+
+        case"FETCH_USER_SEARCH_REJECTED":
+            return { ...state, searchResultsError: action.payload.error };
 
         case "EDIT_PROFILE_FULFILLED": 
             return {

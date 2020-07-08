@@ -1,43 +1,56 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { State, Props, Event } from './config';
 import { RouteComponentProps } from 'react-router';
+import { State, Props, Event, Result, Response } from './config';
+import { userSearch } from '../../redux/actions/userActions/userActions';
 import SearchComp from '../../components/Search/SearchComp';
 
 class Search extends React.PureComponent<Props & RouteComponentProps, State> {
 
     state: State = {
-        search: ''
+        search: '',
+        searchResults: null
     };
 
-    private handleChange = (event: Event) => {
-        this.setState({
-            search: event.target.value
-        });
+    private handleChange = async (event: Event) => {
+        const { search } = this.state;
+        const { userSearch } = this.props;
+
+        await this.setState({ search: event.target.value });
+        let res: Response = await userSearch(search);
+
+        if (res.data) {
+            await this.setState({ searchResults: res.data })
+        };
+        
+        return;
     };
 
-    private handleSubmit = async () => {
+    private handleSelect = async (event: MouseEvent<HTMLDivElement, MouseEvent>, { result }: Result) => {
         event.preventDefault();
         const { history } = this.props;
 
         history.location.pathname = "/"
-        await history.push(`${ this.state.search }`);
+        await history.push(`${ result.title }`);
         location.reload();
     };
 
     render() {
-        const { search } = this.state;
-        const { handleChange, handleSubmit } = this;
+        const { search, searchResults } = this.state;
+        const { handleChange, handleSelect } = this;
+
         return (
             <>
                 <SearchComp
                     search={ search }
+                    searchResults={ searchResults }
                     handleChange={ handleChange }
-                    handleSubmit={ handleSubmit }
+                    handleSelect={ handleSelect }
                 />
             </>
         );
     };
 };
 
-export default withRouter(Search);
+export default connect(null, { userSearch })(withRouter(Search));

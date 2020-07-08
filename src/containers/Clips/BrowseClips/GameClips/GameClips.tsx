@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Props, ReduxState } from './config';
 import { fetchGameClips } from '../../../../redux/actions/clipActions/clipActions';
 import GameClipsComp from '../../../../components/Clips/BrowseClips/GameClips/GameClipsComp';
+import UnavailableComp from '../../../../components/Unavailable/UnavailableComp';
 
 class GameClips extends React.PureComponent<Props> {
 
@@ -12,9 +13,11 @@ class GameClips extends React.PureComponent<Props> {
     };
 
     render() {
+        const { gameClips } = this.props;
+
         return (
             <>
-                { this.props.gameClips && <GameClipsComp /> }
+                { gameClips && gameClips.length > 0 && <GameClipsComp /> || <UnavailableComp /> }
             </>
         );
     };

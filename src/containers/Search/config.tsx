@@ -1,9 +1,13 @@
+import { MouseEvent } from 'react';
+
 interface State {
-    search: string
+    search: string,
+    searchResults: null | Array<Result>
 };
 
 interface Props {
-    history: History
+    history: History,
+    userSearch: (search: string) => Promise<Response>
 };
 
 interface History {
@@ -12,11 +16,23 @@ interface History {
 }
 
 interface Event {
-    target: { value: string }
+    target: { value: string },
+    preventDefault: () => void
+};
+
+interface Response {
+    status: number,
+    data: Array<Result>
+};
+
+interface Result {
+    result: { title: string, image: string }
 };
 
 export {
     State,
     Props,
-    Event
+    Event,
+    Result,
+    Response
 };
