@@ -1,6 +1,6 @@
 import React from 'react';
-import { Form, Message } from 'semantic-ui-react';
 import { Props } from './config';
+import { Form, Message } from 'semantic-ui-react';
 
 const PasswordEditComp: React.SFC<Props> = ({
     password,
