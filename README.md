@@ -21,5 +21,3 @@ Backend Repo: https://github.com/james-lyons/pro_clips
 # Planned Features
 - Game Forums Forum
 - Group Finder 
-
-# Wireframes and ERD
