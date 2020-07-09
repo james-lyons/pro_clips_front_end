@@ -1,2 +1,2 @@
-const API_URL = 'ec2-52-52-245-173.us-west-1.compute.amazonaws.com';
+const API_URL = 'ec2-54-153-63-121.us-west-1.compute.amazonaws.com';
 export default API_URL;
