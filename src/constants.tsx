@@ -1,2 +1,2 @@
-const API_URL = 'http://ec2-54-183-217-83.us-west-1.compute.amazonaws.com/';
+const API_URL = 'http://proclips.io';
 export default API_URL;
