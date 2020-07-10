@@ -1,6 +1,7 @@
 interface State {
     user: null | User,
     isMatch: boolean,
+    isLoading: boolean,
     isFollowed: boolean,
     showFollowers: boolean,
     showFollowing: boolean

@@ -26,7 +26,7 @@ module.exports = {
             template: './public/index.html'
         }),
         new CopyPlugin([
-            { from: './public/_redirects', to: './public/index.html' }
+            { from: './public/_redirects' }
         ])
     ],
     mode: process.env_NODE_ENV === 'production' ? 'production' : 'development',

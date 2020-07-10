@@ -4,6 +4,7 @@ interface State {
     searchResults: Array<string>,
     searchResultsError: null | Error,
     errors: null | Array<Error>,
+    fetchUserError: null | Error,
     editProfileErrors: null | Array<Error>,
     editProfilePictureErrors: null | Array<Error>,
     editEmailErrors: null | Array<Error>,
@@ -12,25 +13,36 @@ interface State {
 
 interface Action {
     type: string,
-    payload: object
+    payload: Payload
 };
 
+interface Payload {
+    data?: User,
+    error?: Error,
+    status: Number,
+    message?: string,
+    errors?: Array<Error>
+}
+
 interface User {
-    username: string,
+    _id?: string,
     bio: string,
-    profile_image: string,
+    email?: string,
+    username: string,
     clips: Array<Clip>,
+    profile_image: string,
+    comments?: Array<Comment>,
     followers: Array<Follower>,
     following: Array<Follower>,
     isFollowed: boolean
 };
 
 interface CurrentUser {
-    username: string,
-    email: string,
     bio: string,
-    profile_image: string,
+    email: string,
+    username: string,
     clips: Array<Clip>,
+    profile_image: string,
     comments: Array<Comment>,
     followers: Array<Follower>,
     following: Array<Follower>,

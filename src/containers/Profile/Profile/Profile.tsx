@@ -12,6 +12,7 @@ class Profile extends React.PureComponent<Props, State> {
     state: State = {
         user: null,
         isMatch: false,
+        isLoading: true,
         isFollowed: false,
         showFollowers: false,
         showFollowing: false
@@ -26,15 +27,24 @@ class Profile extends React.PureComponent<Props, State> {
         if (match.params.username === currentUser.username) {
             this.setState({
                 isMatch: true,
+                isLoading: false,
                 user: currentUser,
-                isFollowed: user.isFollowed
+                isFollowed: user.isFollowed,
             });
+            return;
+
         } else if (user) {
             this.setState({
                 user: user,
                 isMatch: false,
+                isLoading: false,
                 isFollowed: user.isFollowed
             });
+            return;
+
+        } else {
+            this.setState({ isLoading: false });
+            return;
         };
     };
 
@@ -59,7 +69,7 @@ class Profile extends React.PureComponent<Props, State> {
     };
     
     render() {
-        const { user, isMatch, isFollowed  } = this.state;
+        const { user, isMatch, isLoading, isFollowed  } = this.state;
         const { followUser, unfollowUser } = this;
 
         return (
@@ -78,9 +88,9 @@ class Profile extends React.PureComponent<Props, State> {
                     user &&
                     <ProfileClips user={ user } />
                 }
-                {/* {
-                    !user && <UnavailableComp />
-                } */}
+                {
+                    !isLoading && !user && <UnavailableComp />
+                }
             </>
         );
     };

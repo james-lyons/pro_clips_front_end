@@ -13,8 +13,8 @@ function userReducer(state: State = {
         id: ''
     },
     user: {
-        username: '',
         bio: '',
+        username: '',
         profile_image: '',
         clips: [],
         followers: [],
@@ -24,6 +24,7 @@ function userReducer(state: State = {
     searchResults: [],
     searchResultsError: null,
     errors: null,
+    fetchUserError: null,
     editProfileErrors: null,
     editProfilePictureErrors: null,
     editEmailErrors: null,
@@ -70,7 +71,7 @@ function userReducer(state: State = {
             };
 
         case "FETCH_USER_REJECTED": 
-            return { ...state, user: null, errors: action.payload.errors };
+            return { ...state, user: null, fetchUserError: action.payload.error };
 
         case "FETCH_USER_SEARCH_FULFILLED":
             return { ...state, searchResults: action.payload.data };
