@@ -75,9 +75,7 @@ class Profile extends React.PureComponent<Props, State> {
         return (
             <>
                 {
-                    isLoading && setTimeout(() => {
-                        <p>Loading</p>
-                    }, 2000)
+                    isLoading && <p>Loading</p>
                 }
                 {
                     user && 
