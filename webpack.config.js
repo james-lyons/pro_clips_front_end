@@ -24,7 +24,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html'
-        })
+        }),
+        new CopyPlugin([
+            { from: './public/_redirects' }
+        ])
     ],
     mode: process.env_NODE_ENV === 'production' ? 'production' : 'development',
     devServer: { historyApiFallback: true }

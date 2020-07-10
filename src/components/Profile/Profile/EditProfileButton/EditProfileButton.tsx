@@ -10,7 +10,7 @@ const EditProfileButton: React.SFC<{}> = () => {
         <Link to="/accounts" id='profile-edit-button'>
             <Button
                 basic
-                size='mini'
+                size='tiny'
                 color='black'
                 inverted={ theme === 'dark' }
             >

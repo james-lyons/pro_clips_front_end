@@ -38,7 +38,7 @@ const MobileAuthLinks: React.SFC<Props> = ({
                     vertical
                     visible={ visible }
                     width='thin'
-                    style={{ marginTop: '2rem' }}
+                    className='navbar-sidebar'
                 >
                     <Menu.Item
                         as={ Link }
@@ -46,7 +46,7 @@ const MobileAuthLinks: React.SFC<Props> = ({
                         name='Clipped'
                         active={ activeItem === 'Clipped' }
                         onClick={ handleSelect }
-                        style={{ marginTop: '2rem' }}
+                        className='navbar-sidebar'
                     >
                         Clipped
                     </Menu.Item>

@@ -18,7 +18,7 @@ const FollowButton: React.SFC<Props> = ({
             return (
                 <Button
                     basic
-                    size='mini'
+                    size='tiny'
                     color='black'
                     inverted={ theme === 'dark' }
                     className='profile-follow-button'
@@ -30,7 +30,7 @@ const FollowButton: React.SFC<Props> = ({
             return (
                 <Button
                     basic
-                    size='mini'
+                    size='tiny'
                     color='black'
                     inverted={ theme === 'dark' }
                     className='profile-follow-button'
@@ -44,7 +44,7 @@ const FollowButton: React.SFC<Props> = ({
         return (
             <Button
                 basic
-                size='mini'
+                size='tiny'
                 color='black'
                 inverted={ theme === 'dark' }
                 className='profile-follow-button'

@@ -23,11 +23,11 @@ const AuthLinks: React.SFC<Props> = ({
         >
             <Menu
                 secondary
-                size='small'
+                size='large'
                 inverted={ theme === 'dark' }
                 className='navbar-menu-ui wide-screen-nav'
             >
-                <Menu.Menu id='navbar-menu-header'>
+                <Menu.Menu className='navbar-menu-header'>
                     <Menu.Item
                         as={ Link }
                         to='/'
@@ -37,7 +37,7 @@ const AuthLinks: React.SFC<Props> = ({
                     >
                         <Icon name='game' />
                             Clipped
-                        <Icon id='navbar-icon-2' name='film' />
+                        <Icon className='navbar-icon-2' name='film' />
                     </Menu.Item>
                 </Menu.Menu>
                 <Menu.Menu>

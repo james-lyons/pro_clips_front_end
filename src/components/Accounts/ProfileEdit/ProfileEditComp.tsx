@@ -18,7 +18,7 @@ const ProfileEditComp: React.SFC <Props> = ({
     return (
         <>
             <Grid>
-                <Message info size='mini' id='profile-edit-message'>
+                <Message info size='tiny' id='profile-edit-message'>
                     Update your profile here!
                 </Message>
 

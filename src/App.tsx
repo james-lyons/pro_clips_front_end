@@ -22,8 +22,8 @@ class App extends React.PureComponent<{}> {
                     <div id={ theme === 'dark' ? styles.dark : styles.light }>
                         <NavBar />
                         <Routes />
-                        <Footer />
                     </div>
+                    <Footer />
                 </div>
             </>
         );

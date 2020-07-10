@@ -40,7 +40,7 @@ const MobileLinks: React.SFC<Props> = ({
                         name='Clipped'
                         active={ activeItem === 'Clipped' }
                         onClick={ handleSelect }
-                        style={{ marginTop: '2rem' }}
+                        className='navbar-sidebar'
                     >
                         Clipped
                     </Menu.Item>
@@ -82,7 +82,7 @@ const MobileLinks: React.SFC<Props> = ({
                     </Menu.Item>
                 </Menu.Menu>
 
-                <Menu.Menu style={{ marginLeft: '1.7rem' }}>
+                <Menu.Menu id='navbar-searchbar-logged-out'>
                     <Menu.Item>
                         <Search />
                     </Menu.Item>

@@ -65,7 +65,7 @@ const PasswordEditComp: React.SFC<Props> = ({
 
                 <Form.Button
                     basic
-                    size='mini'
+                    size='tiny'
                     color='black'
                     type='submit'
                     inverted={ theme === 'dark' }

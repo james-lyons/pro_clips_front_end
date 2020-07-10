@@ -19,7 +19,7 @@ const ClipActions: React.SFC<Props> = ({
                     <Dropdown
                         basic
                         floating
-                        size='mini'
+                        size='tiny'
                         direction='left'
                         icon='ellipsis vertical'
                         className='icon'
@@ -44,7 +44,7 @@ const ClipActions: React.SFC<Props> = ({
             <Dropdown
                 basic
                 floating
-                size='mini'
+                size='tiny'
                 direction='left'
                 icon='ellipsis vertical'
                 className='icon'

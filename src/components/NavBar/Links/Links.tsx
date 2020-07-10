@@ -22,7 +22,7 @@ const Links: React.SFC<Props> = ({
                 inverted={ theme === 'dark' }
                 className='navbar-menu-ui wide-screen-nav'
             >
-                <Menu.Menu style={{ marginRight: '3rem' }}>
+                <Menu.Menu className='navbar-menu-header'>
                     <Menu.Item
                         as={ Link }
                         to='/'
@@ -32,7 +32,7 @@ const Links: React.SFC<Props> = ({
                     >
                         <Icon name='game' />
                             Clipped
-                        <Icon name='film' style={{ marginLeft: '3px' }}/>
+                        <Icon name='film' className='navbar-dropdown-icon' />
                     </Menu.Item>
                 </Menu.Menu>
 

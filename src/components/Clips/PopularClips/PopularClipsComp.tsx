@@ -38,7 +38,7 @@ const PopularClipsComp: React.SFC<Props> = ({
 
     return (
         <>
-            <Grid id='popular-clips-grid-container' container stackable>
+            <Grid id='popular-clips-grid-container' stackable>
 
                 <Header
                     as='h1'
