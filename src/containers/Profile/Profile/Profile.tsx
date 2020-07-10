@@ -1,6 +1,8 @@
 import React from 'react';
-import { State, Props, ReduxState } from './config';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
+import { State, Props, ReduxState } from './config';
 import { fetchCurrentUser, fetchUser } from '../../../redux/actions/userActions/userActions';
 import { followUser, unfollowUser, fetchFollowers, fetchFollowingList }
     from '../../../redux/actions/followActions/followActions';
@@ -8,7 +10,7 @@ import ProfileComp from '../../../components/Profile/Profile/Profile/profileComp
 import ProfileClips from '../ProfileClips/ProfileClips';
 import UnavailableComp from '../../../components/Unavailable/UnavailableComp';
 
-class Profile extends React.PureComponent<Props, State> {
+class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
     state: State = {
         user: null,
         isMatch: false,
@@ -20,6 +22,7 @@ class Profile extends React.PureComponent<Props, State> {
 
     componentDidMount = async () => {
         const { match, fetchUser } = this.props;
+        console.log(match);
 
         await fetchUser(match.params.username);
         const { user, currentUser } = this.props;
@@ -114,4 +117,4 @@ export default connect(mapStateToProps, {
     fetchFollowers,
     fetchCurrentUser,
     fetchFollowingList
-})(Profile);
+})(withRouter(Profile));
