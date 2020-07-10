@@ -18,7 +18,6 @@ const Links: React.SFC<Props> = ({
         >
             <Menu
                 secondary
-                size='small'
                 inverted={ theme === 'dark' }
                 className='navbar-menu-ui wide-screen-nav'
             >
