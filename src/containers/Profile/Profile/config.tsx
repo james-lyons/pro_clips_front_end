@@ -26,6 +26,7 @@ interface UserReducer {
 };
 
 interface CurrentUser {
+    _id: string,
     bio: string,
     email: string,
     username: string,
@@ -35,6 +36,7 @@ interface CurrentUser {
 };
 
 interface User {
+    _id: string,
     bio: string,
     email: string,
     username: string,

@@ -7,7 +7,7 @@ interface Props {
 };
 
 interface User {
-    id: string,
+    _id: string,
     bio: string,
     username: string,
     clips: Array<Clip>,

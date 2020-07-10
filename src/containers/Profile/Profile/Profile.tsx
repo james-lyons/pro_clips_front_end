@@ -74,6 +74,7 @@ class Profile extends React.PureComponent<Props, State> {
 
         return (
             <>
+                <p>hello</p>
                 {
                     isLoading && <p>Loading</p>
                 }

@@ -30,6 +30,7 @@ interface ClipReducer {
 };
 
 interface User {
+    _id: string,
     bio: string,
     email: string,
     username: string,
