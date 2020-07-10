@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Message } 
 
 const UnavailableComp: React.SFC<{}> = () => {
     return (

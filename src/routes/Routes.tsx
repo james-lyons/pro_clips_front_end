@@ -4,12 +4,13 @@ import Home from '../components/Home/Home';
 import Login from '../containers/Auth/Login/Login';
 import Register from '../containers/Auth/Register/Register';
 import Profile from '../containers/Profile/Profile/Profile';
-import Accounts from '../containers/Accounts/Accounts/Accounts';
 import ClipPage from '../containers/Clips/ClipPage/ClipPage';
+import Accounts from '../containers/Accounts/Accounts/Accounts';
 import ClipUpload from '../containers/Clips/ClipUpload/ClipUpload';
 import PopularClips from '../containers/Clips/PopularClips/PopularClips';
 import GameClips from '../containers/Clips/BrowseClips/GameClips/GameClips';
 import BrowseClips from '../containers/Clips/BrowseClips/BrowseClips/BrowseClips';
+import UnavailableComp from '../components/Unavailable/UnavailableComp';
 
 export default withRouter(() => {
 
@@ -38,14 +39,12 @@ export default withRouter(() => {
             <HideRoute exact path='/register' component={ Register } />
             <Route exact path='/browseClips' component={ BrowseClips } />
             <Route exact path='/popularClips' component={ PopularClips } />
-            <PrivateRoute exact path='/accounts' component={ Accounts } />
+            <PrivateRoute path='/accounts' component={ Accounts } />
             <PrivateRoute exact path='/clipUpload' component={ ClipUpload } />
-            <PrivateRoute exact path='/accounts/delete' component={ Accounts } />
-            <PrivateRoute exact path='/accounts/site_settings' component={ Accounts } />
-            <PrivateRoute exact path='/accounts/account_settings' component={ Accounts } />
             <Route exact path='/:username' component={ Profile } />
             <Route exact path='/clip/:clipId' component={ ClipPage } />
             <Route exact path='/browseclips/:game' component={ GameClips } />
+            <Route component={ UnavailableComp } />
         </Switch>
     );
 });

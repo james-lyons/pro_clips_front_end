@@ -9,7 +9,7 @@ import ProfileEdit from '../../../containers/Accounts/EditProfile/ProfileEdit';
 import AccountDelete from '../../../containers/Accounts/AccountDelete/DeleteAccount';
 import AccountSettingsEdit from '../../../containers/Accounts/AccountSettings/AccountSettingsEdit';
 
-const AccountsComp: React.SFC<Props & RouteComponentProps> = ({ handleSelect }) => {
+const AccountsComp: React.SFC<Props & RouteComponentProps> = ({ handleSelect, match }) => {
     return (
         <>
             <Grid container centered>

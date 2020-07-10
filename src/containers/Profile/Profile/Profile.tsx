@@ -78,9 +78,9 @@ class Profile extends React.PureComponent<Props, State> {
                     user &&
                     <ProfileClips user={ user } />
                 }
-                {
+                {/* {
                     !user && <UnavailableComp />
-                }
+                } */}
             </>
         );
     };
