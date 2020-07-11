@@ -4,9 +4,10 @@ import { Form, Button, Container, Message } from 'semantic-ui-react';
 
 const ClipUploadComponent: React.SFC<Props> = ({
     title,
-    error,
-    fileError,
     isLoading,
+    gameError,
+    fileError,
+    titleError,
     submitSuccess,
     handleChange,
     handleSelect,
@@ -21,12 +22,13 @@ const ClipUploadComponent: React.SFC<Props> = ({
 
                 { isLoading && <Message info><p>Loading</p></Message>}
                 { submitSuccess && <Message info><p>Success!</p></Message> }
-                { error && <Message error><p>Please select a game!</p></Message> }
+                { gameError && <Message error><p>Please select a game!</p></Message> }
+                { titleError && <Message error><p>Please select a title!</p></Message> }
 
                 {
                     fileError &&
                     <Message error>
-                        <p>The file you have selected is too large, try another</p>
+                        <p>The file you have selected is too large, please try another</p>
                     </Message>
                 }
 

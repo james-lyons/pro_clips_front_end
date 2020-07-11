@@ -2,9 +2,10 @@ interface State {
     clip: null | File,
     game: null | string,
     title: null | string,
-    error: boolean,
     isLoading: boolean,
     fileError: boolean,
+    gameError: boolean,
+    titleError: boolean,
     submitSuccess: boolean,
 };
 

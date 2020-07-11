@@ -10,9 +10,10 @@ class ClipUpload extends React.PureComponent<Props, State> {
         clip: null,
         title: '',
         game: null,
-        error: false,
-        fileError: false,
         isLoading: false,
+        gameError: false,
+        fileError: false,
+        titleError: false,
         submitSuccess: false,
     };
 
@@ -44,9 +45,14 @@ class ClipUpload extends React.PureComponent<Props, State> {
         const { uploadClip } = this.props;
 
         if (!game || game === 'Select') {
-            this.setState({ error: true });
+            this.setState({ gameError: true });
             return;
-        } else if (clip.size > 75000000) {
+        } else if (!title || title.length > 50) {
+            this.setState({ titleError: true });
+            return;
+
+        } else if (!clip || clip.size > 75000000) {
+            this.setState({ fileError: true });
             return;
         };
 
@@ -67,16 +73,24 @@ class ClipUpload extends React.PureComponent<Props, State> {
     };
 
     render() {
-        const { title, error, fileError, isLoading, submitSuccess } = this.state;
+        const {
+            title,
+            isLoading,
+            gameError,
+            fileError,
+            titleError,
+            submitSuccess
+        } = this.state;
         const { handleUploadClip, handleSelect, handleChange } = this;
 
         return (
             <>
                 <ClipUploadComponent
                     title={ title }
-                    error={ error }
-                    fileError={ fileError }
                     isLoading={ isLoading }
+                    fileError={ fileError }
+                    gameError={ gameError }
+                    titleError={ titleError }
                     submitSuccess={ submitSuccess }
                     handleSelect={ handleSelect }
                     handleChange={ handleChange }
