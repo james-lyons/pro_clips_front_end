@@ -69,6 +69,8 @@ class ClipUpload extends React.PureComponent<Props, State> {
                 submitSuccess: true,
             });
             return;
+        } else if (res.payload > 400) {
+            this.setState({ isLoading: false })
         };
     };
 
