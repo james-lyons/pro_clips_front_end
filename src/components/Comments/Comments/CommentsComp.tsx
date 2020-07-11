@@ -59,7 +59,7 @@ const CommentsComp: React.SFC<Props> = ({
                 <Comment.Content id='comment-replies-container'>
                     {
                         comment.replies &&
-                        <Comment.Group>
+                        <Comment.Group id='comment-replies'>
                             <Replies replies={ comment.replies } clipId={ clipId }/>
                         </Comment.Group>
                     }

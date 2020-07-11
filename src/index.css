@@ -389,6 +389,10 @@ html, body {
     margin-left: 0
 }
 
+#comment-replies {
+    max-width: 100%;
+}
+
 #reply-form {
     margin-bottom: 1rem;
 }

@@ -23,10 +23,10 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'public/index.html'
         }),
         new CopyPlugin([
-            { from: '_redirects' }
+            { from: 'public/_redirects' }
         ])
     ],
     mode: process.env_NODE_ENV === 'production' ? 'production' : 'development',
