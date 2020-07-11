@@ -40,7 +40,6 @@ const userLogin = (user: User) => {
 
             const data = await res.json();
 
-
             if (data.status >= 400) {
                 dispatch({ type: 'USER_LOGIN_REJECTED', payload: data });
                 return { error: data.error };

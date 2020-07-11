@@ -84,6 +84,8 @@ const uploadClip = (clip: File, title: string, game: string) => {
     formData.append('title', title);
     formData.append('game', game);
 
+    console.log(formData);
+
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/clips`, 
