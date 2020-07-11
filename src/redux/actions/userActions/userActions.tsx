@@ -25,11 +25,8 @@ const fetchCurrentUser = (currentUser: string) => {
 };
 
 const fetchUser = (user: string) => {
-    console.log(user);
 
     return async dispatch => {
-
-        console.log(API_URL);
         try {
             let res = await fetch(`${ API_URL }/accounts/user/${ user }`,
                 {
@@ -38,7 +35,6 @@ const fetchUser = (user: string) => {
                 }
             );
             let data = await res.json();
-            console.log(data);
 
             if (data.status >= 400) {
                 return dispatch({ type: 'FETCH_USER_REJECTED', payload: data });

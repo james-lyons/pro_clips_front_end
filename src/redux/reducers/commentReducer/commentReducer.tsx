@@ -16,6 +16,9 @@ const commentReducer = (state: State ={
     
     switch(action.type) {
 
+        case "RESET_COMMENTS": 
+            return { ...state, comments: null }
+
         case "FETCH_COMMENTS_FULFILLED":
             return { ...state, comments: action.payload };
 

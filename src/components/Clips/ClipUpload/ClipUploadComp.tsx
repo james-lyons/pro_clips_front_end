@@ -1,6 +1,6 @@
 import React from 'react';
 import { Props } from './config';
-import { Form, Button, Container, Message, Loader } from 'semantic-ui-react';
+import { Form, Button, Container, Message, Icon } from 'semantic-ui-react';
 
 const ClipUploadComponent: React.SFC<Props> = ({
     title,
@@ -22,13 +22,16 @@ const ClipUploadComponent: React.SFC<Props> = ({
 
                 {
                     isLoading &&
-                    <Message info>
-                        <Loader active inline />
-                        <p>Loading (This may take a minute or two)</p>
-                    </Message>
+                    <Message icon>
+                        <Icon name='circle notched' loading />
+                        <Message.Content>
+                            <Message.Header>Loading</Message.Header>
+                            This may take a minute or two
+                        </Message.Content>
+                  </Message>
                 }
-                
-                { submitSuccess && <Message info><p>Success!</p></Message> }
+
+                { submitSuccess && <Message success><p>Success!</p></Message> }
                 { gameError && <Message error><p>Please select a game!</p></Message> }
                 { titleError && <Message error><p>Please select a title!</p></Message> }
 

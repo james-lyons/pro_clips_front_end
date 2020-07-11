@@ -381,7 +381,8 @@ html, body {
 }
 
 #comment-group-container {
-    margin-bottom: 0
+    margin-bottom: 0;
+    max-width: 100%;
 }
 
 #comment-replies-container {

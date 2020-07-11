@@ -31,7 +31,6 @@ class NavBar extends React.PureComponent<Props, State> {
     };
 
     render() {
-        const theme = localStorage.getItem('theme');
         const { activeItem, visible } = this.state;
         const { handleSelect, setVisibility } = this;
 

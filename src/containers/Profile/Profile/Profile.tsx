@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Loader } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { State, Props, ReduxState } from './config';
@@ -24,7 +25,7 @@ class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
         const { match, fetchUser } = this.props;
         console.log(match);
 
-        await fetchUser(match.params.username);
+        fetchUser(match.params.username);
         const { user, currentUser } = this.props;
 
         console.log(match);
@@ -79,9 +80,8 @@ class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
 
         return (
             <>
-                <p>hello</p>
                 {
-                    isLoading && <p>Loading</p>
+                    isLoading && <Loader active />
                 }
                 {
                     user && 

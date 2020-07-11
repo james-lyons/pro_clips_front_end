@@ -1,13 +1,12 @@
 interface State {
     replyRef: null | string,
-    comments: null | Array<Comment>,
     replies: null | Array<Reply>
 };
 
 interface Props {
     clip: Clip,
-    comments: null | Array<Comment>,
-    fetchComments: (clipId: string) => void
+    fetchComments: (clipId: string) => void,
+    resetComments: () => void
 };
 
 interface Clip {

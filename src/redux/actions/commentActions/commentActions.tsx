@@ -1,5 +1,11 @@
 import API_URL from '../../../constants';
 
+const resetComments = () => {
+    return async dispatch => {
+        return dispatch({ type: 'RESET_COMMENTS' });
+    };
+};
+
 const fetchComments = (clipId: string) => {
     return async dispatch => {
         try {
@@ -105,6 +111,7 @@ const unlikeComment = (commentId: string) => {
 };
 
 export {
+    resetComments,
     fetchComments,
     createComment,
     deleteComment,
