@@ -22,7 +22,7 @@ const FollowersListComp: React.SFC<Props> = ({
                 />
                 <Item.Content
                     as='a'
-                    href={ `/${ follower.username }` }
+                    href={ `/user/${ follower.username }` }
                     verticalAlign='middle'
                     className='follow-list-a'
                 >

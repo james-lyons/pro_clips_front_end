@@ -18,7 +18,7 @@ const RepliesComp: React.SFC<Props> = ({
 
                 <Image
                     as={ Link }
-                    to={ `/${ reply.author_name }` }
+                    to={ `/user/${ reply.author_name }` }
                     circular
                     size='mini'
                     floated='left'
@@ -30,7 +30,7 @@ const RepliesComp: React.SFC<Props> = ({
                 </Grid.Column>
 
                 <Comment.Content className='comment-content-container'>
-                    <Comment.Author as={ Link } to={`/${ reply.author_name }`}>{ reply.author_name }</Comment.Author>
+                    <Comment.Author as={ Link } to={`/user/${ reply.author_name }`}>{ reply.author_name }</Comment.Author>
                     <Comment.Text>{ reply.reply_text }</Comment.Text>
                     <LikeReply reply={ reply } clipId={ clipId } />
                 </Comment.Content>

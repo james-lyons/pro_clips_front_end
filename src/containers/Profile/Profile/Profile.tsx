@@ -27,6 +27,8 @@ class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
         await fetchUser(match.params.username);
         const { user, currentUser } = this.props;
 
+        console.log(match);
+
         if (match.params.username === currentUser.username) {
             this.setState({
                 isMatch: true,

@@ -32,7 +32,7 @@ class Search extends React.PureComponent<Props & RouteComponentProps, State> {
         const { history } = this.props;
 
         history.location.pathname = "/"
-        await history.push(`${ result.title }`);
+        await history.push(`/user/${ result.title }`);
         location.reload();
     };
 

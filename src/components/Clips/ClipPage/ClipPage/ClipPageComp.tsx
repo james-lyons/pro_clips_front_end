@@ -31,12 +31,12 @@ const ClipPageComponent: React.SFC<Props> = ({
                             size='mini'
                             floated='left'
                             as={ Link }
-                            to={`/${ clip.poster_name }`}
+                            to={`/user/${ clip.poster_name }`}
                             src={ user.profile_image }
                         />
                         <Card.Header
                             as={ Link }
-                            to={`/${ clip.poster_name }`}
+                            to={`/user/${ clip.poster_name }`}
                         >
                             { clip.poster_name }
                         </Card.Header>
