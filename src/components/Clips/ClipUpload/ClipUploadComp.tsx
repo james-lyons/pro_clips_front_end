@@ -7,7 +7,6 @@ const ClipUploadComponent: React.SFC<Props> = ({
     error,
     fileError,
     isLoading,
-    wasSubmitted,
     submitSuccess,
     handleChange,
     handleSelect,
@@ -19,7 +18,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
     return (
         <>
             <Container id='clip-upload-container'>
-                
+
                 { isLoading && <Message info><p>Loading</p></Message>}
                 { submitSuccess && <Message info><p>Success!</p></Message> }
                 { error && <Message error><p>Please select a game!</p></Message> }
@@ -80,7 +79,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
                         <option value="Fortnite">Fortnite</option>
                     </Form.Field>
                     
-                    <Button color='red' content={ wasSubmitted ? 'Success!' : 'Submit' } />
+                    <Button color='red' content={ 'Submit' } />
                 </Form>
             </Container>
         </>

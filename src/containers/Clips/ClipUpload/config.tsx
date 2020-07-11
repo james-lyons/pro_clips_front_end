@@ -5,7 +5,6 @@ interface State {
     error: boolean,
     isLoading: boolean,
     fileError: boolean,
-    wasSubmitted: boolean,
     submitSuccess: boolean,
 };
 

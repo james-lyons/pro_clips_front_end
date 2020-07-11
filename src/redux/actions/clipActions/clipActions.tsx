@@ -79,14 +79,10 @@ const fetchBrowseClips = () => {
 
 const uploadClip = (clip: File, title: string, game: string) => {
 
-    console.log('hello from uploadclip: clip, title, game', clip, title, game);
-
-    const formData = new FormData();
+    let formData = new FormData();
     formData.append('clip', clip);
     formData.append('title', title);
     formData.append('game', game);
-
-    console.log('Hello from upload clip: formdata', formData);
 
     return async dispatch => {
         try {
@@ -94,7 +90,6 @@ const uploadClip = (clip: File, title: string, game: string) => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: { 'Content-Type': 'multipart/form-data' },
                     body: formData
                 }
             );
