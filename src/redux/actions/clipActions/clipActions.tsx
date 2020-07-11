@@ -90,6 +90,7 @@ const uploadClip = (clip: File, title: string, game: string) => {
                 {
                     method: 'POST',
                     credentials: 'include',
+                    headers: { 'Content-type': 'multipart/form-data' },
                     body: formData
                 }
             );
