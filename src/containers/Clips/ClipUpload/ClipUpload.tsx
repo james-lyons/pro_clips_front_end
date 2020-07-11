@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { State, Props, Event } from './config';
 import { uploadClip } from '../../../redux/actions/clipActions/clipActions';
 import ClipUploadComponent from '../../../components/Clips/ClipUpload/ClipUploadComp';
+import { fileURLToPath } from 'url';
 
 class ClipUpload extends React.PureComponent<Props, State> {
     state: State = {
@@ -19,8 +20,10 @@ class ClipUpload extends React.PureComponent<Props, State> {
         let files = event.target.files;
         let file = files[0]
 
-        if (file.size > 7500000) { 
+        if (file.size > 75000000) { 
             this.setState({ fileError: true });
+            return;
+
         } else {
             this.setState({
                 clip: file,
@@ -42,6 +45,8 @@ class ClipUpload extends React.PureComponent<Props, State> {
 
         if (!game || game === 'Select') {
             this.setState({ error: true });
+            return;
+        } else if (clip.size > 75000000) {
             return;
         };
 
