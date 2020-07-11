@@ -20,7 +20,7 @@ const reportUser = (
             {
                 method: 'POST',
                 credentials: 'include',
-                headers: { 'Content-type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             }
         );
@@ -57,7 +57,7 @@ const reportClip = (
             {
                 method: 'POST',
                 credentials: 'include',
-                headers: { 'Content-type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             }
         );
@@ -96,7 +96,7 @@ const reportReply = (
             {
                 method: 'POST',
                 credentials: 'include',
-                headers: { 'Content-type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             }
         );
@@ -135,7 +135,7 @@ const reportComment = (
             {
                 method: 'POST',
                 credentials: 'include',
-                headers: { 'Content-type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             }
         );

@@ -3,6 +3,7 @@ interface State {
     game: null | string,
     title: null | string,
     error: boolean,
+    isLoading: boolean,
     fileError: boolean,
     wasSubmitted: boolean,
     submitSuccess: boolean,

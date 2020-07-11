@@ -30,7 +30,7 @@ const createComment = (commentText: string, clipId: string) => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(commentBody)
                 }
             );

@@ -79,12 +79,14 @@ const fetchBrowseClips = () => {
 
 const uploadClip = (clip: File, title: string, game: string) => {
 
+    console.log('hello from uploadclip: clip, title, game', clip, title, game);
+
     const formData = new FormData();
     formData.append('clip', clip);
     formData.append('title', title);
     formData.append('game', game);
 
-    console.log(formData);
+    console.log('Hello from upload clip: formdata', formData);
 
     return async dispatch => {
         try {
@@ -101,7 +103,8 @@ const uploadClip = (clip: File, title: string, game: string) => {
             return dispatch({ type: "CLIP_UPLOAD_FULFILLED", payload: data.status });
 
         } catch (error) {
-            return dispatch({ type: "CLIP_UPLOAD_REJECTED" })
+            console.log(error);
+            return dispatch({ type: "CLIP_UPLOAD_REJECTED", payload: error })
         };
     };
 };

@@ -9,7 +9,7 @@ const createReply = (replyText: string, commentId: string) => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(replyBody)
                 }
             );

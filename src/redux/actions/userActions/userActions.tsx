@@ -82,7 +82,7 @@ const editUserProfile = (userId: string, profileChanges: object) => {
                 {
                     method: 'PUT',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(profileChanges)
                 }
             );
@@ -108,7 +108,7 @@ const editUserEmail = (user: string, newEmail: object) => {
                 {
                     method: 'PUT',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newEmail)
                 }
             );
@@ -134,7 +134,7 @@ const editUserPassword = (user, newPassword) => {
                 {
                     method: 'PUT',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newPassword)
                 }
             );
