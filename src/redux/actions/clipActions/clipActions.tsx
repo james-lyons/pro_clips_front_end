@@ -7,7 +7,7 @@ const fetchClip = (clipId: string) => {
                 {
                     method: 'GET',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                 }
             );
 
@@ -92,7 +92,7 @@ const uploadClip = (clip: File, title: string, game: string) => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: { 'Content-type': 'multipart/form-data' },
+                    headers: { 'Content-Type': 'multipart/form-data' },
                     body: formData
                 }
             );
@@ -117,7 +117,7 @@ const editClip = (clipId: string, newTitle: string) => {
                 {
                     method: 'PUT',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(titleBody)
                 }
             );

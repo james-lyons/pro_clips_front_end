@@ -8,7 +8,7 @@ const userRegister = (newUser: NewUser) => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newUser)
                 }
             );
@@ -33,7 +33,7 @@ const userLogin = (user: User) => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(user)
                 }
             );
@@ -62,7 +62,7 @@ const userLogout = () => {
                 {
                     method: 'POST',
                     credentials: 'include',
-                    headers: { 'Content-type': 'application/json' }
+                    headers: { 'Content-Type': 'application/json' }
                 });
 
             const data = await res.json();
