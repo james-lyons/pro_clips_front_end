@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Props, State, Event } from './config';
 import { Segment, Responsive } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
 import { fetchCurrentUser } from '../../redux/actions/userActions/userActions';
 import MobileNavBarComp from '../../components/NavBar/MobileNavBarComp';
 import NavBarComp from '../../components/NavBar/NavBarComp';
@@ -19,7 +18,6 @@ class NavBar extends React.PureComponent<Props, State> {
         if (currentUserId) {
             await this.props.fetchCurrentUser(currentUserId);
         };
-        console.log(this.props.match);
     };
 
     private handleSelect = (event: Event) => {
@@ -62,4 +60,4 @@ class NavBar extends React.PureComponent<Props, State> {
     };
 };
 
-export default connect(null, { fetchCurrentUser })(withRouter(NavBar));
+export default connect(null, { fetchCurrentUser })(NavBar);
