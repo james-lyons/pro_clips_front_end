@@ -74,7 +74,8 @@ const AuthLinks: React.SFC<Props> = ({
                     <Dropdown item icon='bars' direction='left' id='navbar-dropdown-icon'>
                         <Dropdown.Menu>
                             <Dropdown.Item
-                                href={ `/user/${ currentUser.username }` }
+                                as={ Link }
+                                to={ `/user/${ currentUser.username }` }
                             >
                                 Profile
                             </Dropdown.Item>

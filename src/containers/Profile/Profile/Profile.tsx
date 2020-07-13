@@ -23,12 +23,9 @@ class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
 
     componentDidMount = async () => {
         const { match, fetchUser } = this.props;
-        console.log(match);
 
         fetchUser(match.params.username);
         const { user, currentUser } = this.props;
-
-        console.log(match);
 
         if (match.params.username === currentUser.username) {
             this.setState({
@@ -54,21 +51,27 @@ class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
         };
     };
 
-    private followUser = async (username: string) => {
+    private followUser = (username: string) => {
+        const currentUser = localStorage.getItem('uid');
         const { followUser } = this.props;
-        await followUser(username);
 
-        await this.setState({
-            isFollowed: true,
-            user: this.props.user
-        });
+        if (currentUser === username) {
+            return;
+        } else {
+            followUser(username);
+            this.setState({
+                isFollowed: true,
+                user: this.props.user
+            });
+            return;
+        };
     };
 
-    private unfollowUser = async (username: string) => {
+    private unfollowUser = (username: string) => {
         const { unfollowUser } = this.props;
-        await unfollowUser(username);
+        unfollowUser(username);
         
-        await this.setState({
+        this.setState({
             isFollowed: false,
             user: this.props.user
         });
