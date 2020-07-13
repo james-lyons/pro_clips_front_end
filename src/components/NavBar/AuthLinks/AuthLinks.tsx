@@ -76,7 +76,7 @@ const AuthLinks: React.SFC<Props> = ({
                             <Dropdown.Item
                                 as={ Link }
                                 to={{ 
-                                    pathname: `/user/${ currentUser.username }`,
+                                    pathname: `/${ currentUser.username }`,
                                     state: { user: currentUser }
                                 }}
                             >

@@ -30,7 +30,7 @@ const CommentsComp: React.SFC<Props> = ({
 
                 <Image
                     as={ Link }
-                    to={ `/user/${ comment.author_name }` }
+                    to={ `/${ comment.author_name }` }
                     circular
                     size='mini'
                     floated='left'
@@ -38,7 +38,7 @@ const CommentsComp: React.SFC<Props> = ({
                 />
 
                 <Comment.Content className='comment-content-container'>
-                    <Comment.Author as={ Link } to={`/user/${ comment.author_name }`}>
+                    <Comment.Author as={ Link } to={`/${ comment.author_name }`}>
                         { comment.author_name }
                     </Comment.Author>
                     <Comment.Text>
