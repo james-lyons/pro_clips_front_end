@@ -37,8 +37,8 @@ export default withRouter(() => {
             <Route exact path='/' component={ Home }/>
             <HideRoute exact path='/login' component={ Login } />
             <HideRoute exact path='/register' component={ Register } />
-            <Route exact path='/browseClips' component={ BrowseClips } />
-            <Route exact path='/popularClips' component={ PopularClips } />
+            <Route exact path='/browseclips' component={ BrowseClips } />
+            <Route exact path='/popularclips' component={ PopularClips } />
             <PrivateRoute path='/accounts' component={ Accounts } />
             <PrivateRoute exact path='/clipUpload' component={ ClipUpload } />
             <Route path='/user/:username' component={ Profile } />

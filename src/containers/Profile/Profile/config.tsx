@@ -59,5 +59,6 @@ interface Clip {
 export {
     State,
     Props,
+    User,
     ReduxState
 };

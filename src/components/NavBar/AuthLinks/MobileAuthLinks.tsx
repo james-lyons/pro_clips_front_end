@@ -53,7 +53,7 @@ const MobileAuthLinks: React.SFC<Props> = ({
 
                     <Menu.Item
                         as={ Link }
-                        to='/popularClips'
+                        to='/popularclips'
                         name='Popular Clips'
                         active={ activeItem === 'Popular Clips' }
                         onClick={ handleSelect }
@@ -61,7 +61,7 @@ const MobileAuthLinks: React.SFC<Props> = ({
 
                     <Menu.Item
                         as={ Link }
-                        to='/browseClips'
+                        to='/browseclips'
                         name='Browse Clips'
                         active={ activeItem === 'Browse Clips' }
                         onClick={ handleSelect }
@@ -84,7 +84,11 @@ const MobileAuthLinks: React.SFC<Props> = ({
                     <Dropdown item icon='bars' direction='left' className='nav-dropdown'>
                         <Dropdown.Menu>
                             <Dropdown.Item
-                                href={ `/user/${ currentUser.username }` }
+                                as={ Link }
+                                to={{ 
+                                    pathname: `/user/${ currentUser.username }`,
+                                    state: { user: currentUser }
+                                }}
                             >
                                 Profile
                             </Dropdown.Item>

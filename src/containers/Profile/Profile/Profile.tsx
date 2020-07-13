@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
-import { State, Props, ReduxState } from './config';
+import { State, Props, User, ReduxState } from './config';
 import { fetchCurrentUser, fetchUser } from '../../../redux/actions/userActions/userActions';
 import { followUser, unfollowUser, fetchFollowers, fetchFollowingList }
     from '../../../redux/actions/followActions/followActions';
@@ -21,10 +21,21 @@ class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
         showFollowing: false
     };
 
+    componentDidUpdate = (props: any) => {
+        
+        const matchname = this.props.match.params.username
+        const pathname = props.location.pathname.slice(6, props.location.pathname.length);
+        
+        if (matchname && pathname && matchname !== pathname) { 
+            return this.setState({ user: this.props.location.state.user })
+        };
+    };
+
     componentDidMount = async () => {
+
         const { match, fetchUser } = this.props;
 
-        fetchUser(match.params.username);
+        await fetchUser(match.params.username);
         const { user, currentUser } = this.props;
 
         if (match.params.username === currentUser.username) {

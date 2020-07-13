@@ -43,7 +43,7 @@ const AuthLinks: React.SFC<Props> = ({
                 <Menu.Menu>
                     <Menu.Item
                         as={ Link }
-                        to='/popularClips'
+                        to='/popularclips'
                         name='Popular Clips'
                     
                         active={ activeItem === 'Popular Clips' }
@@ -51,7 +51,7 @@ const AuthLinks: React.SFC<Props> = ({
                     />
                     <Menu.Item
                         as={ Link }
-                        to='/browseClips'
+                        to='/browseclips'
                         name='Browse Clips'
                         active={ activeItem === 'Browse Clips' }
                         onClick={ handleSelect }
@@ -75,7 +75,10 @@ const AuthLinks: React.SFC<Props> = ({
                         <Dropdown.Menu>
                             <Dropdown.Item
                                 as={ Link }
-                                to={ `/user/${ currentUser.username }` }
+                                to={{ 
+                                    pathname: `/user/${ currentUser.username }`,
+                                    state: { user: currentUser }
+                                }}
                             >
                                 Profile
                             </Dropdown.Item>

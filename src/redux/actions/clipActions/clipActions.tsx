@@ -98,7 +98,6 @@ const uploadClip = (clip: File, title: string, game: string) => {
             return dispatch({ type: "CLIP_UPLOAD_FULFILLED", payload: data.status });
 
         } catch (error) {
-            console.log(error);
             return dispatch({ type: "CLIP_UPLOAD_REJECTED", payload: error })
         };
     };

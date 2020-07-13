@@ -39,7 +39,7 @@ const Links: React.SFC<Props> = ({
                 <Menu.Menu>
                     <Menu.Item
                         as={ Link }
-                        to='/popularClips'
+                        to='/popularclips'
                         name='Popular Clips'
                         active={ activeItem === 'Popular Clips' }
                         onClick={ handleSelect }
@@ -47,7 +47,7 @@ const Links: React.SFC<Props> = ({
 
                     <Menu.Item
                         as={ Link }
-                        to='/browseClips'
+                        to='/browseclips'
                         name='Browse Clips'
                         active={ activeItem === 'Browse Clips' }
                         onClick={ handleSelect }
