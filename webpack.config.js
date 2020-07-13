@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'index_bundle.js',
         publicPath: '/'
     },
     resolve: {
@@ -26,7 +26,8 @@ module.exports = {
             template: 'public/index.html'
         }),
         new CopyPlugin([
-            { from: 'public/_redirects' }
+            { from: 'public/_redirects' },
+            { from: 'public/manifest.json' }
         ])
     ],
     mode: process.env_NODE_ENV === 'production' ? 'production' : 'development',
