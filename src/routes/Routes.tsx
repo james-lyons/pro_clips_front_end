@@ -41,7 +41,7 @@ export default withRouter(() => {
             <Route exact path='/popularclips' component={ PopularClips } />
             <PrivateRoute path='/accounts' component={ Accounts } />
             <PrivateRoute exact path='/clipUpload' component={ ClipUpload } />
-            <Route path='/:username' component={ Profile } />
+            <Route exact path='/:username' component={ Profile } />
             <Route path='/clip/:clipId' component={ ClipPage } />
             <Route path='/browseclips/:game' component={ GameClips } />
             <Route component={ UnavailableComp } />
