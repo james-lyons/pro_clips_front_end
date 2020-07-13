@@ -1,4 +1,5 @@
 interface State {
+    user: null | User,
     game: string,
     newTitle: string,
     userClips: null | Array<Clip>

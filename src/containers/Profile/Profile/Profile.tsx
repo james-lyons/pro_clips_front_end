@@ -22,12 +22,19 @@ class Profile extends React.PureComponent<Props & RouteComponentProps, State> {
     };
 
     componentDidUpdate = (props: any) => {
+
+        const { match, location } = this.props;
         
-        const matchname = this.props.match.params.username
-        const pathname = props.location.pathname.slice(6, props.location.pathname.length);
+        const matchname = match.params.username
+        const pathname = props.location.pathname.slice(1, props.location.pathname.length);
+
+        // console.log('Profile ComponentDidUpdate 0', props);
+        // console.log('Profile ComponentDidUpdate 1', matchname);
+        // console.log('Profile ComponentDidUpdate 2', pathname);
+        // console.log('Profile ComponentDidUpdate 3', location.state);
         
-        if (matchname && pathname && matchname !== pathname) { 
-            return this.setState({ user: this.props.location.state.user })
+        if (matchname && pathname && location.state && matchname !== pathname) { 
+            return this.setState({ user: location.state.user })
         };
     };
 

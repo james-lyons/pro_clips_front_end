@@ -6,13 +6,32 @@ import ProfileClipsComp from '../../../components/Profile/ProfileClips/ProfileCl
 
 class ProfileClips extends React.PureComponent<Props, State> {
     state: State = {
+        user: null,
         game: '',
         newTitle: '',
         userClips: null
     };
 
+    componentDidUpdate = async (props: any) => {
+        const { userClips, user } = this.state;
+        const { fetchUserClips } = this.props;
+
+        if (!user && this.props.user) {
+            this.setState({ user: this.props.user });
+
+        };
+
+        if (userClips) {
+            return;
+        } else if (user.clips.length > 0) {
+            let res = await fetchUserClips(user.username);
+            this.setState({ userClips: res.payload.data});
+            return;
+        };
+    };
+
     componentDidMount = async () => {
-        let { user, fetchUserClips } = this.props;
+        const { user, fetchUserClips } = this.props;
         
         if (user.clips.length > 0) {
             await fetchUserClips(user.username);
@@ -27,8 +46,7 @@ class ProfileClips extends React.PureComponent<Props, State> {
     };
 
     render() {
-        const { user } = this.props;
-        const { userClips, game } = this.state;
+        const { user, userClips, game } = this.state;
         const { handleChange } = this;
 
         return (
@@ -49,7 +67,6 @@ class ProfileClips extends React.PureComponent<Props, State> {
 
 const mapStateToProps = (state: ReduxState) => {
     return {
-        user: state.userReducer.user,
         userClips: state.clipReducer.userClips
     };
 };

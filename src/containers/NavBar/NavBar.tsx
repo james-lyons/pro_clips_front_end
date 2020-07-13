@@ -16,7 +16,8 @@ class NavBar extends React.PureComponent<Props, State> {
     componentDidMount = async () => {
         let currentUserId = localStorage.getItem('uid');
         if (currentUserId) {
-            await this.props.fetchCurrentUser(currentUserId);
+            let res = await this.props.fetchCurrentUser(currentUserId);
+            console.log('Navbar ComponentDidMount', res);
         };
     };
 
