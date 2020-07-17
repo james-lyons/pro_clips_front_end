@@ -1,11 +1,14 @@
 interface Props {
-    username: string,
     email: string,
+    username: string,
     password: string,
     password2: string,
+    passwordType: string,
     error: null | Error,
+    registerSuccess: boolean,
+    handleSubmit: () => void,
+    handlePasswordType: () => void,
     handleChange: (event: Event) => void,
-    handleSubmit: () => void
 };
 
 interface Error {

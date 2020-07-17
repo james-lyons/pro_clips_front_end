@@ -5,9 +5,11 @@ import { Form, Button, Message, Header } from 'semantic-ui-react'
 const LoginComp: React.SFC<Props> = ({
     email,
     password,
+    passwordType,
     error,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handlePasswordType
 }) => {
 
     const theme = localStorage.getItem('theme');
@@ -48,13 +50,25 @@ const LoginComp: React.SFC<Props> = ({
                 <Form.Field>
                     <Form.Input 
                         required
-                        label='password'
-                        type='password'
                         name='password'
+                        label='password'
+                        placeholder='Password'
                         value={ password }
+                        type={ passwordType }
                         onChange={ handleChange }
                     />
                 </Form.Field>
+
+                <Button
+                    basic
+                    as='button'
+                    color='black'
+                    floated='right'
+                    inverted={ theme === 'dark' }
+                    onClick={ () => handlePasswordType() }
+                >
+                    Show Password
+                </Button>
 
                 <Button
                     basic

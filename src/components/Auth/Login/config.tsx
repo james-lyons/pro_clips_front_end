@@ -1,9 +1,15 @@
 interface Props {
     email: string,
     password: string,
-    error: null | { message: string },
-    handleChange: (event: Event) => void,
+    passwordType: string,
+    error: null | Error,
     handleSubmit: () => void,
+    handlePasswordType: () => void,
+    handleChange: (event: Event) => void,
+};
+
+interface Error {
+    message: string
 };
 
 interface Event {
