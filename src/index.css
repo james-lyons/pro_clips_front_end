@@ -577,12 +577,12 @@ html, body {
 
     #login-form {
         margin-top: 45%;
-        width: 85%
+        min-width: 85% !important
     }
 
     #register-form {
         margin-top: 30%;
-        width: 85%
+        min-width: 85% !important
     }
 
 
