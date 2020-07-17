@@ -9,6 +9,7 @@ class Login extends React.PureComponent<Props, State> {
     state: State = {
         email: "",
         password: "",
+        passwordType: 'password',
         error: null,
     };
 
@@ -46,18 +47,29 @@ class Login extends React.PureComponent<Props, State> {
         };
     };
 
+    private handlePasswordType = () => {
+        event.preventDefault();
+        const { passwordType } = this.state;
+
+        passwordType === 'password'
+        ? this.setState({ passwordType: 'text' })
+        : this.setState({ passwordType: 'password' })
+    };
+
     render() {
-        const { email, password, error, message } = this.state;
+        const { email, password, error, passwordType } = this.state;
+        const { handleSubmit, handleChange, handlePasswordType } = this;
 
         return (
             <>
                 <LoginComp
                     email={ email }
                     password={ password }
+                    passwordType={ passwordType }
                     error={ error }
-                    message={ message }
-                    handleChange={ this.handleChange }
-                    handleSubmit={ this.handleSubmit }
+                    handleChange={ handleChange }
+                    handleSubmit={ handleSubmit }
+                    handlePasswordType={ handlePasswordType }
                 />
             </>
         );

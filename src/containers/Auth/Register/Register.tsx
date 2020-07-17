@@ -7,10 +7,12 @@ import RegisterComp from '../../../components/Auth/Register/RegisterComp';
 class Register extends React.PureComponent<Props, State> {
 
     state: State = {
-        username: "",
         email: "",
+        username: "",
         password: "",
         password2: "",
+        passwordType: 'password',
+        registerSuccess: false,
         error: null
     };
 
@@ -22,18 +24,54 @@ class Register extends React.PureComponent<Props, State> {
 
     private handleSubmit = async () => {
         event.preventDefault();
-
-        const { username, email, password, password2 } = this.state;
+        
         const { userRegister } = this.props;
+        const { username, email, password, password2 } = this.state;
         const newUser = { username, email, password, password2 };
-        const loginCredentials = { email, password };
 
-        if (password.length < 6 || password.length > 16) {
-            this.setState({ error: { message: 'Password must be at 6 to 16 characters long' }});
+        const symbols = ['!', '@', '#', '$', '%', '^', '&', '*'];
+        const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ];
+        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+        let includesNumber= false;
+        let includesLetter = false;
+        let includesSymbol = false;
+
+        letters.forEach(letter => {
+            if (password.split('').includes(letter)) {
+                console.log(letter);
+                return includesLetter = true;
+            };
+            return;
+        });
+
+        numbers.forEach(number => {
+            if (password.split('').includes(number)) {
+                console.log(number);
+                return includesNumber = true;
+            };
+            return;
+        });
+
+        symbols.forEach(symbol => {
+            if (password.split('').includes(symbol)) {
+                console.log(symbol);
+                return includesSymbol = true;
+            };
+            return;
+        });
+
+        if (password.length < 8 || password.length > 16) {
+            this.setState({ error: { message: 'Password must be at 8 to 16 characters long' }});
             return;
 
-        } else if (password2.length < 6 || password2.length > 16) {
-            this.setState({ error: { message: 'Password must be at 6 to 16 characters long' }});
+        } else if (password2.length < 8 || password2.length > 16) {
+            this.setState({ error: { message: 'Password must be at 8 to 16 characters long' }});
+            return;
+
+        } else if (!includesNumber || !includesLetter || !includesSymbol) {
+            this.setState({ 
+                error: { message: 'Password must include at least one letter, number, and symbol' }})
             return;
 
         } else if (password !== password2) {
@@ -48,15 +86,23 @@ class Register extends React.PureComponent<Props, State> {
             return;
 
         } else if (res.type === 'USER_REGISTRATION_FULFILLED') {
-            await this.setState({ error: null });
+            await this.setState({ error: null, registerSuccess: true });
         };
-        
-        this.props.history.push('/login');
+    };
+
+    private handlePasswordType = () => {
+        event.preventDefault();
+        const { passwordType } = this.state;
+
+        passwordType === 'password'
+        ? this.setState({ passwordType: 'text' })
+        : this.setState({ passwordType: 'password' })
     };
 
     render() {
 
-        const { username, email, password, password2, error } = this.state;
+        const { username, email, password, password2, passwordType, error, registerSuccess } = this.state;
+        const { handleSubmit, handleChange, handlePasswordType } = this;
 
         return (
             <>
@@ -65,9 +111,12 @@ class Register extends React.PureComponent<Props, State> {
                     username={ username }
                     password={ password }
                     password2={ password2 }
+                    passwordType={ passwordType }
                     error={ error }
-                    handleChange={ this.handleChange }
-                    handleSubmit={ this.handleSubmit }
+                    registerSuccess={ registerSuccess }
+                    handleChange={ handleChange }
+                    handleSubmit={ handleSubmit }
+                    handlePasswordType={ handlePasswordType }
                 />
             </>
         );

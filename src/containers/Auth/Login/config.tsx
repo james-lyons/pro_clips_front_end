@@ -1,6 +1,7 @@
 interface State {
     email: string,
     password: string,
+    passwordType: string,
     error: null | Error
 };
 

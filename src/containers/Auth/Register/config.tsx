@@ -1,9 +1,11 @@
 interface State {
-    username: string,
     email: string,
+    username: string,
     password: string,
     password2: string,
-    error: null | { message: string }
+    passwordType: string,
+    error: null | Error,
+    registerSuccess: boolean,
 };
 
 interface Props {
