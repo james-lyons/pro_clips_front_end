@@ -24,7 +24,7 @@ class Register extends React.PureComponent<Props, State> {
         event.preventDefault();
 
         const { username, email, password, password2 } = this.state;
-        const { userRegister, userLogin } = this.props;
+        const { userRegister } = this.props;
         const newUser = { username, email, password, password2 };
         const loginCredentials = { email, password };
 
@@ -48,17 +48,10 @@ class Register extends React.PureComponent<Props, State> {
             return;
 
         } else if (res.type === 'USER_REGISTRATION_FULFILLED') {
-            const res2: Response = await userLogin(loginCredentials);
-
             await this.setState({ error: null });
-
-            if (res2.type === 'USER_LOGIN_REJECTED') {
-                this.setState({ error: res.payload.error })
-
-                return;
-            };
         };
-        this.props.history.push('/browseclips');
+        
+        this.props.history.push('/login');
     };
 
     render() {
