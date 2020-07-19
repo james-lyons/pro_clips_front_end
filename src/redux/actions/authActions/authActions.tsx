@@ -1,6 +1,53 @@
 import API_URL from '../../../constants';
 import { User, NewUser } from './config';
 
+const resendEmailToken = (email: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/auth/register/resend/${ email }`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+
+            let data = await res.json();
+
+            if (data.status >= 400) {
+                return dispatch({ type: 'RESEND_EMAIL_TOKEN_REJECTED', payload: data })
+            } else {
+                return dispatch({ type: 'RESEND_EMAIL_TOKEN_FULFILLED', payload: data })
+            }
+        } catch (error) {
+            return dispatch({ type: 'RESEND_EMAIL_TOKEN_REJECTED', payload: error})
+        };
+    };
+};
+
+const registerConfirm = (emailtoken: string) => {
+    return async dispatch => {
+        try {
+            let res = await fetch(`${ API_URL }/auth/register/confirm/${ emailtoken }`,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                }
+            );
+            
+            const data = await res.json();
+            console.log('hi 2', data);
+
+            if (data.status >= 400) {
+                return dispatch({ type: 'REGISTRATION_CONFIRMATION_REJECTED', payload: data });
+            } else {
+                return dispatch({ type: 'REGISTRATION_CONFIRMATION_FULFILLED', payload: data });
+            };
+        } catch (error) {
+            return dispatch({ type: 'REGISTRATION_CONFIRMATION_REJECTED', payload: error })
+        };
+    };
+};
+
 const userRegister = (newUser: NewUser) => {
     return async dispatch => {
         try {
@@ -82,6 +129,8 @@ const userLogout = () => {
 };
 
 export {
+    resendEmailToken,
+    registerConfirm,
     userRegister,
     userLogin,
     userLogout

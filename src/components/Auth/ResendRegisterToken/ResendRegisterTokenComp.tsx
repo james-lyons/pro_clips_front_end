@@ -3,14 +3,12 @@ import { Props } from './config';
 import { Link } from 'react-router-dom';
 import { Form, Button, Message, Header, Label } from 'semantic-ui-react'
 
-const LoginComp: React.SFC<Props> = ({
+const ResendRegisterTokenComp: React.SFC<Props> = ({
     email,
-    password,
-    passwordType,
     error,
+    submitSuccess,
     handleChange,
-    handleSubmit,
-    handlePasswordType
+    handleSubmit
 }) => {
 
     const theme = localStorage.getItem('theme');
@@ -20,19 +18,26 @@ const LoginComp: React.SFC<Props> = ({
     };
 
     return (
-        <>  
+        <> 
             <Form
                 onSubmit={ handleSubmit }
                 inverted={ theme === 'dark' }
                 id={ theme === 'dark' ? styles.dark : styles.light }
             >
-                <Header as='h2' inverted={ theme === 'dark' }>Login</Header> 
+                <Header as='h2' inverted={ theme === 'dark' }>Resend Email Confirmation</Header> 
 
                 {
                     error && 
                     <Message negative size='small'>
                         <Message.Header>{ error.message }</Message.Header>
-                        <p>Please try again</p>
+                        <span><Link to='/login'>Login</Link> here</span>
+                    </Message>
+                }
+                {
+                    submitSuccess &&
+                    <Message size='small'>
+                        <Message.Header>Your account verification email is on its way</Message.Header>
+                        <p></p>
                     </Message>
                 }
 
@@ -48,36 +53,6 @@ const LoginComp: React.SFC<Props> = ({
                     />
                 </Form.Field>
 
-                <Form.Field>
-                    <Form.Input 
-                        required
-                        name='password'
-                        label='password'
-                        placeholder='Password'
-                        value={ password }
-                        type={ passwordType }
-                        onChange={ handleChange }
-                    />
-                <Label
-                    as={ Link }
-                    to='/password/recovery'
-                    style={{ cursor: 'pointer' }}
-                >
-                    Forgot your password?
-                </Label>
-                </Form.Field>
-
-                <Button
-                    basic
-                    as='button'
-                    color='black'
-                    floated='right'
-                    inverted={ theme === 'dark' }
-                    onClick={ () => handlePasswordType() }
-                >
-                    Show Password
-                </Button>
-
                 <Button
                     basic
                     color='black'
@@ -91,4 +66,4 @@ const LoginComp: React.SFC<Props> = ({
     );
 };
 
-export default LoginComp;
+export default ResendRegisterTokenComp;

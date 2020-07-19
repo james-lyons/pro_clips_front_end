@@ -172,6 +172,12 @@ html, body {
     padding: 1.2rem
 }
 
+#register-confirmation-container {
+    width: 35%;
+    margin: 15rem auto;
+    text-align: center;
+}
+
 
 /* ------------------- Clip Upload ------------------- */
 
@@ -583,6 +589,10 @@ html, body {
     #register-form {
         margin-top: 30%;
         min-width: 85% !important
+    }
+
+    #register-confirmation-container {
+        width: 90%
     }
 
 
