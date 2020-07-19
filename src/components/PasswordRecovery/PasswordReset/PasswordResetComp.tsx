@@ -1,12 +1,13 @@
 import React from 'react';
 import { Props } from './config';
-import { Link } from 'react-router-dom';
 import { Form, Button, Message, Header, Label } from 'semantic-ui-react'
 
-const LoginComp: React.SFC<Props> = ({
-    email,
+
+const PasswordResetComp: React.SFC<Props> = ({
     password,
+    password2,
     passwordType,
+    submitSuccess,
     error,
     handleChange,
     handleSubmit,
@@ -20,13 +21,13 @@ const LoginComp: React.SFC<Props> = ({
     };
 
     return (
-        <>  
+        <>
             <Form
                 onSubmit={ handleSubmit }
                 inverted={ theme === 'dark' }
                 id={ theme === 'dark' ? styles.dark : styles.light }
             >
-                <Header as='h2' inverted={ theme === 'dark' }>Login</Header> 
+                <Header as='h2' inverted={ theme === 'dark' }>Password Recovery</Header> 
 
                 {
                     error && 
@@ -35,37 +36,46 @@ const LoginComp: React.SFC<Props> = ({
                         <p>Please try again</p>
                     </Message>
                 }
+                {
+                    submitSuccess &&
+                    <Message size='small'>
+                        You've successfully updated your password.
+                    </Message>
+                }
+
+                <Form.Input
+                    required
+                    name='password'
+                    label='Password'
+                    placeholder='Password'
+                    value={ password }
+                    type={ passwordType }
+                    onChange={ handleChange }
+                />
 
                 <Form.Field>
                     <Form.Input
                         required
-                        label='Email'
-                        type='email'
-                        name='email'
-                        placeholder='Enter Email'
-                        value={ email }
+                        type={ passwordType }
+                        name='password2'
+                        label='Confirm Password'
+                        placeholder='Password'
+                        value={ password2 }
                         onChange={ handleChange }
                     />
+                    <Label>
+                        Password must be 8-16 characters and include an assortment of letters, numbers, and symbols
+                    </Label>
                 </Form.Field>
 
-                <Form.Field>
-                    <Form.Input 
-                        required
-                        name='password'
-                        label='password'
-                        placeholder='Password'
-                        value={ password }
-                        type={ passwordType }
-                        onChange={ handleChange }
-                    />
-                <Label
-                    as={ Link }
-                    to='/password/recovery'
-                    style={{ cursor: 'pointer' }}
+                <Button
+                    basic
+                    color='black'
+                    type='submit'
+                    inverted={ theme === 'dark' }
                 >
-                    Forgot your password?
-                </Label>
-                </Form.Field>
+                    Submit
+                </Button>
 
                 <Button
                     basic
@@ -77,18 +87,9 @@ const LoginComp: React.SFC<Props> = ({
                 >
                     Show Password
                 </Button>
-
-                <Button
-                    basic
-                    color='black'
-                    type='submit'
-                    inverted={ theme === 'dark' }
-                >
-                    Submit
-                </Button>
             </Form>
         </>
     );
 };
 
-export default LoginComp;
+export default PasswordResetComp;

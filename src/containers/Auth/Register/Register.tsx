@@ -39,7 +39,6 @@ class Register extends React.PureComponent<Props, State> {
 
         letters.forEach(letter => {
             if (password.split('').includes(letter)) {
-                console.log(letter);
                 return includesLetter = true;
             };
             return;
@@ -47,7 +46,6 @@ class Register extends React.PureComponent<Props, State> {
 
         numbers.forEach(number => {
             if (password.split('').includes(number)) {
-                console.log(number);
                 return includesNumber = true;
             };
             return;
@@ -55,7 +53,6 @@ class Register extends React.PureComponent<Props, State> {
 
         symbols.forEach(symbol => {
             if (password.split('').includes(symbol)) {
-                console.log(symbol);
                 return includesSymbol = true;
             };
             return;
