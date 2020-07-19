@@ -18,21 +18,22 @@ class RegisterConfirm extends React.PureComponent<Props, State> {
         const { location, registerConfirm } = this.props;
 
         const queryList = queryString.parse(location.search);
+        console.log('Hello from registerConfirm: componentDidMount', queryList.emailtoken)
         const res = await registerConfirm(queryList.emailtoken);
 
-        if (res.payload.status >= 400) {
-            this.setState({
-                isLoading: false,
-                error: { message: 'Something went wrong, please return to the registration page and try again'}
-            });
-        } else {
+        if (res.payload.status === 201) {
             this.setState({
                 isLoading: false,
                 registerationSuccess: true
             });
-        };
 
-        return;
+        } else {
+            this.setState({
+                isLoading: false,
+                error: { message: 'Something went wrong, please return to the registration page and try again'}
+            });
+            return;
+        };
     };
 
     render() {
