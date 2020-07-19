@@ -514,7 +514,19 @@ html, body {
         margin-top: 25%
     }
 
+    #login-form-dark {
+        width: 60%;
+        padding: 1.5rem;
+        margin-top: 25%
+    }
+
     #register-form {
+        width: 60%;
+        padding: 1.5rem;
+        margin-top: 20%
+    }
+
+    #register-form-dark {
         width: 60%;
         padding: 1.5rem;
         margin-top: 20%
@@ -586,7 +598,17 @@ html, body {
         min-width: 85% !important
     }
 
+    #login-form-dark {
+        margin-top: 45%;
+        min-width: 85% !important
+    }
+
     #register-form {
+        margin-top: 30%;
+        min-width: 85% !important
+    }
+
+    #register-form-dark {
         margin-top: 30%;
         min-width: 85% !important
     }
