@@ -15,12 +15,12 @@ class ResendRegisterToken extends React.PureComponent<Props, State> {
         this.setState({
             email: event.target.value
         });
-        console.log(this.state);
     };
 
     private handleSubmit = async () => {
         const { resendEmailToken } = this.props;
         let res = await resendEmailToken(this.state.email);
+        console.loglog('Hello from ResendRegisterToken', res);
 
         if (res.payload.status >= 400) {
             this.setState({ error: { message: 'Something went wrong, please return to the Register page and try again.' }});
