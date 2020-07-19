@@ -58,13 +58,26 @@ const LoginComp: React.SFC<Props> = ({
                         type={ passwordType }
                         onChange={ handleChange }
                     />
-                <Label
-                    as={ Link }
-                    to='/password/recovery'
-                    style={{ cursor: 'pointer' }}
-                >
-                    Forgot your password?
-                </Label>
+                </Form.Field>
+
+                <Form.Field>
+                    <Label
+                        as={ Link }
+                        to='/password/recovery'
+                        style={{ cursor: 'pointer' }}
+                    >
+                        Forgot your password?
+                    </Label>
+                </Form.Field>
+
+                <Form.Field>
+                    <Label
+                        as={ Link }
+                        to='/register/resend'
+                        style={{ cursor: 'pointer' }}
+                    >
+                        Didn't receive an account confirmation email?
+                    </Label>
                 </Form.Field>
 
                 <Button

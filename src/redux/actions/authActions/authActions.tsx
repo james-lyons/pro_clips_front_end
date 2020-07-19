@@ -25,7 +25,6 @@ const resendEmailToken = (email: string) => {
 };
 
 const registerConfirm = (emailtoken: string) => {
-    console.log('Hello from registerConfirm 1: emailToken', emailtoken);
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/register/confirm/${ emailtoken }`,
@@ -36,7 +35,6 @@ const registerConfirm = (emailtoken: string) => {
             );
             
             const data = await res.json();
-            console.log('hello from registerConfirm 2: data', data);
 
             if (data.status >= 400) {
                 return dispatch({ type: 'REGISTRATION_CONFIRMATION_REJECTED', payload: data });

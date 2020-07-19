@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Button, Message, Header, Label } from 'semantic-ui-react';
 import { Props } from './config';
+import { Link } from 'react-router-dom';
+import { Form, Button, Message, Header, Label } from 'semantic-ui-react';
 
 const RegisterComp: React.SFC<Props> = ({
     email,
@@ -88,6 +89,7 @@ const RegisterComp: React.SFC<Props> = ({
                         Password must be 8-16 characters and include an assortment of letters, numbers, and symbols
                     </Label>
                 </Form.Field>
+                
                 <Button
                     basic
                     as='button'
