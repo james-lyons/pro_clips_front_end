@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+
 import { Link } from 'react-router-dom';
+import { Grid, Image } from 'semantic-ui-react';
 
 const BrowseClipsComponent: React.SFC<{}> = () => {
 

@@ -1,5 +1,6 @@
+import { NewUser, User } from './config';
+
 import API_URL from '../../../constants';
-import { User, NewUser } from './config';
 
 const resendEmailToken = (email: string) => {
     return async dispatch => {
@@ -73,6 +74,7 @@ const userRegister = (newUser: NewUser) => {
 };
 
 const userLogin = (user: User) => {
+    console.log('HELLO FROM USERLOGIN 1: ', user);
     return async dispatch => {
         try {
             let res = await fetch(`${ API_URL }/auth/login`,
@@ -85,6 +87,8 @@ const userLogin = (user: User) => {
             );
 
             const data = await res.json();
+
+            console.log('HELLO FROM USERLOGIN 2: ', data);
 
             if (data.status >= 400) {
                 dispatch({ type: 'USER_LOGIN_REJECTED', payload: data });
