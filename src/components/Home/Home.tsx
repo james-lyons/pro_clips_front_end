@@ -13,7 +13,7 @@ const Home: React.SFC<{}> = ({}) => {
                     Rep Yourself
                 </Header>
                 <Header as='h3' inverted={ theme === 'dark' } id='home-page-h2'>
-                    Real Gamers, Real Awesome Momentss
+                    Real Gamers, Real Awesome Moments
                 </Header>
             </div>
 

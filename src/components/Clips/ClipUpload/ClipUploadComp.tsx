@@ -1,6 +1,7 @@
-import React from 'react';
+import { Button, Container, Form, Icon, Message } from 'semantic-ui-react';
+
 import { Props } from './config';
-import { Form, Button, Container, Message, Icon } from 'semantic-ui-react';
+import React from 'react';
 
 const ClipUploadComponent: React.SFC<Props> = ({
     title,
@@ -70,7 +71,7 @@ const ClipUploadComponent: React.SFC<Props> = ({
                     >
                         <option value="Select">Select</option>
                         <option value="Apex Legends">Apex Legends</option>
-                        <option value="Valorant">Valorant</option>
+                        <option value="VALORANT">Valorant</option>
                         <option value="Crucible">Crucible</option>
                         <option value="League of Legends">League of Legends</option>
                         <option value="Call of Duty: Warzone">Call of Duty: Warzone</option>

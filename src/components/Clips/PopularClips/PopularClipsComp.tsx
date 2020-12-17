@@ -98,7 +98,7 @@ const PopularClipsComp: React.SFC<Props> = ({
                 >                    <Image
                         rounded
                         as={ Link }
-                        to={`/browseclips/Valorant`}
+                        to={`/browseclips/VALORANT`}
                         src='https://static-cdn.jtvnw.net/ttv-boxart/VALORANT-285x380.jpg'
                     /> Valorant
                 </Header>
